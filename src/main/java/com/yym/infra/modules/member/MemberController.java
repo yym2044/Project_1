@@ -92,10 +92,10 @@ public class MemberController {
 		service.updateMemberPhoneHome(dto);
 
 		// View을 다시 뿌려주기 위한 구문
-//		Member rt = service.selectOne(dto);
-//		model.addAttribute("rt", rt);
+		Member rt = service.selectOne(dto);
+		model.addAttribute("rt", rt);
 
-		return "" ;
+		return "member/memberView";
 
 	}
 	
