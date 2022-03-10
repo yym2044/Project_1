@@ -37,7 +37,7 @@ public class CodeController {
 		// 입력이 되어야 함
 		service.insert(dto);
 
-		return "";
+		return "redirect:/code/codeGroupList";
 	}
 
 	@RequestMapping(value = "/code/codeGroupView1")
@@ -89,11 +89,7 @@ public class CodeController {
 		// 업데이트 하는 구문
 		service.update(dto);
 
-		// View1을 다시 뿌려주기 위한 구문
-		Code rt = service.selectOne(dto);
-		model.addAttribute("rt", rt);
-
-		return "code/codeGroupView1" ;
+		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() ;
 
 	}
 	
@@ -127,7 +123,7 @@ public class CodeController {
 		// 입력이 되어야 함
 		service.insert_code(dto);
 
-		return "";
+		return "redirect:/code/codeList";
 	}
 	
 	@RequestMapping(value = "/code/codeView")
@@ -156,11 +152,8 @@ public class CodeController {
 		// 업데이트 하는 구문
 		service.update_code(dto);
 
-//		// View을 다시 뿌려주기 위한 구문
-		Code rt = service.selectOne_code(dto);
-		model.addAttribute("rt", rt);
 
-		return "/code/codeView" ;
+		return "redirect:/code/codeView?ifcdSeq=" + dto.getIfcdSeq() ;
 
 	}
 	
@@ -170,11 +163,7 @@ public class CodeController {
 		// 업데이트 하는 구문
 		service.delete_code(vo);
 		
-//		// List를 다시 뿌려주기 위한 구문
-		List<Code> list = service.selectList_code();
-		model.addAttribute("list", list);
-		
-		return "/code/codeList" ;
+		return "redirect:/code/codeList" ;
 		
 	}
 }

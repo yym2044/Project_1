@@ -62,10 +62,7 @@ public class MemberController {
 		service.insertMemberPhoneMobile(dto);
 		service.insertMemberPhoneHome(dto);
 		
-//		List<Member> list = service.selectList();
-//		model.addAttribute("list", list);
-		
-		return "";
+		return "redirect:/member/memberList";
 	}
 	
 	@RequestMapping(value = "/member/memberEditForm")
@@ -91,11 +88,7 @@ public class MemberController {
 		service.updateMemberPhoneMobile(dto);
 		service.updateMemberPhoneHome(dto);
 
-		// View을 다시 뿌려주기 위한 구문
-		Member rt = service.selectOne(dto);
-		model.addAttribute("rt", rt);
-
-		return "member/memberView";
+		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
 
 	}
 	
