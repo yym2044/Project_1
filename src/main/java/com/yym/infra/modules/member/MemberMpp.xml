@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.junefw.infra.modules.member.MemberMpp">
+
+	<resultMap id="resultMapObj"
+		type="com.junefw.infra.modules.member.Member"></resultMap>
+
+	<select id="selectList" resultMap="resultMapObj">
+		SELECT
+			a.ifmmSeq
+			, a.ifmmName
+			, a.ifmmId
+			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGenderCd) as ifmmGenderName
+			, a.ifmmDob
+			, a.ifmmFavoriteColor
+			, a.ifmmDelNy
+			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGradeCd) as ifmmGrade
+			, a.ifmmRegDate
+			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
+		FROM infrMember a
+		WHERE ifmmDelNy = 0
+		
+	</select>
+	
+	<select id="selectListCode" resultMap="resultMapObj">
+	SELECT 
+		ifcdSeq
+		,ifcdName
+	FROM 
+		infrCode a
+	LEFT JOIN infrCodeGroup b on b.ifcgSeq = a.ifcgSeq
+	WHERE ifcgName LIKE "%등급%"
+	</select>
+
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT DISTINCT
+			a.ifmmSeq
+			, a.ifmmName
+			, a.ifmmId
+			, a.ifmmPwd
+			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGenderCd) as ifmmGenderName
+			, a.ifmmDob
+			, a.ifmmFavoriteColor
+			, a.ifmmDelNy
+			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGradeCd) as ifmmGrade
+			, a.ifmmRegDate
+			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
+			, if(a.ifmmEmailConsentNy=1,'수신동의','수신거부') as ifmmEmailConsentNyText
+			, if(a.ifmmSmsConsentNy=1,'수신동의','수신거부') as ifmmSmsConsentNyText
+			, if(a.ifmmPushConsentNy=1,'수신동의','수신거부') as ifmmPushConsentNyText
+						
+			, b.ifmeEmailFull
+			
+			, (select ifmpNumber from infrMemberPhone where ifmpDeviceCd = 26 and ifmmSeq = #{ifmmSeq}) as ifmpNumberMobile
+			, (select ifmpNumber from infrMemberPhone where ifmpDeviceCd = 25 and  ifmmSeq = #{ifmmSeq}) as ifmpNumberHome
+			
+			, d.ifmaZipCode
+			, d.ifmaAddress1
+			, d.ifmaAddress2
+			
+		FROM infrMember a
+		LEFT JOIN infrMemberEmail b ON b.ifmmSeq = a.ifmmSeq AND b.ifmeDefaultNy = 1
+		LEFT JOIN infrMemberPhone c ON c.ifmmSeq = a.ifmmSeq
+		LEFT JOIN infrMemberAddress d ON d.ifmmSeq = a.ifmmSeq AND d.ifmaDefaultNy = 1
+		WHERE
+			1=1
+		AND a.ifmmSeq = #{ifmmSeq}
+	</select>
+	
+	<!-- INSERT -->
+	
+	<insert id="insertMember">
+	INSERT INTO
+	infrMember (
+		ifmmSeq
+		, ifmmName
+		, ifmmId
+		, ifmmPwd
+		, ifmmGenderCd
+		, ifmmDob
+		, ifmmDelNy
+		, ifmmGradeCd
+		, ifmmRegDate
+		, ifmmStatusCd
+		, ifmmEmailConsentNy
+		, ifmmSmsConsentNy
+		, ifmmPushConsentNy
+	) VALUES (
+		#{ifmmSeq}
+		, #{ifmmName}
+		, #{ifmmId}
+		, #{ifmmPwd}
+		, #{ifmmGenderCd}
+		, #{ifmmDob}
+		, 0
+		, #{ifmmGradeCd}
+		, #{ifmmRegDate}
+		, 78
+		, #{ifmmEmailConsentNy}
+		, #{ifmmSmsConsentNy}
+		, #{ifmmPushConsentNy}
+	);
+			
+	</insert>
+	<insert id="insertMemberEmail">
+	INSERT INTO
+	infrMemberEmail (
+		ifmmSeq
+		, ifmeEmailFull
+		, ifmeDefaultNy
+	) VALUES (
+		#{ifmmSeq}
+		, #{ifmeEmailFull}
+		, 1
+	)
+	</insert>
+	<insert id="insertMemberAddress">
+	INSERT INTO
+	infrMemberAddress (
+		ifmmSeq
+		, ifmaZipCode
+		, ifmaAddress1
+		, ifmaAddress2
+        , ifmaDefaultNy
+	) VALUES (
+		#{ifmmSeq}
+		, #{ifmaZipCode}
+		, #{ifmaAddress1}
+		, #{ifmaAddress2}
+        , 1
+	);
+	</insert>
+	
+	<insert id="insertMemberPhoneMobile">
+	INSERT INTO
+	infrMemberPhone (
+		ifmmSeq
+        , ifmpNumber
+        , ifmpDeviceCd
+        , ifmpDefaultNy
+    ) VALUES (
+		#{ifmmSeq}				
+        , #{ifmpNumberMobile}		
+        , 26
+        , 1
+    )
+	</insert>
+	<insert id="insertMemberPhoneHome">
+	INSERT INTO
+	infrMemberPhone (
+		ifmmSeq
+        , ifmpNumber
+        , ifmpDeviceCd
+        , ifmpDefaultNy
+    ) VALUES (
+		#{ifmmSeq}
+        , #{ifmpNumberHome}		
+        , 25
+        , 1
+    )
+	</insert>
+	
+	
+	
+	<!-- UPDATE -->
+	
+	<update id="updateMember">
+	UPDATE infrMember
+	SET
+		ifmmName = #{ifmmName}
+		, ifmmId = #{ifmmId}
+		, ifmmPwd = #{ifmmPwd}
+		, ifmmGenderCd = #{ifmmGenderCd}
+		, ifmmDob = #{ifmmDob}
+		, ifmmDelNy = 0
+		, ifmmGradeCd = #{ifmmGradeCd}
+		, ifmmStatusCd = 78
+		, ifmmEmailConsentNy = #{ifmmEmailConsentNy}
+		, ifmmSmsConsentNy = #{ifmmSmsConsentNy}
+		, ifmmPushConsentNy = #{ifmmPushConsentNy}
+	WHERE
+		1 = 1
+	AND
+		ifmmSeq = #{ifmmSeq}
+	</update>
+	<update id="updateMemberEmail">
+	UPDATE infrMemberEmail
+	SET
+		ifmeEmailFull = #{ifmeEmailFull}
+		, ifmeDefaultNy = 1
+	WHERE
+		1 = 1
+	AND
+		ifmmSeq = #{ifmmSeq}
+	</update>
+	<update id="updateMemberAddress">
+	UPDATE infrMemberAddress
+	SET
+		ifmaZipCode = #{ifmaZipCode}
+		, ifmaAddress1 = #{ifmaAddress1}
+		, ifmaAddress2 = #{ifmaAddress2}
+		, ifmaDefaultNy = 1
+	WHERE
+		1 = 1
+	AND
+		ifmmSeq = #{ifmmSeq}
+	</update>
+	
+	<update id="updateMemberPhoneMobile">
+	UPDATE infrMemberPhone
+	SET
+		ifmpNumber = #{ifmpNumberMobile}
+		, ifmpDeviceCd = 26
+		, ifmpDefaultNy = 1
+	WHERE
+		1 = 1
+	AND
+		ifmmSeq = #{ifmmSeq}
+	</update>
+	<update id="updateMemberPhoneHome">
+	UPDATE infrMemberPhone
+	SET
+		ifmpNumber = #{ifmpNumberHome}
+		, ifmpDeviceCd = 25
+		, ifmpDefaultNy = 1
+	WHERE
+		1 = 1
+	AND
+		ifmmSeq = #{ifmmSeq}
+	</update>
+	
+</mapper>
