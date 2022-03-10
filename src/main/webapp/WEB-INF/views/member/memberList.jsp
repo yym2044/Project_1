@@ -19,6 +19,14 @@
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
+<style type="text/css">
+
+	th, td {
+		text-align: center;
+	}
+
+</style>
+
 </head>
 <body>
 
@@ -453,7 +461,7 @@
 	
 	<c:otherwise>
 
-		<table class="table table-hover table-sm border border-1 box-white container1" style="min-width: 1000px; border-collapse: separate;">
+		<table class="table table-hover table-sm border border-1 box-white" style="min-width: 1000px; border-collapse: collapse;">
 			<thead>
 				<tr>
 					<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
