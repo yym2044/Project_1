@@ -24,7 +24,7 @@
 		<!-- <property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" 
 			/> -->	<!-- 기본설정 : 패키지 변경으로 아래와 같이 수정 -->
 		<property name="mapperLocations"
-			value="classpath:com/junefw/infra/**/**/*Mpp.xml" />
+			value="classpath:com/yym/infra/**/**/*Mpp.xml" />
 	</bean>
 
 	<bean id="sqlSession"

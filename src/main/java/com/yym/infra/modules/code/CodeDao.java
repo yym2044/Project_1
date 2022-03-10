@@ -14,7 +14,7 @@ public class CodeDao {
 //	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.junefw.infra.modules.code.CodeMpp";
+	private static String namespace = "com.yym.infra.modules.code.CodeMpp";
 
 	public List<Code> selectList() {return sqlSession.selectList(namespace + ".selectList", "");}
 	

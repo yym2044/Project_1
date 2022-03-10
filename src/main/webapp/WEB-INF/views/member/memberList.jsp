@@ -30,7 +30,7 @@
 				<div class="col-6 col-md-2">
 					<img src="${path}/resources/images/xdmin/coupang.png" class="img-fluid">
 				</div>
-				<div class="col-6 col-md-5 fs-4 mb-2 d-md-block d-none">Coupang Management System</div>
+				<div class="col-6 col-md-5 fs-4 mb-2 d-md-block d-none">Coupang Management System Project_1</div>
 
 				<!-- 
 				<div class="col-12 col-md-2 fs-6 mb-2">

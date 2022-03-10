@@ -4,10 +4,10 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.junefw.infra.modules.code.CodeMpp"> <!-- 지금 파일 지정 -->
+<mapper namespace="com.yym.infra.modules.code.CodeMpp"> <!-- 지금 파일 지정 -->
 
 	<resultMap id="resultMapObj"
-		type="com.junefw.infra.modules.code.Code"></resultMap> <!-- 결과 객체 저장 -->
+		type="com.yym.infra.modules.code.Code"></resultMap> <!-- 결과 객체 저장 -->
 
 	<select id="selectList" resultMap="resultMapObj">
 		

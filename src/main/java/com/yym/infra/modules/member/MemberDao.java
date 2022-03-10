@@ -14,7 +14,7 @@ public class MemberDao {
 //	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.junefw.infra.modules.member.MemberMpp";
+	private static String namespace = "com.yym.infra.modules.member.MemberMpp";
 
 	public List<Member> selectList(){ 
 		return sqlSession.selectList(namespace + ".selectList", "");
