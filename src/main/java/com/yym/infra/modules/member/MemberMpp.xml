@@ -220,6 +220,8 @@
 		1 = 1
 	AND
 		ifmmSeq = #{ifmmSeq}
+	AND
+		ifmpDeviceCd = 26
 	</update>
 	<update id="updateMemberPhoneHome">
 	UPDATE infrMemberPhone
@@ -231,6 +233,8 @@
 		1 = 1
 	AND
 		ifmmSeq = #{ifmmSeq}
+	AND
+		ifmpDeviceCd = 25	
 	</update>
 	
 </mapper>
