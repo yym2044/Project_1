@@ -24,10 +24,24 @@
 		FROM infrMember a
 		WHERE ifmmDelNy = 0
 		
+		<choose>
+			<when test="shIfscSeq == 1">AND ifmmName like concat('%',#{searchBar},'%')</when>
+			<when test="shIfscSeq == 2">AND ifmmId like concat('%',#{searchBar},'%')</when>
+		</choose>
+		
+		<!-- 
 		<if test="shIfmmId != null and !shIfmmId.equals('')">
 			AND ifmmId LIKE concat('%',#{shIfmmId},'%')
 		</if>
-		
+		 -->
+	</select>
+	
+	<select id="selectListSearch" resultMap="resultMapObj">
+	SELECT
+		ifscSeq
+		, ifscName
+	FROM
+		infrSearch
 	</select>
 	
 	<select id="selectListCode" resultMap="resultMapObj">

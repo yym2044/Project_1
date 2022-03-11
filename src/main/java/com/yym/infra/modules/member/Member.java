@@ -5,6 +5,9 @@ public class Member {
 	//코드
 	private Integer ifcdSeq;
 	private String ifcdName;
+	//검색어
+	private Integer ifscSeq;
+	private String ifscName;
 	//멤버
 	private String ifmmSeq;
 	private String ifmmId;
@@ -204,5 +207,16 @@ public class Member {
 	public void setIfmaZipCode(String ifmaZipCode) {
 		this.ifmaZipCode = ifmaZipCode;
 	}
-	
+	public Integer getIfscSeq() {
+		return ifscSeq;
+	}
+	public void setIfscSeq(Integer ifscSeq) {
+		this.ifscSeq = ifscSeq;
+	}
+	public String getIfscName() {
+		return ifscName;
+	}
+	public void setIfscName(String ifscName) {
+		this.ifscName = ifscName;
+	}
 }
