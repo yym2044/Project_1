@@ -30,15 +30,15 @@ th, td {
 <body>
 
 
-		<div class="container-fluid bg-light">
+	<div class="container-fluid bg-light">
 
-			<div class="row box-white pt-3 collapse show" id="firstRow">
-				<div class="col-6 col-md-2">
-					<img src="${path}/resources/images/xdmin/coupang.png" class="img-fluid">
-				</div>
-				<div class="col-6 col-md-5 fs-4 mb-2 d-md-block d-none">Coupang Management System Project_1</div>
+		<div class="row box-white pt-3 collapse show" id="firstRow">
+			<div class="col-6 col-md-2">
+				<img src="${path}/resources/images/xdmin/coupang.png" class="img-fluid">
+			</div>
+			<div class="col-6 col-md-5 fs-4 mb-2 d-md-block d-none">Coupang Management System Project_1</div>
 
-				<!-- 
+			<!-- 
 				<div class="col-12 col-md-2 fs-6 mb-2">
 					<img src="${path}/resources/images/xdmin/user.png" style="width: 50px;">
 					<div class="row">
@@ -47,146 +47,146 @@ th, td {
 				</div>
 				 -->
 
-				<div class="col-2 col-md-1 mb-2 p-0 text-end pe-2 d-md-block d-none">
-					<img src="${path}/resources/images/xdmin/lee.jpg" style="width: 40px; height: 50px;"
-						class="rounded-circle border border-5">
-				</div>
-				<div class="col-4 col-md mb-2 d-md-block d-none">
-					<div class="row dropdown">
-						<a href="#" class="link-dark text-decoration-none dropdown-toggle ps-0" data-bs-toggle="dropdown"> Yun (CEO) </a>
-						<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-							<li><a class="dropdown-item" href="#">New project...</a></li>
-							<li><a class="dropdown-item" href="#">Settings</a></li>
-							<li><a class="dropdown-item" href="#">Profile</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">Sign out</a></li>
-						</ul>
-					</div>
-					<div class="row">Administrator</div>
-				</div>
-
-				<div class="col-3 col-md-1 mb-2 d-md-block d-none">
-					<select class="form-select">
-						<option>언어</option>
-						<option>한국어</option>
-						<option>Eng</option>
-						<option>日本語</option>
-					</select>
-				</div>
-
+			<div class="col-2 col-md-1 mb-2 p-0 text-end pe-2 d-md-block d-none">
+				<img src="${path}/resources/images/xdmin/lee.jpg" style="width: 40px; height: 50px;"
+					class="rounded-circle border border-5">
 			</div>
-			<div class="row box-white collapse show" id="firstRow">
-				<div class="col-10 col-md-10 fs-4 mb-2 d-md-none">Coupang Management System</div>
-				<div class="col col-md text-end d-md-none"></div>
-			</div>
-
-			<!-- offcanvas start -->
-
-			<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-				id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-
-				<div class="offcanvas-header">
-					<img class="bi me-2" width="120" height="30" src="${path}/resources/images/xdmin/coupang.png">
-					<h3 class="offcanvas-title" id="offcanvasScrollingLabel">Admin Menu</h3>
-					<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-				</div>
-
-				<div class="offcanvas-body p-0">
-					<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-						<a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom"> <span
-							class="fs-5 fw-semibold">Collapsible</span>
-						</a>
-
-
-						<ul class="list-unstyled ps-0">
-							<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
-								data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Home</a>
-								<div class="collapse" id="home-collapse">
-									<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-										<li><a href="#" class="link-dark rounded">Overview</a></li>
-										<li><a href="#" class="link-dark rounded">Updates</a></li>
-										<li><a href="#" class="link-dark rounded">Reports</a></li>
-									</ul>
-								</div></li>
-							<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
-								data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">Dashboard</a>
-								<div class="collapse" id="dashboard-collapse" style="">
-									<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-										<li><a href="#" class="link-dark rounded">Overview</a></li>
-										<li><a href="#" class="link-dark rounded">Weekly</a></li>
-										<li><a href="#" class="link-dark rounded">Monthly</a></li>
-										<li><a href="#" class="link-dark rounded">Annually</a></li>
-									</ul>
-								</div></li>
-							<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
-								data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">Orders</a>
-								<div class="collapse" id="orders-collapse" style="">
-									<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-										<li><a href="#" class="link-dark rounded">New</a></li>
-										<li><a href="#" class="link-dark rounded">Processed</a></li>
-										<li><a href="#" class="link-dark rounded">Shipped</a></li>
-										<li><a href="#" class="link-dark rounded">Returned</a></li>
-									</ul>
-								</div></li>
-							<li class="border-top my-3"></li>
-							<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
-								data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">Account</a>
-								<div class="collapse" id="account-collapse" style="">
-									<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-										<li><a href="#" class="link-dark rounded">New...</a></li>
-										<li><a href="#" class="link-dark rounded">Profile</a></li>
-										<li><a href="#" class="link-dark rounded">Settings</a></li>
-										<li><a href="#" class="link-dark rounded">Sign out</a></li>
-									</ul>
-								</div></li>
-						</ul>
-					</div>
-				</div>
-				<div class="offcanvas-footer">
-					<div class="dropdown border-top ms-3 py-3">
-						<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
-							data-bs-toggle="dropdown" aria-expanded="false"> <img src="${path}/resources/images/xdmin/lee.jpg" alt=""
-							width="40" height="50" class="rounded-circle border border-5 me-2"> <strong>Yun</strong>
-						</a>
-						<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-							<li><a class="dropdown-item" href="#">New project...</a></li>
-							<li><a class="dropdown-item" href="#">Settings</a></li>
-							<li><a class="dropdown-item" href="#">Profile</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item" href="#">Sign out</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- offcanvas end -->
-
-
-
-			<div class="row bg-secondary">
-				<div class="col">
-					<ul class="nav">
-						<li class="nav-item"><a class="nav-link link-light">관리자화면</a></li>
-						<li class="nav-item"><a class="nav-link link-light" href="#">Features</a></li>
-						<li class="nav-item"><a class="nav-link link-light" href="#">시스템 관리</a></li>
-						<li class="nav-item dropdown"><a class="nav-link link-light dropdown-toggle" href="#"
-							data-bs-toggle="dropdown">Dropdown</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another Action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul></li>
+			<div class="col-4 col-md mb-2 d-md-block d-none">
+				<div class="row dropdown">
+					<a href="#" class="link-dark text-decoration-none dropdown-toggle ps-0" data-bs-toggle="dropdown"> Yun (CEO) </a>
+					<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+						<li><a class="dropdown-item" href="#">New project...</a></li>
+						<li><a class="dropdown-item" href="#">Settings</a></li>
+						<li><a class="dropdown-item" href="#">Profile</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="#">Sign out</a></li>
 					</ul>
 				</div>
-				<div class="col d-flex justify-content-end">
-					<button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling">
-						<i class="bi bi-list"></i>
-					</button>
-				</div>
+				<div class="row">Administrator</div>
 			</div>
 
+			<div class="col-3 col-md-1 mb-2 d-md-block d-none">
+				<select class="form-select">
+					<option>언어</option>
+					<option>한국어</option>
+					<option>Eng</option>
+					<option>日本語</option>
+				</select>
+			</div>
 
-			<!-- NavBar 수정할 거 -->
-			<!-- 
+		</div>
+		<div class="row box-white collapse show" id="firstRow">
+			<div class="col-10 col-md-10 fs-4 mb-2 d-md-none">Coupang Management System</div>
+			<div class="col col-md text-end d-md-none"></div>
+		</div>
+
+		<!-- offcanvas start -->
+
+		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+			id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+
+			<div class="offcanvas-header">
+				<img class="bi me-2" width="120" height="30" src="${path}/resources/images/xdmin/coupang.png">
+				<h3 class="offcanvas-title" id="offcanvasScrollingLabel">Admin Menu</h3>
+				<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+			</div>
+
+			<div class="offcanvas-body p-0">
+				<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+					<a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom"> <span
+						class="fs-5 fw-semibold">Collapsible</span>
+					</a>
+
+
+					<ul class="list-unstyled ps-0">
+						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Home</a>
+							<div class="collapse" id="home-collapse">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="#" class="link-dark rounded">Overview</a></li>
+									<li><a href="#" class="link-dark rounded">Updates</a></li>
+									<li><a href="#" class="link-dark rounded">Reports</a></li>
+								</ul>
+							</div></li>
+						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">Dashboard</a>
+							<div class="collapse" id="dashboard-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="#" class="link-dark rounded">Overview</a></li>
+									<li><a href="#" class="link-dark rounded">Weekly</a></li>
+									<li><a href="#" class="link-dark rounded">Monthly</a></li>
+									<li><a href="#" class="link-dark rounded">Annually</a></li>
+								</ul>
+							</div></li>
+						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">Orders</a>
+							<div class="collapse" id="orders-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="#" class="link-dark rounded">New</a></li>
+									<li><a href="#" class="link-dark rounded">Processed</a></li>
+									<li><a href="#" class="link-dark rounded">Shipped</a></li>
+									<li><a href="#" class="link-dark rounded">Returned</a></li>
+								</ul>
+							</div></li>
+						<li class="border-top my-3"></li>
+						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
+							data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">Account</a>
+							<div class="collapse" id="account-collapse" style="">
+								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+									<li><a href="#" class="link-dark rounded">New...</a></li>
+									<li><a href="#" class="link-dark rounded">Profile</a></li>
+									<li><a href="#" class="link-dark rounded">Settings</a></li>
+									<li><a href="#" class="link-dark rounded">Sign out</a></li>
+								</ul>
+							</div></li>
+					</ul>
+				</div>
+			</div>
+			<div class="offcanvas-footer">
+				<div class="dropdown border-top ms-3 py-3">
+					<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
+						data-bs-toggle="dropdown" aria-expanded="false"> <img src="${path}/resources/images/xdmin/lee.jpg" alt=""
+						width="40" height="50" class="rounded-circle border border-5 me-2"> <strong>Yun</strong>
+					</a>
+					<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+						<li><a class="dropdown-item" href="#">New project...</a></li>
+						<li><a class="dropdown-item" href="#">Settings</a></li>
+						<li><a class="dropdown-item" href="#">Profile</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" href="#">Sign out</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- offcanvas end -->
+
+
+
+		<div class="row bg-secondary">
+			<div class="col">
+				<ul class="nav">
+					<li class="nav-item"><a class="nav-link link-light">관리자화면</a></li>
+					<li class="nav-item"><a class="nav-link link-light" href="#">Features</a></li>
+					<li class="nav-item"><a class="nav-link link-light" href="#">시스템 관리</a></li>
+					<li class="nav-item dropdown"><a class="nav-link link-light dropdown-toggle" href="#"
+						data-bs-toggle="dropdown">Dropdown</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Action</a></li>
+							<li><a class="dropdown-item" href="#">Another Action</a></li>
+							<li><a class="dropdown-item" href="#">Something else here</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<div class="col d-flex justify-content-end">
+				<button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling">
+					<i class="bi bi-list"></i>
+				</button>
+			</div>
+		</div>
+
+
+		<!-- NavBar 수정할 거 -->
+		<!-- 
 			<div class="row d-flex align-items-center bg-secondary">
 				<div class="col-md-2">
 					<div class="row">
@@ -233,7 +233,7 @@ th, td {
 				</div>
 			</div>
  			-->
-			<!-- 
+		<!-- 
 			<div class="row">
 				<ul class="nav bg-secondary">
 					<li class="nav-item"><a class="nav-link link-light" href="#">Home</a></li>
@@ -243,180 +243,162 @@ th, td {
 				</ul>
 			</div>
 			 -->
+	</div>
+
+	<div class="container-fluid bg-light">
+		<br>
+
+
+		<!-- 웹 화면 -->
+		<div class="width90 d-none d-sm-block">
+
+			<h4 class="d-flex">
+				<i class="bi bi-grip-vertical text-danger"></i>회원리스트
+			</h4>
+
+			<nav style="-bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item fs-6"><a href="#" style="text-decoration: none;">사이트운영</a></li>
+					<li class="breadcrumb-item"><a href="#" style="text-decoration: none;">회원관리</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><b>회원리스트</b></li>
+				</ol>
+			</nav>
+
+
+			<div class="row border border-1 my-2 box-white container1" id="searchBox">
+				<div class="col-12 col-md-9">
+					<div class="row my-2 pt-2">
+						<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
+						<div class="col-12 col-md-10">
+							<div class="form-check-inline">
+								<input type="checkbox" class="form-check-input" id="memberRankAll" name="memberRank" onclick="selectAll2(this)">
+								<label for="memberRankAll" class="form-check-label">전체</label>
+							</div>
+							<div class="form-check-inline">
+								<input type="checkbox" class="form-check-input" id="memberRankResign" name="memberRank"> <label
+									for="memberRankResign" class="form-check-label">탈퇴대기자</label>
+							</div>
+							<div class="form-check-inline">
+
+								<input type="checkbox" class="form-check-input" id="memberRankRegister" name="memberRank"> <label
+									for="memberRankRegister" class="form-check-label">가입신청자</label>
+							</div>
+							<div class="form-check-inline">
+								<input type="checkbox" class="form-check-input" id="memberRankGeneral" name="memberRank"> <label
+									for="memberRankGeneral" class="form-check-label">일반회원</label>
+							</div>
+							<div class="form-check-inline">
+								<input type="checkbox" class="form-check-input" id="memberRankVip" name="memberRank"> <label
+									for="memberRankVip" class="form-check-label">VIP회원</label>
+							</div>
+						</div>
+					</div>
+					<div class="row my-2">
+						<div class="col-12 col-md-2 fw-bold">ㆍ수신동의</div>
+						<div class="col-12 col-md-10">
+							<div class="form-check-inline">
+								<input type="checkbox" class="form-check-input" id="consentAll" name="consent" onclick="selectAll3(this)">
+								<label for="consentAll" class="form-check-label">전체</label>
+							</div>
+							<div class="form-check-inline">
+								<input type="checkbox" class="form-check-input" id="consentSms" name="consent"> <label for="consentSms"
+									class="form-check-label">SMS</label>
+							</div>
+							<div class="form-check-inline">
+								<input type="checkbox" class="form-check-input" id="consentEmail" name="consent"> <label
+									for="consentEmail" class="form-check-label">이메일</label>
+							</div>
+						</div>
+					</div>
+					<div class="row my-2 pb-2">
+						<div class="col-12 col-md-2 fw-bold">ㆍ검색어</div>
+						<div class="col-md-10">
+
+							<div class="row g-3 d-flex align-items-center">
+								<div class="col-4 col-md-2">
+									<select class="form-select form-select-sm">
+										<option>이름</option>
+										<option>아이디</option>
+										<option>이메일</option>
+									</select>
+								</div>
+								<div class="col-8 col-md-5">
+									<input class="form-control form-control-sm" placeholder="search..">
+								</div>
+								<div class="col-9 col-md">
+									<input type="checkbox" class="form-check-input" id="memberOnline"> <label for="memberOnline"
+										class="form-check-label">현재 접속중인 회원만 검색</label>
+								</div>
+								<div class="col col-md d-md-none mt-3">
+									<button class="btn btn-info btn-sm">
+										<span class="text-white">검색</span>
+									</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
+					<button class="btn btn-info btn-lg">
+						<span class="text-white">검색</span>
+					</button>
+				</div>
+			</div>
 		</div>
 
+		<!-- 모바일 -->
+		<div class="width90 d-sm-none">
 
-
-		<!-- 		숨겨놓은 부분 시작
-
-
-
-	
-		<div class="container-fluid bg-light">
-			<br>
-			
-			<div class="fs-3">Code</div>
- 			
-
-
-
-
-
-			웹 화면
-			<div class="width90 d-none d-sm-block">
-
-				<h4 class="d-flex">
-					<i class="bi bi-grip-vertical text-danger"></i>회원리스트
-				</h4>
-
-				<nav style="-bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item fs-6"><a href="#" style="text-decoration: none;">사이트운영</a></li>
-						<li class="breadcrumb-item"><a href="#" style="text-decoration: none;">회원관리</a></li>
-						<li class="breadcrumb-item active" aria-current="page"><b>회원리스트</b></li>
-					</ol>
-				</nav>
-
-
-				<div class="row border border-1 my-2 box-white container1" id="searchBox">
-					<div class="col-12 col-md-9">
-						<div class="row my-2 pt-2">
-							<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
-							<div class="col-12 col-md-10">
-								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="memberRankAll" name="memberRank" onclick="selectAll2(this)">
-									<label for="memberRankAll" class="form-check-label">전체</label>
-								</div>
-								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="memberRankResign" name="memberRank"> <label
-										for="memberRankResign" class="form-check-label">탈퇴대기자</label>
-								</div>
-								<div class="form-check-inline">
-
-									<input type="checkbox" class="form-check-input" id="memberRankRegister" name="memberRank"> <label
-										for="memberRankRegister" class="form-check-label">가입신청자</label>
-								</div>
-								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="memberRankGeneral" name="memberRank"> <label
-										for="memberRankGeneral" class="form-check-label">일반회원</label>
-								</div>
-								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="memberRankVip" name="memberRank"> <label
-										for="memberRankVip" class="form-check-label">VIP회원</label>
-								</div>
-							</div>
-						</div>
-						<div class="row my-2">
-							<div class="col-12 col-md-2 fw-bold">ㆍ수신동의</div>
-							<div class="col-12 col-md-10">
-								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="consentAll" name="consent" onclick="selectAll3(this)">
-									<label for="consentAll" class="form-check-label">전체</label>
-								</div>
-								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="consentSms" name="consent"> <label for="consentSms"
-										class="form-check-label">SMS</label>
-								</div>
-								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="consentEmail" name="consent"> <label
-										for="consentEmail" class="form-check-label">이메일</label>
-								</div>
-							</div>
-						</div>
-						<div class="row my-2 pb-2">
-							<div class="col-12 col-md-2 fw-bold">ㆍ검색어</div>
-							<div class="col-md-10">
-
-								<div class="row g-3 d-flex align-items-center">
-									<div class="col-4 col-md-2">
-										<select class="form-select form-select-sm">
-											<option>이름</option>
-											<option>아이디</option>
-											<option>이메일</option>
-										</select>
-									</div>
-									<div class="col-8 col-md-5">
-										<input class="form-control form-control-sm" placeholder="search..">
-									</div>
-									<div class="col-9 col-md">
-										<input type="checkbox" class="form-check-input" id="memberOnline"> <label for="memberOnline"
-											class="form-check-label">현재 접속중인 회원만 검색</label>
-									</div>
-									<div class="col col-md d-md-none mt-3">
-										<button class="btn btn-info btn-sm">
-											<span class="text-white">검색</span>
-										</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
-						<button class="btn btn-info btn-lg">
-							<span class="text-white">검색</span>
-						</button>
-					</div>
+			<div class="row mb-2">
+				<div class="col">
+					<a class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#filterMobile">상세검색</a>
 				</div>
 			</div>
+			<div class="box-light">
+				<div class="collapse" id="filterMobile">
 
-			모바일
-			<div class="width90 d-sm-none">
-
-				<div class="row mb-2">
-					<div class="col">
-						<a class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#filterMobile">상세검색</a>
+					<div class="row d-flex align-items-center mb-1">
+						<div class="col-3 fw-bold">회원등급</div>
+						<div class="col">
+							<select class="form-select">
+								<option>전체</option>
+								<option>탈퇴대기자</option>
+								<option>가입신청자</option>
+								<option>일반회원</option>
+								<option>VIP회원</option>
+							</select>
+						</div>
 					</div>
-				</div>
-				<div class="box-light">
-					<div class="collapse" id="filterMobile">
 
-						<div class="row d-flex align-items-center mb-1">
-							<div class="col-3 fw-bold">회원등급</div>
-							<div class="col">
-								<select class="form-select">
-									<option>전체</option>
-									<option>탈퇴대기자</option>
-									<option>가입신청자</option>
-									<option>일반회원</option>
-									<option>VIP회원</option>
-								</select>
-							</div>
+					<div class="row d-flex align-items-center mb-1">
+						<div class="col-3 fw-bold">수신동의</div>
+						<div class="col">
+							<select class="form-select">
+								<option>전체</option>
+								<option>SMS</option>
+								<option>E-MAIL</option>
+							</select>
 						</div>
-
-						<div class="row d-flex align-items-center mb-1">
-							<div class="col-3 fw-bold">수신동의</div>
-							<div class="col">
-								<select class="form-select">
-									<option>전체</option>
-									<option>SMS</option>
-									<option>E-MAIL</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="row d-flex align-items-center mb-2">
-							<div class="col-3 fw-bold">검색어</div>
-							<div class="col">
-								<input type="text" class="form-control" placeholder="이름, 아이디, 이메일">
-							</div>
-						</div>
-
-						<div class="row d-flex justify-content-center">
-							<div class="col d-flex justify-content-center">
-								<a class="btn btn-info btn-sm" style="width: 150px;"> <span class="text-white fw-bold">검색</span>
-								</a>
-							</div>
-						</div>
-
 					</div>
+
+					<div class="row d-flex align-items-center mb-2">
+						<div class="col-3 fw-bold">검색어</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="이름, 아이디, 이메일">
+						</div>
+					</div>
+
+					<div class="row d-flex justify-content-center">
+						<div class="col d-flex justify-content-center">
+							<a class="btn btn-info btn-sm" style="width: 150px;"> <span class="text-white fw-bold">검색</span>
+							</a>
+						</div>
+					</div>
+
 				</div>
 			</div>
-			
-			
-			
- 				숨겨놓은 부분 끝			-->
-
+		</div>
 
 
 
@@ -565,7 +547,7 @@ th, td {
 				</ul>
 			</nav> -->
 		<br> <br>
-		
+
 		<form method="get" action="/infra/member/memberList">
 			<div class="row">
 				<div class="col d-flex justify-content-center">
@@ -573,19 +555,15 @@ th, td {
 						<option value="">::검색구분::</option>
 						<c:forEach items="${listSearch}" var="item" varStatus="status">
 							<option value="${item.ifscSeq}">
-								<c:out value="${item.ifscName}"/>
+								<c:out value="${item.ifscName}" />
 							</option>
 						</c:forEach>
-					</select>
-					
-					<input type="text" placeholder="searchBar" name="searchBar">
-					 
-					<input type="submit" value="검색">
+					</select> <input type="text" placeholder="searchBar" name="searchBar"> <input type="submit" value="검색">
 				</div>
 			</div>
 		</form>
-		
-		
+
+
 		<!-- footer -->
 		<!-- 
 		<div class="container-fluid">
@@ -700,23 +678,23 @@ th, td {
 				</div>
 			</div>
 		</div>
+	</div>
 
 
+	<!-- footer -->
 
-		<!-- footer -->
-
-		<div class="container-fluid">
-			<footer class="py-3 my-4">
-				<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-					<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-					<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-					<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-					<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-					<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-				</ul>
-				<p class="text-center text-muted">© 2021 Company, Inc</p>
-			</footer>
-		</div>
+	<div class="container-fluid">
+		<footer class="py-3 my-4">
+			<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+				<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+				<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+				<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+				<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+				<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+			</ul>
+			<p class="text-center text-muted">© 2021 Company, Inc</p>
+		</footer>
+	</div>
 
 
 
