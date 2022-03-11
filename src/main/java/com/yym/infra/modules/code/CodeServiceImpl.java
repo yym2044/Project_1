@@ -52,9 +52,9 @@ public class CodeServiceImpl implements CodeService{
 //	코드
 	
 	@Override
-	public List<Code> selectList_code() throws Exception {
+	public List<Code> selectList_code(CodeVo vo) throws Exception {
 		
-		return dao.selectList_code();
+		return dao.selectList_code(vo);
 	}
 
 	@Override

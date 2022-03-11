@@ -23,6 +23,11 @@
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
 		FROM infrMember a
 		WHERE ifmmDelNy = 0
+		
+		<if test="shIfmmId != null and !shIfmmId.equals('')">
+			AND ifmmId LIKE concat('%',#{shIfmmId},'%')
+		</if>
+		
 	</select>
 	
 	<select id="selectListCode" resultMap="resultMapObj">

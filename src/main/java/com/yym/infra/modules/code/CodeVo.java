@@ -8,6 +8,8 @@ public class CodeVo {
 	
 	private String shIfcgName;
 	private String shIfcgDelNy;
+	
+	private String shIfcgSeq;
 
 
 	//------------
@@ -34,6 +36,12 @@ public class CodeVo {
 	}
 	public void setShIfcgDelNy(String shIfcgDelNy) {
 		this.shIfcgDelNy = shIfcgDelNy;
+	}
+	public String getShIfcgSeq() {
+		return shIfcgSeq;
+	}
+	public void setShIfcgSeq(String shIfcgSeq) {
+		this.shIfcgSeq = shIfcgSeq;
 	}
 	
 }

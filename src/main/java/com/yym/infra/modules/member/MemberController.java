@@ -15,10 +15,10 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/memberList")
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-	public String memberList(Model model) throws Exception {
+	public String memberList(Model model, MemberVo vo) throws Exception {
 
 
-		List<Member> list = service.selectList();
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 //		model.addAttribute("list", service.selectList());  위 두줄 대신 이렇게도 가능
@@ -39,10 +39,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/member/memberForm")
-	public String memberForm(Model model) throws Exception {
+	public String memberForm(Model model, MemberVo vo) throws Exception {
 		
 		//멤버수 가져오기 -> ${fn:length(list2)+1}로 다음 ifmmSeq값을 얻음
-		List<Member> list2 = service.selectList();
+		List<Member> list2 = service.selectList(vo);
 		model.addAttribute("list2", list2);
 		
 		//코드값 가져오기

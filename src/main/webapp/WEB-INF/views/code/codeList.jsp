@@ -9,6 +9,21 @@
 <a href="/infra/code/codeGroupList" style="text-decoration: none;">그룹보기</a>
 
 <hr>
+<form method="get" action="/infra/code/codeList">
+코드그룹 : 
+<select name="shIfcgSeq">
+	<option value="">::코드그룹::</option>
+	
+	<c:forEach items="${listIfcgSeq}" var="item" varStatus="status">
+		<option value="<c:out value="${item.ifcgSeq}"/>">
+			<c:out value="${item.ifcgSeq}" /> | <c:out value="${item.ifcgName}" />
+		</option>
+	</c:forEach>
+	
+</select>
+<input type="submit" value="검색">
+</form>
+<hr>
 
 <c:choose>
 	<c:when test="${fn:length(list) eq 0}">

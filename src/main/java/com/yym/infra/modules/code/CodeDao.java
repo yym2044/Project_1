@@ -29,7 +29,7 @@ public class CodeDao {
 	public int update(Code dto) {return sqlSession.update(namespace + ".update", dto);}
 	
 //	코드
-	public List<Code> selectList_code() {return sqlSession.selectList(namespace + ".selectList_code", "");}
+	public List<Code> selectList_code(CodeVo vo) {return sqlSession.selectList(namespace + ".selectList_code", vo);}
 	
 	public int insert_code(Code dto) {return sqlSession.insert(namespace + ".insert_code", dto);}
 	

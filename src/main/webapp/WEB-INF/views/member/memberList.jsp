@@ -30,7 +30,6 @@ th, td {
 <body>
 
 
-	<form>
 		<div class="container-fluid bg-light">
 
 			<div class="row box-white pt-3 collapse show" id="firstRow">
@@ -424,7 +423,8 @@ th, td {
 		<br> <br>
 		<div class="width92">
 			<div class="row">
-				<div class="col-8 col-md-3 p-auto box-white d-flex justify-content-start align-items-center" style="margin-left: 12px;">
+				<div class="col-8 col-md-3 p-auto box-white d-flex justify-content-start align-items-center"
+					style="margin-left: 12px;">
 					검색결과 : <b class="px-1">${fn:length(list)}</b> / 총 <b class="px-1">${fn:length(list)}</b>명 검색결과
 				</div>
 				<!-- 
@@ -456,9 +456,26 @@ th, td {
 
 			<c:choose>
 				<c:when test="${fn:length(list) eq 0}">
-					<tr>
-						<td class="text-center" colspan="9">There is no data!</td>
-					</tr>
+					<table class="table table-hover table-sm border border-1 box-white"
+						style="min-width: 1000px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<th><input type="checkbox" name="checkbox1" disabled class="form-check-input"></th>
+								<th>번호</th>
+								<th>아이디</th>
+								<th>이름</th>
+								<th>회원등급</th>
+								<th>상태</th>
+								<th>가입일</th>
+								<th>관리</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="text-center" colspan="8">검색결과가 없습니다.</td>
+							</tr>
+						</tbody>
+					</table>
 				</c:when>
 
 				<c:otherwise>
@@ -480,7 +497,8 @@ th, td {
 						<tbody>
 							<c:forEach items="${list}" var="item" varStatus="status">
 								<tr>
-									<td><input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>" class="form-check-input"></td>
+									<td><input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>"
+										class="form-check-input"></td>
 									<td><c:out value="${item.ifmmSeq}" /></td>
 									<td><c:out value="${item.ifmmId}" /></td>
 									<td><c:out value="${item.ifmmName}" /></td>
@@ -547,7 +565,17 @@ th, td {
 				</ul>
 			</nav> -->
 		<br> <br>
-
+		
+		<form method="get" action="/infra/member/memberList">
+			<div class="row">
+				<div class="col d-flex justify-content-center">
+					<input type="text" placeholder="shIfmmId" name="shIfmmId">
+					<input type="submit" value="검색">
+				</div>
+			</div>
+		</form>
+		
+		
 		<!-- footer -->
 		<!-- 
 		<div class="container-fluid">
@@ -679,7 +707,6 @@ th, td {
 				<p class="text-center text-muted">© 2021 Company, Inc</p>
 			</footer>
 		</div>
-	</form>
 
 
 
