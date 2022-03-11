@@ -15,7 +15,7 @@
 	<option value="">::코드그룹::</option>
 	
 	<c:forEach items="${listIfcgSeq}" var="item" varStatus="status">
-		<option value="<c:out value="${item.ifcgSeq}"/>">
+		<option value="<c:out value="${item.ifcgSeq}"/>" <c:if test="${param.shIfcgSeq eq item.ifcgSeq}"> selected</c:if>>
 			<c:out value="${item.ifcgSeq}" /> | <c:out value="${item.ifcgName}" />
 		</option>
 	</c:forEach>
