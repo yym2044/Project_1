@@ -555,7 +555,7 @@ th, td {
 						<option value="">::검색구분::</option>
 						<c:forEach items="${listSearch}" var="item" varStatus="status">
 							<option value="${item.ifscSeq}">
-								<c:out value="${item.ifscName}" />
+								<c:out value="${item.ifscName}"/>
 							</option>
 						</c:forEach>
 					</select> <input type="text" placeholder="searchBar" name="searchBar"> <input type="submit" value="검색">
