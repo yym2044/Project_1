@@ -68,7 +68,7 @@
 			</table>
 
 			<div class="text-center">
-				<a href="/infra/member/memberList" type="button" class="btn btn-outline-dakr btn-sm border border-3 container1">목록으로</a>
+				<a href="/infra/member/memberList" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">목록으로</a>
 				<a href="/infra/member/memberEditForm?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">정보수정</a>
 			</div>
 

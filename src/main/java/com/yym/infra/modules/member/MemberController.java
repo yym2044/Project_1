@@ -92,4 +92,17 @@ public class MemberController {
 
 	}
 	
+//	@RequestMapping(value = "/member/memberDele")
+//	public String memberDele(Model model, MemberVo vo) throws Exception {
+//		
+//		// 업데이트 하는 구문
+//		service.deleteMemberEmail(vo);
+//		service.deleteMemberAddress(vo);
+//		service.deleteMemberPhone(vo);
+//		service.deleteMember(vo);
+//		
+//		return "redirect:/member/memberList";
+//		
+//	}
+	
 }

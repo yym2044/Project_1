@@ -21,4 +21,10 @@ public interface MemberService {
 	
 	public Member selectOne(MemberVo vo) throws Exception;
 	public Member selectOne(Member dto) throws Exception;
+	
+//	DELETE
+//	public int deleteMember(MemberVo vo) throws Exception;
+//	public int deleteMemberEmail(MemberVo vo) throws Exception;
+//	public int deleteMemberAddress(MemberVo vo) throws Exception;
+//	public int deleteMemberPhone(MemberVo vo) throws Exception;
 }

@@ -42,7 +42,7 @@
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">아이디</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>"><span class="ms-2"><a href="#" class="fs-6"
+					<td class="text-start" colspan="3"><input type="text" name="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
 							style="text-decoration: none;">아이디 중복체크</a></span></td>
 				</tr>
 				<tr>
@@ -53,7 +53,7 @@
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">이름</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmName" style="min-width: 200px;" value="<c:out value="${rt.ifmmName}"/>"></td>
+					<td class="text-start" colspan="3"><input type="text" name="ifmmName" style="min-width: 200px;" value="<c:out value="${rt.ifmmName}"/>" autocomplete="off"></td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">이메일</th>
@@ -81,23 +81,23 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">주소</th>
 					<td class="text-start" colspan="3">
-						<input type="text" name="ifmaZipCode" placeholder="우편번호" value="<c:out value="${rt.ifmaZipCode}"/>"> <button class="btn btn-sm btn-outline-dark">우편번호 검색</button>
+						<input type="text" name="ifmaZipCode" placeholder="우편번호" value="<c:out value="${rt.ifmaZipCode}"/>" autocomplete="off"> <a class="btn btn-sm btn-outline-dark" href="#">우편번호 검색</a>
 						<br>
-						<input type="text" name="ifmaAddress1" placeholder="주소" value="<c:out value="${rt.ifmaAddress1}"/>">			
-						<input type="text" name="ifmaAddress2" placeholder="상세주소" value="<c:out value="${rt.ifmaAddress2}"/>">					
+						<input type="text" name="ifmaAddress1" placeholder="주소" value="<c:out value="${rt.ifmaAddress1}"/>" autocomplete="off">			
+						<input type="text" name="ifmaAddress2" placeholder="상세주소" value="<c:out value="${rt.ifmaAddress2}"/>" autocomplete="off">					
 					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">휴대폰</th>
 					<td class="text-start" colspan="3">
-						<input type="text" name="ifmpNumberMobile" placeholder="01012345678" value="<c:out value="${rt.ifmpNumberMobile}"/>">
+						<input type="text" name="ifmpNumberMobile" placeholder="01012345678" value="<c:out value="${rt.ifmpNumberMobile}"/>" autocomplete="off">
 						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1"><label for="sms_check">SMS 수신 동의</label>
 						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
 					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">전화번호</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmpNumberHome" placeholder="021234567" value="<c:out value="${rt.ifmpNumberHome}"/>"></td>
+					<td class="text-start" colspan="3"><input type="text" name="ifmpNumberHome" placeholder="021234567" value="<c:out value="${rt.ifmpNumberHome}"/>" autocomplete="off"></td>
 				</tr>
 			</table>
 
@@ -113,7 +113,7 @@
 				
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">생년월일</th>
-					<td class="text-start"><input type="text" name="ifmmDob" placeholder="19960607" value="<c:out value="${rt.ifmmDob}"/>"></td>
+					<td class="text-start"><input type="text" name="ifmmDob" placeholder="19960607" value="<c:out value="${rt.ifmmDob}"/>" autocomplete="off"></td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">성별</th>
@@ -132,7 +132,7 @@
 					</td>
 				</tr>
 			</table>
-
+			<!-- 
 			<div class="row mb-2">
 				<div class="col col-md-12 d-flex">
 					<i class="bi bi-caret-right-square-fill text-primary"></i> <span class="ms-2 fw-bold">관리자 운영 메모</span>
@@ -159,18 +159,18 @@
 						</tr>
 					</thead>
 					<tbody id="my-tbody">
-						<!-- 
+						
 			<tr>
 			<td colspan="5">관리자 메모가 없습니다.</td>
 			</tr> 
-		-->
+		
 					</tbody>
 				</table>
 			</div>
-
+			 -->
 			<div class="text-center">
 				<input type="submit" class="btn btn-sm btn-outline-success border border-3 container1" value="수정">
-				<button type="button" class="btn btn-sm btn-outline-dark border border-3 container1" onClick="window.close()">취소</button>
+				<a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="/infra/member/memberView?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>">취소</a>
 			</div>
 
 

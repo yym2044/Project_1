@@ -237,4 +237,31 @@
 		ifmpDeviceCd = 25	
 	</update>
 	
+	<!-- 
+	<delete id="deleteMember">
+	DELETE FROM
+		infrMember
+	WHERE 1=1
+		AND ifmmSeq = #{ifmmSeq}
+	</delete>
+	<delete id="deleteMemberEmail">
+	DELETE FROM
+		infrMemberEmail
+	WHERE 1=1
+		AND ifmmSeq = #{ifmmSeq}
+	</delete>
+	<delete id="deleteMemberAddress">
+	DELETE FROM
+		infrMemberAddress
+	WHERE 1=1
+		AND ifmmSeq = #{ifmmSeq}
+	</delete>
+	<delete id="deleteMemberPhone">
+	DELETE FROM
+		infrMemberPhone
+	WHERE 1=1
+		AND ifmmSeq = #{ifmmSeq}
+	</delete>
+	 -->
+	 
 </mapper>

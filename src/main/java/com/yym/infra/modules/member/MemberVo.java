@@ -10,5 +10,5 @@ public class MemberVo {
 	public void setIfmmSeq(String ifmmSeq) {
 		this.ifmmSeq = ifmmSeq;
 	}
-
+	
 }

@@ -39,4 +39,11 @@ public class MemberDao {
 	public Member selectOne(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOne", vo);}
 	public Member selectOne(Member dto) {return sqlSession.selectOne(namespace + ".selectOne", dto);}
 	
+//	DELETE
+//	public int deleteMember(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMember", vo);}
+//	public int deleteMemberEmail(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberEmail", vo);}
+//	public int deleteMemberAddress(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberAddress", vo);}
+//	public int deleteMemberPhone(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberPhone", vo);}
+	
+	
 }

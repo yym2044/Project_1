@@ -12,26 +12,25 @@
 <head>
 <%-- <link href="${path}/resources/css/bootstrap.min.css" rel="stylesheet"/> --%>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
-<link href="${path}/resources/css/style.css" rel="stylesheet"/>
-<link href="${path}/resources/css/sidebars.css" rel="stylesheet"/>
+<link href="${path}/resources/css/style.css" rel="stylesheet" />
+<link href="${path}/resources/css/sidebars.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 <style type="text/css">
-
-	th, td {
-		text-align: center;
-	}
-
+th, td {
+	text-align: center;
+}
 </style>
 
 </head>
 <body>
 
 
-<form>
+	<form>
 		<div class="container-fluid bg-light">
 
 			<div class="row box-white pt-3 collapse show" id="firstRow">
@@ -50,7 +49,8 @@
 				 -->
 
 				<div class="col-2 col-md-1 mb-2 p-0 text-end pe-2 d-md-block d-none">
-					<img src="${path}/resources/images/xdmin/lee.jpg" style="width: 40px; height: 50px;" class="rounded-circle border border-5">
+					<img src="${path}/resources/images/xdmin/lee.jpg" style="width: 40px; height: 50px;"
+						class="rounded-circle border border-5">
 				</div>
 				<div class="col-4 col-md mb-2 d-md-block d-none">
 					<div class="row dropdown">
@@ -146,8 +146,8 @@
 				<div class="offcanvas-footer">
 					<div class="dropdown border-top ms-3 py-3">
 						<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
-							data-bs-toggle="dropdown" aria-expanded="false"> <img src="${path}/resources/images/xdmin/lee.jpg" alt="" width="40"
-							height="50" class="rounded-circle border border-5 me-2"> <strong>Yun</strong>
+							data-bs-toggle="dropdown" aria-expanded="false"> <img src="${path}/resources/images/xdmin/lee.jpg" alt=""
+							width="40" height="50" class="rounded-circle border border-5 me-2"> <strong>Yun</strong>
 						</a>
 						<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
 							<li><a class="dropdown-item" href="#">New project...</a></li>
@@ -245,10 +245,10 @@
 			</div>
 			 -->
 		</div>
-		
-		
-		
-<!-- 		숨겨놓은 부분 시작
+
+
+
+		<!-- 		숨겨놓은 부분 시작
 
 
 
@@ -417,97 +417,102 @@
 			
 			
  				숨겨놓은 부분 끝			-->
- 				
- 				
- 				
- 				
-			<br> <br>
-			<div class="width92">
-				<div class="row">
-					<div class="col-8 col-md-3 p-1 border border-2 box-white" style="margin-left: 12px;">
-						검색결과 : <b>${fn:length(list)}</b> / 총 <b>${fn:length(list)}</b>명 검색결과
-					</div>
-					<div class="col-1 col-md-1 ms-1 me-0 p-0">
-						<a class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#excelModal"> <i
-							class="bi bi-file-earmark-excel"></i>
-						</a>
-					</div>
-					<div class="col-12 col-md ms-1 me-0 my-1">
-						<div class="text-end">
-							<div class="btn-group btn-group-sm box-white" role="group">
-								<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" disabled> <label
-									class="btn btn-outline-primary" for="btnradio1">view</label> <input type="radio" class="btn-check"
-									name="btnradio" id="btnradio2" autocomplete="off" checked> <label class="btn btn-outline-primary"
-									for="btnradio2">5</label> <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-									autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio3">10</label> <input
-									type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"> <label
-									class="btn btn-outline-primary" for="btnradio4">20</label> <input type="radio" class="btn-check"
-									name="btnradio" id="btnradio5" autocomplete="off"> <label class="btn btn-outline-primary"
-									for="btnradio5">50</label> <input type="radio" class="btn-check" name="btnradio" id="btnradio6"
-									autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio6">100</label>
-							</div>
+
+
+
+
+		<br> <br>
+		<div class="width92">
+			<div class="row">
+				<div class="col-8 col-md-3 p-auto box-white d-flex justify-content-start align-items-center" style="margin-left: 12px;">
+					검색결과 : <b class="px-1">${fn:length(list)}</b> / 총 <b class="px-1">${fn:length(list)}</b>명 검색결과
+				</div>
+				<!-- 
+				<div class="col-1 col-md-1 ms-1 me-0 p-auto">
+					<a class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#excelModal"> <i
+						class="bi bi-file-earmark-excel"></i>
+					</a>
+				</div>
+				 -->
+				<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
+					<div class="text-end">
+						<div class="btn-group btn-group-sm box-white" role="group">
+							<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" disabled> <label
+								class="btn btn-outline-primary" for="btnradio1">view</label> <input type="radio" class="btn-check"
+								name="btnradio" id="btnradio2" autocomplete="off" checked> <label class="btn btn-outline-primary"
+								for="btnradio2">5</label> <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
+								autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio3">10</label> <input
+								type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"> <label
+								class="btn btn-outline-primary" for="btnradio4">20</label> <input type="radio" class="btn-check" name="btnradio"
+								id="btnradio5" autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio5">50</label> <input
+								type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off"> <label
+								class="btn btn-outline-primary" for="btnradio6">100</label>
 						</div>
 					</div>
 				</div>
+			</div>
 
-	<!-- ---------------테이블 부분----------------- -->
+			<!-- ---------------테이블 부분----------------- -->
 
-<c:choose>
-	<c:when test="${fn:length(list) eq 0}">
-		<tr>
-			<td class="text-center" colspan="9">There is no data!</td>
-		</tr>
-	</c:when>
-	
-	<c:otherwise>
-
-		<table class="table table-hover table-sm border border-1 box-white" style="min-width: 1000px; border-collapse: collapse;">
-			<thead>
-				<tr>
-					<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
-					<th>번호</th>
-					<th>아이디</th>
-					<th>이름</th>
-					<th>회원등급</th>
-					<th>상태</th>
-					<th>가입일</th>
-					<th>관리</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach items="${list}" var="item" varStatus="status">
+			<c:choose>
+				<c:when test="${fn:length(list) eq 0}">
 					<tr>
-						<td><input type="checkbox" name="checkbox1" class="form-check-input"></td>
-						<td><c:out value="${item.ifmmSeq}"/></td>					
-						<td><c:out value="${item.ifmmId}"/></td>					
-						<td><c:out value="${item.ifmmName}"/></td>					
-						<td><c:out value="${item.ifmmGrade}" /></td>
-						<td><c:out value="${item.ifmmStatus}"/></td>					
-						<td><c:out value="${item.ifmmRegDate}"/></td>					
-						<td>
-							<div class="d-flex justify-content-center align-items-center">
-								<a href="#" class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-chat-right-dots"></i></a> 
-								<a href="#" class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-envelope"></i></a> 
-								<a href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0"> <%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>관리</a>
-							</div>
-						</td>			
-					<tr>
-				</c:forEach>
-			</tbody>
-		</table>
-		
-	</c:otherwise>
-</c:choose>
+						<td class="text-center" colspan="9">There is no data!</td>
+					</tr>
+				</c:when>
+
+				<c:otherwise>
+
+					<table class="table table-hover table-sm border border-1 box-white"
+						style="min-width: 1000px; border-collapse: collapse;">
+						<thead>
+							<tr>
+								<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
+								<th>번호</th>
+								<th>아이디</th>
+								<th>이름</th>
+								<th>회원등급</th>
+								<th>상태</th>
+								<th>가입일</th>
+								<th>관리</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${list}" var="item" varStatus="status">
+								<tr>
+									<td><input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>" class="form-check-input"></td>
+									<td><c:out value="${item.ifmmSeq}" /></td>
+									<td><c:out value="${item.ifmmId}" /></td>
+									<td><c:out value="${item.ifmmName}" /></td>
+									<td><c:out value="${item.ifmmGrade}" /></td>
+									<td><c:out value="${item.ifmmStatus}" /></td>
+									<td><c:out value="${item.ifmmRegDate}" /></td>
+									<td>
+										<div class="d-flex justify-content-center align-items-center">
+											<a href="#" class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-chat-right-dots"></i></a> <a href="#"
+												class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-envelope"></i></a> <a
+												href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0"> <%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>관리
+											</a>
+										</div>
+									</td>
+								<tr>
+							</c:forEach>
+						</tbody>
+					</table>
+
+				</c:otherwise>
+			</c:choose>
 
 
-				<div class="row ps-2">
-					<div class="col col-md-4 ms-1 p-0">
-						<a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="bi bi-trash"></i>
-						</a> <a class="btn btn-outline-primary" href="/infra/member/memberForm"> <!-- onclick="window.open('memberForm','name','resizable=no width=1000 height=500');return false" --> <i class="bi bi-plus-square"></i>
-						</a>
-					</div>
-					<!-- 같은줄 or 따로뺄지 -->
-					<!-- 
+			<div class="row ps-2">
+				<div class="col col-md-4 ms-1 p-0">
+					<a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="bi bi-trash"></i>
+					</a> <a class="btn btn-outline-primary" href="/infra/member/memberForm"> <!-- onclick="window.open('memberForm','name','resizable=no width=1000 height=500');return false" -->
+						<i class="bi bi-plus-square"></i>
+					</a>
+				</div>
+				<!-- 같은줄 or 따로뺄지 -->
+				<!-- 
 					<div class="col col-md-6">
 						<nav>
 							<ul class="pagination">
@@ -524,10 +529,11 @@
 						</nav>
 					</div>
 					 -->
-				</div>
 			</div>
-			<!-- 같은줄 or 따로뺄지 -->
-			<!-- <nav>
+
+		</div>
+		<!-- 같은줄 or 따로뺄지 -->
+		<!-- <nav>
 				<ul class="pagination justify-content-center">
 					<li class="page-item disabled"><a class="page-link" href="#"><<</a></li>
 					<li class="page-item disabled"><a class="page-link" href="#"><</a></li>
@@ -540,8 +546,7 @@
 					<li class="page-item"><a class="page-link" href="#">>></a></li>
 				</ul>
 			</nav> -->
-			<br> <br>
-		</div>
+		<br> <br>
 
 		<!-- footer -->
 		<!-- 
@@ -583,7 +588,7 @@
 					</div>
 					<div class="modal-body">정말 삭제합니다.</div>
 					<div class="modal-footer">
-						<a class="btn btn-primary" href="./memberList5.html" role="button">확인</a>
+						<a class="btn btn-primary" href="/infra/member/memberList" role="button">확인</a>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</div>
 				</div>
@@ -674,7 +679,6 @@
 				<p class="text-center text-muted">© 2021 Company, Inc</p>
 			</footer>
 		</div>
-
 	</form>
 
 
@@ -682,7 +686,7 @@
 
 
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
 	function selectAll1(selectAll1) {
 		const checkboxes 
@@ -722,7 +726,7 @@
 
 
 
-						<%-- <c:choose>
+	<%-- <c:choose>
 								<c:when test="${fn:length(list) eq 0}">
 									<tr>
 										<td class="text-center" colspan="9">There is no data!</td>
@@ -746,12 +750,13 @@
 									
 								</c:otherwise>
 							</c:choose> --%>
-							
-<%-- <script src="${path}/resources/js/bootstrap.bundel.min.js"></script> --%>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<%-- <script src="${path}/resources/js/bootstrap.bundel.min.js"></script> --%>
 
-<script src="${path}/resources/js/sidebars.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+	<script src="${path}/resources/js/sidebars.js"></script>
 
 </body>
 </html>
