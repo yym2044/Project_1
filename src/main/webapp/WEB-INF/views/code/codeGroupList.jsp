@@ -8,7 +8,7 @@
 <form method="get" action="/infra/code/codeGroupList">
 
 <select name="shIfcgDelNy">
-	<option disabled>::삭제여부::</option>
+	<option value="">::삭제여부::</option>
 	<option value="1">Y</option>
 	<option value="0">N</option>
 </select>

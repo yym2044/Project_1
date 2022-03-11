@@ -106,10 +106,10 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeForm")
-	public String codeForm(Model model) throws Exception {
+	public String codeForm(Model model, CodeVo vo) throws Exception {
 
 		// ifcgSeq 정보를 가져오기 위해
-		List<Code> list = service.selectList_code();
+		List<Code> list = service.selectList(vo);
 
 		model.addAttribute("list", list);
 
