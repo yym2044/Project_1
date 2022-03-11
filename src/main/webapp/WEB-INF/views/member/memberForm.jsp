@@ -133,7 +133,8 @@
 					</td>
 				</tr>
 			</table>
-
+			
+			<!-- 
 			<div class="row mb-2">
 				<div class="col col-md-12 d-flex">
 					<i class="bi bi-caret-right-square-fill text-primary"></i> <span class="ms-2 fw-bold">관리자 운영 메모</span>
@@ -160,20 +161,20 @@
 						</tr>
 					</thead>
 					<tbody id="my-tbody">
-						<!-- 
+						
 			<tr>
 			<td colspan="5">관리자 메모가 없습니다.</td>
 			</tr> 
-		-->
+		
 					</tbody>
 				</table>
 			</div>
+			 -->
 
 			<div class="text-center">
 				<input type="submit" class="btn btn-sm btn-outline-success border border-3 container1" value="등록">
-				<button type="button" class="btn btn-sm btn-outline-dark border border-3 container1" onClick="window.close()">취소</button>
+				<a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="/infra/member/memberList"> <!-- onClick="window.close()" -->취소</a>
 			</div>
-
 
 
 		</div>
