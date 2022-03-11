@@ -13,7 +13,7 @@
 	<option value="0">N</option>
 </select>
 
-그룹이름 : <input type="text" name="shIfcgName">
+그룹이름 : <input type="text" name="shIfcgName" value="${param.shIfcgName}">
 <input type="submit" value="검색">
 <br>
 </form>
