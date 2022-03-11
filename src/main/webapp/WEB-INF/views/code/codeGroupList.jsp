@@ -6,6 +6,13 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <form method="get" action="/infra/code/codeGroupList">
+
+<select name="shIfcgDelNy">
+	<option disabled>::삭제여부::</option>
+	<option value="1">Y</option>
+	<option value="0">N</option>
+</select>
+
 그룹이름 : <input type="text" name="shIfcgName">
 <input type="submit" value="검색">
 <br>

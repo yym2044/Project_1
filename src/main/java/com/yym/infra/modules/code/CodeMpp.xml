@@ -18,9 +18,19 @@
 		FROM 
 			cpcpcp.infrCodeGroup
 		WHERE 1=1
-			<if test="shIfcgName != null and !shIfcgName.equals('')">
+			
+			<!-- 		
+			<choose>
+				<when test="shIfcgDelNy == 1">AND ifcgDelNy = 1</when>
+				<when test="shIfcgDelNy == 0">AND ifcgDelNy = 0</when>
+			</choose>
+			 -->	
+			 
+			<if test="shIfcgName != null and !shIfcgName.equals('') and shIfcgDelNy != null and !shIfcgDelNy.equals('')">
+			 	AND ifcgDelNy = #{shIfcgDelNy}
 				AND ifcgName LIKE concat('%',#{shIfcgName},'%')
 			</if>
+			
 	</select>
 	
 	<insert id="insert">

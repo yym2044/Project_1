@@ -7,6 +7,7 @@ public class CodeVo {
 	private String ifcdSeq;
 	
 	private String shIfcgName;
+	private String shIfcgDelNy;
 
 
 	//------------
@@ -27,6 +28,12 @@ public class CodeVo {
 	}
 	public void setShIfcgName(String shIfcgName) {
 		this.shIfcgName = shIfcgName;
+	}
+	public String getShIfcgDelNy() {
+		return shIfcgDelNy;
+	}
+	public void setShIfcgDelNy(String shIfcgDelNy) {
+		this.shIfcgDelNy = shIfcgDelNy;
 	}
 	
 }

@@ -24,7 +24,7 @@ public class CodeController {
 
 		return "code/codeGroupList";
 	}
-	
+
 	@RequestMapping(value = "/code/codeGroupForm")
 	public String codeGroupForm() throws Exception {
 
@@ -89,12 +89,12 @@ public class CodeController {
 		// 업데이트 하는 구문
 		service.update(dto);
 
-		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() ;
+		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq();
 
 	}
-	
+
 //	코드
-	
+
 	@RequestMapping(value = "/code/codeList")
 	public String codeList(Model model) throws Exception {
 
@@ -108,12 +108,11 @@ public class CodeController {
 	@RequestMapping(value = "/code/codeForm")
 	public String codeForm(Model model) throws Exception {
 
-		//ifcgSeq 정보를 가져오기 위해
+		// ifcgSeq 정보를 가져오기 위해
 		List<Code> list = service.selectList_code();
 
 		model.addAttribute("list", list);
-		
-		
+
 		return "code/codeForm";
 	}
 
@@ -125,7 +124,7 @@ public class CodeController {
 
 		return "redirect:/code/codeList";
 	}
-	
+
 	@RequestMapping(value = "/code/codeView")
 	public String codeView(Model model, CodeVo vo) throws Exception {
 
@@ -135,7 +134,7 @@ public class CodeController {
 
 		return "code/codeView";
 	}
-	
+
 	@RequestMapping(value = "/code/codeEditForm")
 	public String codeEditForm(Model model, CodeVo vo) throws Exception {
 
@@ -145,25 +144,24 @@ public class CodeController {
 
 		return "code/codeEditForm";
 	}
-	
+
 	@RequestMapping(value = "/code/codeUpdt") // SelectOne(Code dto) 새로 생성
 	public String codeUpdt(Model model, Code dto) throws Exception {
 
 		// 업데이트 하는 구문
 		service.update_code(dto);
 
-
-		return "redirect:/code/codeView?ifcdSeq=" + dto.getIfcdSeq() ;
+		return "redirect:/code/codeView?ifcdSeq=" + dto.getIfcdSeq();
 
 	}
-	
+
 	@RequestMapping(value = "/code/codeDele")
 	public String codeDele(Model model, CodeVo vo) throws Exception {
-		
+
 		// 업데이트 하는 구문
 		service.delete_code(vo);
-		
-		return "redirect:/code/codeList" ;
-		
+
+		return "redirect:/code/codeList";
+
 	}
 }
