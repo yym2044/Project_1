@@ -29,6 +29,31 @@
 			<when test="shIfscSeq == 2">AND ifmmId like concat('%',#{searchBar},'%')</when>
 		</choose>
 		
+		<!-- 	체크를 여러개 해도 하나만 선택되는 결과를 보여준다.
+		<choose>
+			<when test="shIfmmEmailConsentNy == 1">AND ifmmEmailConsentNy = 1</when>
+			<when test="shIfmmSmsConsentNy == 1">AND ifmmSmsConsentNy = 1</when>
+			<when test="shIfmmPushConsentNy == 1">AND ifmmPushConsentNy = 1</when>
+		</choose>		
+		 -->
+		 
+		<if test="shIfmmEmailConsentNy == 1">
+			AND ifmmEmailConsentNy = 1
+		</if>
+		<if test="shIfmmSmsConsentNy == 1">
+			AND ifmmSmsConsentNy = 1
+		</if>
+		<if test="shIfmmPushConsentNy == 1">
+			AND ifmmPushConsentNy = 1
+		</if>
+		
+		<choose>
+			<when test="shIfmmGrade == 1">AND 1=1</when>
+			<when test="shIfmmGrade == 2">AND ifmmGradeCd = 76</when>
+			<when test="shIfmmGrade == 3">AND ifmmGradeCd = 77</when>
+		</choose>
+		
+		
 		<!-- 
 		<if test="shIfmmId != null and !shIfmmId.equals('')">
 			AND ifmmId LIKE concat('%',#{shIfmmId},'%')

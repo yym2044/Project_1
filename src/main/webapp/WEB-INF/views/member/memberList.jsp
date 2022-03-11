@@ -271,24 +271,15 @@ th, td {
 							<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
 							<div class="col-12 col-md-10">
 								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="memberRankAll" name="memberRank" onclick="selectAll2(this)">
+									<input type="radio" class="form-check-input" id="memberRankAll" name="shIfmmGrade" value="1">
 									<label for="memberRankAll" class="form-check-label">전체</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="memberRankResign" name="memberRank"> <label
-										for="memberRankResign" class="form-check-label">탈퇴대기자</label>
-								</div>
-								<div class="form-check-inline">
-
-									<input type="checkbox" class="form-check-input" id="memberRankRegister" name="memberRank"> <label
-										for="memberRankRegister" class="form-check-label">가입신청자</label>
-								</div>
-								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="memberRankGeneral" name="memberRank"> <label
+									<input type="radio" class="form-check-input" id="memberRankGeneral" name="shIfmmGrade" value="2"> <label
 										for="memberRankGeneral" class="form-check-label">일반회원</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="memberRankVip" name="memberRank"> <label
+									<input type="radio" class="form-check-input" id="memberRankVip" name="shIfmmGrade" value="3"> <label
 										for="memberRankVip" class="form-check-label">VIP회원</label>
 								</div>
 							</div>
@@ -296,17 +287,23 @@ th, td {
 						<div class="row my-2">
 							<div class="col-12 col-md-2 fw-bold">ㆍ수신동의</div>
 							<div class="col-12 col-md-10">
+								<!-- 
 								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="consentAll" name="consent" onclick="selectAll3(this)">
+									<input type="checkbox" class="form-check-input" id="consentAll" name="shIfmmConsentNy" value="1" onclick="selectAll3(this)">
 									<label for="consentAll" class="form-check-label">전체</label>
 								</div>
+								 -->
 								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="consentSms" name="consent"> <label for="consentSms"
+									<input type="checkbox" name="shIfmmEmailConsentNy" id="email_check" value="1" class="form-check-input"> <label
+										for="email_check" class="form-check-label">이메일</label>
+								</div>
+								<div class="form-check-inline">
+									<input type="checkbox" name="shIfmmSmsConsentNy" id="sms_check" value="1" class="form-check-input"> <label for="sms_check"
 										class="form-check-label">SMS</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" class="form-check-input" id="consentEmail" name="consent"> <label
-										for="consentEmail" class="form-check-label">이메일</label>
+									<input type="checkbox" name="shIfmmPushConsentNy" id="push_check" value="1" class="form-check-input"> <label for="push_check"
+										class="form-check-label">Push</label>
 								</div>
 							</div>
 						</div>
@@ -715,7 +712,7 @@ th, td {
 	
 	function selectAll3(selectAll3) {
 		const checkboxes
-			= document.getElementsByName("consent");
+			= document.getElementsByName("shIfmmConsentNy");
 		
 		checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll3.checked;
@@ -725,7 +722,7 @@ th, td {
     function toggleImg() {
       document.getElementById("img").src = "${path}/resources/images/xdmin/up.png";
     }
-	
+    
 	</script>
 
 
