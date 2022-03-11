@@ -555,23 +555,6 @@ th, td {
 				</ul>
 			</nav> -->
 		<br> <br>
-		<%-- 
-		<form method="get" action="/infra/member/memberList">
-			<div class="row">
-				<div class="col d-flex justify-content-center">
-					<select name="shIfscSeq">
-						<option value="">::검색구분::</option>
-						<c:forEach items="${listSearch}" var="item" varStatus="status">
-							<option value="${item.ifscSeq}" <c:if test="${param.shIfscSeq eq item.ifscSeq}">selected</c:if>>
-								<c:out value="${item.ifscName}" />
-							</option>
-						</c:forEach>
-					</select> <input type="text" placeholder="searchBar" name="searchBar" value="${param.searchBar}"> <input
-						type="submit" value="검색">
-				</div>
-			</div>
-		</form>
-		 --%>
 
 		<!-- footer -->
 		<!-- 
