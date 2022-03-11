@@ -264,87 +264,95 @@ th, td {
 				</ol>
 			</nav>
 
+			<form method="get" action="/infra/member/memberList">
+				<div class="row border border-1 my-2 box-white container1" id="searchBox">
+					<div class="col-12 col-md-9">
+						<div class="row my-2 pt-2">
+							<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
+							<div class="col-12 col-md-10">
+								<div class="form-check-inline">
+									<input type="checkbox" class="form-check-input" id="memberRankAll" name="memberRank" onclick="selectAll2(this)">
+									<label for="memberRankAll" class="form-check-label">전체</label>
+								</div>
+								<div class="form-check-inline">
+									<input type="checkbox" class="form-check-input" id="memberRankResign" name="memberRank"> <label
+										for="memberRankResign" class="form-check-label">탈퇴대기자</label>
+								</div>
+								<div class="form-check-inline">
 
-			<div class="row border border-1 my-2 box-white container1" id="searchBox">
-				<div class="col-12 col-md-9">
-					<div class="row my-2 pt-2">
-						<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
-						<div class="col-12 col-md-10">
-							<div class="form-check-inline">
-								<input type="checkbox" class="form-check-input" id="memberRankAll" name="memberRank" onclick="selectAll2(this)">
-								<label for="memberRankAll" class="form-check-label">전체</label>
+									<input type="checkbox" class="form-check-input" id="memberRankRegister" name="memberRank"> <label
+										for="memberRankRegister" class="form-check-label">가입신청자</label>
+								</div>
+								<div class="form-check-inline">
+									<input type="checkbox" class="form-check-input" id="memberRankGeneral" name="memberRank"> <label
+										for="memberRankGeneral" class="form-check-label">일반회원</label>
+								</div>
+								<div class="form-check-inline">
+									<input type="checkbox" class="form-check-input" id="memberRankVip" name="memberRank"> <label
+										for="memberRankVip" class="form-check-label">VIP회원</label>
+								</div>
 							</div>
-							<div class="form-check-inline">
-								<input type="checkbox" class="form-check-input" id="memberRankResign" name="memberRank"> <label
-									for="memberRankResign" class="form-check-label">탈퇴대기자</label>
+						</div>
+						<div class="row my-2">
+							<div class="col-12 col-md-2 fw-bold">ㆍ수신동의</div>
+							<div class="col-12 col-md-10">
+								<div class="form-check-inline">
+									<input type="checkbox" class="form-check-input" id="consentAll" name="consent" onclick="selectAll3(this)">
+									<label for="consentAll" class="form-check-label">전체</label>
+								</div>
+								<div class="form-check-inline">
+									<input type="checkbox" class="form-check-input" id="consentSms" name="consent"> <label for="consentSms"
+										class="form-check-label">SMS</label>
+								</div>
+								<div class="form-check-inline">
+									<input type="checkbox" class="form-check-input" id="consentEmail" name="consent"> <label
+										for="consentEmail" class="form-check-label">이메일</label>
+								</div>
 							</div>
-							<div class="form-check-inline">
+						</div>
+						<div class="row my-2 pb-2">
+							<div class="col-12 col-md-2 fw-bold">ㆍ검색어</div>
+							<div class="col-md-10">
 
-								<input type="checkbox" class="form-check-input" id="memberRankRegister" name="memberRank"> <label
-									for="memberRankRegister" class="form-check-label">가입신청자</label>
-							</div>
-							<div class="form-check-inline">
-								<input type="checkbox" class="form-check-input" id="memberRankGeneral" name="memberRank"> <label
-									for="memberRankGeneral" class="form-check-label">일반회원</label>
-							</div>
-							<div class="form-check-inline">
-								<input type="checkbox" class="form-check-input" id="memberRankVip" name="memberRank"> <label
-									for="memberRankVip" class="form-check-label">VIP회원</label>
+								<div class="row g-3 d-flex align-items-center">
+									<div class="col-4 col-md-2">
+										<select name="shIfscSeq" class="form-select form-select-sm">
+											<c:forEach items="${listSearch}" var="item" varStatus="status">
+												<option value="${item.ifscSeq}" <c:if test="${param.shIfscSeq eq item.ifscSeq}">selected</c:if>>
+													<c:out value="${item.ifscName}"/>
+												</option>
+											</c:forEach>
+										</select>
+									</div>
+									<div class="col-8 col-md-5">
+										<input name="searchBar" class="form-control form-control-sm" placeholder="search.." value="${param.searchBar}">
+									</div>
+									<div class="col-9 col-md">
+										<input type="checkbox" class="form-check-input" id="memberOnline"> <label for="memberOnline"
+											class="form-check-label">현재 접속중인 회원만 검색</label>
+									</div>
+									<div class="col col-md d-md-none mt-3">
+										<button class="btn btn-info btn-sm">
+											<span class="text-white">검색</span>
+										</button>
+									</div>
+								</div>
+
 							</div>
 						</div>
 					</div>
-					<div class="row my-2">
-						<div class="col-12 col-md-2 fw-bold">ㆍ수신동의</div>
-						<div class="col-12 col-md-10">
-							<div class="form-check-inline">
-								<input type="checkbox" class="form-check-input" id="consentAll" name="consent" onclick="selectAll3(this)">
-								<label for="consentAll" class="form-check-label">전체</label>
-							</div>
-							<div class="form-check-inline">
-								<input type="checkbox" class="form-check-input" id="consentSms" name="consent"> <label for="consentSms"
-									class="form-check-label">SMS</label>
-							</div>
-							<div class="form-check-inline">
-								<input type="checkbox" class="form-check-input" id="consentEmail" name="consent"> <label
-									for="consentEmail" class="form-check-label">이메일</label>
-							</div>
-						</div>
-					</div>
-					<div class="row my-2 pb-2">
-						<div class="col-12 col-md-2 fw-bold">ㆍ검색어</div>
-						<div class="col-md-10">
-
-							<div class="row g-3 d-flex align-items-center">
-								<div class="col-4 col-md-2">
-									<select class="form-select form-select-sm">
-										<option>이름</option>
-										<option>아이디</option>
-										<option>이메일</option>
-									</select>
-								</div>
-								<div class="col-8 col-md-5">
-									<input class="form-control form-control-sm" placeholder="search..">
-								</div>
-								<div class="col-9 col-md">
-									<input type="checkbox" class="form-check-input" id="memberOnline"> <label for="memberOnline"
-										class="form-check-label">현재 접속중인 회원만 검색</label>
-								</div>
-								<div class="col col-md d-md-none mt-3">
-									<button class="btn btn-info btn-sm">
-										<span class="text-white">검색</span>
-									</button>
-								</div>
-							</div>
-
-						</div>
+					<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
+						
+						<input type="submit" class="btn btn-info btn-lg text-white" value="검색">
+					
+						<!-- 
+						<button class="btn btn-info btn-lg">
+							<span class="text-white">검색</span>
+						</button>
+						 -->
 					</div>
 				</div>
-				<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
-					<button class="btn btn-info btn-lg">
-						<span class="text-white">검색</span>
-					</button>
-				</div>
-			</div>
+			</form>
 		</div>
 
 		<!-- 모바일 -->
@@ -547,22 +555,23 @@ th, td {
 				</ul>
 			</nav> -->
 		<br> <br>
-
+		<%-- 
 		<form method="get" action="/infra/member/memberList">
 			<div class="row">
 				<div class="col d-flex justify-content-center">
 					<select name="shIfscSeq">
 						<option value="">::검색구분::</option>
 						<c:forEach items="${listSearch}" var="item" varStatus="status">
-							<option value="${item.ifscSeq}">
-								<c:out value="${item.ifscName}"/>
+							<option value="${item.ifscSeq}" <c:if test="${param.shIfscSeq eq item.ifscSeq}">selected</c:if>>
+								<c:out value="${item.ifscName}" />
 							</option>
 						</c:forEach>
-					</select> <input type="text" placeholder="searchBar" name="searchBar"> <input type="submit" value="검색">
+					</select> <input type="text" placeholder="searchBar" name="searchBar" value="${param.searchBar}"> <input
+						type="submit" value="검색">
 				</div>
 			</div>
 		</form>
-
+		 --%>
 
 		<!-- footer -->
 		<!-- 
