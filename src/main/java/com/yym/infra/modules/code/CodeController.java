@@ -16,15 +16,15 @@ public class CodeController {
 
 	@RequestMapping(value = "/code/codeGroupList")
 //	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model) throws Exception {
+	public String codeGroupList(Model model, CodeVo vo) throws Exception {
 
-		List<Code> list = service.selectList();
+		List<Code> list = service.selectList(vo);
 
 		model.addAttribute("list", list);
 
 		return "code/codeGroupList";
 	}
-
+	
 	@RequestMapping(value = "/code/codeGroupForm")
 	public String codeGroupForm() throws Exception {
 
@@ -109,7 +109,7 @@ public class CodeController {
 	public String codeForm(Model model) throws Exception {
 
 		//ifcgSeq 정보를 가져오기 위해
-		List<Code> list = service.selectList();
+		List<Code> list = service.selectList_code();
 
 		model.addAttribute("list", list);
 		

@@ -23,7 +23,6 @@
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
 		FROM infrMember a
 		WHERE ifmmDelNy = 0
-		
 	</select>
 	
 	<select id="selectListCode" resultMap="resultMapObj">
