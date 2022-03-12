@@ -60,6 +60,7 @@
 		</if>
 		 -->
 	</select>
+
 	
 	<select id="selectListSearch" resultMap="resultMapObj">
 	SELECT
@@ -307,6 +308,7 @@
 	</delete>
 	 -->
 	 
+	 
 	 <update id="updateMemberDelNy">
 	 
 	 UPDATE
@@ -314,7 +316,8 @@
  	 SET
  	 	ifmmDelNy = 1
  	 WHERE
- 	 	ifmmSeq = #{checkbox1}
+ 	 	1=1
+		AND ifmmSeq = #{checkbox1}
 	 
 	 </update>
 	 

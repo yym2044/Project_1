@@ -512,7 +512,6 @@ th, td {
 				</c:otherwise>
 			</c:choose>
 
-
 			<div class="row ps-2">
 				<div class="col col-md-4 ms-1 p-0">
 					<a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="bi bi-trash"></i>

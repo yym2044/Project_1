@@ -29,6 +29,7 @@ public class MemberController {
 		return "member/memberList";
 	}
 	
+	
 	@RequestMapping(value = "/member/memberView")
 	public String memberView(Model model, MemberVo vo) throws Exception {
 
