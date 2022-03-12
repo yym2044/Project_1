@@ -18,6 +18,11 @@ public class MemberVo {
 	private Integer shIfmmPushConsentNy;
 	
 	private Integer checkbox1;
+	
+//	정렬
+	private String sort;
+	private String orderby;
+	
 //------------
 	public String getIfmmSeq() {
 		return ifmmSeq;
@@ -78,6 +83,18 @@ public class MemberVo {
 	}
 	public void setCheckbox1(Integer checkbox1) {
 		this.checkbox1 = checkbox1;
+	}
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+	public String getOrderby() {
+		return orderby;
+	}
+	public void setOrderby(String orderby) {
+		this.orderby = orderby;
 	}
 	
 }

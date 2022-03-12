@@ -54,11 +54,54 @@
 		</choose>
 		
 		
-		<!-- 
+		
 		<if test="shIfmmId != null and !shIfmmId.equals('')">
 			AND ifmmId LIKE concat('%',#{shIfmmId},'%')
 		</if>
-		 -->
+		
+		 <choose>
+		 	<when test="sort == 'sortNo' and orderby == 'top'">
+				ORDER BY
+					ifmmSeq
+		 	</when>
+		 	<when test="sort == 'sortNo' and orderby == 'bottom'">
+				ORDER BY
+					ifmmSeq desc
+		 	</when>
+		 	<when test="sort == 'sortId' and orderby == 'top'">
+				ORDER BY
+					ifmmId
+		 	</when>
+		 	<when test="sort == 'sortId' and orderby == 'bottom'">
+				ORDER BY
+					ifmmId desc
+		 	</when>
+		 	<when test="sort == 'sortName' and orderby == 'top'">
+				ORDER BY
+					ifmmName
+		 	</when>
+		 	<when test="sort == 'sortName' and orderby == 'bottom'">
+				ORDER BY
+					ifmmName desc
+		 	</when>
+		 	<when test="sort == 'sortGrade' and orderby == 'top'">
+				ORDER BY
+					ifmmGradeCd
+		 	</when>
+		 	<when test="sort == 'sortGrade' and orderby == 'bottom'">
+				ORDER BY
+					ifmmGradeCd desc
+		 	</when>
+		 	<when test="sort == 'sortRedt' and orderby == 'top'">
+				ORDER BY
+					ifmmRegDate
+		 	</when>
+		 	<when test="sort == 'sortRedt' and orderby == 'bottom'">
+				ORDER BY
+					ifmmRegDate desc
+		 	</when>
+		 </choose>
+		 
 	</select>
 
 	
