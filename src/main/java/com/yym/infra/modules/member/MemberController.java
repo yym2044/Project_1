@@ -108,4 +108,14 @@ public class MemberController {
 //		
 //	}
 	
+	@RequestMapping(value = "/member/updateDelNy")
+	public String updateDelNy(Model model, MemberVo vo) throws Exception {
+
+		// 업데이트 하는 구문
+		service.updateMemberDelNy(vo);
+
+		return "redirect:/member/memberList";
+
+	}
+	
 }

@@ -16,6 +16,8 @@ public class MemberVo {
 	private Integer shIfmmEmailConsentNy;
 	private Integer shIfmmSmsConsentNy;
 	private Integer shIfmmPushConsentNy;
+	
+	private Integer checkbox1;
 //------------
 	public String getIfmmSeq() {
 		return ifmmSeq;
@@ -70,6 +72,12 @@ public class MemberVo {
 	}
 	public void setShIfmmGrade(Integer shIfmmGrade) {
 		this.shIfmmGrade = shIfmmGrade;
+	}
+	public Integer getCheckbox1() {
+		return checkbox1;
+	}
+	public void setCheckbox1(Integer checkbox1) {
+		this.checkbox1 = checkbox1;
 	}
 	
 }

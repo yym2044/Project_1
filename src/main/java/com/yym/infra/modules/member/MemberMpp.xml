@@ -141,7 +141,7 @@
 		, #{ifmmDob}
 		, 0
 		, #{ifmmGradeCd}
-		, #{ifmmRegDate}
+		, curdate()
 		, 78
 		, #{ifmmEmailConsentNy}
 		, #{ifmmSmsConsentNy}
@@ -306,5 +306,16 @@
 		AND ifmmSeq = #{ifmmSeq}
 	</delete>
 	 -->
+	 
+	 <update id="updateMemberDelNy">
+	 
+	 UPDATE
+	 	infrMember
+ 	 SET
+ 	 	ifmmDelNy = 1
+ 	 WHERE
+ 	 	ifmmSeq = #{checkbox1}
+	 
+	 </update>
 	 
 </mapper>

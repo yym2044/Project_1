@@ -61,8 +61,9 @@
 						<input type="email" name="ifmeEmailFull" style="min-width: 200px;" value="<c:out value="${rt.ifmeEmailFull}"/>">
 						<span class="ms-2"><a href="#" class="fs-6" style="text-decoration: none;">이메일 중복체크</a></span>
 						<span class="ms-2">
-						<input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1"><label for="email_check">이메일 수신 동의</label>
+						<input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1" <c:if test="${rt.ifmmEmailConsentNyText eq '수신동의'}">checked</c:if>><label for="email_check">이메일 수신 동의</label>
 						<input type="hidden" name="ifmmEmailConsentNy" id="email_check_hidden" value="0">
+						
 						</span>
 					</td>
 				</tr>
@@ -91,7 +92,7 @@
 					<th style="width: 200px;" class="bg-light text-start">휴대폰</th>
 					<td class="text-start" colspan="3">
 						<input type="text" name="ifmpNumberMobile" placeholder="01012345678" value="<c:out value="${rt.ifmpNumberMobile}"/>" autocomplete="off">
-						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1"><label for="sms_check">SMS 수신 동의</label>
+						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1" <c:if test="${rt.ifmmSmsConsentNyText eq '수신동의'}">checked</c:if>><label for="sms_check">SMS 수신 동의</label>
 						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
 					</td>
 				</tr>
@@ -118,8 +119,8 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">성별</th>
 					<td class="text-start">
-					<input type="radio" name="ifmmGenderCd" id="man" value="3"><label for="man">남성</label> 
-					<input type="radio" name="ifmmGenderCd" id="woman" value="4"><label for="woman">여성</label>
+					<input type="radio" name="ifmmGenderCd" id="man" value="3" <c:if test="${rt.ifmmGenderName eq '남성'}">checked</c:if>><label for="man">남성</label> 
+					<input type="radio" name="ifmmGenderCd" id="woman" value="4" <c:if test="${rt.ifmmGenderName eq '여성'}">checked</c:if>><label for="woman">여성</label>
 					</td>
 				</tr>
 				<tr>
@@ -127,7 +128,7 @@
 					<td class="text-start">
 						<select name="ifmmPushConsentNy">
 							<option value="1">예</option>
-							<option value="0">아니오</option>
+							<option value="0" <c:if test="${rt.ifmmPushConsentNyText eq '수신거부'}">selected</c:if>>아니오</option>
 						</select>
 					</td>
 				</tr>

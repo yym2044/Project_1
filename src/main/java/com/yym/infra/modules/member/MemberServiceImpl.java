@@ -83,6 +83,8 @@ public class MemberServiceImpl implements MemberService{
 		return dao.updateMemberPhoneHome(dto);
 	}
 
+	
+
 //	@Override
 //	public int deleteMember(MemberVo vo) throws Exception {
 //		return dao.deleteMember(vo);
@@ -103,7 +105,10 @@ public class MemberServiceImpl implements MemberService{
 //		return dao.deleteMemberPhone(vo);
 //	}
 
-	
+	@Override
+	public int updateMemberDelNy(MemberVo vo) throws Exception {
+		return dao.updateMemberDelNy(vo);
+	}
 
 	
 

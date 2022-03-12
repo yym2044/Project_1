@@ -25,7 +25,7 @@
 		<!-- ifmmSeq -->
 		<input type="hidden" name="ifmmSeq" value="${fn:length(list2)+1}">
 		<!-- ifmmRegDate -->
-		<input type="hidden" name="ifmmRegDate" value="20220309">
+		<!-- <input type="hidden" name="ifmmRegDate" value="20220309"> -->
 		
 		<div class="container-fluid">
 			<div class="row bg-dark mb-2" style="height: 42px;">

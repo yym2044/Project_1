@@ -271,15 +271,15 @@ th, td {
 							<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
 							<div class="col-12 col-md-10">
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankAll" name="shIfmmGrade" value="1">
+									<input type="radio" class="form-check-input" id="memberRankAll" name="shIfmmGrade" value="1" checked <c:if test="${param.shIfmmGrade eq 1}">checked</c:if>>
 									<label for="memberRankAll" class="form-check-label">전체</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankGeneral" name="shIfmmGrade" value="2"> <label
+									<input type="radio" class="form-check-input" id="memberRankGeneral" name="shIfmmGrade" value="2" <c:if test="${param.shIfmmGrade eq 2}">checked</c:if>> <label
 										for="memberRankGeneral" class="form-check-label">일반회원</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankVip" name="shIfmmGrade" value="3"> <label
+									<input type="radio" class="form-check-input" id="memberRankVip" name="shIfmmGrade" value="3" <c:if test="${param.shIfmmGrade eq 3}">checked</c:if>> <label
 										for="memberRankVip" class="form-check-label">VIP회원</label>
 								</div>
 							</div>
@@ -294,15 +294,15 @@ th, td {
 								</div>
 								 -->
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmEmailConsentNy" id="email_check" value="1" class="form-check-input"> <label
+									<input type="checkbox" name="shIfmmEmailConsentNy" id="email_check" value="1" class="form-check-input" <c:if test="${param.shIfmmEmailConsentNy eq 1}">checked</c:if>> <label
 										for="email_check" class="form-check-label">이메일</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmSmsConsentNy" id="sms_check" value="1" class="form-check-input"> <label for="sms_check"
+									<input type="checkbox" name="shIfmmSmsConsentNy" id="sms_check" value="1" class="form-check-input" <c:if test="${param.shIfmmSmsConsentNy eq 1}">checked</c:if>> <label for="sms_check"
 										class="form-check-label">SMS</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmPushConsentNy" id="push_check" value="1" class="form-check-input"> <label for="push_check"
+									<input type="checkbox" name="shIfmmPushConsentNy" id="push_check" value="1" class="form-check-input" <c:if test="${param.shIfmmPushConsentNy eq 1}">checked</c:if>> <label for="push_check"
 										class="form-check-label">Push</label>
 								</div>
 							</div>
@@ -322,12 +322,14 @@ th, td {
 										</select>
 									</div>
 									<div class="col-8 col-md-5">
-										<input name="searchBar" class="form-control form-control-sm" placeholder="search.." value="${param.searchBar}">
+										<input name="searchBar" class="form-control form-control-sm" placeholder="search.." value="${param.searchBar}" autocomplete="off">
 									</div>
+									<!-- 
 									<div class="col-9 col-md">
 										<input type="checkbox" class="form-check-input" id="memberOnline"> <label for="memberOnline"
 											class="form-check-label">현재 접속중인 회원만 검색</label>
 									</div>
+									 -->
 									<div class="col col-md d-md-none mt-3">
 										<button class="btn btn-info btn-sm">
 											<span class="text-white">검색</span>
@@ -408,6 +410,7 @@ th, td {
 
 
 		<br> <br>
+	<form method="get" action="/infra/member/updateDelNy">
 		<div class="width92">
 			<div class="row">
 				<div class="col-8 col-md-3 p-auto box-white d-flex justify-content-start align-items-center"
@@ -466,7 +469,7 @@ th, td {
 				</c:when>
 
 				<c:otherwise>
-
+				
 					<table class="table table-hover table-sm border border-1 box-white"
 						style="min-width: 1000px; border-collapse: collapse;">
 						<thead>
@@ -489,8 +492,8 @@ th, td {
 									<td><c:out value="${item.ifmmSeq}" /></td>
 									<td><c:out value="${item.ifmmId}" /></td>
 									<td><c:out value="${item.ifmmName}" /></td>
-									<td><c:out value="${item.ifmmGrade}" /></td>
-									<td><c:out value="${item.ifmmStatus}" /></td>
+									<td <c:if test="${item.ifmmGrade eq '일반회원'}">class="text-primary"</c:if><c:if test="${item.ifmmGrade eq 'VIP회원'}">class="text-danger"</c:if>><c:out value="${item.ifmmGrade}" /></td>
+									<td <c:if test="${item.ifmmStatus eq '탈퇴대기'}">class="text-danger"</c:if>><c:out value="${item.ifmmStatus}" /></td>
 									<td><c:out value="${item.ifmmRegDate}" /></td>
 									<td>
 										<div class="d-flex justify-content-center align-items-center">
@@ -504,6 +507,7 @@ th, td {
 							</c:forEach>
 						</tbody>
 					</table>
+				
 
 				</c:otherwise>
 			</c:choose>
@@ -537,6 +541,7 @@ th, td {
 			</div>
 
 		</div>
+	
 		<!-- 같은줄 or 따로뺄지 -->
 		<!-- <nav>
 				<ul class="pagination justify-content-center">
@@ -593,14 +598,15 @@ th, td {
 					</div>
 					<div class="modal-body">정말 삭제합니다.</div>
 					<div class="modal-footer">
-						<a class="btn btn-primary" href="/infra/member/memberList" role="button">확인</a>
+						<input type="submit" class="btn btn-primary" value="확인">
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
+	</form>
+	
+		<!-- excelModal -->
 		<div class="modal fade" id="excelModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 			aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">

@@ -28,4 +28,6 @@ public interface MemberService {
 //	public int deleteMemberEmail(MemberVo vo) throws Exception;
 //	public int deleteMemberAddress(MemberVo vo) throws Exception;
 //	public int deleteMemberPhone(MemberVo vo) throws Exception;
+	
+	public int updateMemberDelNy(MemberVo vo) throws Exception;
 }
