@@ -21,12 +21,15 @@
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGradeCd) as ifmmGrade
 			, a.ifmmRegDate
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
+			, b.ifmeEmailFull
 		FROM infrMember a
+		LEFT JOIN infrMemberEmail b ON b.ifmmSeq = a.ifmmSeq AND ifmeDefaultNy = 1
 		WHERE ifmmDelNy = 0
 		
 		<choose>
 			<when test="shIfscSeq == 1">AND ifmmName like concat('%',#{searchBar},'%')</when>
 			<when test="shIfscSeq == 2">AND ifmmId like concat('%',#{searchBar},'%')</when>
+			<when test="shIfscSeq == 3">AND b.ifmeEmailFull LIKE concat('%',#{searchBar},'%')</when>
 		</choose>
 		
 		<!-- 	체크를 여러개 해도 하나만 선택되는 결과를 보여준다.
@@ -101,6 +104,16 @@
 					ifmmRegDate desc
 		 	</when>
 		 </choose>
+		 	
+		<!-- <if test="page == null or page.equals('')">LIMIT 5</if> -->
+		<choose>
+			<when test="page == 1">LIMIT 5</when>
+			<when test="page == 2">LIMIT 5, 5</when>
+			<when test="page == 3">LIMIT 10, 5</when>
+			<when test="page == 4">LIMIT 15, 5</when>
+			<when test="page == 5">LIMIT 20, 5</when>
+		</choose>		 
+		 
 		 
 	</select>
 

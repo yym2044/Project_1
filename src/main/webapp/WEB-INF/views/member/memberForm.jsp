@@ -82,10 +82,15 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">주소</th>
 					<td class="text-start" colspan="3">
-						<input type="text" name="ifmaZipCode" placeholder="우편번호" autocomplete="off"> <button class="btn btn-sm btn-outline-dark">우편번호 검색</button>
-						<br>
-						<input type="text" name="ifmaAddress1" placeholder="주소" autocomplete="off">			
-						<input type="text" name="ifmaAddress2" placeholder="상세주소" autocomplete="off">					
+						<div class="row g-2">
+							<div class="col-12 d-flex align-items-center">
+								<input type="text" name="ifmaZipCode" placeholder="우편번호" autocomplete="off"> <button class="btn btn-sm btn-outline-dark ms-1">우편번호 검색</button>
+							</div>
+							<div class="col-12">
+								<input type="text" name="ifmaAddress1" placeholder="주소" autocomplete="off" style="width:300px;">			
+								<input type="text" name="ifmaAddress2" placeholder="상세주소" autocomplete="off" style="width:300px;">					
+							</div>
+						</div>
 					</td>
 				</tr>
 				<tr>

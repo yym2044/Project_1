@@ -5,6 +5,7 @@ public class Code {
 //	DTO
 	private String ifcgSeq;
 	private String ifcgName;
+	private String ifcgNameEng;
 	private String ifcdSeq;
 	private String ifcdName;
 	private Integer ifcgDelNy;
@@ -23,6 +24,12 @@ public class Code {
 	}
 	public void setIfcgName(String ifcgName) {
 		this.ifcgName = ifcgName;
+	}
+	public String getIfcgNameEng() {
+		return ifcgNameEng;
+	}
+	public void setIfcgNameEng(String ifcgNameEng) {
+		this.ifcgNameEng = ifcgNameEng;
 	}
 	public String getIfcdSeq() {
 		return ifcdSeq;

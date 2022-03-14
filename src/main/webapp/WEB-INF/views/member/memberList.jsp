@@ -418,7 +418,7 @@ a {
 	<form method="get" action="/infra/member/updateDelNy">
 		<div class="width92">
 			<div class="row">
-				<div class="col-8 col-md-3 p-auto box-white d-flex justify-content-start align-items-center"
+				<div class="col-8 col-md-3 p-auto d-flex justify-content-start align-items-center fs-5"
 					style="margin-left: 12px;">
 					검색결과 : <b class="px-1">${fn:length(list)}</b> / 총 <b class="px-1">${fn:length(list)}</b>명 검색결과
 				</div>
@@ -429,6 +429,7 @@ a {
 					</a>
 				</div>
 				 -->
+				 
 				<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
 					<div class="text-end">
 						<div class="btn-group btn-group-sm box-white" role="group">
@@ -445,6 +446,7 @@ a {
 						</div>
 					</div>
 				</div>
+				
 			</div>
 
 			<!-- ---------------테이블 부분----------------- -->
@@ -562,19 +564,23 @@ a {
 		</div>
 	
 		<!-- 같은줄 or 따로뺄지 -->
-		<!-- <nav>
+		<nav>
 				<ul class="pagination justify-content-center">
+					<!-- 
 					<li class="page-item disabled"><a class="page-link" href="#"><<</a></li>
 					<li class="page-item disabled"><a class="page-link" href="#"><</a></li>
-					<li class="page-item disabled"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">4</a></li>
-					<li class="page-item"><a class="page-link" href="#">5</a></li>
+					 -->
+					<li class="page-item <c:if test="${param.page eq 1 or empty param.page}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=1">1</a></li>
+					<li class="page-item <c:if test="${param.page eq 2}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=2">2</a></li>
+					<li class="page-item <c:if test="${param.page eq 3}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=3">3</a></li>
+					<li class="page-item <c:if test="${param.page eq 4}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=4">4</a></li>
+					<li class="page-item <c:if test="${param.page eq 5}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=5">5</a></li>
+					<!-- 
 					<li class="page-item"><a class="page-link" href="#">></a></li>
 					<li class="page-item"><a class="page-link" href="#">>></a></li>
+					 -->
 				</ul>
-			</nav> -->
+			</nav>
 		<br> <br>
 
 		<!-- footer -->

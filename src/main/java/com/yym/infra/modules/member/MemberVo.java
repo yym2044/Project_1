@@ -19,6 +19,8 @@ public class MemberVo {
 	
 	private Integer checkbox1;
 	
+	private String page;
+	
 //	정렬
 	private String sort;
 	private String orderby;
@@ -95,6 +97,12 @@ public class MemberVo {
 	}
 	public void setOrderby(String orderby) {
 		this.orderby = orderby;
+	}
+	public String getPage() {
+		return page;
+	}
+	public void setPage(String page) {
+		this.page = page;
 	}
 	
 }
