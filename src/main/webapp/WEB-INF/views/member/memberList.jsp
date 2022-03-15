@@ -415,6 +415,7 @@ a {
 			<div class="row">
 				<form>
 					<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
+						<!-- 
 						 <div class="btn-toolbar justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
 							<div class="btn-group me-2" role="group" aria-label="First group">
 							  <input type="submit" class="btn btn-secondary" value="View">
@@ -425,6 +426,17 @@ a {
 							  <a type="button" class="btn btn-secondary">20</a>
 							</div>
 						 </div>
+						 --> 
+						 <div class="text-end">
+							 <div class="btn-group btn-group-sm box-white" role="group">
+								<input type="submit" class="btn-check" id="btnradio1" autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio1">view</label> 
+								<input type="radio" class="btn-check" name="shRows" id="btnradio2" autocomplete="off" value="5"> <label class="btn btn-outline-primary" for="btnradio2">5</label> 
+								<input type="radio" class="btn-check" name="shRows" id="btnradio3" autocomplete="off" value="10"> <label class="btn btn-outline-primary" for="btnradio3">10</label> 
+								<input type="radio" class="btn-check" name="shRows" id="btnradio4" autocomplete="off" value="20"> <label class="btn btn-outline-primary" for="btnradio4">20</label> 
+								<input type="radio" class="btn-check" name="shRows" id="btnradio5" autocomplete="off" value="50"> <label class="btn btn-outline-primary" for="btnradio5">50</label> 
+								<input type="radio" class="btn-check" name="shRows" id="btnradio6" autocomplete="off" value="100"> <label class="btn btn-outline-primary" for="btnradio6">100</label>
+							 </div>
+						</div>
 					 </div>
 				 </form>
 			</div>

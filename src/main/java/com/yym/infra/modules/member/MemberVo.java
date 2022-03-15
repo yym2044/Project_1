@@ -41,9 +41,10 @@ public class MemberVo {
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 	
 //------------
-	public void setParamsPaging(int totalRowsParam) {
+	public void setParamsPaging(int totalRowsParam, int rowNumToShowParam) {
 		
 		totalRows = totalRowsParam;
+		rowNumToShow = rowNumToShowParam;
 
 		totalPages = totalRows / rowNumToShow;
 

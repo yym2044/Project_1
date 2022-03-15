@@ -20,7 +20,7 @@ public class MemberController {
 
 		int count = service.selectListCount(vo);
 		
-		vo.setParamsPaging(count);
+		vo.setParamsPaging(count, 5);
 		
 		if(count != 0) {
 			
