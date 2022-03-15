@@ -13,6 +13,10 @@ public class CodeVo {
 	
 	private String shOption;
 	private String shValue;
+	
+//	paging
+	private Integer rowNumToShow;
+	private Integer startRnumForMysql;
 
 	//------------
 	public String getIfcgSeq() {
@@ -57,4 +61,17 @@ public class CodeVo {
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
+	public Integer getRowNumToShow() {
+		return rowNumToShow;
+	}
+	public void setRowNumToShow(Integer rowNumToShow) {
+		this.rowNumToShow = rowNumToShow;
+	}
+	public Integer getStartRnumForMysql() {
+		return startRnumForMysql;
+	}
+	public void setStartRnumForMysql(Integer startRnumForMysql) {
+		this.startRnumForMysql = startRnumForMysql;
+	}
+	
 }

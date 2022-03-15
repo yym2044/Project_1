@@ -9,6 +9,31 @@
 	<resultMap id="resultMapObj"
 		type="com.yym.infra.modules.code.Code"></resultMap> <!-- 결과 객체 저장 -->
 
+	<sql id="selectCommon">
+		FROM 
+			cpcpcp.infrCodeGroup
+		WHERE 1=1
+			
+		<choose>
+			<when test="shIfcgDelNy == 1">AND ifcgDelNy = 1</when>
+			<when test="shIfcgDelNy == 0">AND ifcgDelNy = 0</when>
+		</choose>
+			
+		 <!-- 
+		 <if test="shIfcgDelNy != null and !shIfcgDelNy.equals('')">
+		 	AND ifcgDelNy = #{shIfcgDelNy}
+		 </if>
+		  -->
+		<if test="shIfcgName != null and !shIfcgName.equals('')">
+			AND ifcgName LIKE concat('%',#{shIfcgName},'%')
+		</if>
+		
+		<choose>
+			<when test="shOption == 1">AND ifcgName like concat('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND ifcgNameEng like concat('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
+
 	<select id="selectList" resultMap="resultMapObj">
 		
 		SELECT 
@@ -16,30 +41,17 @@
 			, ifcgName
 			, ifcgNameEng
 			, ifcgDelNy
-		FROM 
-			cpcpcp.infrCodeGroup
-		WHERE 1=1
 			
-					
-			<choose>
-				<when test="shIfcgDelNy == 1">AND ifcgDelNy = 1</when>
-				<when test="shIfcgDelNy == 0">AND ifcgDelNy = 0</when>
-			</choose>
-				
-			 <!-- 
-			 <if test="shIfcgDelNy != null and !shIfcgDelNy.equals('')">
-			 	AND ifcgDelNy = #{shIfcgDelNy}
-			 </if>
-			  -->
-			<if test="shIfcgName != null and !shIfcgName.equals('')">
-				AND ifcgName LIKE concat('%',#{shIfcgName},'%')
-			</if>
-			
-			<choose>
-				<when test="shOption == 1">AND ifcgName like concat('%',#{shValue},'%')</when>
-				<when test="shOption == 2">AND ifcgNameEng like concat('%',#{shValue},'%')</when>
-			</choose>
-
+		<include refid="selectCommon"/>
+		
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT 
+			count(*)
+		
+		<include refid="selectCommon"/>
+		
 	</select>
 	
 	<insert id="insert">

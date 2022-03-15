@@ -12,6 +12,11 @@ public class CodeServiceImpl implements CodeService{
 	CodeDao dao;
 
 	@Override
+	public int selectOneCount(CodeVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
+	
+	@Override
 	public List<Code> selectList(CodeVo vo) throws Exception {
 		return dao.selectList(vo);
 	}
