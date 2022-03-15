@@ -43,6 +43,8 @@ public class CodeController {
 		
 		int count = service.selectOneCount(vo);
 		
+		setParamsPaging(count);
+		
 		if(count!=0) {
 			
 			List<Code> list = service.selectList(vo);
@@ -50,10 +52,54 @@ public class CodeController {
 			model.addAttribute("list", list);
 		}
 
-		
 		return "code/codeGroupList";
 	}
 
+	public void setParamsPaging(int totalRowsParam) {
+		
+		totalRows = totalRowsParam;
+
+		totalPages = totalRows / rowNumToShow;
+
+		if (totalRows % rowNumToShow > 0) {
+			totalPages = totalPages+ 1;
+		}
+
+		if (totalPages < thisPage) {
+			thisPage = totalPages;
+		}
+		
+		startPage = (((thisPage - 1) / pageNumToShow) * pageNumToShow + 1);
+
+		endPage = (startPage + pageNumToShow - 1);
+
+		if (endPage > totalPages) {
+			endPage = (totalPages);
+		}
+		
+		endRnumForOracle = ((rowNumToShow * thisPage));
+		startRnumForOracle = ((endRnumForOracle - rowNumToShow) + 1);
+		if (startRnumForOracle < 1) startRnumForOracle = 1;
+		
+		
+		if (thisPage == 1) {
+			startRnumForMysql = 0;
+		} else {
+			startRnumForMysql = ((rowNumToShow * (thisPage-1)));
+		}
+		
+		System.out.println("getThisPage():" + thisPage);
+		System.out.println("getTotalRows():" + totalRows);
+		System.out.println("getRowNumToShow():" + rowNumToShow);
+		System.out.println("getTotalPages():" + totalPages);
+		System.out.println("getStartPage():" + startPage);
+		System.out.println("getEndPage():" + endPage);		
+		System.out.println("getStartRnumForOracle():" + startRnumForOracle);
+		System.out.println("getEndRnumForOracle():" + endRnumForOracle);
+		System.out.println("getStartRnumForMysql(): " + startRnumForMysql);
+		
+	}
+	
 	@RequestMapping(value = "/code/codeGroupForm")
 	public String codeGroupForm() throws Exception {
 
