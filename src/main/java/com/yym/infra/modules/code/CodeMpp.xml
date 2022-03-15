@@ -112,14 +112,7 @@
 	</update>
 	
 	<!-- 코드 -->
-	<select id="selectList_code" resultMap="resultMapObj">
-		
-		SELECT 
-			a.ifcgSeq
-			, a.ifcdSeq		<!-- 리스트 화면에 뿌리진 않음 -->
-			, a.ifcdOrder
-			, a.ifcdName
-			, a.ifcdDelNy
+	<sql id="selectCommon_code">
 		FROM 
 			cpcpcp.infrCode a
 		WHERE 1=1
@@ -130,6 +123,26 @@
 		ORDER BY
 			a.ifcgSeq
 			, a.ifcdOrder
+	</sql>
+	
+	<select id="selectOneCount_code" resultType="Integer">
+		
+		SELECT
+			count(*)
+		<include refid="selectCommon_code"/>
+	
+	</select>
+	
+	<select id="selectList_code" resultMap="resultMapObj">
+		
+		SELECT 
+			a.ifcgSeq
+			, a.ifcdSeq		<!-- 리스트 화면에 뿌리진 않음 -->
+			, a.ifcdOrder
+			, a.ifcdName
+			, a.ifcdDelNy
+		<include refid="selectCommon_code"/>
+		LIMIT #{startRnumForMysql}, #{rowNumToShow}
 			
 	</select>
 	

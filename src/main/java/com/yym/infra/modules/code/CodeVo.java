@@ -77,6 +77,50 @@ public class CodeVo {
 		
 	}
 	
+	public void setParamsPagingForCodeList(int totalRowsParam) {
+		
+		totalRows = totalRowsParam;
+
+		totalPages = totalRows / rowNumToShow;
+
+		if (totalRows % rowNumToShow > 0) {
+			totalPages = totalPages+ 1;
+		}
+
+		if (totalPages < thisPage) {
+			thisPage = totalPages;
+		}
+		
+		startPage = (((thisPage - 1) / pageNumToShow) * pageNumToShow + 1);
+
+		endPage = (startPage + pageNumToShow - 1);
+
+		if (endPage > totalPages) {
+			endPage = (totalPages);
+		}
+		
+		endRnumForOracle = ((rowNumToShow * thisPage));
+		startRnumForOracle = ((endRnumForOracle - rowNumToShow) + 1);
+		if (startRnumForOracle < 1) startRnumForOracle = 1;
+		
+		
+		if (thisPage == 1) {
+			startRnumForMysql = 0;
+		} else {
+			startRnumForMysql = ((rowNumToShow * (thisPage-1)));
+		}
+		
+		System.out.println("getThisPage():" + thisPage);
+		System.out.println("getTotalRows():" + totalRows);
+		System.out.println("getRowNumToShow():" + rowNumToShow);
+		System.out.println("getTotalPages():" + totalPages);
+		System.out.println("getStartPage():" + startPage);
+		System.out.println("getEndPage():" + endPage);		
+		System.out.println("getStartRnumForOracle():" + startRnumForOracle);
+		System.out.println("getEndRnumForOracle():" + endRnumForOracle);
+		System.out.println("getStartRnumForMysql(): " + startRnumForMysql);
+		
+	}
 	
 	//------------
 	public String getIfcgSeq() {

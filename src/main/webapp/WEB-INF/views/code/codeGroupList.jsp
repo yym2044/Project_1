@@ -97,10 +97,10 @@
 
 <nav class="mt-3" aria-label="...">
   <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-    <c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+    <c:if test="${vo.startPage gt vo.pageNumToShow}">
+    	<li class="page-item"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${vo.startPage - 1}">Previous</a></li>
+	</c:if>
+	<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 		<c:choose>
 			<c:when test="${i.index eq vo.thisPage}">
 	                <li class="page-item active"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${i.index}">${i.index}</a></li>
@@ -109,10 +109,10 @@
 	                <li class="page-item"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${i.index}">${i.index}</a></li>
 			</c:otherwise>
 		</c:choose>
-	</c:forEach>  
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
+	</c:forEach>     
+	<c:if test="${vo.endPage ne vo.totalPages}">                
+		<li class="page-item"><a class="page-link" href="/infra/code/codeGroupList?thisPage=${vo.endPage + 1}">Next</a></li>
+	</c:if>  
   </ul>
 </nav>
 

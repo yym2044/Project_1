@@ -57,6 +57,11 @@ public class CodeServiceImpl implements CodeService{
 //	코드
 	
 	@Override
+	public int selectOneCount_code(CodeVo vo) throws Exception {
+		return dao.selectOneCount_code(vo);
+	}
+	
+	@Override
 	public List<Code> selectList_code(CodeVo vo) throws Exception {
 		
 		return dao.selectList_code(vo);
