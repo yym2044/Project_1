@@ -411,8 +411,24 @@ a {
 				</div>
 			</div>
 		</div>
-
-
+		<div class="width92">
+			<div class="row">
+				<form>
+					<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
+						 <div class="btn-toolbar justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
+							<div class="btn-group me-2" role="group" aria-label="First group">
+							  <input type="submit" class="btn btn-secondary" value="View">
+							</div>
+							<div class="btn-group me-2" role="group" aria-label="Second group">
+							  <a type="button" class="btn btn-secondary">5</a>
+							  <a type="button" class="btn btn-secondary">10</a>
+							  <a type="button" class="btn btn-secondary">20</a>
+							</div>
+						 </div>
+					 </div>
+				 </form>
+			</div>
+		</div>
 
 		<br> <br>
 	<form method="get" action="/infra/member/updateDelNy">
@@ -432,9 +448,10 @@ a {
 				 
 				<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
 					<div class="text-end">
+						<!-- 
 						<div class="btn-group btn-group-sm box-white" role="group">
-							<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" disabled> <label
-								class="btn btn-outline-primary" for="btnradio1">view</label> <input type="radio" class="btn-check"
+							<input class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" disabled> <label
+								class="btn btn-outline-primary" for="btnradio1">view</label> <input class="btn-check"
 								name="btnradio" id="btnradio2" autocomplete="off" checked> <label class="btn btn-outline-primary"
 								for="btnradio2">5</label> <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
 								autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio3">10</label> <input
@@ -444,6 +461,7 @@ a {
 								type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off"> <label
 								class="btn btn-outline-primary" for="btnradio6">100</label>
 						</div>
+						 -->
 					</div>
 				</div>
 				
@@ -566,7 +584,7 @@ a {
 		<!-- 같은줄 or 따로뺄지 -->
 		
 			<nav class="mt-3" aria-label="...">
-			  <ul class="pagination">
+			  <ul class="pagination justify-content-center">
 			    <c:if test="${vo.startPage gt vo.pageNumToShow}">
 			    	<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.startPage - 1}">Previous</a></li>
 				</c:if>
