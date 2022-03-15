@@ -5,45 +5,26 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 //@RequestMapping(value = "/code/")			17번 라인 대신 (11번 라인 + 18번 라인)으로도 가능
 public class CodeController {
 
-//	paging
-//	paging
-	private int thisPage = 1;									// 현재 페이지
-	private int rowNumToShow = 10;								// 화면에 보여줄 데이터 줄 갯수
-	private int pageNumToShow = 5;								// 화면에 보여줄 페이징 번호 갯수
-
-	private int totalRows;										// 전체 데이터 갯수
-	private int totalPages;										// 전체 페이지 번호
-	private int startPage;										// 시작 페이지 번호
-	private int endPage;										// 마지막 페이지 번호
-	
-	private int startRnumForOracle = 1;							// 쿼리 시작 row
-	private int endRnumForOracle;								// 쿼리 끝 row
-	private Integer RNUM;
-	
-	private int startRnumForMysql = 0;							// 쿼리 시작 row
-	
-	
-	
 	@Autowired
 	CodeServiceImpl service;
 
 	@RequestMapping(value = "/code/codeGroupList")
 //	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, CodeVo vo) throws Exception {
-
+	public String codeGroupList(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 		// count 가져오는 작업
 		
 		// count가 0이 아니면 list를 가져올 것
 		
 		int count = service.selectOneCount(vo);
 		
-		setParamsPaging(count);
+		vo.setParamsPaging(count);
 		
 		if(count!=0) {
 			
@@ -53,51 +34,6 @@ public class CodeController {
 		}
 
 		return "code/codeGroupList";
-	}
-
-	public void setParamsPaging(int totalRowsParam) {
-		
-		totalRows = totalRowsParam;
-
-		totalPages = totalRows / rowNumToShow;
-
-		if (totalRows % rowNumToShow > 0) {
-			totalPages = totalPages+ 1;
-		}
-
-		if (totalPages < thisPage) {
-			thisPage = totalPages;
-		}
-		
-		startPage = (((thisPage - 1) / pageNumToShow) * pageNumToShow + 1);
-
-		endPage = (startPage + pageNumToShow - 1);
-
-		if (endPage > totalPages) {
-			endPage = (totalPages);
-		}
-		
-		endRnumForOracle = ((rowNumToShow * thisPage));
-		startRnumForOracle = ((endRnumForOracle - rowNumToShow) + 1);
-		if (startRnumForOracle < 1) startRnumForOracle = 1;
-		
-		
-		if (thisPage == 1) {
-			startRnumForMysql = 0;
-		} else {
-			startRnumForMysql = ((rowNumToShow * (thisPage-1)));
-		}
-		
-		System.out.println("getThisPage():" + thisPage);
-		System.out.println("getTotalRows():" + totalRows);
-		System.out.println("getRowNumToShow():" + rowNumToShow);
-		System.out.println("getTotalPages():" + totalPages);
-		System.out.println("getStartPage():" + startPage);
-		System.out.println("getEndPage():" + endPage);		
-		System.out.println("getStartRnumForOracle():" + startRnumForOracle);
-		System.out.println("getEndRnumForOracle():" + endRnumForOracle);
-		System.out.println("getStartRnumForMysql(): " + startRnumForMysql);
-		
 	}
 	
 	@RequestMapping(value = "/code/codeGroupForm")
