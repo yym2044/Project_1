@@ -104,16 +104,6 @@
 					ifmmRegDate desc
 		 	</when>
 		 </choose>
-		 	
-		<!-- <if test="page == null or page.equals('')">LIMIT 5</if> -->
-		<choose>
-			<when test="page == 1">LIMIT 5</when>
-			<when test="page == 2">LIMIT 5, 5</when>
-			<when test="page == 3">LIMIT 10, 5</when>
-			<when test="page == 4">LIMIT 15, 5</when>
-			<when test="page == 5">LIMIT 20, 5</when>
-		</choose>		 
-		 
 		 
 	</select>
 

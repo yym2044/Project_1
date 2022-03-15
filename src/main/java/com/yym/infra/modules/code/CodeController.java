@@ -32,6 +32,8 @@ public class CodeController {
 	
 			model.addAttribute("list", list);
 		}
+		
+//		model.addAttribute("vo", vo);	@ModelAttribute 대신 이렇게 한 줄 추가해도 동일
 
 		return "code/codeGroupList";
 	}

@@ -570,11 +570,11 @@ a {
 					<li class="page-item disabled"><a class="page-link" href="#"><<</a></li>
 					<li class="page-item disabled"><a class="page-link" href="#"><</a></li>
 					 -->
-					<li class="page-item <c:if test="${param.page eq 1 or empty param.page}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=1">1</a></li>
-					<li class="page-item <c:if test="${param.page eq 2}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=2">2</a></li>
-					<li class="page-item <c:if test="${param.page eq 3}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=3">3</a></li>
-					<li class="page-item <c:if test="${param.page eq 4}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=4">4</a></li>
-					<li class="page-item <c:if test="${param.page eq 5}">disabled</c:if>"><a class="page-link" href="/infra/member/memberList?page=5">5</a></li>
+					<li class="page-item"><a class="page-link">1</a></li>
+					<li class="page-item"><a class="page-link">2</a></li>
+					<li class="page-item"><a class="page-link">3</a></li>
+					<li class="page-item"><a class="page-link">4</a></li>
+					<li class="page-item"><a class="page-link">5</a></li>
 					<!-- 
 					<li class="page-item"><a class="page-link" href="#">></a></li>
 					<li class="page-item"><a class="page-link" href="#">>></a></li>

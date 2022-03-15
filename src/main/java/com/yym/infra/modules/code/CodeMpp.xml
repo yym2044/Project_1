@@ -32,6 +32,7 @@
 			<when test="shOption == 1">AND ifcgName like concat('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND ifcgNameEng like concat('%',#{shValue},'%')</when>
 		</choose>
+		
 	</sql>
 
 	<select id="selectList" resultMap="resultMapObj">
@@ -43,7 +44,7 @@
 			, ifcgDelNy
 			
 		<include refid="selectCommon"/>
-		
+		limit #{startRnumForMysql}, #{rowNumToShow} 
 	</select>
 	
 	<select id="selectOneCount" resultType="Integer">
