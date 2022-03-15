@@ -40,11 +40,14 @@ public class MemberVo {
 	
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 	
+	private Integer shRows = 5;
+	
 //------------
-	public void setParamsPaging(int totalRowsParam, int rowNumToShowParam) {
+	public void setParamsPaging(int totalRowsParam) {
 		
 		totalRows = totalRowsParam;
-		rowNumToShow = rowNumToShowParam;
+//		rowNumToShow = rowNumToShowParam;
+		rowNumToShow = shRows;
 
 		totalPages = totalRows / rowNumToShow;
 
@@ -224,6 +227,12 @@ public class MemberVo {
 	}
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+	public Integer getShRows() {
+		return shRows;
+	}
+	public void setShRows(Integer shRows) {
+		this.shRows = shRows;
 	}
 	
 }
