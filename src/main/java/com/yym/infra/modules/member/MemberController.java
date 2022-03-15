@@ -17,14 +17,20 @@ public class MemberController {
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 	public String memberList(Model model, MemberVo vo) throws Exception {
 
-
-		List<Member> list = service.selectList(vo);
-		model.addAttribute("list", list);
+		int count = service.selectListCount(vo);
 		
+		if(count != 0) {
+			
+			List<Member> list = service.selectList(vo);
+			model.addAttribute("list", list);
+			
 //		model.addAttribute("list", service.selectList());  위 두줄 대신 이렇게도 가능
+			
+			List<Member> listSearch = service.selectListSearch();
+			model.addAttribute("listSearch", listSearch);
+			
+		}
 		
-		List<Member> listSearch = service.selectListSearch();
-		model.addAttribute("listSearch", listSearch);
 		
 		return "member/memberList";
 	}
