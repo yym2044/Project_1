@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -15,9 +16,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/memberList")
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-	public String memberList(Model model, MemberVo vo) throws Exception {
+	public String memberList(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {
 
 		int count = service.selectListCount(vo);
+		
+		vo.setParamsPaging(count);
 		
 		if(count != 0) {
 			
@@ -30,7 +33,6 @@ public class MemberController {
 			model.addAttribute("listSearch", listSearch);
 			
 		}
-		
 		
 		return "member/memberList";
 	}

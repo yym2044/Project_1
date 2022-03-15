@@ -564,23 +564,46 @@ a {
 		</div>
 	
 		<!-- 같은줄 or 따로뺄지 -->
-		<nav>
+		
+			<nav class="mt-3" aria-label="...">
+			  <ul class="pagination">
+			    <c:if test="${vo.startPage gt vo.pageNumToShow}">
+			    	<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.startPage - 1}">Previous</a></li>
+				</c:if>
+				<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+					<c:choose>
+						<c:when test="${i.index eq vo.thisPage}">
+				                <li class="page-item active"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}">${i.index}</a></li>
+						</c:when>
+						<c:otherwise>             
+				                <li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}">${i.index}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>     
+				<c:if test="${vo.endPage ne vo.totalPages}">                
+					<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.endPage + 1}">Next</a></li>
+				</c:if>  
+			  </ul>
+			</nav>
+			<!-- 
+			<nav>
 				<ul class="pagination justify-content-center">
-					<!-- 
+					
 					<li class="page-item disabled"><a class="page-link" href="#"><<</a></li>
 					<li class="page-item disabled"><a class="page-link" href="#"><</a></li>
-					 -->
+					
 					<li class="page-item"><a class="page-link">1</a></li>
 					<li class="page-item"><a class="page-link">2</a></li>
 					<li class="page-item"><a class="page-link">3</a></li>
 					<li class="page-item"><a class="page-link">4</a></li>
 					<li class="page-item"><a class="page-link">5</a></li>
-					<!-- 
+					
 					<li class="page-item"><a class="page-link" href="#">></a></li>
 					<li class="page-item"><a class="page-link" href="#">>></a></li>
-					 -->
+					
 				</ul>
 			</nav>
+			 -->
 		<br> <br>
 
 		<!-- footer -->

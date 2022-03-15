@@ -114,6 +114,7 @@
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
 			, b.ifmeEmailFull
 		 <include refid="selectListCommon"/>
+		 LIMIT #{startRnumForMysql}, #{rowNumToShow}
 	</select>
 
 	
