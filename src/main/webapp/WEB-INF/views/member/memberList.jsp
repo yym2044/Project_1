@@ -411,11 +411,12 @@ a {
 				</div>
 			</div>
 		</div>
+		<!-- 
 		<div class="width92">
 			<div class="row">
 				<form>
 					<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
-						<!-- 
+						
 						 <div class="btn-toolbar justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
 							<div class="btn-group me-2" role="group" aria-label="First group">
 							  <input type="submit" class="btn btn-secondary" value="View">
@@ -426,22 +427,22 @@ a {
 							  <a type="button" class="btn btn-secondary">20</a>
 							</div>
 						 </div>
-						 --> 
+						 
 						 <div class="text-end">
 							 <div class="btn-group btn-group-sm box-white" role="group">
 								<input type="submit" class="btn-check" id="btnradio1" autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio1">view</label> 
-								<input type="radio" class="btn-check" name="shRows" id="btnradio2" autocomplete="off" value="5"> <label class="btn btn-outline-primary" for="btnradio2">5</label> 
-								<input type="radio" class="btn-check" name="shRows" id="btnradio3" autocomplete="off" value="10"> <label class="btn btn-outline-primary" for="btnradio3">10</label> 
-								<input type="radio" class="btn-check" name="shRows" id="btnradio4" autocomplete="off" value="20"> <label class="btn btn-outline-primary" for="btnradio4">20</label> 
-								<input type="radio" class="btn-check" name="shRows" id="btnradio5" autocomplete="off" value="50"> <label class="btn btn-outline-primary" for="btnradio5">50</label> 
-								<input type="radio" class="btn-check" name="shRows" id="btnradio6" autocomplete="off" value="100"> <label class="btn btn-outline-primary" for="btnradio6">100</label>
+								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio2" autocomplete="off" value="5"> <label class="btn btn-outline-primary" for="btnradio2">5</label> 
+								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio3" autocomplete="off" value="10"> <label class="btn btn-outline-primary" for="btnradio3">10</label> 
+								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio4" autocomplete="off" value="20"> <label class="btn btn-outline-primary" for="btnradio4">20</label> 
+								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio5" autocomplete="off" value="50"> <label class="btn btn-outline-primary" for="btnradio5">50</label> 
+								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio6" autocomplete="off" value="100"> <label class="btn btn-outline-primary" for="btnradio6">100</label>
 							 </div>
 						</div>
 					 </div>
 				 </form>
 			</div>
 		</div>
-
+		 -->
 		<br> <br>
 	<form method="get" action="/infra/member/updateDelNy">
 		<div class="width92">
@@ -460,20 +461,20 @@ a {
 				 
 				<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
 					<div class="text-end">
-						<!-- 
-						<div class="btn-group btn-group-sm box-white" role="group">
-							<input class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" disabled> <label
-								class="btn btn-outline-primary" for="btnradio1">view</label> <input class="btn-check"
-								name="btnradio" id="btnradio2" autocomplete="off" checked> <label class="btn btn-outline-primary"
-								for="btnradio2">5</label> <input type="radio" class="btn-check" name="btnradio" id="btnradio3"
-								autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio3">10</label> <input
-								type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"> <label
-								class="btn btn-outline-primary" for="btnradio4">20</label> <input type="radio" class="btn-check" name="btnradio"
-								id="btnradio5" autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio5">50</label> <input
-								type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off"> <label
-								class="btn btn-outline-primary" for="btnradio6">100</label>
-						</div>
-						 -->
+						 
+						<div class="btn-toolbar-sm justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
+							<div class="btn-group" role="group" aria-label="First group">
+							  <button type="button" class="btn btn-sm btn-outline-primary" disabled>View</button>
+							</div>
+							<div class="btn-group me-2" role="group" aria-label="Second group">
+							  <a type="button" class="btn btn-sm btn-outline-primary" href="/infra/member/memberList?rowNumToShow=5">5</a>
+							  <a type="button" class="btn btn-sm btn-outline-primary" href="/infra/member/memberList?rowNumToShow=10">10</a>
+							  <a type="button" class="btn btn-sm btn-outline-primary" href="/infra/member/memberList?rowNumToShow=20">20</a>
+							  <a type="button" class="btn btn-sm btn-outline-primary" href="/infra/member/memberList?rowNumToShow=50">50</a>
+							  <a type="button" class="btn btn-sm btn-outline-primary" href="/infra/member/memberList?rowNumToShow=100">100</a>
+							</div>
+						 </div>
+						
 					</div>
 				</div>
 				
@@ -598,20 +599,20 @@ a {
 			<nav class="mt-3" aria-label="...">
 			  <ul class="pagination justify-content-center">
 			    <c:if test="${vo.startPage gt vo.pageNumToShow}">
-			    	<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.startPage - 1}&shRows=${param.shRows}">Previous</a></li>
+			    	<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.startPage - 1}&rowNumToShow=${vo.rowNumToShow}">Previous</a></li>
 				</c:if>
 				<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 					<c:choose>
 						<c:when test="${i.index eq vo.thisPage}">
-				                <li class="page-item active"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&shRows=${param.shRows}">${i.index}</a></li>
+				                <li class="page-item active"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
 						</c:when>
 						<c:otherwise>             
-				                <li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&shRows=${param.shRows}">${i.index}</a></li>
+				                <li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>     
 				<c:if test="${vo.endPage ne vo.totalPages}">                
-					<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.endPage + 1}&shRows=${param.shRows}">Next</a></li>
+					<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.endPage + 1}&rowNumToShow=${vo.rowNumToShow}">Next</a></li>
 				</c:if>  
 			  </ul>
 			</nav>

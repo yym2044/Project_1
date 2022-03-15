@@ -46,8 +46,6 @@ public class MemberVo {
 	public void setParamsPaging(int totalRowsParam) {
 		
 		totalRows = totalRowsParam;
-//		rowNumToShow = rowNumToShowParam;
-		rowNumToShow = shRows;
 
 		totalPages = totalRows / rowNumToShow;
 

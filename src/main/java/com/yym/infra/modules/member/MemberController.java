@@ -19,8 +19,6 @@ public class MemberController {
 	public String memberList(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {
 
 		int count = service.selectListCount(vo);
-//		if(vo.getShRows()==0){vo.setParamsPaging(count, 5);}
-//		if(){vo.setParamsPaging(count, 10);}
 		
 		vo.setParamsPaging(count);
 		
