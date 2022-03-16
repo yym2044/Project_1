@@ -84,7 +84,7 @@
 					<td class="text-start" colspan="3">
 						<div class="row g-2">
 							<div class="col-12 d-flex align-items-center">
-								<input type="text" name="ifmaZipCode" placeholder="우편번호" autocomplete="off"> <button class="btn btn-sm btn-outline-dark ms-1">우편번호 검색</button>
+								<input type="text" name="ifmaZipCode" placeholder="우편번호" autocomplete="off"> <a href="#" class="btn btn-sm btn-outline-dark ms-1" data-bs-toggle="modal" data-bs-target="#zipcodeModal">우편번호 검색</a>
 							</div>
 							<div class="col-12">
 								<input type="text" name="ifmaAddress1" placeholder="주소" autocomplete="off" style="width:300px;">			
@@ -185,7 +185,34 @@
 		</div>
 	</form>
 	
-
+	<!--MODAL -->
+	<div class="modal fade" id="zipcodeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">우편번호 검색</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h3 style="text-align: center">우편번호 검색</h3>
+					<br> <br>
+					<div class="input-group mb-3">
+						<input class="form-control form-control-lg" type="text" placeholder="주소 입력"> <br> <a
+							href="https://map.naver.com/v5" class="btn btn-outline-secondary" role="button" id="button-addon2">검색</a>
+					</div>
+					<p>도로명, 건물명 또는 지번 중 편한 방법으로 검색하세요.</p>
+					<p>예) 건물명 : 방배동 우성아파트</p>
+					<p>도로명 : 테헤란로 152</p>
+					<p>지역번 : 역삼동 737</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-primary">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- MODAL END -->
 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

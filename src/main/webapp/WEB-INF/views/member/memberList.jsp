@@ -469,11 +469,12 @@ a {
 							  <button type="button" class="btn btn-sm btn-outline-dark" disabled>View</button>
 							</div>
 							<div class="btn-group me-2" role="group" aria-label="Second group">
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>dark" href="/infra/member/memberList?rowNumToShow=5">5</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>dark" href="/infra/member/memberList?rowNumToShow=10">10</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>dark" href="/infra/member/memberList?rowNumToShow=20">20</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>dark" href="/infra/member/memberList?rowNumToShow=50">50</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>dark" href="/infra/member/memberList?rowNumToShow=100">100</a>
+							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=3">3</a>
+							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=5">5</a>
+							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=10">10</a>
+							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=20">20</a>
+							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=50">50</a>
+							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=100">100</a>
 							  
 							</div>
 						 </div>
