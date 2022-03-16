@@ -516,25 +516,25 @@ a {
 							<tr>
 								<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
 								<th>
-									<c:if test="${param.orderby eq 'bottom' or param.sort ne 'sortNo'}"><a href="/infra/member/memberList?sort=sortNo&orderby=top">번호</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortNo'}"><a href="/infra/member/memberList?sort=sortNo&orderby=bottom">번호</a></c:if>
+									<c:if test="${param.orderby eq 'bottom' or param.sort ne 'sortNo'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top">번호</a></c:if>
+									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortNo'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom">번호</a></c:if>
 								</th>
 								<th>
-									<c:if test="${param.orderby eq 'bottom' or param.sort ne 'sortId'}"><a href="/infra/member/memberList?sort=sortId&orderby=top">아이디</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortId'}"><a href="/infra/member/memberList?sort=sortId&orderby=bottom">아이디</a></c:if>								
+									<c:if test="${param.orderby eq 'bottom' or param.sort ne 'sortId'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=top">아이디</a></c:if>
+									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortId'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=bottom">아이디</a></c:if>								
 								</th>
 								<th>
-									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortName'}"><a href="/infra/member/memberList?sort=sortName&orderby=top">이름</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortName'}"><a href="/infra/member/memberList?sort=sortName&orderby=bottom">이름</a></c:if>
+									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortName'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=top">이름</a></c:if>
+									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortName'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=bottom">이름</a></c:if>
 								</th>
 								<th>
-									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortGrade'}"><a href="/infra/member/memberList?sort=sortGrade&orderby=top">회원등급</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortGrade'}"><a href="/infra/member/memberList?sort=sortGrade&orderby=bottom">회원등급</a></c:if>
+									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortGrade'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=top">회원등급</a></c:if>
+									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortGrade'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=bottom">회원등급</a></c:if>
 								</th>
 								<th>상태</th>
 								<th>
-									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortRedt'}"><a href="/infra/member/memberList?sort=sortRedt&orderby=top">가입일</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortRedt'}"><a href="/infra/member/memberList?sort=sortRedt&orderby=bottom">가입일</a></c:if>
+									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortRedt'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=top">가입일</a></c:if>
+									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortRedt'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=bottom">가입일</a></c:if>
 								</th>
 								<th>관리</th>
 							</tr>
