@@ -80,6 +80,8 @@ public class CodeVo {
 	public void setParamsPagingForCodeList(int totalRowsParam) {
 		
 		totalRows = totalRowsParam;
+		
+		rowNumToShow = 1;
 
 		totalPages = totalRows / rowNumToShow;
 

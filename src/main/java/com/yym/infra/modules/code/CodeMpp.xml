@@ -58,6 +58,7 @@
 	<select id="selectListAll" resultMap="resultMapObj">
 		SELECT
 			ifcgSeq
+			,ifcgName
 		FROM
 			infrCodeGroup
 	</select>
