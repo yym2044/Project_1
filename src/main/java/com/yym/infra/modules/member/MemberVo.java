@@ -19,7 +19,6 @@ public class MemberVo {
 	
 	private Integer checkbox1;
 	
-	private String shAddress;
 //	정렬
 	private String sort;
 	private String orderby;
@@ -223,12 +222,6 @@ public class MemberVo {
 	}
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
-	}
-	public String getShAddress() {
-		return shAddress;
-	}
-	public void setShAddress(String shAddress) {
-		this.shAddress = shAddress;
 	}
 	
 }

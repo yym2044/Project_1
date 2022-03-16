@@ -69,8 +69,6 @@ public class MemberController {
 		List<Member> list = service.selectListCode();
 		model.addAttribute("list", list);
 		
-		model.addAttribute("vo", vo);
-		
 		return "member/memberForm";
 	}
 	
