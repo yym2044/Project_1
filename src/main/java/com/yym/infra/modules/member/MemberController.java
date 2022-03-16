@@ -20,6 +20,8 @@ public class MemberController {
 
 		int count = service.selectListCount(vo);
 		
+		String count2 = String.valueOf(count);
+		
 		vo.setParamsPaging(count);
 		
 		if(count != 0) {
@@ -31,6 +33,8 @@ public class MemberController {
 			
 			List<Member> listSearch = service.selectListSearch();
 			model.addAttribute("listSearch", listSearch);
+			
+			model.addAttribute("count2", count2);
 			
 		}
 		

@@ -449,7 +449,9 @@ a {
 			<div class="row">
 				<div class="col-8 col-md-3 p-auto d-flex justify-content-start align-items-center fs-5"
 					style="margin-left: 12px;">
-					검색결과 : <b class="px-1">${fn:length(list)}</b> / 총 <b class="px-1">${fn:length(list)}</b>명 검색결과
+					
+					검색결과 : <b class="px-1">${fn:length(list)}</b> / 총 <b class="px-1">${count2}</b>명 
+					
 				</div>
 				<!-- 
 				<div class="col-1 col-md-1 ms-1 me-0 p-auto">

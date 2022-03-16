@@ -53,11 +53,11 @@
 		 <choose>
 		 	<when test="sort == 'sortNo' and orderby == 'top'">
 				ORDER BY
-					ifmmSeq
+					a.ifmmSeq
 		 	</when>
 		 	<when test="sort == 'sortNo' and orderby == 'bottom'">
 				ORDER BY
-					ifmmSeq desc
+					a.ifmmSeq desc
 		 	</when>
 		 	<when test="sort == 'sortId' and orderby == 'top'">
 				ORDER BY
