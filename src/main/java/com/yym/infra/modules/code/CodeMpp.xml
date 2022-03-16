@@ -55,6 +55,13 @@
 		
 	</select>
 	
+	<select id="selectListAll" resultMap="resultMapObj">
+		SELECT
+			ifcgSeq
+		FROM
+			infrCodeGroup
+	</select>
+	
 	<insert id="insert">
 		INSERT INTO infrCodeGroup (
 			ifcgName

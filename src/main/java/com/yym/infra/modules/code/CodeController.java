@@ -119,7 +119,7 @@ public class CodeController {
 		List<Code> list = service.selectList_code(vo);
 		model.addAttribute("list", list);
 		
-		List<Code> listIfcgSeq = service.selectList(vo);
+		List<Code> listIfcgSeq = service.selectListAll();
 		model.addAttribute("listIfcgSeq",listIfcgSeq);
 		}
 		
