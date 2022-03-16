@@ -17,6 +17,7 @@ public class MemberDao {
 	private static String namespace = "com.yym.infra.modules.member.MemberMpp";
 
 	public int selectListCount(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectListCount", vo); }
+	public List<Member> selectListAllMember() {return sqlSession.selectList(namespace + ".selectListAllMember", "");}
 	
 	public List<Member> selectList(MemberVo vo){ 
 		return sqlSession.selectList(namespace + ".selectList", vo);

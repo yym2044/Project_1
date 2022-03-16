@@ -7,6 +7,17 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+<style type="text/css">
+	td{
+		text-align: center;
+	}
+	
+	a{
+		text-decoration: none;
+	}
+
+</style>
+
 <a href="/infra/code/codeForm" style="text-decoration: none;">등록하기</a>
 <a href="/infra/code/codeGroupList" style="text-decoration: none;">그룹보기</a>
 
@@ -34,12 +45,28 @@
 		</tr>	
 	</c:when>
 	<c:otherwise>
-		<c:forEach items="${list}" var="item" varStatus="status">	
-		
-		<c:out value="Group ${item.ifcgSeq}"/> | <c:out value="${item.ifcdSeq}"/> | <c:out value="${item.ifcdOrder}"/> | <a href="/infra/code/codeView?ifcdSeq=${item.ifcdSeq}" style="text-decoration: none"><c:out value="${item.ifcdName}"/></a> | <c:out value="${item.ifcdDelNy}"/><br>
-		
-			
-		</c:forEach>
+		<table class="table table-hover table-sm border border-1 box-white">
+			<thead>
+				<tr>
+					<td>ifcgSeq</td>
+					<td>ifcdSeq</td>
+					<td>ifcdOrder</td>
+					<td>ifcdName</td>
+					<td>ifcdDelNy</td>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${list}" var="item" varStatus="status">	
+					<tr>
+						<td><c:out value="${item.ifcgSeq}"/></td>
+						<td><c:out value="${item.ifcdSeq}"/></td>
+						<td><c:out value="${item.ifcdOrder}"/></td>
+						<td><a href="/infra/code/codeView?ifcdSeq=${item.ifcdSeq}" style="text-decoration: none"><c:out value="${item.ifcdName}"/></a></td>
+						<td><c:out value="${item.ifcdDelNy}"/></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</c:otherwise>
 </c:choose>
 

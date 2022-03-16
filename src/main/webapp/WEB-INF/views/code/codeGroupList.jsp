@@ -71,24 +71,22 @@
 	
 		<table class="table table-hover table-sm border border-1 box-white" style="min-width: 700px; border-collapse: collapse;">
 			<thead>
-			<tr>
-				<td>*</td>
-				<td>코드그룹 번호</td>
-				<td>이름</td>
-				<td>영문이름</td>
-				<td>삭제여부</td>
-			</tr>
+				<tr>
+					<td>ifcgSeq</td>
+					<td>ifcgName</td>
+					<td>ifcgNameEng</td>
+					<td>ifcgDelNy</td>
+				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${list}" var="item" varStatus="status">
-				<tr>
-					<td><a href="/infra/code/codeGroupView2?ifcgSeq=<c:out value="${item.ifcgSeq}"/>">그룹 코드 조회</a></td>
-					<td><c:out value="${item.ifcgSeq}"/></td>
-					<td><a href="/infra/code/codeGroupView1?ifcgSeq=<c:out value="${item.ifcgSeq}"/>"><c:out value="${item.ifcgName}"/></a></td>
-					<td><c:out value="${item.ifcgNameEng}"/></td>
-					<td><c:out value="${item.ifcgDelNy}"/></td>
-				<tr>
-			</c:forEach>
+				<c:forEach items="${list}" var="item" varStatus="status">
+					<tr>
+						<td><a href="/infra/code/codeGroupView2?ifcgSeq=<c:out value="${item.ifcgSeq}"/>"><c:out value="${item.ifcgSeq}"/></a></td>
+						<td><a href="/infra/code/codeGroupView1?ifcgSeq=<c:out value="${item.ifcgSeq}"/>"><c:out value="${item.ifcgName}"/></a></td>
+						<td><c:out value="${item.ifcgNameEng}"/></td>
+						<td><c:out value="${item.ifcgDelNy}"/></td>
+					<tr>
+				</c:forEach>
 			</tbody>
 		</table>
 

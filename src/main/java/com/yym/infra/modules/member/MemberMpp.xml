@@ -116,6 +116,13 @@
 		 <include refid="selectListCommon"/>
 		 LIMIT #{startRnumForMysql}, #{rowNumToShow}
 	</select>
+	
+	<select id="selectListAllMember" resultMap="resultMapObj">
+		SELECT
+			ifmmSeq
+		FROM
+			infrMember
+	</select>
 
 	
 	<select id="selectListSearch" resultMap="resultMapObj">

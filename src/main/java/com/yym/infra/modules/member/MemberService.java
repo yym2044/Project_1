@@ -5,6 +5,7 @@ import java.util.List;
 public interface MemberService {
 	
 	public int selectListCount(MemberVo vo) throws Exception;
+	public List<Member> selectListAllMember() throws Exception;
 	public List<Member> selectList(MemberVo vo) throws Exception; 
 	public List<Member> selectListSearch() throws Exception;
 	public List<Member> selectListCode() throws Exception;

@@ -54,7 +54,11 @@ public class MemberController {
 	public String memberForm(Model model, MemberVo vo) throws Exception {
 		
 		//멤버수 가져오기 -> ${fn:length(list2)+1}로 다음 ifmmSeq값을 얻음
-		List<Member> list2 = service.selectList(vo);
+//		List<Member> list2 = service.selectList(vo);
+//		model.addAttribute("list2", list2);
+		
+		//멤버수 가져오기 (selectListAllMember) -> ${fn:length(list2)+1}로 다음 ifmmSeq값을 얻음
+		List<Member> list2 = service.selectListAllMember();
 		model.addAttribute("list2", list2);
 		
 		//코드값 가져오기
