@@ -21,6 +21,7 @@
 <body>
 
 	<form method="post" action="/infra/member/memberInst">
+	
 		
 		<!-- ifmmSeq -->
 		<input type="hidden" name="ifmmSeq" value="${fn:length(list2)+1}">
@@ -48,9 +49,25 @@
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">비밀번호</th>
-					<td class="text-start"><input type="password" name="ifmmPwd" style="min-width: 200px;" autocomplete="off"></td>
+					<td class="text-start">
+						<input type="password" id="pwd1" style="min-width: 200px;" autocomplete="off">
+					    <div class="valid-feedback" id="pwd1ValidFeedBack">
+					      사용가능한 비밀번호입니다.
+					    </div>
+					    <div class="invalid-feedback" id="pwd1InvalidFeedBack">
+					      사용 불가능한 비밀번호입니다.
+					    </div>
+					</td>
 					<th style="width: 200px;" class="bg-light text-start">비밀번호확인</th>
-					<td class="text-start"><input type="password" name="ifmmPwdConfirm" style="min-width: 200px;" autocomplete="off"></td>
+					<td class="text-start">
+						<input type="password" name="ifmmPwdConfirm" id="pwd2" style="min-width: 200px;" autocomplete="off">
+					    <div class="valid-feedback" id="pwd2ValidFeedBack">
+					      비밀번호가 일치합니다.
+					    </div>
+					    <div class="invalid-feedback" id="pwd2InvalidFeedBack">
+					      비밀번호가 일치하지 않습니다.
+					    </div>
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">이름</th>
@@ -84,11 +101,12 @@
 					<td class="text-start" colspan="3">
 						<div class="row g-2">
 							<div class="col-12 d-flex align-items-center">
-								<input type="text" name="ifmaZipCode" placeholder="우편번호" autocomplete="off"> <a href="#" class="btn btn-sm btn-outline-dark ms-1" data-bs-toggle="modal" data-bs-target="#zipcodeModal">우편번호 검색</a>
+								<input type="text" name="ifmaZipCode" id="sample6_postcode" placeholder="우편번호" disabled> <input type="button" class="btn btn-sm btn-outline-dark ms-1" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
 							</div>
 							<div class="col-12">
-								<input type="text" name="ifmaAddress1" placeholder="주소" autocomplete="off" style="width:300px;">			
-								<input type="text" name="ifmaAddress2" placeholder="상세주소" autocomplete="off" style="width:300px;">					
+								<input type="text" name="ifmaAddress1" id="sample6_address" placeholder="주소" disabled style="width:300px;">			
+								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" placeholder="상세주소" autocomplete="off" style="width:300px;">					
+								<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 							</div>
 						</div>
 					</td>
@@ -185,36 +203,6 @@
 		</div>
 	</form>
 	
-	<!--MODAL -->
-	<div class="modal fade" id="zipcodeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">우편번호 검색</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<h3 style="text-align: center">우편번호 검색</h3>
-					<br> <br>
-					<div class="input-group mb-3">
-						<input class="form-control form-control-lg" type="text" placeholder="주소 입력"> <br> <a
-							href="https://map.naver.com/v5" class="btn btn-outline-secondary" role="button" id="button-addon2">검색</a>
-					</div>
-					<p>도로명, 건물명 또는 지번 중 편한 방법으로 검색하세요.</p>
-					<p>예) 건물명 : 방배동 우성아파트</p>
-					<p>도로명 : 테헤란로 152</p>
-					<p>지역번 : 역삼동 737</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary">확인</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- MODAL END -->
-
-
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 	<script src="${path}/resources/js/sidebars.js"></script>
@@ -260,7 +248,96 @@
 
 		
 	</script>
+	
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<script>
+	    function sample6_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var addr = ''; // 주소 변수
+	                var extraAddr = ''; // 참고항목 변수
+	
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+	
+	                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	                if(data.userSelectedType === 'R'){
+	                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있고, 공동주택일 경우 추가한다.
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    // 조합된 참고항목을 해당 필드에 넣는다.
+	                    document.getElementById("sample6_extraAddress").value = extraAddr;
+	                
+	                } else {
+	                    document.getElementById("sample6_extraAddress").value = '';
+	                }
+	
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('sample6_postcode').value = data.zonecode;
+	                document.getElementById("sample6_address").value = addr;
+	                // 커서를 상세주소 필드로 이동한다.
+	                document.getElementById("sample6_detailAddress").focus();
+	            }
+	        }).open();
+	    }
+	</script>
+	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
+	<script type="text/javascript"> 
+		$(function(){
+			$("#pwd1ValidFeedBack").hide(); 
+			$("#pwd1InvalidFeedBack").hide(); 
+			
+			$("#pwd2ValidFeedBack").hide(); 
+			$("#pwd2InvalidFeedBack").hide(); 
+			$("input").keyup(function(){
+				var pwd1=$("#pwd1").val(); 
+				var pwd2=$("#pwd2").val();
+				if(pwd1.length>5){
+					$("#pwd1ValidFeedBack").show();
+					$("#pwd1InvalidFeedBack").hide();
+				} else {
+					$("#pwd1ValidFeedBack").hide();
+					$("#pwd1InvalidFeedBack").show();
+				}
+				
+				if(pwd1 != "" && pwd2 != ""){ 
+					if(pwd1 == pwd2){ 
+						$("#pwd2ValidFeedBack").show(); 
+						$("#pwd2InvalidFeedBack").hide(); 
+						$("#submit").removeAttr("disabled"); 
+					}else{ 
+						$("#pwd2ValidFeedBack").hide(); 
+						$("#pwd2InvalidFeedBack").show(); 
+						$("#submit").attr("disabled", "disabled"); 
+						} 
+					} 
+				}); 
+			}); 
+		
+	</script>
 
+	
 </body>
 
 </html>
