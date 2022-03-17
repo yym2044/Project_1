@@ -20,7 +20,7 @@
 
 <form method="get" action="/infra/code/codeGroupList">
 
-<select name="shIfcgDelNy">
+<select name="shIfcgDelNy" id="shIfcgDelNy">
 	<option value="">::삭제여부::</option>
 	<option value="1">Y</option>
 	<option value="0">N</option>
@@ -35,6 +35,7 @@
 </select>
 <input type="text" name="shValue">
 <input type="submit" id="btnSubmit" value="검색">
+<input type="submit" id="btnSubmit2" value="검색">
 <br>
 </form>
 <%-- <c:choose>
@@ -117,13 +118,31 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/infra/resources/js/validation.js"></script>
 
 <script type="text/javascript">
 	$("#btnSubmit").on("click", function(){
 		
-		alert("jquery방식 : " + $("#shIfcgName").val());								// jquery 방식
-		alert("javascript방식 : " + document.getElementById("shIfcgName").value);		// javascript 방식
+//		alert("jquery방식 : " + $("#shIfcgDelNy").val());								// jquery 방식
+//		alert("javascript방식 : " + document.getElementById("shIfcgName").value);		// javascript 방식
+	
+//	if($("shIfcgName").val() == "" || $("shIfcgName").val() == null){
+//		alert("shIfcgName이 비어있다");
+//		$("shIfcgName").focus();
+//	}
+
+//	checkNull($("#shIfcgDelNy"), $("#shIfcgDelNy").val(), "삭제여부 선택하시오");
+//	checkNull($("#shIfcgName"), $("#shIfcgName").val(), "그룹이름을 입력하시오");
+//	checkNull($("#shOption"), $("#shOption").val(), "한글 또는 영어를 선택하시오");
+//	checkNull($("#shValue"), $("#shValue").val(), "이름을 입력하시오");
+
+	if(checkNull($("#shIfcgDelNy"), $("#shIfcgDelNy").val(), "삭제여부 선택하시오")) return false;
+	if(checkNull($("#shIfcgName"), $("#shIfcgName").val(), "그룹이름을 입력하시오")) return false;
 		
+	});
+	
+	$("#btnSubmit2").on("click", function(){
+		alert("2번째 버튼입니다.");
 	});
 
 </script>
