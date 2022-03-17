@@ -26,7 +26,7 @@
 	<option value="0">N</option>
 </select>
 
-그룹이름 : <input type="text" name="shIfcgName" value="${param.shIfcgName}">
+그룹이름 : <input type="text" name="shIfcgName" id="shIfcgName" value="${param.shIfcgName}">
 ||
 <select name="shOption">
 	<option value="">::검색구분::</option>
@@ -34,7 +34,7 @@
 	<option value="2" <c:if test="${param.shOption eq 2}">selected</c:if>>영어</option>
 </select>
 <input type="text" name="shValue">
-<input type="submit" value="검색">
+<input type="submit" id="btnSubmit" value="검색">
 <br>
 </form>
 <%-- <c:choose>
@@ -116,3 +116,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+	$("#btnSubmit").on("click", function(){
+		
+		alert("jquery방식 : " + $("#shIfcgName").val());								// jquery 방식
+		alert("javascript방식 : " + document.getElementById("shIfcgName").value);		// javascript 방식
+		
+	});
+
+</script>
