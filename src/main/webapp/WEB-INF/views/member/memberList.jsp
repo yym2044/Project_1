@@ -325,7 +325,7 @@ a {
 								<div class="row g-3 d-flex align-items-center">
 									<div class="col-4 col-md-2">
 										<select name="shIfscSeq" id="shIfscSeq" class="form-select form-select-sm">
-											<option value="0">사용안함</option>
+											<option value="0">선택하세요</option>
 											<c:forEach items="${listSearch}" var="item" varStatus="status">
 												<option value="${item.ifscSeq}" <c:if test="${vo.shIfscSeq eq item.ifscSeq}">selected</c:if>>
 													<c:out value="${item.ifscName}" />
@@ -334,8 +334,9 @@ a {
 										</select>
 									</div>
 									<div class="col-8 col-md-5">
-										<input name="searchBar" id="searchBar" class="form-control form-control-sm" placeholder="search.."
-											value="${vo.searchBar}" autocomplete="off">
+										<input name="searchBar" id="searchBar" disabled class="form-control form-control-sm" placeholder="search.."
+											 <c:if test="${vo.shIfscSeq ne 0}">value="${vo.searchBar}"</c:if> autocomplete="off">
+											
 									</div>
 									<!-- 
 									<div class="col-9 col-md">
@@ -879,6 +880,17 @@ a {
 	<script src="/infra/resources/js/validation.js"></script>
 
 	<script type="text/javascript">
+	
+	
+	$("#shIfscSeq").on("change", function(){
+		if($("#shIfscSeq").val() == 0){
+			$("#searchBar").attr('disabled', true);
+			$("#searchBar").val('');
+		} else if ($("#shIfscSeq").val() != 0) {
+			$("#searchBar").attr('disabled', false);
+		}
+	});
+	
 	$("#btnSubmit").on("click", function(){
 	
 		
