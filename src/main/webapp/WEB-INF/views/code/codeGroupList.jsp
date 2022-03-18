@@ -22,18 +22,18 @@
 
 <select name="shIfcgDelNy" id="shIfcgDelNy">
 	<option value="">::삭제여부::</option>
-	<option value="1">Y</option>
-	<option value="0">N</option>
+	<option value="1" <c:if test="${vo.shIfcgDelNy eq 1}">selected</c:if>>Y</option>
+	<option value="0" <c:if test="${vo.shIfcgDelNy eq 0}">selected</c:if>>N</option>
 </select>
 
-그룹이름 : <input type="text" name="shIfcgName" id="shIfcgName" value="${param.shIfcgName}">
+그룹이름 : <input type="text" name="shIfcgName" id="shIfcgName" value="${vo.shIfcgName}">
 ||
 <select name="shOption">
 	<option value="">::검색구분::</option>
-	<option value="1" <c:if test="${param.shOption eq 1}">selected</c:if>>한글</option>
-	<option value="2" <c:if test="${param.shOption eq 2}">selected</c:if>>영어</option>
+	<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>한글</option>
+	<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>영어</option>
 </select>
-<input type="text" name="shValue">
+<input type="text" name="shValue" value="${vo.shValue}">
 <input type="submit" id="btnSubmit" value="검색">
 <input type="submit" id="btnSubmit2" value="검색">
 <br>

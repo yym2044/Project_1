@@ -31,12 +31,13 @@ public class MemberController {
 			
 //		model.addAttribute("list", service.selectList());  위 두줄 대신 이렇게도 가능
 			
-			List<Member> listSearch = service.selectListSearch();
-			model.addAttribute("listSearch", listSearch);
 			
 			model.addAttribute("count2", count2);
 			
 		}
+		
+		List<Member> listSearch = service.selectListSearch();
+		model.addAttribute("listSearch", listSearch);
 		
 		return "member/memberList";
 	}

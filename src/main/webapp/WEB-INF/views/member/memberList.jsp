@@ -276,16 +276,19 @@ a {
 							<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
 							<div class="col-12 col-md-10">
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankAll" name="shIfmmGrade" value="1" checked <c:if test="${param.shIfmmGrade eq 1}">checked</c:if>>
-									<label for="memberRankAll" class="form-check-label">전체</label>
+									<input type="radio" class="form-check-input" id="memberRankAll" name="shIfmmGrade" value="1" checked
+										<c:if test="${vo.shIfmmGrade eq 1}">checked</c:if>> <label for="memberRankAll"
+										class="form-check-label">전체</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankGeneral" name="shIfmmGrade" value="2" <c:if test="${param.shIfmmGrade eq 2}">checked</c:if>> <label
-										for="memberRankGeneral" class="form-check-label">일반회원</label>
+									<input type="radio" class="form-check-input" id="memberRankGeneral" name="shIfmmGrade" value="2"
+										<c:if test="${vo.shIfmmGrade eq 2}">checked</c:if>> <label for="memberRankGeneral"
+										class="form-check-label">일반회원</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankVip" name="shIfmmGrade" value="3" <c:if test="${param.shIfmmGrade eq 3}">checked</c:if>> <label
-										for="memberRankVip" class="form-check-label">VIP회원</label>
+									<input type="radio" class="form-check-input" id="memberRankVip" name="shIfmmGrade" value="3"
+										<c:if test="${vo.shIfmmGrade eq 3}">checked</c:if>> <label for="memberRankVip"
+										class="form-check-label">VIP회원</label>
 								</div>
 							</div>
 						</div>
@@ -299,15 +302,18 @@ a {
 								</div>
 								 -->
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmEmailConsentNy" id="email_check" value="1" class="form-check-input" <c:if test="${param.shIfmmEmailConsentNy eq 1}">checked</c:if>> <label
-										for="email_check" class="form-check-label">이메일</label>
+									<input type="checkbox" name="shIfmmEmailConsentNy" id="email_check" value="1" class="form-check-input"
+										<c:if test="${vo.shIfmmEmailConsentNy eq 1}">checked</c:if>> <label for="email_check"
+										class="form-check-label">이메일</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmSmsConsentNy" id="sms_check" value="1" class="form-check-input" <c:if test="${param.shIfmmSmsConsentNy eq 1}">checked</c:if>> <label for="sms_check"
+									<input type="checkbox" name="shIfmmSmsConsentNy" id="sms_check" value="1" class="form-check-input"
+										<c:if test="${vo.shIfmmSmsConsentNy eq 1}">checked</c:if>> <label for="sms_check"
 										class="form-check-label">SMS</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmPushConsentNy" id="push_check" value="1" class="form-check-input" <c:if test="${param.shIfmmPushConsentNy eq 1}">checked</c:if>> <label for="push_check"
+									<input type="checkbox" name="shIfmmPushConsentNy" id="push_check" value="1" class="form-check-input"
+										<c:if test="${vo.shIfmmPushConsentNy eq 1}">checked</c:if>> <label for="push_check"
 										class="form-check-label">Push</label>
 								</div>
 							</div>
@@ -318,16 +324,18 @@ a {
 
 								<div class="row g-3 d-flex align-items-center">
 									<div class="col-4 col-md-2">
-										<select name="shIfscSeq" class="form-select form-select-sm">
+										<select name="shIfscSeq" id="shIfscSeq" class="form-select form-select-sm">
+											<option value="0">사용안함</option>
 											<c:forEach items="${listSearch}" var="item" varStatus="status">
-												<option value="${item.ifscSeq}" <c:if test="${param.shIfscSeq eq item.ifscSeq}">selected</c:if>>
-													<c:out value="${item.ifscName}"/>
+												<option value="${item.ifscSeq}" <c:if test="${vo.shIfscSeq eq item.ifscSeq}">selected</c:if>>
+													<c:out value="${item.ifscName}" />
 												</option>
 											</c:forEach>
 										</select>
 									</div>
 									<div class="col-8 col-md-5">
-										<input name="searchBar" class="form-control form-control-sm" placeholder="search.." value="${param.searchBar}" autocomplete="off">
+										<input name="searchBar" id="searchBar" class="form-control form-control-sm" placeholder="search.."
+											value="${vo.searchBar}" autocomplete="off">
 									</div>
 									<!-- 
 									<div class="col-9 col-md">
@@ -346,9 +354,9 @@ a {
 						</div>
 					</div>
 					<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
-						
-						<input type="submit" class="btn btn-info btn-lg text-white" value="검색">
-					
+
+						<input type="submit" id="btnSubmit" class="btn btn-info btn-lg text-white" value="검색">
+
 						<!-- 
 						<button class="btn btn-info btn-lg">
 							<span class="text-white">검색</span>
@@ -444,140 +452,152 @@ a {
 		</div>
 		 -->
 		<br> <br>
-	<form method="get" action="/infra/member/updateDelNy">
-		<div class="width92">
-			<div class="row">
-				<div class="col-8 col-md-3 p-auto d-flex justify-content-start align-items-center fs-5"
-					style="margin-left: 12px;">
-					
-					검색결과 : <b class="px-1">${fn:length(list)}</b> / 총 <b class="px-1">${count2}</b>명 
-					
-				</div>
-				<!-- 
+		<form method="get" action="/infra/member/updateDelNy">
+			<div class="width92">
+				<div class="row">
+					<div class="col-8 col-md-3 p-auto d-flex justify-content-start align-items-center fs-5" style="margin-left: 12px;">
+
+						검색결과 : <b class="px-1">${fn:length(list)}</b> / 총 <b class="px-1">${count2}</b>명
+
+					</div>
+					<!-- 
 				<div class="col-1 col-md-1 ms-1 me-0 p-auto">
 					<a class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#excelModal"> <i
 						class="bi bi-file-earmark-excel"></i>
 					</a>
 				</div>
 				 -->
-				 
-				<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
-					<div class="text-end">
-						 
-						<div class="btn-toolbar-sm justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
-							<div class="btn-group" role="group" aria-label="First group">
-							  <button type="button" class="btn btn-sm btn-outline-dark" disabled>View</button>
+
+					<div class="col-12 col-md ms-1 me-0 my-1 p-auto">
+						<div class="text-end">
+
+							<div class="btn-toolbar-sm justify-content-end" role="toolbar" aria-label="Toolbar with button groups">
+								<div class="btn-group" role="group" aria-label="First group">
+									<button type="button" class="btn btn-sm btn-outline-dark" disabled>View</button>
+								</div>
+								<div class="btn-group me-2" role="group" aria-label="Second group">
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary"
+										href="/infra/member/memberList?rowNumToShow=3">3</a> <a type="button"
+										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary"
+										href="/infra/member/memberList?rowNumToShow=5">5</a> <a type="button"
+										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary"
+										href="/infra/member/memberList?rowNumToShow=10">10</a> <a type="button"
+										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary"
+										href="/infra/member/memberList?rowNumToShow=20">20</a> <a type="button"
+										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary"
+										href="/infra/member/memberList?rowNumToShow=50">50</a> <a type="button"
+										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary"
+										href="/infra/member/memberList?rowNumToShow=100">100</a>
+
+								</div>
 							</div>
-							<div class="btn-group me-2" role="group" aria-label="Second group">
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=3">3</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=5">5</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=10">10</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=20">20</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=50">50</a>
-							  <a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=100">100</a>
-							  
-							</div>
-						 </div>
-						
+
+						</div>
 					</div>
+
 				</div>
-				
-			</div>
 
-			<!-- ---------------테이블 부분----------------- -->
+				<!-- ---------------테이블 부분----------------- -->
 
-			<c:choose>
-				<c:when test="${fn:length(list) eq 0}">
-					<table class="table table-hover table-sm border border-1 box-white"
-						style="min-width: 1000px; border-collapse: collapse;">
-						<thead>
-							<tr>
-								<th><input type="checkbox" name="checkbox1" disabled class="form-check-input"></th>
-								<th>번호</th>
-								<th>아이디</th>
-								<th>이름</th>
-								<th>회원등급</th>
-								<th>상태</th>
-								<th>가입일</th>
-								<th>관리</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="text-center" colspan="8">검색결과가 없습니다.</td>
-							</tr>
-						</tbody>
-					</table>
-				</c:when>
-
-				<c:otherwise>
-				
-					<table class="table table-hover table-sm border border-1 box-white"
-						style="min-width: 1000px; border-collapse: collapse;">
-						<thead>
-							<tr>
-								<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
-								<th>
-									<c:if test="${param.orderby eq 'bottom' or param.sort ne 'sortNo'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top">번호</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortNo'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom">번호</a></c:if>
-								</th>
-								<th>
-									<c:if test="${param.orderby eq 'bottom' or param.sort ne 'sortId'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=top">아이디</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortId'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=bottom">아이디</a></c:if>								
-								</th>
-								<th>
-									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortName'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=top">이름</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortName'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=bottom">이름</a></c:if>
-								</th>
-								<th>
-									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortGrade'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=top">회원등급</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortGrade'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=bottom">회원등급</a></c:if>
-								</th>
-								<th>상태</th>
-								<th>
-									<c:if test="${param.orderby ne 'top' or param.sort ne 'sortRedt'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=top">가입일</a></c:if>
-									<c:if test="${param.orderby eq 'top' and param.sort eq 'sortRedt'}"><a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=bottom">가입일</a></c:if>
-								</th>
-								<th>관리</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach items="${list}" var="item" varStatus="status">
+				<c:choose>
+					<c:when test="${fn:length(list) eq 0}">
+						<table class="table table-hover table-sm border border-1 box-white"
+							style="min-width: 1000px; border-collapse: collapse;">
+							<thead>
 								<tr>
-									<td><input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>"
-										class="form-check-input"></td>
-									<td><c:out value="${item.ifmmSeq}" /></td>
-									<td><c:out value="${item.ifmmId}" /></td>
-									<td><c:out value="${item.ifmmName}" /></td>
-									<td <c:if test="${item.ifmmGrade eq '일반회원'}">class="text-primary"</c:if><c:if test="${item.ifmmGrade eq 'VIP회원'}">class="text-danger"</c:if>><c:out value="${item.ifmmGrade}" /></td>
-									<td <c:if test="${item.ifmmStatus eq '탈퇴대기'}">class="text-danger"</c:if>><c:out value="${item.ifmmStatus}" /></td>
-									<td><c:out value="${item.ifmmRegDate}" /></td>
-									<td>
-										<div class="d-flex justify-content-center align-items-center">
-											<a href="#" class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-chat-right-dots"></i></a> <a href="#"
-												class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-envelope"></i></a> <a
-												href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0"> <%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>관리
-											</a>
-										</div>
-									</td>
+									<th><input type="checkbox" name="checkbox1" disabled class="form-check-input"></th>
+									<th>번호</th>
+									<th>아이디</th>
+									<th>이름</th>
+									<th>회원등급</th>
+									<th>상태</th>
+									<th>가입일</th>
+									<th>관리</th>
+								</tr>
+							</thead>
+							<tbody>
 								<tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				
+									<td class="text-center" colspan="8">검색결과가 없습니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</c:when>
 
-				</c:otherwise>
-			</c:choose>
+					<c:otherwise>
 
-			<div class="row ps-2">
-				<div class="col col-md-4 ms-1 p-0">
-					<a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="bi bi-trash"></i>
-					</a> <a class="btn btn-outline-primary" href="/infra/member/memberForm"> <!-- onclick="window.open('memberForm','name','resizable=no width=1000 height=500');return false" -->
-						<i class="bi bi-plus-square"></i>
-					</a>
-				</div>
-				<!-- 같은줄 or 따로뺄지 -->
-				<!-- 
+						<table class="table table-hover table-sm border border-1 box-white"
+							style="min-width: 1000px; border-collapse: collapse;">
+							<thead>
+								<tr>
+									<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
+									<th><c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortNo'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top">번호</a>
+										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortNo'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom">번호</a>
+										</c:if></th>
+									<th><c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortId'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=top">아이디</a>
+										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortId'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=bottom">아이디</a>
+										</c:if></th>
+									<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortName'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=top">이름</a>
+										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortName'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=bottom">이름</a>
+										</c:if></th>
+									<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortGrade'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=top">회원등급</a>
+										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortGrade'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=bottom">회원등급</a>
+										</c:if></th>
+									<th>상태</th>
+									<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortRedt'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=top">가입일</a>
+										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortRedt'}">
+											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=bottom">가입일</a>
+										</c:if></th>
+									<th>관리</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${list}" var="item" varStatus="status">
+									<tr>
+										<td><input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>"
+											class="form-check-input"></td>
+										<td><c:out value="${item.ifmmSeq}" /></td>
+										<td><c:out value="${item.ifmmId}" /></td>
+										<td><c:out value="${item.ifmmName}" /></td>
+										<td <c:if test="${item.ifmmGrade eq '일반회원'}">class="text-primary"</c:if>
+											<c:if test="${item.ifmmGrade eq 'VIP회원'}">class="text-danger"</c:if>><c:out value="${item.ifmmGrade}" /></td>
+										<td <c:if test="${item.ifmmStatus eq '탈퇴대기'}">class="text-danger"</c:if>><c:out
+												value="${item.ifmmStatus}" /></td>
+										<td><c:out value="${item.ifmmRegDate}" /></td>
+										<td>
+											<div class="d-flex justify-content-center align-items-center">
+												<a href="#" class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-chat-right-dots"></i></a> <a href="#"
+													class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-envelope"></i></a> <a
+													href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0"> <%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>관리
+												</a>
+											</div>
+										</td>
+									<tr>
+								</c:forEach>
+							</tbody>
+						</table>
+
+
+					</c:otherwise>
+				</c:choose>
+
+				<div class="row ps-2">
+					<div class="col col-md-4 ms-1 p-0">
+						<a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="bi bi-trash"></i>
+						</a> <a class="btn btn-outline-primary" href="/infra/member/memberForm"> <!-- onclick="window.open('memberForm','name','resizable=no width=1000 height=500');return false" -->
+							<i class="bi bi-plus-square"></i>
+						</a>
+					</div>
+					<!-- 같은줄 or 따로뺄지 -->
+					<!-- 
 					<div class="col col-md-6">
 						<nav>
 							<ul class="pagination">
@@ -594,31 +614,35 @@ a {
 						</nav>
 					</div>
 					 -->
+				</div>
+
 			</div>
 
-		</div>
-	
-		<!-- 같은줄 or 따로뺄지 -->
-		
+			<!-- 같은줄 or 따로뺄지 -->
+
 			<nav class="mt-3" aria-label="...">
-			  <ul class="pagination justify-content-center">
-			    <c:if test="${vo.startPage gt vo.pageNumToShow}">
-			    	<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.startPage - 1}&rowNumToShow=${vo.rowNumToShow}">Previous</a></li>
-				</c:if>
-				<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
-					<c:choose>
-						<c:when test="${i.index eq vo.thisPage}">
-				                <li class="page-item active"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
-						</c:when>
-						<c:otherwise>             
-				                <li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>     
-				<c:if test="${vo.endPage ne vo.totalPages}">                
-					<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.endPage + 1}&rowNumToShow=${vo.rowNumToShow}">Next</a></li>
-				</c:if>  
-			  </ul>
+				<ul class="pagination justify-content-center">
+					<c:if test="${vo.startPage gt vo.pageNumToShow}">
+						<li class="page-item"><a class="page-link"
+							href="/infra/member/memberList?thisPage=${vo.startPage - 1}&rowNumToShow=${vo.rowNumToShow}">Previous</a></li>
+					</c:if>
+					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+						<c:choose>
+							<c:when test="${i.index eq vo.thisPage}">
+								<li class="page-item active"><a class="page-link"
+									href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link"
+									href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:if test="${vo.endPage ne vo.totalPages}">
+						<li class="page-item"><a class="page-link"
+							href="/infra/member/memberList?thisPage=${vo.endPage + 1}&rowNumToShow=${vo.rowNumToShow}">Next</a></li>
+					</c:if>
+				</ul>
 			</nav>
 			<!-- 
 			<nav>
@@ -639,10 +663,10 @@ a {
 				</ul>
 			</nav>
 			 -->
-		<br> <br>
+			<br> <br>
 
-		<!-- footer -->
-		<!-- 
+			<!-- footer -->
+			<!-- 
 		<div class="container-fluid">
 			<div class="row">
 				<p class="text-center">
@@ -653,42 +677,42 @@ a {
 		</div>
  		-->
 
-		<!-- deleteModal -->
+			<!-- deleteModal -->
 
-		<div class="modal fade" id="deleteModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">삭제</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
-					<div class="modal-body">선택항목을 삭제합니다.</div>
-					<div class="modal-footer">
-						<a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">확인</a>
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+			<div class="modal fade" id="deleteModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">삭제</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body">선택항목을 삭제합니다.</div>
+						<div class="modal-footer">
+							<a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">확인</a>
+							<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<!-- deleteConfirmModal -->
-		<div class="modal fade" id="deleteConfirmModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">확인</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-					</div>
-					<div class="modal-body">정말 삭제합니다.</div>
-					<div class="modal-footer">
-						<input type="submit" class="btn btn-primary" value="확인">
-						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+			<!-- deleteConfirmModal -->
+			<div class="modal fade" id="deleteConfirmModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">확인</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body">정말 삭제합니다.</div>
+						<div class="modal-footer">
+							<input type="submit" class="btn btn-primary" value="확인">
+							<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</form>
-	
+		</form>
+
 		<!-- excelModal -->
 		<div class="modal fade" id="excelModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 			aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -850,6 +874,34 @@ a {
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 	<script src="${path}/resources/js/sidebars.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/infra/resources/js/validation.js"></script>
+
+	<script type="text/javascript">
+	$("#btnSubmit").on("click", function(){
+	
+		
+		if($("#shIfscSeq").val() == 1){
+			if(!checkNull($("#searchBar"), $("#searchBar").val(), "이름을 입력해주세요")) {
+				return false;
+			}
+		}
+		if($("#shIfscSeq").val() == 2){
+			if(!checkNull($("#searchBar"), $("#searchBar").val(), "아이디를 입력해주세요")) {
+				return false;
+			}
+		}
+		if($("#shIfscSeq").val() == 3){
+			if(!checkNull($("#searchBar"), $("#searchBar").val(), "이메일을 입력해주세요")) {
+				return false;
+			}
+		}
+		
+		
+	});
+	
+	</script>
 
 </body>
 </html>

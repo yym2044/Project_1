@@ -4,7 +4,7 @@
 //jquery 형 함수
 checkNull = function (obj, value, message) {
 	if(value == "" || value == null){
-		alert("validation.js : " + message);
+		alert(message);
 		obj.focus();
 		return false;
 	} else {
@@ -15,7 +15,7 @@ checkNull = function (obj, value, message) {
 //javascript
 function checkNull (obj, value, message) {
 	if(value == "" || value == null){
-		alert("validation.js : " + message);
+		alert("validation.js1 : " + message);
 		obj.focus();
 		return false;
 	}
