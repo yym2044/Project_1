@@ -136,8 +136,8 @@
 //	checkNull($("#shOption"), $("#shOption").val(), "한글 또는 영어를 선택하시오");
 //	checkNull($("#shValue"), $("#shValue").val(), "이름을 입력하시오");
 
-	if(checkNull($("#shIfcgDelNy"), $("#shIfcgDelNy").val(), "삭제여부 선택하시오")) return false;
-	if(checkNull($("#shIfcgName"), $("#shIfcgName").val(), "그룹이름을 입력하시오")) return false;
+	if(!checkNull($("#shIfcgDelNy"), $("#shIfcgDelNy").val(), "삭제여부 선택하시오")) return false;
+	if(!checkNull($("#shIfcgName"), $("#shIfcgName").val(), "그룹이름을 입력하시오")) return false;
 		
 	});
 	
