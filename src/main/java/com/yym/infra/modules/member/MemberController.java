@@ -63,8 +63,8 @@ public class MemberController {
 //		model.addAttribute("list2", list2);
 		
 		//멤버수 가져오기 (selectListAllMember) -> ${fn:length(list2)+1}로 다음 ifmmSeq값을 얻음
-		List<Member> list2 = service.selectListAllMember();
-		model.addAttribute("list2", list2);
+//		List<Member> list2 = service.selectListAllMember();
+//		model.addAttribute("list2", list2);
 		
 		//코드값 가져오기
 		List<Member> list = service.selectListCode();
@@ -78,10 +78,6 @@ public class MemberController {
 
 		// 입력을 작동시킨다.
 		service.insertMember(dto);
-		service.insertMemberEmail(dto);
-		service.insertMemberAddress(dto);
-		service.insertMemberPhoneMobile(dto);
-		service.insertMemberPhoneHome(dto);
 		
 		return "redirect:/member/memberList";
 	}
@@ -104,10 +100,6 @@ public class MemberController {
 
 		// 업데이트 하는 구문
 		service.updateMember(dto);
-		service.updateMemberEmail(dto);
-		service.updateMemberAddress(dto);
-		service.updateMemberPhoneMobile(dto);
-		service.updateMemberPhoneHome(dto);
 
 		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
 

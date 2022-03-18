@@ -38,6 +38,7 @@ public class Member {
 	private String ifmaZipCode;
 	private String ifmaAddress1;
 	private String ifmaAddress2;
+	private String ifmaAddressReferences;
 	//--------------------------------------------------------------
 	public Integer getIfcdSeq() {
 		return ifcdSeq;
@@ -219,4 +220,11 @@ public class Member {
 	public void setIfscName(String ifscName) {
 		this.ifscName = ifscName;
 	}
+	public String getIfmaAddressReferences() {
+		return ifmaAddressReferences;
+	}
+	public void setIfmaAddressReferences(String ifmaAddressReferences) {
+		this.ifmaAddressReferences = ifmaAddressReferences;
+	}
+	
 }

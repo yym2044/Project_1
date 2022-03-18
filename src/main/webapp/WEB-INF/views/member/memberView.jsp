@@ -47,7 +47,14 @@
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">이메일</td>
-					<td class="text-start"><c:out value="${rt.ifmeEmailFull}"/><span class="badge bg-secondary ms-1"><c:out value="${rt.ifmmEmailConsentNyText}"/></span></td>
+					<td class="text-start"><c:out value="${rt.ifmeEmailFull}"/>
+					
+					<span class="badge <c:choose>
+											<c:when test="${rt.ifmmEmailConsentNyText eq '수신동의'}">bg-primary</c:when>
+											<c:when test="${rt.ifmmEmailConsentNyText eq '수신거부'}">bg-danger</c:when>
+										</c:choose> ms-1">
+					<c:out value="${rt.ifmmEmailConsentNyText}"/></span></td>
+					
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">회원등급</td>
@@ -59,7 +66,13 @@
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">휴대폰</td>
-					<td class="text-start"><c:out value="${rt.ifmpNumberMobile}"/><span class="badge bg-secondary ms-1"><c:out value="${rt.ifmmSmsConsentNyText}"/></span></td>
+					<td class="text-start"><c:out value="${rt.ifmpNumberMobile}"/>
+					<span class="badge <c:choose>
+											<c:when test="${rt.ifmmSmsConsentNyText eq '수신동의'}">bg-primary</c:when>
+											<c:when test="${rt.ifmmSmsConsentNyText eq '수신거부'}">bg-danger</c:when>
+										</c:choose> ms-1">
+					<c:out value="${rt.ifmmSmsConsentNyText}"/></span>
+				</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">전화번호</td>

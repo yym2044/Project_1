@@ -42,14 +42,31 @@
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">아이디</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
+					<td class="text-start" colspan="3"><input type="text" name="ifmmId" id="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
 							style="text-decoration: none;">아이디 중복체크</a></span></td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">비밀번호</th>
-					<td class="text-start"><input type="password" name="ifmmPwd" style="min-width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>"></td>
+					<td class="text-start">
+						<input type="password" name="ifmmPwd" id="pwd1" style="min-width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>">
+						<div class="valid-feedback" id="pwd1ValidFeedBack">
+					      사용가능한 비밀번호입니다.
+					    </div>
+					    <div class="invalid-feedback" id="pwd1InvalidFeedBack">
+					      사용 불가능한 비밀번호입니다.
+					    </div>
+					</td>
 					<th style="width: 200px;" class="bg-light text-start">비밀번호확인</th>
-					<td class="text-start"><input type="password" name="ifmmPwdConfirm" style="min-width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>"></td>
+					<td class="text-start">
+						<input type="password" name="ifmmPwdConfirm" id="pwd2" style="min-width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>">
+					    <div class="valid-feedback" id="pwd2ValidFeedBack">
+					      비밀번호가 일치합니다.
+					    </div>
+					    <div class="invalid-feedback" id="pwd2InvalidFeedBack">
+					      비밀번호가 일치하지 않습니다.
+					    </div>
+						
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">이름</th>
@@ -82,15 +99,18 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">주소</th>
 					<td class="text-start" colspan="3">
+					
 						<div class="row g-2">
 							<div class="col-12 d-flex align-items-center">
-								<input type="text" name="ifmaZipCode" placeholder="우편번호" autocomplete="off" value="<c:out value="${rt.ifmaZipCode}"/>"> <a class="btn btn-sm btn-outline-dark ms-1" href="#">우편번호 검색</a>
+								<input type="text" name="ifmaZipCode" id="sample6_postcode" placeholder="우편번호" readonly value="<c:out value="${rt.ifmaZipCode}"/>"> <input type="button" class="btn btn-sm btn-outline-dark ms-1" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
 							</div>
 							<div class="col-12">
-								<input type="text" name="ifmaAddress1" placeholder="주소" value="<c:out value="${rt.ifmaAddress1}"/>" autocomplete="off" style="width:300px;">			
-								<input type="text" name="ifmaAddress2" placeholder="상세주소" value="<c:out value="${rt.ifmaAddress2}"/>" autocomplete="off" style="width:300px;">					
+								<input type="text" name="ifmaAddress1" id="sample6_address" placeholder="주소" readonly style="width:300px;" value="<c:out value="${rt.ifmaAddress1}"/>">			
+								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" placeholder="상세주소" autocomplete="off" style="width:300px;" value="<c:out value="${rt.ifmaAddress2}"/>">					
+								<input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" readonly placeholder="참고항목" value="<c:out value="${rt.ifmaAddressReferences}"/>">
 							</div>
 						</div>
+						
 					</td>
 				</tr>
 				<tr>
@@ -119,7 +139,9 @@
 				
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">생년월일</th>
-					<td class="text-start"><input type="text" name="ifmmDob" placeholder="19960607" value="<c:out value="${rt.ifmmDob}"/>" autocomplete="off"></td>
+					<td class="text-start">
+						<input type="date" name="ifmmDob" autocomplete="off" value="<c:out value="${rt.ifmmDob}"/>">
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">성별</th>
@@ -175,7 +197,7 @@
 			</div>
 			 -->
 			<div class="text-center">
-				<input type="submit" class="btn btn-sm btn-outline-success border border-3 container1" value="수정">
+				<input type="submit" id="btnSubmit" class="btn btn-sm btn-outline-success border border-3 container1" value="수정">
 				<a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="/infra/member/memberView?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>">취소</a>
 			</div>
 
@@ -184,7 +206,59 @@
 		</div>
 	</form>
 	
-
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<script>
+	    function sample6_execDaumPostcode() {
+	        new daum.Postcode({
+	            oncomplete: function(data) {
+	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+	                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	                var addr = ''; // 주소 변수
+	                var extraAddr = ''; // 참고항목 변수
+	
+	                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+	                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+	                    addr = data.roadAddress;
+	                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+	                    addr = data.jibunAddress;
+	                }
+	
+	                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+	                if(data.userSelectedType === 'R'){
+	                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                        extraAddr += data.bname;
+	                    }
+	                    // 건물명이 있고, 공동주택일 경우 추가한다.
+	                    if(data.buildingName !== '' && data.apartment === 'Y'){
+	                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                    }
+	                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	                    if(extraAddr !== ''){
+	                        extraAddr = ' (' + extraAddr + ')';
+	                    }
+	                    // 조합된 참고항목을 해당 필드에 넣는다.
+	                    document.getElementById("sample6_extraAddress").value = extraAddr;
+	                
+	                } else {
+	                    document.getElementById("sample6_extraAddress").value = '';
+	                }
+	
+	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById('sample6_postcode').value = data.zonecode;
+	                document.getElementById("sample6_address").value = addr;
+	                // 커서를 상세주소 필드로 이동한다.
+	                document.getElementById("sample6_detailAddress").focus();
+	            }
+	        }).open();
+	    }
+	</script>
+	
+	
 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -230,6 +304,71 @@
 		    document.getElementById("sms_check_hidden").disabled = true;
 		}
 
+		
+	</script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/infra/resources/js/validation.js"></script>
+	
+	<script type="text/javascript">
+		$("#btnSubmit").on("click", function(){
+			
+			if(!checkId($("#ifmmId"), $("#ifmmId").val(), "아이디가 유효하지 않습니다. 다시 입력해주세요.")){
+				return false;
+			}
+			
+			if(!checkPassword($("#pwd1"), $("#pwd1").val(), "비밀번호가 유효하지 않습니다.")){
+				return false;
+			}
+			
+			if($("#pwd1").val() != $("#pwd2").val()){
+				alert("비밀번호를 다르게 입력하였습니다.");
+				$("#pwd2").focus();
+				return false;
+			}			
+			
+		});
+	</script>
+	
+	
+	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
+	<script type="text/javascript"> 
+		$(function(){
+			$("#pwd1ValidFeedBack").hide(); 
+			$("#pwd1InvalidFeedBack").hide(); 
+			
+			$("#pwd2ValidFeedBack").hide(); 
+			$("#pwd2InvalidFeedBack").hide(); 
+			$("input").keyup(function(){
+				
+				var pwd1=$("#pwd1").val(); 
+				var pwd2=$("#pwd2").val();
+				var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,20}$/;
+				
+				if(regExp.test(pwd1)){
+					$("#pwd1ValidFeedBack").show();
+					$("#pwd1InvalidFeedBack").hide();
+				} 
+				else if(!regExp.test(pwd1) && pwd1.length > 1) {
+					$("#pwd1ValidFeedBack").hide();
+					$("#pwd1InvalidFeedBack").show();
+				}
+				
+				if(pwd1 != "" && pwd2 != ""){ 
+					if(pwd1 == pwd2){ 
+						$("#pwd2ValidFeedBack").show(); 
+						$("#pwd2InvalidFeedBack").hide(); 
+						$("#submit").removeAttr("disabled"); 
+					}else{ 
+						$("#pwd2ValidFeedBack").hide(); 
+						$("#pwd2InvalidFeedBack").show(); 
+						$("#submit").attr("disabled", "disabled"); 
+						} 
+					} 
+				}); 
+			}); 
 		
 	</script>
 

@@ -24,7 +24,7 @@
 	
 		
 		<!-- ifmmSeq -->
-		<input type="hidden" name="ifmmSeq" value="${fn:length(list2)+1}">
+		<%-- <input type="hidden" name="ifmmSeq" value="${fn:length(list2)+1}"> --%>
 		<!-- ifmmRegDate -->
 		<!-- <input type="hidden" name="ifmmRegDate" value="20220309"> -->
 		
@@ -101,12 +101,12 @@
 					<td class="text-start" colspan="3">
 						<div class="row g-2">
 							<div class="col-12 d-flex align-items-center">
-								<input type="text" name="ifmaZipCode" id="sample6_postcode" placeholder="우편번호" disabled> <input type="button" class="btn btn-sm btn-outline-dark ms-1" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
+								<input type="text" name="ifmaZipCode" id="sample6_postcode" placeholder="우편번호" readonly> <input type="button" class="btn btn-sm btn-outline-dark ms-1" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
 							</div>
 							<div class="col-12">
-								<input type="text" name="ifmaAddress1" id="sample6_address" placeholder="주소" disabled style="width:300px;">			
+								<input type="text" name="ifmaAddress1" id="sample6_address" placeholder="주소" readonly style="width:300px;">			
 								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" placeholder="상세주소" autocomplete="off" style="width:300px;">					
-								<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+								<input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" readonly placeholder="참고항목">
 							</div>
 						</div>
 					</td>
@@ -137,7 +137,9 @@
 				
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">생년월일</th>
-					<td class="text-start"><input type="text" name="ifmmDob" placeholder="19960607" autocomplete="off"></td>
+					<td class="text-start">
+						<input type="date" name="ifmmDob" autocomplete="off">
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">성별</th>
@@ -301,6 +303,31 @@
 	    }
 	</script>
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/infra/resources/js/validation.js"></script>
+	
+	<script type="text/javascript">
+		$("#btnSubmit").on("click", function(){
+			
+			if(!checkId($("#ifmmId"), $("#ifmmId").val(), "아이디가 유효하지 않습니다. 다시 입력해주세요.")){
+				return false;
+			}
+			
+			if(!checkPassword($("#pwd1"), $("#pwd1").val(), "비밀번호가 유효하지 않습니다.")){
+				return false;
+			}
+			
+			if($("#pwd1").val() != $("#pwd2").val()){
+				alert("비밀번호를 다르게 입력하였습니다.");
+				$("#pwd2").focus();
+				return false;
+			}			
+			
+		});
+	</script>
+	
+	
+	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
 	<script type="text/javascript"> 
@@ -311,12 +338,16 @@
 			$("#pwd2ValidFeedBack").hide(); 
 			$("#pwd2InvalidFeedBack").hide(); 
 			$("input").keyup(function(){
+				
 				var pwd1=$("#pwd1").val(); 
 				var pwd2=$("#pwd2").val();
-				if(pwd1.length>5){
+				var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,20}$/;
+				
+				if(regExp.test(pwd1)){
 					$("#pwd1ValidFeedBack").show();
 					$("#pwd1InvalidFeedBack").hide();
-				} else {
+				} 
+				else if(!regExp.test(pwd1) && pwd1.length > 1) {
 					$("#pwd1ValidFeedBack").hide();
 					$("#pwd1InvalidFeedBack").show();
 				}
@@ -337,18 +368,7 @@
 		
 	</script>
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="/infra/resources/js/validation.js"></script>
 	
-	<script type="text/javascript">
-		$("#btnSubmit").on("click", function(){
-			
-			if(!checkId($("#ifmmId"), $("#ifmmId").val(), "아이디가 유효하지 않습니다. 다시 입력해주세요.")){
-				return false;
-			}
-			
-		});
-	</script>
 
 	
 </body>

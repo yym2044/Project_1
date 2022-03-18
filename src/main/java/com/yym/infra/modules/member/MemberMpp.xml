@@ -168,6 +168,7 @@
 			, d.ifmaZipCode
 			, d.ifmaAddress1
 			, d.ifmaAddress2
+			, d.ifmaAddressReferences
 			
 		FROM infrMember a
 		LEFT JOIN infrMemberEmail b ON b.ifmmSeq = a.ifmmSeq AND b.ifmeDefaultNy = 1
@@ -183,8 +184,7 @@
 	<insert id="insertMember">
 	INSERT INTO
 	infrMember (
-		ifmmSeq
-		, ifmmName
+		ifmmName
 		, ifmmId
 		, ifmmPwd
 		, ifmmGenderCd
@@ -197,8 +197,7 @@
 		, ifmmSmsConsentNy
 		, ifmmPushConsentNy
 	) VALUES (
-		#{ifmmSeq}
-		, #{ifmmName}
+		#{ifmmName}
 		, #{ifmmId}
 		, #{ifmmPwd}
 		, #{ifmmGenderCd}
@@ -211,6 +210,10 @@
 		, #{ifmmSmsConsentNy}
 		, #{ifmmPushConsentNy}
 	);
+	
+	<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
 			
 	</insert>
 	<insert id="insertMemberEmail">
@@ -232,12 +235,14 @@
 		, ifmaZipCode
 		, ifmaAddress1
 		, ifmaAddress2
+		, ifmaAddressReferences
         , ifmaDefaultNy
 	) VALUES (
 		#{ifmmSeq}
 		, #{ifmaZipCode}
 		, #{ifmaAddress1}
 		, #{ifmaAddress2}
+		, #{ifmaAddressReferences}
         , 1
 	);
 	</insert>
@@ -310,6 +315,7 @@
 		ifmaZipCode = #{ifmaZipCode}
 		, ifmaAddress1 = #{ifmaAddress1}
 		, ifmaAddress2 = #{ifmaAddress2}
+		, ifmaAddressReferences = #{ifmaAddressReferences}
 		, ifmaDefaultNy = 1
 	WHERE
 		1 = 1
