@@ -44,7 +44,7 @@
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">아이디</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
+					<td class="text-start" colspan="3"><input type="text" name="ifmmId" id="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
 							style="text-decoration: none;">아이디 중복체크</a></span></td>
 				</tr>
 				<tr>
@@ -195,7 +195,7 @@
 			 -->
 
 			<div class="text-center">
-				<input type="submit" class="btn btn-sm btn-outline-success border border-3 container1" value="등록">
+				<input type="submit" id="btnSubmit" class="btn btn-sm btn-outline-success border border-3 container1" value="등록">
 				<a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="/infra/member/memberList"> <!-- onClick="window.close()" -->취소</a>
 			</div>
 
@@ -335,6 +335,19 @@
 				}); 
 			}); 
 		
+	</script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/infra/resources/js/validation.js"></script>
+	
+	<script type="text/javascript">
+		$("#btnSubmit").on("click", function(){
+			
+			if(!checkId($("#ifmmId"), $("#ifmmId").val(), "아이디가 유효하지 않습니다. 다시 입력해주세요.")){
+				return false;
+			}
+			
+		});
 	</script>
 
 	

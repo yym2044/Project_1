@@ -81,7 +81,7 @@ public class CodeVo {
 		
 		totalRows = totalRowsParam;
 		
-		rowNumToShow = 1;
+		rowNumToShow = 10;
 
 		totalPages = totalRows / rowNumToShow;
 
