@@ -10,6 +10,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="uTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회원목록</title>
 <%-- <link href="${path}/resources/css/bootstrap.min.css" rel="stylesheet"/> --%>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -502,90 +505,93 @@ a {
 
 				<c:choose>
 					<c:when test="${fn:length(list) eq 0}">
-						<table class="table table-hover table-sm border border-1 box-white"
-							style="min-width: 1000px; border-collapse: collapse;">
-							<thead>
-								<tr>
-									<th><input type="checkbox" name="checkbox1" disabled class="form-check-input"></th>
-									<th>번호</th>
-									<th>아이디</th>
-									<th>이름</th>
-									<th>회원등급</th>
-									<th>상태</th>
-									<th>가입일</th>
-									<th>관리</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="text-center" colspan="8">검색결과가 없습니다.</td>
-								</tr>
-							</tbody>
-						</table>
+						<div class="table-responsive">
+							<table class="table table-hover table-sm border border-1 box-white"
+								style="min-width: 1000px; border-collapse: collapse;">
+								<thead>
+									<tr>
+										<th><input type="checkbox" name="checkbox1" disabled class="form-check-input"></th>
+										<th>번호</th>
+										<th>아이디</th>
+										<th>이름</th>
+										<th>회원등급</th>
+										<th>상태</th>
+										<th>가입일</th>
+										<th>관리</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="text-center" colspan="8">검색결과가 없습니다.</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</c:when>
 
 					<c:otherwise>
-
-						<table class="table table-hover table-sm border border-1 box-white"
-							style="min-width: 1000px; border-collapse: collapse;">
-							<thead>
-								<tr>
-									<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
-									<th><c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortNo'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top">번호</a>
-										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortNo'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom">번호</a>
-										</c:if></th>
-									<th><c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortId'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=top">아이디</a>
-										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortId'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=bottom">아이디</a>
-										</c:if></th>
-									<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortName'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=top">이름</a>
-										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortName'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=bottom">이름</a>
-										</c:if></th>
-									<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortGrade'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=top">회원등급</a>
-										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortGrade'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=bottom">회원등급</a>
-										</c:if></th>
-									<th>상태</th>
-									<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortRedt'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=top">가입일</a>
-										</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortRedt'}">
-											<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=bottom">가입일</a>
-										</c:if></th>
-									<th>관리</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach items="${list}" var="item" varStatus="status">
+						<div class="table-responsive">
+						
+							<table class="table table-hover table-sm border border-1 box-white"
+								style="min-width: 1000px; border-collapse: collapse;">
+								<thead>
 									<tr>
-										<td><input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>"
-											class="form-check-input"></td>
-										<td><c:out value="${item.ifmmSeq}" /></td>
-										<td><c:out value="${item.ifmmId}" /></td>
-										<td><c:out value="${item.ifmmName}" /></td>
-										<td <c:if test="${item.ifmmGrade eq '일반회원'}">class="text-primary"</c:if>
-											<c:if test="${item.ifmmGrade eq 'VIP회원'}">class="text-danger"</c:if>><c:out value="${item.ifmmGrade}" /></td>
-										<td <c:if test="${item.ifmmStatus eq '탈퇴대기'}">class="text-danger"</c:if>><c:out
-												value="${item.ifmmStatus}" /></td>
-										<td><c:out value="${item.ifmmRegDate}" /></td>
-										<td>
-											<div class="d-flex justify-content-center align-items-center">
-												<a href="#" class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-chat-right-dots"></i></a> <a href="#"
-													class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-envelope"></i></a> <a
-													href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0"> <%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>관리
-												</a>
-											</div>
-										</td>
-									<tr>
-								</c:forEach>
-							</tbody>
-						</table>
-
+										<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
+										<th><c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortNo'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top">번호</a>
+											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortNo'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom">번호</a>
+											</c:if></th>
+										<th><c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortId'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=top">아이디</a>
+											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortId'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=bottom">아이디</a>
+											</c:if></th>
+										<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortName'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=top">이름</a>
+											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortName'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=bottom">이름</a>
+											</c:if></th>
+										<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortGrade'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=top">회원등급</a>
+											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortGrade'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=bottom">회원등급</a>
+											</c:if></th>
+										<th>상태</th>
+										<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortRedt'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=top">가입일</a>
+											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortRedt'}">
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=bottom">가입일</a>
+											</c:if></th>
+										<th>관리</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${list}" var="item" varStatus="status">
+										<tr>
+											<td><input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>"
+												class="form-check-input"></td>
+											<td><c:out value="${item.ifmmSeq}" /></td>
+											<td><c:out value="${item.ifmmId}" /></td>
+											<td><c:out value="${item.ifmmName}" /></td>
+											<td <c:if test="${item.ifmmGrade eq '일반회원'}">class="text-primary"</c:if>
+												<c:if test="${item.ifmmGrade eq 'VIP회원'}">class="text-danger"</c:if>><c:out value="${item.ifmmGrade}" /></td>
+											<td <c:if test="${item.ifmmStatus eq '탈퇴대기'}">class="text-danger"</c:if>><c:out
+													value="${item.ifmmStatus}" /></td>
+											<td><c:out value="${item.ifmmRegDate}" /></td>
+											<td>
+												<div class="d-flex justify-content-center align-items-center">
+													<a href="#" class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-chat-right-dots"></i></a> <a href="#"
+														class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-envelope"></i></a> <a
+														href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0"> <%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>관리
+													</a>
+												</div>
+											</td>
+										<tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
 
 					</c:otherwise>
 				</c:choose>
