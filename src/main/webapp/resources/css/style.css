@@ -10,12 +10,16 @@
 	font-family: 'SDSamliphopangche_Outline';
 } */
 
-.width60 {
-	width: 60%;
+.width75 {
+	width: 75%;
 	margin: auto;
 }
 .width80 {
 	width: 80%;
+	margin: auto;
+}
+.width85 {
+	width: 85%;
 	margin: auto;
 }
 .width90 {
