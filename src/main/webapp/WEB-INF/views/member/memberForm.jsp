@@ -11,8 +11,7 @@
 <html>
 <head>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 <link href="${path}/resources/css/style.css" rel="stylesheet" />
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet" />
@@ -36,10 +35,12 @@
 
 			<div class="row mb-2">
 				<div class="col col-md-8 d-flex">
-					<i class="bi bi-caret-right-square-fill text-primary"></i> <span class="ms-2 fw-bold">회원 기본 정보</span>
+					<i class="bi bi-caret-right-square-fill text-primary"></i>
+					<span class="ms-2 fw-bold">회원 기본 정보</span>
 				</div>
 				<div class="col col-md text-end">
-					<span class="text-danger">*</span> 표시 항목은 필수 입력 항목입니다.
+					<span class="text-danger">*</span>
+					표시 항목은 필수 입력 항목입니다.
 				</div>
 			</div>
 
@@ -47,80 +48,112 @@
 
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>아이디</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmId" id="ifmmId" style="min-width: 200px;"
-						placeholder="영문(대소문자),숫자,특수문자" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
-							style="text-decoration: none;">아이디 중복체크</a></span></td>
+					<th style="width: 200px;" class="bg-light text-start">
+						<span class="text-danger">*</span>
+						아이디
+					</th>
+					<td class="text-start" colspan="3">
+						<input type="text" name="ifmmId" id="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" autocomplete="off">
+						<span class="ms-2">
+							<a href="#" class="fs-6" style="text-decoration: none;">아이디 중복체크</a>
+						</span>
+					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호</th>
-					<td class="text-start"><input type="password" name="ifmmPwd" id="pwd1" style="min-width: 200px;" autocomplete="off">
+					<th style="width: 200px;" class="bg-light text-start">
+						<span class="text-danger">*</span>
+						비밀번호
+					</th>
+					<td class="text-start">
+						<input type="password" name="ifmmPwd" id="pwd1" style="min-width: 200px;" autocomplete="off">
 						<div class="valid-feedback" id="pwd1ValidFeedBack">사용가능한 비밀번호입니다.</div>
-						<div class="invalid-feedback" id="pwd1InvalidFeedBack">사용 불가능한 비밀번호입니다.</div></td>
-					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호확인</th>
-					<td class="text-start"><input type="password" name="ifmmPwdConfirm" id="pwd2" style="min-width: 200px;"
-						autocomplete="off">
+						<div class="invalid-feedback" id="pwd1InvalidFeedBack">사용 불가능한 비밀번호입니다.</div>
+					</td>
+					<th style="width: 200px;" class="bg-light text-start">
+						<span class="text-danger">*</span>
+						비밀번호확인
+					</th>
+					<td class="text-start">
+						<input type="password" name="ifmmPwdConfirm" id="pwd2" style="min-width: 200px;" autocomplete="off">
 						<div class="valid-feedback" id="pwd2ValidFeedBack">비밀번호가 일치합니다.</div>
-						<div class="invalid-feedback" id="pwd2InvalidFeedBack">비밀번호가 일치하지 않습니다.</div></td>
+						<div class="invalid-feedback" id="pwd2InvalidFeedBack">비밀번호가 일치하지 않습니다.</div>
+					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>이름</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmName" id="ifmmName" style="min-width: 200px;"
-						autocomplete="off"></td>
+					<th style="width: 200px;" class="bg-light text-start">
+						<span class="text-danger">*</span>
+						이름
+					</th>
+					<td class="text-start" colspan="3">
+						<input type="text" name="ifmmName" id="ifmmName" style="min-width: 200px;" autocomplete="off">
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">이메일</th>
-					<td class="text-start" colspan="3"><input type="email" name="ifmeEmailFull" style="min-width: 200px;"
-						autocomplete="off"> <span class="ms-2"><a href="#" class="fs-6" style="text-decoration: none;">이메일
-								중복체크</a></span> <span class="ms-2"> <input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1"><label
-							for="email_check">이메일 수신 동의</label> <input type="hidden" name="ifmmEmailConsentNy" id="email_check_hidden"
-							value="0">
-					</span></td>
+					<td class="text-start" colspan="3">
+						<input type="email" name="ifmeEmailFull" style="min-width: 200px;" autocomplete="off">
+						<span class="ms-2">
+							<a href="#" class="fs-6" style="text-decoration: none;">이메일 중복체크</a>
+						</span>
+						<span class="ms-2">
+							<input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1">
+							<label for="email_check">이메일 수신 동의</label>
+							<input type="hidden" name="ifmmEmailConsentNy" id="email_check_hidden" value="0">
+						</span>
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">등급설정</th>
-					<td class="text-start" colspan="3"><select name="ifmmGradeCd">
+					<td class="text-start" colspan="3">
+						<select name="ifmmGradeCd">
 							<c:forEach items="${list}" var="item" varStatus="status">
 								<option value="<c:out value="${item.ifcdSeq}"/>">
 									<c:out value="${item.ifcdName}" />
 								</option>
 							</c:forEach>
-					</select></td>
+						</select>
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">주소</th>
 					<td class="text-start" colspan="3">
 						<div class="row g-2">
 							<div class="col-12 d-flex align-items-center">
-								<input type="text" name="ifmaZipCode" id="sample6_postcode" class="bg-light" placeholder="우편번호" readonly> <input
-									type="button" class="btn btn-sm btn-outline-dark ms-1" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
+								<div class="input-group input-group-sm">
+									<input type="text" name="ifmaZipCode" id="sample6_postcode" class="bg-light" placeholder="우편번호" readonly>
+									<button type="button" class="btn btn-sm btn-outline-dark ms-1" id="btnAddress">우편번호 검색</button>	<!--  onclick="sample6_execDaumPostcode()" -->
+									<button type="button" class="btn btn-outline-secondary" id="btnAddressClear">X</button>
+								</div>
 							</div>
 							<div class="col-12">
 								<input type="text" name="ifmaAddress1" id="sample6_address" class="bg-light" placeholder="주소" readonly style="width: 300px;">
-								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" placeholder="상세주소" autocomplete="off"
-									style="width: 300px;"> <input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" class="bg-light"
-									readonly placeholder="참고항목">
+								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" placeholder="상세주소" autocomplete="off" style="width: 300px;">
+								<input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" class="bg-light" readonly placeholder="참고항목">
 							</div>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">휴대폰</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmpNumberMobile" placeholder="01012345678"
-						autocomplete="off"> <input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1"><label
-						for="sms_check">SMS 수신 동의</label> <input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
+					<td class="text-start" colspan="3">
+						<input type="text" name="ifmpNumberMobile" placeholder="01012345678" autocomplete="off">
+						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1">
+						<label for="sms_check">SMS 수신 동의</label>
+						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
 					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">전화번호</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmpNumberHome" placeholder="021234567"
-						autocomplete="off"></td>
+					<td class="text-start" colspan="3">
+						<input type="text" name="ifmpNumberHome" placeholder="021234567" autocomplete="off">
+					</td>
 				</tr>
 			</table>
 
 			<div class="row mb-2">
 				<div class="col col-md-12 d-flex">
-					<i class="bi bi-caret-right-square-fill text-primary"></i> <span class="ms-2 fw-bold">추가 정보</span>
+					<i class="bi bi-caret-right-square-fill text-primary"></i>
+					<span class="ms-2 fw-bold">추가 정보</span>
 				</div>
 			</div>
 
@@ -129,20 +162,34 @@
 			<table class="table">
 
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>생년월일</th>
-					<td class="text-start"><input type="date" name="ifmmDob" id="ifmmDob" autocomplete="off"></td>
+					<th style="width: 200px;" class="bg-light text-start">
+						<span class="text-danger">*</span>
+						생년월일
+					</th>
+					<td class="text-start">
+						<input type="date" name="ifmmDob" id="ifmmDob" autocomplete="off">
+					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>성별</th>
-					<td class="text-start"><input type="radio" name="ifmmGenderCd" id="man" value="3"><label for="man">남성</label>
-						<input type="radio" name="ifmmGenderCd" id="woman" value="4"><label for="woman">여성</label></td>
+					<th style="width: 200px;" class="bg-light text-start">
+						<span class="text-danger">*</span>
+						성별
+					</th>
+					<td class="text-start">
+						<input type="radio" name="ifmmGenderCd" id="man" value="3">
+						<label for="man">남성</label>
+						<input type="radio" name="ifmmGenderCd" id="woman" value="4">
+						<label for="woman">여성</label>
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">마케팅 수신동의</th>
-					<td class="text-start"><select name="ifmmPushConsentNy">
+					<td class="text-start">
+						<select name="ifmmPushConsentNy">
 							<option value="1">예</option>
 							<option value="0">아니오</option>
-					</select></td>
+						</select>
+					</td>
 				</tr>
 			</table>
 
@@ -186,15 +233,15 @@
 			<div class="text-center">
 				<input type="submit" id="btnSubmit" class="btn btn-sm btn-outline-success border border-3 container1" value="등록">
 				<a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="/infra/member/memberList">
-					<!-- onClick="window.close()" -->취소
+					<!-- onClick="window.close()" -->
+					취소
 				</a>
 			</div>
 
 		</div>
 	</form>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 	<script src="${path}/resources/js/sidebars.js"></script>
 
@@ -235,9 +282,12 @@
 		if (document.getElementById("sms_check").checked) {
 			document.getElementById("sms_check_hidden").disabled = true;
 		}
+		
 	</script>
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+	
 
 	<script>
 		function sample6_execDaumPostcode() {
@@ -295,47 +345,60 @@
 		}
 	</script>
 
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/infra/resources/js/validation.js"></script>
 
 	<script type="text/javascript">
-		$("#btnSubmit").on(
-				"click",
-				function() {
+		$("#btnSubmit")
+				.on(
+						"click",
+						function() {
 
-					if (!checkId($("#ifmmId"), $("#ifmmId").val(),
-							"아이디가 유효하지 않습니다. 다시 입력해주세요.")) {
-						return false;
-					}
+							if (!checkId($("#ifmmId"), $("#ifmmId").val(),
+									"아이디가 유효하지 않습니다. 다시 입력해주세요.")) {
+								return false;
+							}
 
-					if (!checkPassword($("#pwd1"), $("#pwd1").val(),
-							"비밀번호가 유효하지 않습니다.")) {
-						return false;
-					}
+							if (!checkPassword($("#pwd1"), $("#pwd1").val(),
+									"비밀번호가 유효하지 않습니다.")) {
+								return false;
+							}
 
-					if ($("#pwd1").val() != $("#pwd2").val()) {
-						alert("비밀번호를 다르게 입력하였습니다.");
-						$("#pwd2").focus();
-						return false;
-					}
-					
-					if (!checkNull($("#ifmmName"), $("#ifmmName").val(), "이름을 입력해주세요.")){
-						return false;
-					}
-					
-					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")){
-						return false;
-					}
-						
-					if (!$("input:checked[Name='ifmmGenderCd']").is(":checked")) {
-						alert("성별을 선택해주세요.");
-						return false;
-					}
+							if ($("#pwd1").val() != $("#pwd2").val()) {
+								alert("비밀번호를 다르게 입력하였습니다.");
+								$("#pwd2").focus();
+								return false;
+							}
 
-				});
+							if (!checkNull($("#ifmmName"),
+									$("#ifmmName").val(), "이름을 입력해주세요.")) {
+								return false;
+							}
+
+							if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(),
+									"생년월일을 입력해주세요.")) {
+								return false;
+							}
+
+							if (!$("input:checked[Name='ifmmGenderCd']").is(
+									":checked")) {
+								alert("성별을 선택해주세요.");
+								return false;
+							}
+
+						});
+		
+		$("#btnAddress").on("click", function() {
+			sample6_execDaumPostcode();
+		});
+
+		$("#btnAddressClear").on("click", function() {
+			$("#sample6_postcode").val('');
+			$("#sample6_address").val('');
+			$("#sample6_extraAddress").val('');
+		});
 	</script>
-
-
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 

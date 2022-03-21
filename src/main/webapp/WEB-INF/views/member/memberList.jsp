@@ -15,8 +15,7 @@
 <title>회원목록</title>
 <%-- <link href="${path}/resources/css/bootstrap.min.css" rel="stylesheet"/> --%>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
 <link href="${path}/resources/css/style.css" rel="stylesheet" />
@@ -56,8 +55,7 @@ a {
 				 -->
 
 			<div class="col-2 col-md-1 mb-2 p-0 text-end pe-2 d-md-block d-none">
-				<img src="${path}/resources/images/xdmin/lee.jpg" style="width: 40px; height: 50px;"
-					class="rounded-circle border border-5">
+				<img src="${path}/resources/images/xdmin/lee.jpg" style="width: 40px; height: 50px;" class="rounded-circle border border-5">
 			</div>
 			<div class="col-4 col-md mb-2 d-md-block d-none">
 				<div class="row dropdown">
@@ -90,8 +88,7 @@ a {
 
 		<!-- offcanvas start -->
 
-		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-			id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+		<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 
 			<div class="offcanvas-header">
 				<img class="bi me-2" width="120" height="30" src="${path}/resources/images/xdmin/coupang.png">
@@ -101,14 +98,13 @@ a {
 
 			<div class="offcanvas-body p-0">
 				<div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
-					<a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom"> <span
-						class="fs-5 fw-semibold">Collapsible</span>
+					<a href="#" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+						<span class="fs-5 fw-semibold">Collapsible</span>
 					</a>
 
 
 					<ul class="list-unstyled ps-0">
-						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
-							data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Home</a>
+						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">Home</a>
 							<div class="collapse" id="home-collapse">
 								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 									<li><a href="#" class="link-dark rounded">Overview</a></li>
@@ -116,8 +112,7 @@ a {
 									<li><a href="#" class="link-dark rounded">Reports</a></li>
 								</ul>
 							</div></li>
-						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
-							data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">Dashboard</a>
+						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">Dashboard</a>
 							<div class="collapse" id="dashboard-collapse" style="">
 								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 									<li><a href="#" class="link-dark rounded">Overview</a></li>
@@ -126,8 +121,7 @@ a {
 									<li><a href="#" class="link-dark rounded">Annually</a></li>
 								</ul>
 							</div></li>
-						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
-							data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">Orders</a>
+						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">Orders</a>
 							<div class="collapse" id="orders-collapse" style="">
 								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 									<li><a href="#" class="link-dark rounded">New</a></li>
@@ -137,8 +131,7 @@ a {
 								</ul>
 							</div></li>
 						<li class="border-top my-3"></li>
-						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed"
-							data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">Account</a>
+						<li class="mb-1"><a href="#" class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">Account</a>
 							<div class="collapse" id="account-collapse" style="">
 								<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 									<li><a href="#" class="link-dark rounded">New...</a></li>
@@ -152,9 +145,8 @@ a {
 			</div>
 			<div class="offcanvas-footer">
 				<div class="dropdown border-top ms-3 py-3">
-					<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2"
-						data-bs-toggle="dropdown" aria-expanded="false"> <img src="${path}/resources/images/xdmin/lee.jpg" alt=""
-						width="40" height="50" class="rounded-circle border border-5 me-2"> <strong>Yun</strong>
+					<a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+						<img src="${path}/resources/images/xdmin/lee.jpg" alt="" width="40" height="50" class="rounded-circle border border-5 me-2"> <strong>Yun</strong>
 					</a>
 					<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
 						<li><a class="dropdown-item" href="#">New project...</a></li>
@@ -176,8 +168,7 @@ a {
 					<li class="nav-item"><a class="nav-link link-light">관리자화면</a></li>
 					<li class="nav-item"><a class="nav-link link-light" href="#">Features</a></li>
 					<li class="nav-item"><a class="nav-link link-light" href="#">시스템 관리</a></li>
-					<li class="nav-item dropdown"><a class="nav-link link-light dropdown-toggle" href="#"
-						data-bs-toggle="dropdown">Dropdown</a>
+					<li class="nav-item dropdown"><a class="nav-link link-light dropdown-toggle" href="#" data-bs-toggle="dropdown">Dropdown</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="#">Action</a></li>
 							<li><a class="dropdown-item" href="#">Another Action</a></li>
@@ -279,19 +270,16 @@ a {
 							<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
 							<div class="col-12 col-md-10">
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankAll" name="shIfmmGrade" value="1" checked
-										<c:if test="${vo.shIfmmGrade eq 1}">checked</c:if>> <label for="memberRankAll"
-										class="form-check-label">전체</label>
+									<input type="radio" class="form-check-input" id="memberRankAll" name="shIfmmGrade" value="1" checked <c:if test="${vo.shIfmmGrade eq 1}">checked</c:if>>
+									<label for="memberRankAll" class="form-check-label">전체</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankGeneral" name="shIfmmGrade" value="2"
-										<c:if test="${vo.shIfmmGrade eq 2}">checked</c:if>> <label for="memberRankGeneral"
-										class="form-check-label">일반회원</label>
+									<input type="radio" class="form-check-input" id="memberRankGeneral" name="shIfmmGrade" value="2" <c:if test="${vo.shIfmmGrade eq 2}">checked</c:if>>
+									<label for="memberRankGeneral" class="form-check-label">일반회원</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="radio" class="form-check-input" id="memberRankVip" name="shIfmmGrade" value="3"
-										<c:if test="${vo.shIfmmGrade eq 3}">checked</c:if>> <label for="memberRankVip"
-										class="form-check-label">VIP회원</label>
+									<input type="radio" class="form-check-input" id="memberRankVip" name="shIfmmGrade" value="3" <c:if test="${vo.shIfmmGrade eq 3}">checked</c:if>>
+									<label for="memberRankVip" class="form-check-label">VIP회원</label>
 								</div>
 							</div>
 						</div>
@@ -305,19 +293,16 @@ a {
 								</div>
 								 -->
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmEmailConsentNy" id="email_check" value="1" class="form-check-input"
-										<c:if test="${vo.shIfmmEmailConsentNy eq 1}">checked</c:if>> <label for="email_check"
-										class="form-check-label">이메일</label>
+									<input type="checkbox" name="shIfmmEmailConsentNy" id="email_check" value="1" class="form-check-input" <c:if test="${vo.shIfmmEmailConsentNy eq 1}">checked</c:if>>
+									<label for="email_check" class="form-check-label">이메일</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmSmsConsentNy" id="sms_check" value="1" class="form-check-input"
-										<c:if test="${vo.shIfmmSmsConsentNy eq 1}">checked</c:if>> <label for="sms_check"
-										class="form-check-label">SMS</label>
+									<input type="checkbox" name="shIfmmSmsConsentNy" id="sms_check" value="1" class="form-check-input" <c:if test="${vo.shIfmmSmsConsentNy eq 1}">checked</c:if>>
+									<label for="sms_check" class="form-check-label">SMS</label>
 								</div>
 								<div class="form-check-inline">
-									<input type="checkbox" name="shIfmmPushConsentNy" id="push_check" value="1" class="form-check-input"
-										<c:if test="${vo.shIfmmPushConsentNy eq 1}">checked</c:if>> <label for="push_check"
-										class="form-check-label">Push</label>
+									<input type="checkbox" name="shIfmmPushConsentNy" id="push_check" value="1" class="form-check-input" <c:if test="${vo.shIfmmPushConsentNy eq 1}">checked</c:if>>
+									<label for="push_check" class="form-check-label">Push</label>
 								</div>
 							</div>
 						</div>
@@ -337,9 +322,8 @@ a {
 										</select>
 									</div>
 									<div class="col-8 col-md-5">
-										<input name="searchBar" id="searchBar" disabled class="form-control form-control-sm" placeholder="search.."
-											 <c:if test="${vo.shIfscSeq ne 0}">value="${vo.searchBar}"</c:if> autocomplete="off">
-											
+										<input name="searchBar" id="searchBar" disabled class="form-control form-control-sm" placeholder="search.." <c:if test="${vo.shIfscSeq ne 0}">value="${vo.searchBar}"</c:if> autocomplete="off">
+
 									</div>
 									<!-- 
 									<div class="col-9 col-md">
@@ -415,7 +399,8 @@ a {
 
 					<div class="row d-flex justify-content-center">
 						<div class="col d-flex justify-content-center">
-							<a class="btn btn-info btn-sm" style="width: 150px;"> <span class="text-white fw-bold">검색</span>
+							<a class="btn btn-info btn-sm" style="width: 150px;">
+								<span class="text-white fw-bold">검색</span>
 							</a>
 						</div>
 					</div>
@@ -455,7 +440,8 @@ a {
 			</div>
 		</div>
 		 -->
-		<br> <br>
+		<br>
+		<br>
 		<form method="get" action="/infra/member/updateDelNy">
 			<div class="width92">
 				<div class="row">
@@ -480,18 +466,12 @@ a {
 									<button type="button" class="btn btn-sm btn-outline-dark" disabled>View</button>
 								</div>
 								<div class="btn-group me-2" role="group" aria-label="Second group">
-									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary"
-										href="/infra/member/memberList?rowNumToShow=3">3</a> <a type="button"
-										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary"
-										href="/infra/member/memberList?rowNumToShow=5">5</a> <a type="button"
-										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary"
-										href="/infra/member/memberList?rowNumToShow=10">10</a> <a type="button"
-										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary"
-										href="/infra/member/memberList?rowNumToShow=20">20</a> <a type="button"
-										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary"
-										href="/infra/member/memberList?rowNumToShow=50">50</a> <a type="button"
-										class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary"
-										href="/infra/member/memberList?rowNumToShow=100">100</a>
+									<a type="button" id="view3" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=3">3</a>
+									<a type="button" id="view5" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=5">5</a>
+									<a type="button" id="view10" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=10">10</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=20">20</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=50">50</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=100">100</a>
 
 								</div>
 							</div>
@@ -506,11 +486,12 @@ a {
 				<c:choose>
 					<c:when test="${fn:length(list) eq 0}">
 						<div class="table-responsive">
-							<table class="table table-hover table-sm border border-1 box-white"
-								style="min-width: 1000px; border-collapse: collapse;">
+							<table class="table table-hover table-sm border border-1 box-white" style="min-width: 1000px; border-collapse: collapse;">
 								<thead>
 									<tr>
-										<th><input type="checkbox" name="checkbox1" disabled class="form-check-input"></th>
+										<th>
+											<input type="checkbox" name="checkbox1" disabled class="form-check-input">
+										</th>
 										<th>번호</th>
 										<th>아이디</th>
 										<th>이름</th>
@@ -531,59 +512,92 @@ a {
 
 					<c:otherwise>
 						<div class="table-responsive">
-						
-							<table class="table table-hover table-sm border border-1 box-white"
-								style="min-width: 1000px; border-collapse: collapse;">
+
+							<table class="table table-hover table-sm border border-1 box-white" style="min-width: 1000px; border-collapse: collapse;">
 								<thead>
 									<tr>
-										<th><input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input"></th>
-										<th><c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortNo'}">
+										<th>
+											<input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input">
+										</th>
+										<th>
+											<c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortNo'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top">번호</a>
-											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortNo'}">
+											</c:if>
+											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortNo'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom">번호</a>
-											</c:if></th>
-										<th><c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortId'}">
+											</c:if>
+										</th>
+										<th>
+											<c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortId'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=top">아이디</a>
-											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortId'}">
+											</c:if>
+											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortId'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=bottom">아이디</a>
-											</c:if></th>
-										<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortName'}">
+											</c:if>
+										</th>
+										<th>
+											<c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortName'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=top">이름</a>
-											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortName'}">
+											</c:if>
+											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortName'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=bottom">이름</a>
-											</c:if></th>
-										<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortGrade'}">
+											</c:if>
+										</th>
+										<th>
+											<c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortGrade'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=top">회원등급</a>
-											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortGrade'}">
+											</c:if>
+											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortGrade'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortGrade&orderby=bottom">회원등급</a>
-											</c:if></th>
+											</c:if>
+										</th>
 										<th>상태</th>
-										<th><c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortRedt'}">
+										<th>
+											<c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortRedt'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=top">가입일</a>
-											</c:if> <c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortRedt'}">
+											</c:if>
+											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortRedt'}">
 												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=bottom">가입일</a>
-											</c:if></th>
+											</c:if>
+										</th>
 										<th>관리</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${list}" var="item" varStatus="status">
 										<tr>
-											<td><input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>"
-												class="form-check-input"></td>
-											<td><c:out value="${item.ifmmSeq}" /></td>
-											<td><c:out value="${item.ifmmId}" /></td>
-											<td><c:out value="${item.ifmmName}" /></td>
-											<td <c:if test="${item.ifmmGrade eq '일반회원'}">class="text-primary"</c:if>
-												<c:if test="${item.ifmmGrade eq 'VIP회원'}">class="text-danger"</c:if>><c:out value="${item.ifmmGrade}" /></td>
-											<td <c:if test="${item.ifmmStatus eq '탈퇴대기'}">class="text-danger"</c:if>><c:out
-													value="${item.ifmmStatus}" /></td>
-											<td><c:out value="${item.ifmmRegDate}" /></td>
+											<td>
+												<input type="checkbox" name="checkbox1" value="<c:out value="${item.ifmmSeq}"/>" class="form-check-input">
+											</td>
+											<td>
+												<c:out value="${item.ifmmSeq}" />
+											</td>
+											<td>
+												<c:out value="${item.ifmmId}" />
+											</td>
+											<td>
+												<c:out value="${item.ifmmName}" />
+											</td>
+											<td <c:if test="${item.ifmmGrade eq '일반회원'}">class="text-primary"</c:if> <c:if test="${item.ifmmGrade eq 'VIP회원'}">class="text-danger"</c:if>>
+												<c:out value="${item.ifmmGrade}" />
+											</td>
+											<td <c:if test="${item.ifmmStatus eq '탈퇴대기'}">class="text-danger"</c:if>>
+												<c:out value="${item.ifmmStatus}" />
+											</td>
+											<td>
+												<c:out value="${item.ifmmRegDate}" />
+											</td>
 											<td>
 												<div class="d-flex justify-content-center align-items-center">
-													<a href="#" class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-chat-right-dots"></i></a> <a href="#"
-														class="btn btn-sm btn-outline-dark py-0"><i class="bi bi-envelope"></i></a> <a
-														href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0"> <%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>관리
+													<a href="#" class="btn btn-sm btn-outline-dark py-0">
+														<i class="bi bi-chat-right-dots"></i>
+													</a>
+													<a href="#" class="btn btn-sm btn-outline-dark py-0">
+														<i class="bi bi-envelope"></i>
+													</a>
+													<a href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0">
+														<%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>
+														관리
 													</a>
 												</div>
 											</td>
@@ -598,8 +612,11 @@ a {
 
 				<div class="row ps-2">
 					<div class="col col-md-4 ms-1 p-0">
-						<a class="btn btn-outline-danger" id="btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="bi bi-trash"></i>
-						</a> <a class="btn btn-outline-primary" href="/infra/member/memberForm"> <!-- onclick="window.open('memberForm','name','resizable=no width=1000 height=500');return false" -->
+						<a class="btn btn-outline-danger" id="btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+							<i class="bi bi-trash"></i>
+						</a>
+						<a class="btn btn-outline-primary" href="/infra/member/memberForm">
+							<!-- onclick="window.open('memberForm','name','resizable=no width=1000 height=500');return false" -->
 							<i class="bi bi-plus-square"></i>
 						</a>
 					</div>
@@ -630,24 +647,20 @@ a {
 			<nav class="mt-3" aria-label="...">
 				<ul class="pagination justify-content-center">
 					<c:if test="${vo.startPage gt vo.pageNumToShow}">
-						<li class="page-item"><a class="page-link"
-							href="/infra/member/memberList?thisPage=${vo.startPage - 1}&rowNumToShow=${vo.rowNumToShow}">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.startPage - 1}&rowNumToShow=${vo.rowNumToShow}">Previous</a></li>
 					</c:if>
 					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 						<c:choose>
 							<c:when test="${i.index eq vo.thisPage}">
-								<li class="page-item active"><a class="page-link"
-									href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
+								<li class="page-item active"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="page-item"><a class="page-link"
-									href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
+								<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					<c:if test="${vo.endPage ne vo.totalPages}">
-						<li class="page-item"><a class="page-link"
-							href="/infra/member/memberList?thisPage=${vo.endPage + 1}&rowNumToShow=${vo.rowNumToShow}">Next</a></li>
+						<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.endPage + 1}&rowNumToShow=${vo.rowNumToShow}">Next</a></li>
 					</c:if>
 				</ul>
 			</nav>
@@ -670,7 +683,8 @@ a {
 				</ul>
 			</nav>
 			 -->
-			<br> <br>
+			<br>
+			<br>
 
 			<!-- footer -->
 			<!-- 
@@ -721,8 +735,7 @@ a {
 		</form>
 
 		<!-- excelModal -->
-		<div class="modal fade" id="excelModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-			aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal fade" id="excelModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -731,7 +744,9 @@ a {
 					</div>
 					<div class="modal-body">
 						<div class="bg-light text-center">
-							<span class="fw-bold">파일명</span> <input type="text"> <span class="fw-bold">.csv</span>
+							<span class="fw-bold">파일명</span>
+							<input type="text">
+							<span class="fw-bold">.csv</span>
 						</div>
 						<br>
 						<table class="table table-sm table-hover">
@@ -741,40 +756,88 @@ a {
 								</tr>
 							</thead>
 							<tr>
-								<td><input type="checkbox" class="form-check-input" id="ch11"></td>
-								<td><label for="ch11" class="form-check-label">아이디</label></td>
-								<td><input type="checkbox" class="form-check-input" id="ch12"></td>
-								<td><label for="ch12" class="form-check-label">이름</label></td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch11">
+								</td>
+								<td>
+									<label for="ch11" class="form-check-label">아이디</label>
+								</td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch12">
+								</td>
+								<td>
+									<label for="ch12" class="form-check-label">이름</label>
+								</td>
 							</tr>
 							<tr>
-								<td><input type="checkbox" class="form-check-input" id="ch1"></td>
-								<td><label for="ch1" class="form-check-label">이메일</label></td>
-								<td><input type="checkbox" class="form-check-input" id="ch2"></td>
-								<td><label for="ch2" class="form-check-label">생년월일</label></td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch1">
+								</td>
+								<td>
+									<label for="ch1" class="form-check-label">이메일</label>
+								</td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch2">
+								</td>
+								<td>
+									<label for="ch2" class="form-check-label">생년월일</label>
+								</td>
 							</tr>
 							<tr>
-								<td><input type="checkbox" class="form-check-input" id="ch3"></td>
-								<td><label for="ch3" class="form-check-label">메일수신동의</label></td>
-								<td><input type="checkbox" class="form-check-input" id="ch4"></td>
-								<td><label for="ch4" class="form-check-label">주소</label></td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch3">
+								</td>
+								<td>
+									<label for="ch3" class="form-check-label">메일수신동의</label>
+								</td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch4">
+								</td>
+								<td>
+									<label for="ch4" class="form-check-label">주소</label>
+								</td>
 							</tr>
 							<tr>
-								<td><input type="checkbox" class="form-check-input" id="ch5"></td>
-								<td><label for="ch5" class="form-check-label">전화번호</label></td>
-								<td><input type="checkbox" class="form-check-input" id="ch6"></td>
-								<td><label for="ch6" class="form-check-label">휴대전화</label></td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch5">
+								</td>
+								<td>
+									<label for="ch5" class="form-check-label">전화번호</label>
+								</td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch6">
+								</td>
+								<td>
+									<label for="ch6" class="form-check-label">휴대전화</label>
+								</td>
 							</tr>
 							<tr>
-								<td><input type="checkbox" class="form-check-input" id="ch7"></td>
-								<td><label for="ch7" class="form-check-label">SMS수신동의</label></td>
-								<td><input type="checkbox" class="form-check-input" id="ch8"></td>
-								<td><label for="ch8" class="form-check-label">별명</label></td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch7">
+								</td>
+								<td>
+									<label for="ch7" class="form-check-label">SMS수신동의</label>
+								</td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch8">
+								</td>
+								<td>
+									<label for="ch8" class="form-check-label">별명</label>
+								</td>
 							</tr>
 							<tr>
-								<td><input type="checkbox" class="form-check-input" id="ch9"></td>
-								<td><label for="ch9" class="form-check-label">등급</label></td>
-								<td><input type="checkbox" class="form-check-input" id="ch10"></td>
-								<td><label for="ch10" class="form-check-label">성별</label></td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch9">
+								</td>
+								<td>
+									<label for="ch9" class="form-check-label">등급</label>
+								</td>
+								<td>
+									<input type="checkbox" class="form-check-input" id="ch10">
+								</td>
+								<td>
+									<label for="ch10" class="form-check-label">성별</label>
+								</td>
 							</tr>
 
 						</table>
@@ -877,8 +940,7 @@ a {
 
 	<%-- <script src="${path}/resources/js/bootstrap.bundel.min.js"></script> --%>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 	<script src="${path}/resources/js/sidebars.js"></script>
 
@@ -887,6 +949,14 @@ a {
 
 	<script type="text/javascript">
 	
+	$(document).ready(function(){
+		if($("#shIfscSeq").val() == 0){
+			$("#searchBar").attr('disabled', true);
+			$("#searchBar").val('');
+		} else if ($("#shIfscSeq").val() != 0) {
+			$("#searchBar").attr('disabled', false);
+		}
+	});
 	
 	$("#shIfscSeq").on("change", function(){
 		if($("#shIfscSeq").val() == 0){
@@ -926,11 +996,10 @@ a {
 		}
 	})
 	
-
 	
 	</script>
-	
-	
+
+
 
 </body>
 </html>

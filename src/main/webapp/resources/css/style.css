@@ -14,6 +14,10 @@
 	width: 200px;
 }
 
+.width60 {
+	width: 60%;
+	margin: auto;
+}
 .width75 {
 	width: 75%;
 	margin: auto;
