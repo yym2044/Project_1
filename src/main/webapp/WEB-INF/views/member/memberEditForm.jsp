@@ -41,12 +41,12 @@
 
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">아이디</th>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>아이디</th>
 					<td class="text-start" colspan="3"><input type="text" name="ifmmId" id="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
 							style="text-decoration: none;">아이디 중복체크</a></span></td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">비밀번호</th>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호</th>
 					<td class="text-start">
 						<input type="password" name="ifmmPwd" id="pwd1" style="min-width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>">
 						<div class="valid-feedback" id="pwd1ValidFeedBack">
@@ -56,7 +56,7 @@
 					      사용 불가능한 비밀번호입니다.
 					    </div>
 					</td>
-					<th style="width: 200px;" class="bg-light text-start">비밀번호확인</th>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호확인</th>
 					<td class="text-start">
 						<input type="password" name="ifmmPwdConfirm" id="pwd2" style="min-width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>">
 					    <div class="valid-feedback" id="pwd2ValidFeedBack">
@@ -69,8 +69,8 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">이름</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmName" style="min-width: 200px;" value="<c:out value="${rt.ifmmName}"/>" autocomplete="off"></td>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>이름</th>
+					<td class="text-start" colspan="3"><input type="text" name="ifmmName" id="ifmmName" style="min-width: 200px;" value="<c:out value="${rt.ifmmName}"/>" autocomplete="off"></td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">이메일</th>
@@ -138,9 +138,9 @@
 			<table class="table">
 				
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">생년월일</th>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>생년월일</th>
 					<td class="text-start">
-						<input type="date" name="ifmmDob" autocomplete="off" value="<c:out value="${rt.ifmmDob}"/>">
+						<input type="date" name="ifmmDob" id="ifmmDob" autocomplete="off" value="<c:out value="${rt.ifmmDob}"/>">
 					</td>
 				</tr>
 				<tr>
@@ -311,23 +311,36 @@
 	<script src="/infra/resources/js/validation.js"></script>
 	
 	<script type="text/javascript">
-		$("#btnSubmit").on("click", function(){
-			
-			if(!checkId($("#ifmmId"), $("#ifmmId").val(), "아이디가 유효하지 않습니다. 다시 입력해주세요.")){
-				return false;
-			}
-			
-			if(!checkPassword($("#pwd1"), $("#pwd1").val(), "비밀번호가 유효하지 않습니다.")){
-				return false;
-			}
-			
-			if($("#pwd1").val() != $("#pwd2").val()){
-				alert("비밀번호를 다르게 입력하였습니다.");
-				$("#pwd2").focus();
-				return false;
-			}			
-			
-		});
+		$("#btnSubmit").on(
+				"click",
+				function() {
+
+					if (!checkId($("#ifmmId"), $("#ifmmId").val(),
+							"아이디가 유효하지 않습니다. 다시 입력해주세요.")) {
+						return false;
+					}
+
+					if (!checkPassword($("#pwd1"), $("#pwd1").val(),
+							"비밀번호가 유효하지 않습니다.")) {
+						return false;
+					}
+
+					if ($("#pwd1").val() != $("#pwd2").val()) {
+						alert("비밀번호를 다르게 입력하였습니다.");
+						$("#pwd2").focus();
+						return false;
+					}
+					
+					if (!checkNull($("#ifmmName"), $("#ifmmName").val(), "이름을 입력해주세요.")){
+						return false;
+					}
+					
+					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")){
+						return false;
+					}
+						
+
+				});
 	</script>
 	
 	

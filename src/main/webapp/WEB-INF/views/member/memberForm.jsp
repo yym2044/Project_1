@@ -54,7 +54,7 @@
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호</th>
-					<td class="text-start"><input type="password" id="pwd1" style="min-width: 200px;" autocomplete="off">
+					<td class="text-start"><input type="password" name="ifmmPwd" id="pwd1" style="min-width: 200px;" autocomplete="off">
 						<div class="valid-feedback" id="pwd1ValidFeedBack">사용가능한 비밀번호입니다.</div>
 						<div class="invalid-feedback" id="pwd1InvalidFeedBack">사용 불가능한 비밀번호입니다.</div></td>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호확인</th>
@@ -65,7 +65,7 @@
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>이름</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmName" style="min-width: 200px;"
+					<td class="text-start" colspan="3"><input type="text" name="ifmmName" id="ifmmName" style="min-width: 200px;"
 						autocomplete="off"></td>
 				</tr>
 				<tr>
@@ -129,11 +129,11 @@
 			<table class="table">
 
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">생년월일</th>
-					<td class="text-start"><input type="date" name="ifmmDob" autocomplete="off"></td>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>생년월일</th>
+					<td class="text-start"><input type="date" name="ifmmDob" id="ifmmDob" autocomplete="off"></td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">성별</th>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>성별</th>
 					<td class="text-start"><input type="radio" name="ifmmGenderCd" id="man" value="3"><label for="man">남성</label>
 						<input type="radio" name="ifmmGenderCd" id="woman" value="4"><label for="woman">여성</label></td>
 				</tr>
@@ -316,6 +316,19 @@
 					if ($("#pwd1").val() != $("#pwd2").val()) {
 						alert("비밀번호를 다르게 입력하였습니다.");
 						$("#pwd2").focus();
+						return false;
+					}
+					
+					if (!checkNull($("#ifmmName"), $("#ifmmName").val(), "이름을 입력해주세요.")){
+						return false;
+					}
+					
+					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")){
+						return false;
+					}
+						
+					if (!$("input:checked[Name='ifmmGenderCd']").is(":checked")) {
+						alert("성별을 선택해주세요.");
 						return false;
 					}
 
