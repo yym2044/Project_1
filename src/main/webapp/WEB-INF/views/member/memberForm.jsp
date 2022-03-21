@@ -53,18 +53,18 @@
 							style="text-decoration: none;">아이디 중복체크</a></span></td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">비밀번호</th>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호</th>
 					<td class="text-start"><input type="password" id="pwd1" style="min-width: 200px;" autocomplete="off">
 						<div class="valid-feedback" id="pwd1ValidFeedBack">사용가능한 비밀번호입니다.</div>
 						<div class="invalid-feedback" id="pwd1InvalidFeedBack">사용 불가능한 비밀번호입니다.</div></td>
-					<th style="width: 200px;" class="bg-light text-start">비밀번호확인</th>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호확인</th>
 					<td class="text-start"><input type="password" name="ifmmPwdConfirm" id="pwd2" style="min-width: 200px;"
 						autocomplete="off">
 						<div class="valid-feedback" id="pwd2ValidFeedBack">비밀번호가 일치합니다.</div>
 						<div class="invalid-feedback" id="pwd2InvalidFeedBack">비밀번호가 일치하지 않습니다.</div></td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">이름</th>
+					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>이름</th>
 					<td class="text-start" colspan="3"><input type="text" name="ifmmName" style="min-width: 200px;"
 						autocomplete="off"></td>
 				</tr>

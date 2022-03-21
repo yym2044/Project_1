@@ -598,7 +598,7 @@ a {
 
 				<div class="row ps-2">
 					<div class="col col-md-4 ms-1 p-0">
-						<a class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="bi bi-trash"></i>
+						<a class="btn btn-outline-danger" id="btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="bi bi-trash"></i>
 						</a> <a class="btn btn-outline-primary" href="/infra/member/memberForm"> <!-- onclick="window.open('memberForm','name','resizable=no width=1000 height=500');return false" -->
 							<i class="bi bi-plus-square"></i>
 						</a>
@@ -919,7 +919,18 @@ a {
 		
 	});
 	
+	$("#btnDelete").on("click", function(){
+		if (!$("input:checked[Name='checkbox1']").is(":checked")){
+			alert("한 개 이상 선택해주세요");
+			return false;
+		}
+	})
+	
+
+	
 	</script>
+	
+	
 
 </body>
 </html>
