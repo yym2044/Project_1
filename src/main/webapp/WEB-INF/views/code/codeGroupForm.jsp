@@ -8,7 +8,9 @@
 
 <form method="post" action="/infra/code/codeGroupInst">
 	<input type="text" name="ifcgName" id="ifcgName" placeholder="코드그룹 이름을 입력하세요">
+	<!-- 
 	<input type="text" name="ifcdName" id="ifcdName" placeholder="코드 이름을 입력하세요">
+	 -->
 	<input type="submit" id="btnSubmit" value="제출">
 </form>
 

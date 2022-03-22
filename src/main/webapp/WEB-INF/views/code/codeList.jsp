@@ -61,7 +61,7 @@
 						<td><c:out value="${item.ifcgSeq}"/></td>
 						<td><c:out value="${item.ifcdSeq}"/></td>
 						<td><c:out value="${item.ifcdOrder}"/></td>
-						<td><a href="/infra/code/codeView?ifcdSeq=${item.ifcdSeq}" style="text-decoration: none"><c:out value="${item.ifcdName}"/></a></td>
+						<td><a href="/infra/code/codeView?ifcdSeq=${item.ifcdSeq}&shIfcgSeq=<c:out value="${vo.shIfcgSeq}"/>" style="text-decoration: none"><c:out value="${item.ifcdName}"/></a></td>
 						<td><c:out value="${item.ifcdDelNy}"/></td>
 					</tr>
 				</c:forEach>

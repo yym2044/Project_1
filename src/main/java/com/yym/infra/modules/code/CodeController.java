@@ -39,22 +39,26 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "/code/codeGroupForm")
-	public String codeGroupForm() throws Exception {
+	public String codeGroupForm(@ModelAttribute("vo") CodeVo vo) throws Exception {
 
 		return "code/codeGroupForm";
 	}
 
 	@RequestMapping(value = "/code/codeGroupInst")
-	public String codeGroupInst(Model model, Code dto) throws Exception {
+	public String codeGroupInst(CodeVo vo, Code dto) throws Exception {
 
 		// 입력이 되어야 함
 		service.insert(dto);
-
-		return "redirect:/code/codeGroupList";
+		
+		System.out.println("dto.getIfcgSeq() : " + dto.getIfcgSeq());
+		
+		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq();
+		
+//		&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>
 	}
 
 	@RequestMapping(value = "/code/codeGroupView1")
-	public String codeGroupView1(Model model, CodeVo vo) throws Exception {
+	public String codeGroupView1(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 
 		Code rt = service.selectOne(vo);
 
@@ -64,7 +68,7 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeGroupView2")
-	public String codeGroupView2(Model model, CodeVo vo) throws Exception {
+	public String codeGroupView2(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 
 		List<Code> list = service.selectList2(vo);
 
@@ -149,7 +153,7 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeView")
-	public String codeView(Model model, CodeVo vo) throws Exception {
+	public String codeView(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 
 		Code rt = service.selectOne_code(vo);
 

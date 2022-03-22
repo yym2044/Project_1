@@ -79,7 +79,8 @@ public class MemberController {
 		// 입력을 작동시킨다.
 		service.insertMember(dto);
 		
-		return "redirect:/member/memberList";
+		/* return "redirect:/member/memberList"; */
+		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
 	}
 	
 	@RequestMapping(value = "/member/memberEditForm")

@@ -23,4 +23,4 @@
 	</c:otherwise>
 </c:choose>	 
 <hr>
-<a href="/infra/code/codeGroupList">목록으로</a>
+<a href="/infra/code/codeGroupList?shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>">목록으로</a>

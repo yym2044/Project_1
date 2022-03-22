@@ -11,8 +11,8 @@ public class Code {
 	private Integer ifcgDelNy;
 	private Integer ifcdDelNy;
 	private Integer ifcdOrder;
-	
 //------------
+	
 	public String getIfcgSeq() {
 		return ifcgSeq;
 	}
@@ -40,17 +40,14 @@ public class Code {
 	public String getIfcdName() {
 		return ifcdName;
 	}
-	public Integer getIfcdOrder() {
-		return ifcdOrder;
-	}
-	public void setIfcdOrder(Integer ifcdOrder) {
-		this.ifcdOrder = ifcdOrder;
-	}
 	public void setIfcdName(String ifcdName) {
 		this.ifcdName = ifcdName;
 	}
 	public Integer getIfcgDelNy() {
 		return ifcgDelNy;
+	}
+	public void setIfcgDelNy(Integer ifcgDelNy) {
+		this.ifcgDelNy = ifcgDelNy;
 	}
 	public Integer getIfcdDelNy() {
 		return ifcdDelNy;
@@ -58,9 +55,10 @@ public class Code {
 	public void setIfcdDelNy(Integer ifcdDelNy) {
 		this.ifcdDelNy = ifcdDelNy;
 	}
-	public void setIfcgDelNy(Integer ifcgDelNy) {
-		this.ifcgDelNy = ifcgDelNy;
+	public Integer getIfcdOrder() {
+		return ifcdOrder;
 	}
-
-	
+	public void setIfcdOrder(Integer ifcdOrder) {
+		this.ifcdOrder = ifcdOrder;
+	}
 }

@@ -30,7 +30,7 @@ public class CodeServiceImpl implements CodeService{
 	public int insert(Code dto) throws Exception {
 		
 		dao.insert(dto);
-		dao.insert_code(dto);
+//		dao.insert_code(dto);
 		
 		return 1;
 	}
