@@ -44,7 +44,7 @@ public class MemberController {
 	
 	
 	@RequestMapping(value = "/member/memberView")
-	public String memberView(Model model, MemberVo vo) throws Exception {
+	public String memberView(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {
 
 
 		Member rt = service.selectOne(vo);

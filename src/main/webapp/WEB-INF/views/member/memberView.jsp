@@ -81,7 +81,7 @@
 			</table>
 
 			<div class="text-center">
-				<a href="/infra/member/memberList" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">목록으로</a>
+				<a href="/infra/member/memberList?rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">목록으로</a>
 				<a href="/infra/member/memberEditForm?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">정보수정</a>
 			</div>
 

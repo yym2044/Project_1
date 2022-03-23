@@ -263,8 +263,8 @@ a {
 				</ol>
 			</nav>
 			
-			<!-- <form method="get" action="/infra/member/memberList"> -->
-			<form method="get" action="/infra/member/memberList?shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>">
+			<form method="get" action="/infra/member/memberList">
+			<%-- <form method="get" action="/infra/member/memberList?shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&thisPage=<c:out value="${vo.thisPage}"/>"> --%>
 				<div class="row border border-1 my-2 box-white container1" id="searchBox">
 					<div class="col-12 col-md-9">
 						<div class="row my-2 pt-2">
@@ -467,12 +467,12 @@ a {
 									<button type="button" class="btn btn-sm btn-outline-dark" disabled>View</button>
 								</div>
 								<div class="btn-group me-2" role="group" aria-label="Second group">
-									<a type="button" id="view3" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=3">3</a>
-									<a type="button" id="view5" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=5">5</a>
-									<a type="button" id="view10" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=10">10</a>
-									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=20">20</a>
-									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=50">50</a>
-									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=100">100</a>
+									<a type="button" id="view3" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=3&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">3</a>
+									<a type="button" id="view5" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=5&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">5</a>
+									<a type="button" id="view10" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=10&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">10</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=20&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">20</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=50&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">50</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=100&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">100</a>
 
 								</div>
 							</div>
@@ -522,26 +522,26 @@ a {
 										</th>
 										<th>
 											<c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortNo'}">
-												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top">번호</a>
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>">번호</a>
 											</c:if>
 											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortNo'}">
-												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom">번호</a>
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>">번호</a>
 											</c:if>
 										</th>
 										<th>
 											<c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortId'}">
-												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=top">아이디</a>
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=top&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>">아이디</a>
 											</c:if>
 											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortId'}">
-												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=bottom">아이디</a>
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortId&orderby=bottom&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>">아이디</a>
 											</c:if>
 										</th>
 										<th>
 											<c:if test="${vo.orderby ne 'top' or vo.sort ne 'sortName'}">
-												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=top">이름</a>
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=top&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>">이름</a>
 											</c:if>
 											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortName'}">
-												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=bottom">이름</a>
+												<a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortName&orderby=bottom&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>">이름</a>
 											</c:if>
 										</th>
 										<th>
@@ -596,7 +596,7 @@ a {
 													<a href="#" class="btn btn-sm btn-outline-dark py-0">
 														<i class="bi bi-envelope"></i>
 													</a>
-													<a href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}" class="btn btn-sm btn-outline-dark py-0">
+													<a href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>" class="btn btn-sm btn-outline-dark py-0">
 														<%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>
 														관리
 													</a>
@@ -648,20 +648,20 @@ a {
 			<nav class="mt-3" aria-label="...">
 				<ul class="pagination justify-content-center">
 					<c:if test="${vo.startPage gt vo.pageNumToShow}">
-						<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.startPage - 1}&rowNumToShow=${vo.rowNumToShow}">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.startPage - 1}&rowNumToShow=${vo.rowNumToShow}&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">Previous</a></li>
 					</c:if>
 					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 						<c:choose>
 							<c:when test="${i.index eq vo.thisPage}">
-								<li class="page-item active"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
+								<li class="page-item active"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">${i.index}</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}">${i.index}</a></li>
+								<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">${i.index}</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					<c:if test="${vo.endPage ne vo.totalPages}">
-						<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.endPage + 1}&rowNumToShow=${vo.rowNumToShow}">Next</a></li>
+						<li class="page-item"><a class="page-link" href="/infra/member/memberList?thisPage=${vo.endPage + 1}&rowNumToShow=${vo.rowNumToShow}&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">Next</a></li>
 					</c:if>
 				</ul>
 			</nav>

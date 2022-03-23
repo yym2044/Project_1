@@ -15,8 +15,8 @@
 		WHERE 1=1
 			
 		<choose>
-			<when test="shIfcgDelNy == 1">AND ifcgDelNy = 1</when>
-			<when test="shIfcgDelNy == 0">AND ifcgDelNy = 0</when>
+			<when test="shIfcgDelNy == 2">AND ifcgDelNy = 1</when>
+			<when test="shIfcgDelNy == 1">AND ifcgDelNy = 0</when>
 		</choose>
 			
 		 <!-- 
