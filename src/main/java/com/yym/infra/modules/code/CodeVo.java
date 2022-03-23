@@ -9,7 +9,7 @@ public class CodeVo {
 	private String shIfcgName;
 	private String shIfcgDelNy;
 	
-	private String shIfcgSeq;
+	private Integer shIfcgSeq;
 	
 	private String shOption;
 	private String shValue;
@@ -157,11 +157,11 @@ public class CodeVo {
 		this.shIfcgDelNy = shIfcgDelNy;
 	}
 	
-	public String getShIfcgSeq() {
+	public Integer getShIfcgSeq() {
 		return shIfcgSeq;
 	}
 	
-	public void setShIfcgSeq(String shIfcgSeq) {
+	public void setShIfcgSeq(Integer shIfcgSeq) {
 		this.shIfcgSeq = shIfcgSeq;
 	}
 	

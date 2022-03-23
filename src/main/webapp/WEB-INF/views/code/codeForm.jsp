@@ -23,7 +23,7 @@
 			<div class="row g-2 pt-3">
 				<div class="col">
 					<select class="form-select" name="ifcgSeq">
-						<c:forEach items="${list}" var="item" varStatus="status">
+						<c:forEach items="${listIfcgSeq}" var="item" varStatus="status">
 							<option value="<c:out value="${item.ifcgSeq}"/>">
 								<c:out value="${item.ifcgSeq}" /> | <c:out value="${item.ifcgName}" />
 							</option>

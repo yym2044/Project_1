@@ -38,6 +38,7 @@ public class CodeController {
 		return "code/codeGroupList";
 	}
 	
+	
 	@RequestMapping(value = "/code/codeGroupForm")
 	public String codeGroupForm(@ModelAttribute("vo") CodeVo vo) throws Exception {
 
@@ -120,13 +121,14 @@ public class CodeController {
 		
 		vo.setParamsPagingForCodeList(count);
 		
-		if(count != 0) {
+//		if(count != 0) {
 		List<Code> list = service.selectList_code(vo);
 		model.addAttribute("list", list);
 		
+		//그룹정보 전체 가져오기
 		List<Code> listIfcgSeq = service.selectListAll();
 		model.addAttribute("listIfcgSeq",listIfcgSeq);
-		}
+//		}
 		
 		model.addAttribute("vo", vo);
 
@@ -138,8 +140,11 @@ public class CodeController {
 
 		// ifcgSeq 정보를 가져오기 위해
 		List<Code> list = service.selectList(vo);
-
 		model.addAttribute("list", list);
+		
+		//그룹정보 전체 가져오기
+		List<Code> listIfcgSeq = service.selectListAll();
+		model.addAttribute("listIfcgSeq",listIfcgSeq);
 
 		return "code/codeForm";
 	}
