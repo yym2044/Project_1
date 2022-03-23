@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 //@RequestMapping(value = "/code/")			17번 라인 대신 (11번 라인 + 18번 라인)으로도 가능
@@ -49,14 +50,38 @@ public class CodeController {
 	
 	
 	@RequestMapping(value = "/code/codeGroupInst")
-	public String codeGroupInst(CodeVo vo, Code dto) throws Exception {
+	public String codeGroupInst(CodeVo vo, Code dto, RedirectAttributes redircectAttributes) throws Exception {
 
 		// 입력이 되어야 함
 		service.insert(dto);
 		
-		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + "&shOption=" + vo.getShOption() + "&shValue=" + vo.getShValue() + "&shIfcgDelNy=" + vo.getShIfcgDelNy() + "&shIfcgName=" + vo.getShIfcgName() + "&thisPage=" + vo.getThisPage();
 		
-//		&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>
+		// 1. redirectAttributes을 추가해서 사용하는 방식 : return "redirect:/code/codeGroupView1" 만 써줘도 addAttribute된 값들이 자동으로 들어간다 (get 방식으로)
+		// 2. return "redirect:/code/codeGroupView1" 뒤에 직접 추가해서 사용하는 방식 (get 방식)
+		
+		redircectAttributes.addAttribute("ifcgSeq", dto.getIfcgSeq());
+		redircectAttributes.addAttribute("shOption", vo.getShOption());
+		redircectAttributes.addAttribute("shValue", vo.getShValue());
+		redircectAttributes.addAttribute("shIfcgDelNy", vo.getShIfcgDelNy());
+		redircectAttributes.addAttribute("shIfcgName", vo.getShIfcgName());
+		redircectAttributes.addAttribute("thisPage", vo.getThisPage());
+		
+		return "redirect:/code/codeGroupView1";
+//		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + makeQueryString(vo);
+		
+	}
+	
+	
+	
+	public String makeQueryString(CodeVo vo) {
+		String tmp = 
+				
+					"&shOption=" + vo.getShOption() 
+					+ "&shValue=" + vo.getShValue() 
+					+ "&shIfcgDelNy=" + vo.getShIfcgDelNy() 
+					+ "&shIfcgName=" + vo.getShIfcgName() 
+					+ "&thisPage=" + vo.getThisPage();
+		return tmp;
 	}
 
 	@RequestMapping(value = "/code/codeGroupView1")
@@ -108,7 +133,7 @@ public class CodeController {
 		// 업데이트 하는 구문
 		service.update(dto);
 		
-		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + "&shOption=" + vo.getShOption() + "&shValue=" + vo.getShValue() + "&shIfcgDelNy=" + vo.getShIfcgDelNy() + "&shIfcgName=" + vo.getShIfcgName() + "&thisPage=" + vo.getThisPage();
+		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + makeQueryString(vo);
 		
 	}
 
