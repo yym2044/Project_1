@@ -262,8 +262,9 @@ a {
 					<li class="breadcrumb-item active" aria-current="page"><b>회원리스트</b></li>
 				</ol>
 			</nav>
-
-			<form method="get" action="/infra/member/memberList">
+			
+			<!-- <form method="get" action="/infra/member/memberList"> -->
+			<form method="get" action="/infra/member/memberList?shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>">
 				<div class="row border border-1 my-2 box-white container1" id="searchBox">
 					<div class="col-12 col-md-9">
 						<div class="row my-2 pt-2">
