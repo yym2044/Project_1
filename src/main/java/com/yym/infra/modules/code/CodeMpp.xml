@@ -124,6 +124,26 @@
 	
 	</update>
 	
+	<delete id="delete">
+	
+	DELETE
+	FROM
+		infrCodeGroup
+	WHERE 1=1
+		AND ifcgSeq = #{ifcgSeq}
+		
+	</delete>
+	
+	<update id="updateDelete">
+	UPDATE
+		infrCodeGroup
+	SET
+		ifcgDelNy = 1
+	WHERE 1=1
+		AND ifcgSeq = #{ifcgSeq}
+		
+	</update>
+	
 	<!-- 코드 -->
 	<sql id="selectCommon_code">
 		FROM 

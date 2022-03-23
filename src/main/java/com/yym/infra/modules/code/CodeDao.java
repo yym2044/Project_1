@@ -30,6 +30,12 @@ public class CodeDao {
 //	public int update(CodeVo vo) {return sqlSession.update(namespace + ".update", vo);}
 	public int update(Code dto) {return sqlSession.update(namespace + ".update", dto);}
 	
+	//진짜 삭제
+	public int delete(CodeVo vo) {return sqlSession.delete(namespace + ".delete", vo);}
+	//가짜 삭제
+	public int updateDelete(CodeVo vo) {return sqlSession.update(namespace + ".updateDelete", vo);}
+	
+	
 //	코드
 	public int selectOneCount_code(CodeVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount_code", vo);}
 	public List<Code> selectList_code(CodeVo vo) {return sqlSession.selectList(namespace + ".selectList_code", vo);}

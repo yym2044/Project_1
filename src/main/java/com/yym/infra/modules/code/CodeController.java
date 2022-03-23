@@ -50,7 +50,7 @@ public class CodeController {
 	
 	
 	@RequestMapping(value = "/code/codeGroupInst")
-	public String codeGroupInst(CodeVo vo, Code dto, RedirectAttributes redircectAttributes) throws Exception {
+	public String codeGroupInst(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 
 		// 입력이 되어야 함
 		service.insert(dto);
@@ -59,12 +59,12 @@ public class CodeController {
 		// 1. redirectAttributes을 추가해서 사용하는 방식 : return "redirect:/code/codeGroupView1" 만 써줘도 addAttribute된 값들이 자동으로 들어간다 (get 방식으로)
 		// 2. return "redirect:/code/codeGroupView1" 뒤에 직접 추가해서 사용하는 방식 (get 방식)
 		
-		redircectAttributes.addAttribute("ifcgSeq", dto.getIfcgSeq());
-		redircectAttributes.addAttribute("shOption", vo.getShOption());
-		redircectAttributes.addAttribute("shValue", vo.getShValue());
-		redircectAttributes.addAttribute("shIfcgDelNy", vo.getShIfcgDelNy());
-		redircectAttributes.addAttribute("shIfcgName", vo.getShIfcgName());
-		redircectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("ifcgSeq", dto.getIfcgSeq());
+		redirectAttributes.addAttribute("shOption", vo.getShOption());
+		redirectAttributes.addAttribute("shValue", vo.getShValue());
+		redirectAttributes.addAttribute("shIfcgDelNy", vo.getShIfcgDelNy());
+		redirectAttributes.addAttribute("shIfcgName", vo.getShIfcgName());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		
 		return "redirect:/code/codeGroupView1";
 //		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + makeQueryString(vo);
@@ -136,6 +136,42 @@ public class CodeController {
 		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + makeQueryString(vo);
 		
 	}
+	
+	
+	@RequestMapping(value = "/code/codeGroupDele")
+	public String codeGroupDele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.delete(vo);
+		
+		redirectAttributes.addAttribute("shOption", vo.getShOption());
+		redirectAttributes.addAttribute("shValue", vo.getShValue());
+		redirectAttributes.addAttribute("shIfcgDelNy", vo.getShIfcgDelNy());
+		redirectAttributes.addAttribute("shIfcgName", vo.getShIfcgName());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		
+		return "redirect:/code/codeGroupList";
+		
+	}
+	
+	@RequestMapping(value = "/code/codeGroupNele")
+	public String codeGroupNele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		service.updateDelete(vo);
+		
+		redirectAttributes.addAttribute("shOption", vo.getShOption());
+		redirectAttributes.addAttribute("shValue", vo.getShValue());
+		redirectAttributes.addAttribute("shIfcgDelNy", vo.getShIfcgDelNy());
+		redirectAttributes.addAttribute("shIfcgName", vo.getShIfcgName());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		
+		return "redirect:/code/codeGroupList";
+		
+	}
+	
+	
+	
+	
+	
 
 //	코드
 
@@ -214,11 +250,13 @@ public class CodeController {
 
 	}
 
-	@RequestMapping(value = "/code/codeDele")
-	public String codeDele(Model model, CodeVo vo) throws Exception {
+	@RequestMapping(value = "/code/codeNele")
+	public String codeNele(Model model, CodeVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		// 업데이트 하는 구문
 		service.delete_code(vo);
+		
+		redirectAttributes.addAttribute("shIfcgSeq" , vo.getShIfcgSeq());
 
 		return "redirect:/code/codeList";
 

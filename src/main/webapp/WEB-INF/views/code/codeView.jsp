@@ -69,7 +69,7 @@
 					</div>
 					<div class="modal-body">정말 삭제합니다.</div>
 					<div class="modal-footer">
-						<a class="btn btn-primary" href="/infra/code/codeDele?ifcdSeq=${rt.ifcdSeq}" role="button">확인</a>
+						<a class="btn btn-primary" href="/infra/code/codeNele?ifcdSeq=${rt.ifcdSeq}&shIfcgSeq=${vo.shIfcgSeq}" role="button">확인</a>
 						<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 					</div>
 				</div>
