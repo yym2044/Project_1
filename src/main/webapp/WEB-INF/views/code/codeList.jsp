@@ -17,7 +17,7 @@ a {
 }
 </style>
 
-<a href="/infra/code/codeForm" style="text-decoration: none;">등록하기</a>
+<a href="/infra/code/codeForm?shIfcgSeq=<c:out value="${vo.shIfcgSeq}"/>" style="text-decoration: none;">등록하기</a>
 <a href="/infra/code/codeGroupList" style="text-decoration: none;">그룹보기</a>
 
 <hr>

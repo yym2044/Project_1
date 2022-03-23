@@ -18,13 +18,15 @@
 	<div class="container-fluid">
 	
 		<form method="post" action="/infra/code/codeInst">
-
+		
+		<input type="hidden" name="shIfcgSeq" value="<c:out value="${vo.shIfcgSeq}"/>">
 
 			<div class="row g-2 pt-3">
 				<div class="col">
 					<select class="form-select" name="ifcgSeq">
+						<option value="">::코드그룹::</option>
 						<c:forEach items="${listIfcgSeq}" var="item" varStatus="status">
-							<option value="<c:out value="${item.ifcgSeq}"/>">
+							<option value="<c:out value="${item.ifcgSeq}"/>" <c:if test="${vo.shIfcgSeq eq item.ifcgSeq}"> selected</c:if>>
 								<c:out value="${item.ifcgSeq}" /> | <c:out value="${item.ifcgName}" />
 							</option>
 						</c:forEach>
@@ -40,7 +42,8 @@
 					<input class="form-control" type="text" name="ifcdDelNy" placeholder="ifcdDelNy">
 				</div>
 				<div class="col">
-					<input class="btn btn-lg btn-secondary" type="submit" value="제출">
+					<input class="btn btn-sm btn-secondary" type="submit" value="제출">
+					<a class="btn btn-sm btn-secondary" href="/infra/code/codeList?shIfcgSeq=<c:out value="${vo.shIfcgSeq}"/>">목록으로</a>
 				</div>
 			</div>
 		</form>

@@ -121,14 +121,14 @@ public class CodeController {
 		
 		vo.setParamsPagingForCodeList(count);
 		
-//		if(count != 0) {
-		List<Code> list = service.selectList_code(vo);
-		model.addAttribute("list", list);
-		
 		//그룹정보 전체 가져오기
 		List<Code> listIfcgSeq = service.selectListAll();
 		model.addAttribute("listIfcgSeq",listIfcgSeq);
-//		}
+		
+		if(count != 0) {
+			List<Code> list = service.selectList_code(vo);
+			model.addAttribute("list", list);
+		}
 		
 		model.addAttribute("vo", vo);
 
@@ -136,7 +136,7 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeForm")
-	public String codeForm(Model model, CodeVo vo) throws Exception {
+	public String codeForm(Model model,@ModelAttribute("vo") CodeVo vo) throws Exception {
 
 		// ifcgSeq 정보를 가져오기 위해
 		List<Code> list = service.selectList(vo);
@@ -150,12 +150,12 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeInst")
-	public String codeInst(Model model, Code dto) throws Exception {
+	public String codeInst(CodeVo vo, Code dto) throws Exception {
 
 		// 입력이 되어야 함
 		service.insert_code(dto);
 
-		return "redirect:/code/codeList";
+		return "redirect:/code/codeList?shIfcgSeq=" + vo.getShIfcgSeq();
 	}
 
 	@RequestMapping(value = "/code/codeView")
@@ -169,7 +169,7 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeEditForm")
-	public String codeEditForm(Model model, CodeVo vo) throws Exception {
+	public String codeEditForm(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 
 		Code rt = service.selectOne_code(vo);
 
@@ -179,12 +179,13 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeUpdt") // SelectOne(Code dto) 새로 생성
-	public String codeUpdt(Model model, Code dto) throws Exception {
+	public String codeUpdt(CodeVo vo, Code dto) throws Exception {
 
 		// 업데이트 하는 구문
 		service.update_code(dto);
 
-		return "redirect:/code/codeView?ifcdSeq=" + dto.getIfcdSeq();
+		return "redirect:/code/codeView?ifcdSeq=" + dto.getIfcdSeq() + "&shIfcgSeq=" + vo.getShIfcgSeq();
+
 
 	}
 
