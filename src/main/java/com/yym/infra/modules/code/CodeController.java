@@ -44,15 +44,16 @@ public class CodeController {
 		return "code/codeGroupForm";
 	}
 
+
+	
+	
 	@RequestMapping(value = "/code/codeGroupInst")
 	public String codeGroupInst(CodeVo vo, Code dto) throws Exception {
 
 		// 입력이 되어야 함
 		service.insert(dto);
 		
-		System.out.println("dto.getIfcgSeq() : " + dto.getIfcgSeq());
-		
-		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq();
+		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + "&shOption=" + vo.getShOption() + "&shValue=" + vo.getShValue() + "&shIfcgDelNy=" + vo.getShIfcgDelNy() + "&shIfcgName=" + vo.getShIfcgName() + "&thisPage=" + vo.getThisPage();
 		
 //		&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>
 	}
@@ -78,7 +79,7 @@ public class CodeController {
 	}
 
 	@RequestMapping(value = "/code/codeGroupEditForm")
-	public String codeGroupEditForm(Model model, CodeVo vo) throws Exception {
+	public String codeGroupEditForm(Model model, @ModelAttribute("vo") CodeVo vo) throws Exception {
 
 		Code rt = service.selectOne(vo);
 
@@ -101,13 +102,13 @@ public class CodeController {
 //	}
 
 	@RequestMapping(value = "/code/codeGroupUpdt") // SelectOne(Code dto) 새로 생성
-	public String codeGroupUpdt(Model model, Code dto) throws Exception {
+	public String codeGroupUpdt(CodeVo vo, Code dto) throws Exception {
 
 		// 업데이트 하는 구문
 		service.update(dto);
-
-		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq();
-
+		
+		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + "&shOption=" + vo.getShOption() + "&shValue=" + vo.getShValue() + "&shIfcgDelNy=" + vo.getShIfcgDelNy() + "&shIfcgName=" + vo.getShIfcgName() + "&thisPage=" + vo.getThisPage();
+		
 	}
 
 //	코드

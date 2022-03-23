@@ -11,6 +11,9 @@ public class Code {
 	private Integer ifcgDelNy;
 	private Integer ifcdDelNy;
 	private Integer ifcdOrder;
+	
+	
+	
 //------------
 	
 	public String getIfcgSeq() {
@@ -61,4 +64,5 @@ public class Code {
 	public void setIfcdOrder(Integer ifcdOrder) {
 		this.ifcdOrder = ifcdOrder;
 	}
+	
 }
