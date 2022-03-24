@@ -42,27 +42,27 @@
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>아이디</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmId" id="ifmmId" style="min-width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
+					<td class="text-start" colspan="3"><input type="text" name="ifmmId" id="ifmmId" class="form-control d-inline" style="width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
 							style="text-decoration: none;">아이디 중복체크</a></span></td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호</th>
 					<td class="text-start">
-						<input type="password" name="ifmmPwd" id="pwd1" style="min-width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>">
-						<div class="valid-feedback" id="pwd1ValidFeedBack">
+						<input type="password" name="ifmmPwd" id="ifmmPwd" class="form-control" style="width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>">
+						<div class="valid-feedback" id="ifmmPwdValidFeedBack">
 					      사용가능한 비밀번호입니다.
 					    </div>
-					    <div class="invalid-feedback" id="pwd1InvalidFeedBack">
+					    <div class="invalid-feedback" id="ifmmPwdInvalidFeedBack">
 					      사용 불가능한 비밀번호입니다.
 					    </div>
 					</td>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>비밀번호확인</th>
 					<td class="text-start">
-						<input type="password" name="ifmmPwdConfirm" id="pwd2" style="min-width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>">
-					    <div class="valid-feedback" id="pwd2ValidFeedBack">
+						<input type="password" name="ifmmPwdConfirm" id="ifmmPwdConfirm" class="form-control" style="width: 200px;" value="<c:out value="${rt.ifmmPwd}"/>">
+					    <div class="valid-feedback" id="ifmmPwdConfirmValidFeedBack">
 					      비밀번호가 일치합니다.
 					    </div>
-					    <div class="invalid-feedback" id="pwd2InvalidFeedBack">
+					    <div class="invalid-feedback" id="ifmmPwdConfirmInvalidFeedBack">
 					      비밀번호가 일치하지 않습니다.
 					    </div>
 						
@@ -70,12 +70,24 @@
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>이름</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmName" id="ifmmName" style="min-width: 200px;" value="<c:out value="${rt.ifmmName}"/>" autocomplete="off"></td>
+					<td class="text-start" colspan="3"><input type="text" name="ifmmName" id="ifmmName" class="form-control" style="width: 200px;" value="<c:out value="${rt.ifmmName}"/>" autocomplete="off"></td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">이메일</th>
 					<td class="text-start" colspan="3">
-						<input type="email" name="ifmeEmailFull" style="min-width: 200px;" value="<c:out value="${rt.ifmeEmailFull}"/>">
+						<%-- 
+						<input type="email" id="ifmeEmailFull" name="ifmeEmailFull" class="form-control d-inline" style="width: 200px;" value="<c:out value="${rt.ifmeEmailFull}"/>">
+						 --%>
+						<input type="text" id="ifmeEmailAccount" name="ifmeEmailAccount" class="form-control d-inline" style="width:200px;" value="<c:out value="${rt.ifmeEmailAccount}"/>">
+						<span>@</span>
+						<input type="text" id="ifmeEmailDomain" name="ifmeEmailDomain" class="form-control d-inline" style="width:200px;" value="<c:out value="${rt.ifmeEmailDomain}"/>">
+						<select id="ifmeEmailDomainCd" name="ifmeEmailDomainCd" class="form-select d-inline" style="width: 200px;">
+							<c:forEach items="${codeEmailDomain}" var="item" varStatus="status">
+								<option value="<c:out value="${item.ifcdSeq}"/>" <c:if test="${item.ifcdSeq eq rt.ifmeEmailDomainCd}">selected</c:if>>
+									<c:out value="${item.ifcdName}"/>
+								</option>
+							</c:forEach>
+						</select>
 						<span class="ms-2"><a href="#" class="fs-6" style="text-decoration: none;">이메일 중복체크</a></span>
 						<span class="ms-2">
 						<input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1" <c:if test="${rt.ifmmEmailConsentNyText eq '수신동의'}">checked</c:if>><label for="email_check">이메일 수신 동의</label>
@@ -87,7 +99,7 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">등급설정</th>
 					<td class="text-start" colspan="3">
-						<select id="ifmmGradeCd" name="ifmmGradeCd">
+						<select id="ifmmGradeCd" name="ifmmGradeCd" class="form-select" style="width: 150px;">
 								<option value="0">::선택::</option>
 							<c:forEach items="${codeMemberGrade}" var="item" varStatus="status">
 								<option value="<c:out value="${item.ifcdSeq}"/>"<c:if test="${rt.ifmmGrade eq item.ifcdName}"> selected</c:if>>
@@ -103,12 +115,16 @@
 					
 						<div class="row g-2">
 							<div class="col-12 d-flex align-items-center">
-								<input type="text" name="ifmaZipCode" id="sample6_postcode" placeholder="우편번호" readonly value="<c:out value="${rt.ifmaZipCode}"/>"> <input type="button" class="btn btn-sm btn-outline-dark ms-1" onclick="sample6_execDaumPostcode()" value="우편번호 검색">
+								<div class="input-group input-group-sm" style="width: 300px;">
+									<input type="text" name="ifmaZipCode" id="sample6_postcode" class="form-control d-inline bg-light" value="<c:out value="${rt.ifmaZipCode}"/>" placeholder="우편번호" readonly>
+									<button type="button" class="btn btn-sm btn-outline-primary ms-1" id="btnAddress">우편번호 검색</button>	<!--  onclick="sample6_execDaumPostcode()" -->
+									<button type="button" class="btn btn-outline-danger" id="btnAddressClear">X</button>
+								</div>
 							</div>
 							<div class="col-12">
-								<input type="text" name="ifmaAddress1" id="sample6_address" placeholder="주소" readonly style="width:300px;" value="<c:out value="${rt.ifmaAddress1}"/>">			
-								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" placeholder="상세주소" autocomplete="off" style="width:300px;" value="<c:out value="${rt.ifmaAddress2}"/>">					
-								<input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" readonly placeholder="참고항목" value="<c:out value="${rt.ifmaAddressReferences}"/>">
+								<input type="text" name="ifmaAddress1" id="sample6_address" class="form-control d-block" placeholder="주소" readonly style="width:300px;" value="<c:out value="${rt.ifmaAddress1}"/>">			
+								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" class="form-control d-inline mt-2" placeholder="상세주소" autocomplete="off" style="width:300px;" value="<c:out value="${rt.ifmaAddress2}"/>">					
+								<input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" class="form-control d-inline" style="width: 300px;" readonly placeholder="참고항목" value="<c:out value="${rt.ifmaAddressReferences}"/>">
 							</div>
 						</div>
 						
@@ -117,7 +133,7 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">휴대폰</th>
 					<td class="text-start" colspan="3">
-						<select id="ifmpTelecomCd" name="ifmpTelecomCd">
+						<select id="ifmpTelecomCd" name="ifmpTelecomCd" class="form-select d-inline" style="width: 100px;">
 							<option value="0">통신사</option>
 							<c:forEach items="${codeTelecom}" var="item" varStatus="status">
 								<option value="<c:out value="${item.ifcdSeq}"/>" <c:if test="${rt1.ifmpTelecomName eq item.ifcdName}">selected</c:if>>
@@ -125,14 +141,14 @@
 								</option>
 							</c:forEach>
 						</select>
-						<input type="text" name="ifmpNumberMobile" placeholder="01012345678" value="<c:out value="${rt1.ifmpNumberMobile}"/>" autocomplete="off">
+						<input type="text" id="ifmpNumberMobile" name="ifmpNumberMobile" class="form-control d-inline" style="width: 200px;" placeholder="01012345678" value="<c:out value="${rt1.ifmpNumberMobile}"/>" autocomplete="off">
 						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1" <c:if test="${rt.ifmmSmsConsentNyText eq '수신동의'}">checked</c:if>><label for="sms_check">SMS 수신 동의</label>
 						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
 					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">전화번호</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmpNumberHome" placeholder="021234567" value="<c:out value="${rt2.ifmpNumberHome}"/>" autocomplete="off"></td>
+					<td class="text-start" colspan="3"><input type="text" id="ifmpNumberHome" name="ifmpNumberHome" class="form-control" style="width: 200px;" placeholder="021234567" value="<c:out value="${rt2.ifmpNumberHome}"/>" autocomplete="off"></td>
 				</tr>
 			</table>
 
@@ -149,7 +165,7 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>생년월일</th>
 					<td class="text-start">
-						<input type="date" name="ifmmDob" id="ifmmDob" autocomplete="off" value="<c:out value="${rt.ifmmDob}"/>">
+						<input type="date" name="ifmmDob" id="ifmmDob" class="form-control" style="width: 200px;" autocomplete="off" value="<c:out value="${rt.ifmmDob}"/>">
 					</td>
 				</tr>
 				<tr>
@@ -162,7 +178,7 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">마케팅 수신동의</th>
 					<td class="text-start">
-						<select name="ifmmPushConsentNy">
+						<select id="ifmmPushConsentNy" name="ifmmPushConsentNy" class="form-select" style="width:100px;">
 							<option value="1">예</option>
 							<option value="0" <c:if test="${rt.ifmmPushConsentNyText eq '수신거부'}">selected</c:if>>아니오</option>
 						</select>
@@ -329,14 +345,14 @@
 						return false;
 					}
 
-					if (!checkPassword($("#pwd1"), $("#pwd1").val(),
+					if (!checkPassword($("#ifmmPwd"), $("#ifmmPwd").val(),
 							"비밀번호가 유효하지 않습니다.")) {
 						return false;
 					}
 
-					if ($("#pwd1").val() != $("#pwd2").val()) {
+					if ($("#ifmmPwd").val() != $("#ifmmPwdConfirm").val()) {
 						alert("비밀번호를 다르게 입력하였습니다.");
-						$("#pwd2").focus();
+						$("#ifmmPwdConfirm").focus();
 						return false;
 					}
 					
@@ -359,51 +375,129 @@
 						$("#ifmpTelecomCd").focus();
 						return false;
 					}
+					
+						
 						
 
 				});
+		
+		$("#ifmeEmailDomain").keyup(function(){
+
+		    if ($('#ifmeEmailDomain').val() == "naver.com"){        
+		    	
+		    	$("#ifmeEmailDomainCd").val("18").prop("selected", true);
+
+		    } else if ($('#ifmeEmailDomain').val() == "daum.net") {
+		        
+		    	$("#ifmeEmailDomainCd").val("19").prop("selected", true);
+
+		    } else if ($('#ifmeEmailDomain').val() == "gmail.com") {
+		       
+		    	$("#ifmeEmailDomainCd").val("20").prop("selected", true);
+		    	
+		    }
+		     
+		});
+		
+		
+		$("#btnAddress").on("click", function(){
+			sample6_execDaumPostcode();
+		});
+		
+		$("#btnAddressClear").on("click", function() {
+			$("#sample6_postcode").val('');
+			$("#sample6_address").val('');
+			$("#sample6_detailAddress").val('');
+			$("#sample6_extraAddress").val('');
+		});
+		
+		$(document).ready(function(){
+			if($("#ifmeEmailDomainCd").val() == 21){
+				$("#ifmeEmailDomain").attr('readonly', false);
+				$("#ifmeEmailDomain").val('');
+				$("#ifmeEmailDomain").attr("placeholder", "example.com");
+			} else if ($("#ifmeEmailDomainCd").val() != 21) {
+				$("#ifmeEmailDomain").attr('readonly', true);
+				if($("#ifmeEmailDomainCd").val() == 18){
+					$("#ifmeEmailDomain").val("naver.com");
+				} else if($("#ifmeEmailDomainCd").val() == 19){
+					$("#ifmeEmailDomain").val("daum.net");
+				} else if($("#ifmeEmailDomainCd").val() == 20){
+					$("#ifmeEmailDomain").val("gmail.com");
+				}
+			}
+		});
+		
+		$("#ifmeEmailDomainCd").on("change", function(){
+			if($("#ifmeEmailDomainCd").val() == 21){
+				$("#ifmeEmailDomain").attr('readonly', false);
+				$("#ifmeEmailDomain").val('');
+				$("#ifmeEmailDomain").attr("placeholder", "example.com");
+			} else if ($("#ifmeEmailDomainCd").val() != 21) {
+				$("#ifmeEmailDomain").attr('readonly', true);
+				if($("#ifmeEmailDomainCd").val() == 18){
+					$("#ifmeEmailDomain").val("naver.com");
+				} else if($("#ifmeEmailDomainCd").val() == 19){
+					$("#ifmeEmailDomain").val("daum.net");
+				} else if($("#ifmeEmailDomainCd").val() == 20){
+					$("#ifmeEmailDomain").val("gmail.com");
+				}
+			}
+		});
+		
 	</script>
 	
 	
 	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
-	<script type="text/javascript"> 
-		$(function(){
-			$("#pwd1ValidFeedBack").hide(); 
-			$("#pwd1InvalidFeedBack").hide(); 
-			
-			$("#pwd2ValidFeedBack").hide(); 
-			$("#pwd2InvalidFeedBack").hide(); 
-			$("input").keyup(function(){
-				
-				var pwd1=$("#pwd1").val(); 
-				var pwd2=$("#pwd2").val();
-				var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,20}$/;
-				
-				if(regExp.test(pwd1)){
-					$("#pwd1ValidFeedBack").show();
-					$("#pwd1InvalidFeedBack").hide();
-				} 
-				else if(!regExp.test(pwd1) && pwd1.length > 1) {
-					$("#pwd1ValidFeedBack").hide();
-					$("#pwd1InvalidFeedBack").show();
-				}
-				
-				if(pwd1 != "" && pwd2 != ""){ 
-					if(pwd1 == pwd2){ 
-						$("#pwd2ValidFeedBack").show(); 
-						$("#pwd2InvalidFeedBack").hide(); 
-						$("#submit").removeAttr("disabled"); 
-					}else{ 
-						$("#pwd2ValidFeedBack").hide(); 
-						$("#pwd2InvalidFeedBack").show(); 
-						$("#submit").attr("disabled", "disabled"); 
-						} 
-					} 
-				}); 
-			}); 
+	<script type="text/javascript">
+		$(function() {
+			$("#ifmmPwdValidFeedBack").hide();
+			$("#ifmmPwdInvalidFeedBack").hide();
+
+			$("#ifmmPwdConfirmValidFeedBack").hide();
+			$("#ifmmPwdConfirmInvalidFeedBack").hide();
 		
+		$("input")
+		.keyup(
+				function() {
+
+					var pwd1 = $("#ifmmPwd").val();
+					var pwd2 = $("#ifmmPwdConfirm").val();
+					var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,20}$/;
+
+					if (regExp.test(pwd1)) {
+						$("#ifmmPwd").addClass("is-valid");
+						$("#ifmmPwd").removeClass("is-invalid");
+						$("#ifmmPwdValidFeedBack").show();
+						$("#ifmmPwdInvalidFeedBack").hide();
+						$("#ifmmPwdConfirm").removeAttr("disabled");
+					} else if (!regExp.test(pwd1) && pwd1.length > 1) {
+						$("#ifmmPwd").addClass("is-invalid");
+						$("#ifmmPwd").removeClass("is-valid");
+						$("#ifmmPwdValidFeedBack").hide();
+						$("#ifmmPwdInvalidFeedBack").show();
+						$("#ifmmPwdConfirm").attr("disabled", "disabled");
+					}
+
+					if (pwd1 != "" && pwd2 != "") {
+						if (pwd1 == pwd2) {
+							$("#ifmmPwdConfirm").addClass("is-valid");
+							$("#ifmmPwdConfirm").removeClass("is-invalid");
+							$("#ifmmPwdConfirmValidFeedBack").show();
+							$("#ifmmPwdConfirmInvalidFeedBack").hide();
+							$("#btnSubmit").removeAttr("disabled");
+						} else {
+							$("#ifmmPwdConfirm").addClass("is-invalid");
+							$("#ifmmPwdConfirm").removeClass("is-valid");
+							$("#ifmmPwdConfirmValidFeedBack").hide();
+							$("#ifmmPwdConfirmInvalidFeedBack").show();
+							$("#btnSubmit").attr("disabled", "disabled");
+						}
+					}
+				});
+});
 	</script>
 
 </body>

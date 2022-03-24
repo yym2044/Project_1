@@ -151,6 +151,9 @@
 			, if(a.ifmmPushConsentNy=1,'수신동의','수신거부') as ifmmPushConsentNyText
 						
 			, b.ifmeEmailFull
+			, b.ifmeEmailAccount
+			, b.ifmeEmailDomain
+			, b.ifmeEmailDomainCd
 			<!-- 
 			, (select ifmpNumber from infrMemberPhone where ifmpDeviceCd = 26 and ifmmSeq = #{ifmmSeq}) as ifmpNumberMobile
 			, (select ifcdName from infrCode where c.ifmpTelecomCd = ifcdSeq) as ifmpTelecomName
@@ -242,10 +245,16 @@
 	infrMemberEmail (
 		ifmmSeq
 		, ifmeEmailFull
+		, ifmeEmailAccount
+		, ifmeEmailDomain
+		, ifmeEmailDomainCd
 		, ifmeDefaultNy
 	) VALUES (
 		#{ifmmSeq}
-		, #{ifmeEmailFull}
+		, concat(#{ifmeEmailAccount},'@',#{ifmeEmailDomain})
+		, #{ifmeEmailAccount}
+		, #{ifmeEmailDomain}
+		, #{ifmeEmailDomainCd}		
 		, 1
 	)
 	</insert>
@@ -325,7 +334,10 @@
 	<update id="updateMemberEmail">
 	UPDATE infrMemberEmail
 	SET
-		ifmeEmailFull = #{ifmeEmailFull}
+		ifmeEmailFull = concat(#{ifmeEmailAccount},'@',#{ifmeEmailDomain})
+		, ifmeEmailAccount = #{ifmeEmailAccount}
+		, ifmeEmailDomain = #{ifmeEmailDomain}
+		, ifmeEmailDomainCd = #{ifmeEmailDomainCd}
 		, ifmeDefaultNy = 1
 	WHERE
 		1 = 1

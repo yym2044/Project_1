@@ -47,11 +47,11 @@
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">이메일</td>
-					<td class="text-start"><c:out value="${rt.ifmeEmailFull}"/>
-					
+					<td class="text-start">
+						<c:out value="${rt.ifmeEmailFull}"/>
 					<span class="badge <c:choose>
 											<c:when test="${rt.ifmmEmailConsentNyText eq '수신동의'}">bg-primary</c:when>
-											<c:when test="${rt.ifmmEmailConsentNyText eq '수신거부'}">bg-danger</c:when>
+											<c:when test="${rt.ifmmEmailConsentNyText eq '수신거부'}">bg-secondary</c:when>
 										</c:choose> ms-1">
 					<c:out value="${rt.ifmmEmailConsentNyText}"/></span></td>
 					
@@ -69,7 +69,7 @@
 					<td class="text-start"><span class="badge bg-info"><c:out value="${rt1.ifmpTelecomName}"/></span><c:out value="${rt1.ifmpNumberMobile}"/>
 					<span class="badge <c:choose>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신동의'}">bg-primary</c:when>
-											<c:when test="${rt.ifmmSmsConsentNyText eq '수신거부'}">bg-danger</c:when>
+											<c:when test="${rt.ifmmSmsConsentNyText eq '수신거부'}">bg-secondary</c:when>
 										</c:choose> ms-1">
 					<c:out value="${rt.ifmmSmsConsentNyText}"/></span>
 				</td>

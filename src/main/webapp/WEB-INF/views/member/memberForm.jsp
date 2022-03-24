@@ -65,7 +65,7 @@
 						비밀번호
 					</th>
 					<td class="text-start">
-						<input type="password" name="ifmmPwd" class="form-control" id="ifmmPwd" style="width: 200px;" autocomplete="off">
+						<input type="password" name="ifmmPwd" id="ifmmPwd" class="form-control" style="width: 200px;" autocomplete="off">
 						<div class="valid-feedback" id="ifmmPwdValidFeedBack">사용가능한 비밀번호입니다.</div>
 						<div class="invalid-feedback" id="ifmmPwdInvalidFeedBack">사용 불가능한 비밀번호입니다.</div>
 					</td>
@@ -91,7 +91,21 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">이메일</th>
 					<td class="text-start" colspan="3">
+						<!-- 
 						<input type="email" id="ifmeEmailFull" name="ifmeEmailFull" class="form-control d-inline" style="width: 200px;" autocomplete="off">
+						 -->
+						 
+						<input type="text" id="ifmeEmailAccount" name="ifmeEmailAccount" placeholder="your account" class="form-control d-inline" style="width:200px;">
+						<span>@</span>
+						<input type="text" id="ifmeEmailDomain" name="ifmeEmailDomain" class="form-control d-inline" style="width:200px;">
+						<select id="ifmeEmailDomainCd" name="ifmeEmailDomainCd" class="form-select d-inline" style="width: 200px;">
+							<c:forEach items="${codeEmailDomain}" var="item" varStatus="status">
+								<option value="<c:out value="${item.ifcdSeq}"/>" <c:if test="${item.ifcdSeq eq 21}">selected</c:if>>
+									<c:out value="${item.ifcdName}"/>
+								</option>
+							</c:forEach>
+						</select>
+						
 						<span class="ms-2">
 							<a href="#" class="fs-6" style="text-decoration: none;">이메일 중복체크</a>
 						</span>
@@ -105,7 +119,7 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">등급설정</th>
 					<td class="text-start" colspan="3">
-						<select name="ifmmGradeCd" id="ifmmGradeCd" class="form-select" style="width: 100px;">
+						<select name="ifmmGradeCd" id="ifmmGradeCd" class="form-select" style="width: 150px;">
 							 <option value="0">::선택::</option>
 							 <c:forEach items="${codeMemberGrade}" var="item" varStatus="status">
 							 	<option value="<c:out value="${item.ifcdSeq}"/>">
@@ -369,14 +383,14 @@
 								return false;
 							}
 
-							if (!checkPassword($("#pwd1"), $("#pwd1").val(),
+							if (!checkPassword($("#ifmmPwd"), $("#ifmmPwd").val(),
 									"비밀번호가 유효하지 않습니다.")) {
 								return false;
 							}
 
-							if ($("#pwd1").val() != $("#pwd2").val()) {
+							if ($("#ifmmPwd").val() != $("#ifmmPwdConfirm").val()) {
 								alert("비밀번호를 다르게 입력하였습니다.");
-								$("#pwd2").focus();
+								$("#ifmmPwdConfirm").focus();
 								return false;
 							}
 
@@ -407,7 +421,48 @@
 								$("#ifmpTelecomCd").focus();
 								return false;
 							}
+							
+							
+							
 						});
+		/* 
+		$("#btnSubmit").on("click", function(){
+
+		    if ($('#ifmeEmailDomain').val() == "naver.com"){        
+		    	
+		    	$("#ifmeEmailDomainCd").val("18").prop("selected", true);
+
+		    } else if ($('#ifmeEmailDomain').val() == "daum.net") {
+		        
+		    	$("#ifmeEmailDomainCd").val("19").prop("selected", true);
+
+		    } else if ($('#ifmeEmailDomain').val() == "gmail.com") {
+		       
+		    	$("#ifmeEmailDomainCd").val("20").prop("selected", true);
+		    	
+		    }
+		     
+		});
+		 */
+		$("#ifmeEmailDomain").keyup(function(){
+
+		    if ($('#ifmeEmailDomain').val() == "naver.com"){        
+		    	
+		    	$("#ifmeEmailDomainCd").val("18").prop("selected", true);
+
+		    } else if ($('#ifmeEmailDomain').val() == "daum.net") {
+		        
+		    	$("#ifmeEmailDomainCd").val("19").prop("selected", true);
+
+		    } else if ($('#ifmeEmailDomain').val() == "gmail.com") {
+		       
+		    	$("#ifmeEmailDomainCd").val("20").prop("selected", true);
+		    	
+		    }
+		     
+		});
+		
+		
 		
 		$("#btnAddress").on("click", function() {
 			sample6_execDaumPostcode();
@@ -416,8 +471,46 @@
 		$("#btnAddressClear").on("click", function() {
 			$("#sample6_postcode").val('');
 			$("#sample6_address").val('');
+			$("#sample6_detailAddress").val('');
 			$("#sample6_extraAddress").val('');
 		});
+		
+		$(document).ready(function(){
+			if($("#ifmeEmailDomainCd").val() == 21){
+				$("#ifmeEmailDomain").attr('readonly', false);
+				$("#ifmeEmailDomain").val('');
+				$("#ifmeEmailDomain").attr("placeholder", "example.com");
+			} else if ($("#ifmeEmailDomainCd").val() != 21) {
+				$("#ifmeEmailDomain").attr('readonly', true);
+				if($("#ifmeEmailDomainCd").val() == 18){
+					$("#ifmeEmailDomain").val("naver.com");
+				} else if($("#ifmeEmailDomainCd").val() == 19){
+					$("#ifmeEmailDomain").val("daum.net");
+				} else if($("#ifmeEmailDomainCd").val() == 20){
+					$("#ifmeEmailDomain").val("gmail.com");
+				}
+			}
+		});
+		
+		$("#ifmeEmailDomainCd").on("change", function(){
+			if($("#ifmeEmailDomainCd").val() == 21){
+				$("#ifmeEmailDomain").attr('readonly', false);
+				$("#ifmeEmailDomain").val('');
+				$("#ifmeEmailDomain").attr("placeholder", "example.com");
+			} else if ($("#ifmeEmailDomainCd").val() != 21) {
+				$("#ifmeEmailDomain").attr('readonly', true);
+				if($("#ifmeEmailDomainCd").val() == 18){
+					$("#ifmeEmailDomain").val("naver.com");
+				} else if($("#ifmeEmailDomainCd").val() == 19){
+					$("#ifmeEmailDomain").val("daum.net");
+				} else if($("#ifmeEmailDomainCd").val() == 20){
+					$("#ifmeEmailDomain").val("gmail.com");
+				}
+			}
+		});
+		
+		
+		
 	</script>
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>

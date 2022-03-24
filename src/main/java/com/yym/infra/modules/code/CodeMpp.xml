@@ -252,6 +252,8 @@
 		WHERE 1=1
 			AND ifcdDelNy = 0
 			AND ifcdUseNy = 1
+		ORDER BY
+			ifcdOrder
 		
 	</select>
 	

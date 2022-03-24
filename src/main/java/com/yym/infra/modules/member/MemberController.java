@@ -75,6 +75,7 @@ public class MemberController {
 		//코드값 가져오기
 		model.addAttribute("codeTelecom", CodeServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeMemberGrade", CodeServiceImpl.selectListCachedCode("20"));
+		model.addAttribute("codeEmailDomain", CodeServiceImpl.selectListCachedCode("6"));
 		
 		return "member/memberForm";
 	}
@@ -103,6 +104,7 @@ public class MemberController {
 		//코드값 가져오기
 		model.addAttribute("codeMemberGrade", CodeServiceImpl.selectListCachedCode("20"));
 		model.addAttribute("codeTelecom", CodeServiceImpl.selectListCachedCode("9"));
+		model.addAttribute("codeEmailDomain", CodeServiceImpl.selectListCachedCode("6"));
 		
 		return "member/memberEditForm";
 	}

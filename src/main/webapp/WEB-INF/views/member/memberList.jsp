@@ -324,7 +324,6 @@ a {
 									</div>
 									<div class="col-8 col-md-5">
 										<input name="searchBar" id="searchBar" disabled class="form-control form-control-sm" placeholder="search.." <c:if test="${vo.shIfscSeq ne 0}">value="${vo.searchBar}"</c:if> autocomplete="off">
-
 									</div>
 									<!-- 
 									<div class="col-9 col-md">
@@ -954,8 +953,16 @@ a {
 		if($("#shIfscSeq").val() == 0){
 			$("#searchBar").attr('disabled', true);
 			$("#searchBar").val('');
+			$("#searchBar").attr("placeholder", "search..");
 		} else if ($("#shIfscSeq").val() != 0) {
 			$("#searchBar").attr('disabled', false);
+			if($("#shIfscSeq").val() == 1){
+				$("#searchBar").attr("placeholder", "Name");
+			} else if($("#shIfscSeq").val() == 2){
+				$("#searchBar").attr("placeholder", "ID");
+			} else if($("#shIfscSeq").val() == 3){
+				$("#searchBar").attr("placeholder", "Email");
+			}
 		}
 	});
 	
@@ -963,8 +970,16 @@ a {
 		if($("#shIfscSeq").val() == 0){
 			$("#searchBar").attr('disabled', true);
 			$("#searchBar").val('');
+			$("#searchBar").attr("placeholder", "search..");
 		} else if ($("#shIfscSeq").val() != 0) {
 			$("#searchBar").attr('disabled', false);
+			if($("#shIfscSeq").val() == 1){
+				$("#searchBar").attr("placeholder", "Name");
+			} else if($("#shIfscSeq").val() == 2){
+				$("#searchBar").attr("placeholder", "ID");
+			} else if($("#shIfscSeq").val() == 3){
+				$("#searchBar").attr("placeholder", "Email");
+			}
 		}
 	});
 	

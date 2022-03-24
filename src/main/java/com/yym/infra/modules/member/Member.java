@@ -28,6 +28,9 @@ public class Member {
 	private String ifmmPushConsentNyText;
 	//멤버_이메일
 	private String ifmeEmailFull;
+	private String ifmeEmailAccount;
+	private String ifmeEmailDomain;
+	private String ifmeEmailDomainCd;
 	//멤버_폰
 	private String ifmpTelecomCd;
 	private String ifmpTelecomName;
@@ -39,6 +42,18 @@ public class Member {
 	private String ifmaAddress2;
 	private String ifmaAddressReferences;
 	//--------------------------------------------------------------
+	public Integer getIfscSeq() {
+		return ifscSeq;
+	}
+	public void setIfscSeq(Integer ifscSeq) {
+		this.ifscSeq = ifscSeq;
+	}
+	public String getIfscName() {
+		return ifscName;
+	}
+	public void setIfscName(String ifscName) {
+		this.ifscName = ifscName;
+	}
 	public String getIfmmSeq() {
 		return ifmmSeq;
 	}
@@ -165,41 +180,23 @@ public class Member {
 	public void setIfmeEmailFull(String ifmeEmailFull) {
 		this.ifmeEmailFull = ifmeEmailFull;
 	}
-	public String getIfmaAddress1() {
-		return ifmaAddress1;
+	public String getIfmeEmailAccount() {
+		return ifmeEmailAccount;
 	}
-	public void setIfmaAddress1(String ifmaAddress1) {
-		this.ifmaAddress1 = ifmaAddress1;
+	public void setIfmeEmailAccount(String ifmeEmailAccount) {
+		this.ifmeEmailAccount = ifmeEmailAccount;
 	}
-	public String getIfmaAddress2() {
-		return ifmaAddress2;
+	public String getIfmeEmailDomain() {
+		return ifmeEmailDomain;
 	}
-	public void setIfmaAddress2(String ifmaAddress2) {
-		this.ifmaAddress2 = ifmaAddress2;
+	public void setIfmeEmailDomain(String ifmeEmailDomain) {
+		this.ifmeEmailDomain = ifmeEmailDomain;
 	}
-	public String getIfmaZipCode() {
-		return ifmaZipCode;
+	public String getIfmeEmailDomainCd() {
+		return ifmeEmailDomainCd;
 	}
-	public void setIfmaZipCode(String ifmaZipCode) {
-		this.ifmaZipCode = ifmaZipCode;
-	}
-	public Integer getIfscSeq() {
-		return ifscSeq;
-	}
-	public void setIfscSeq(Integer ifscSeq) {
-		this.ifscSeq = ifscSeq;
-	}
-	public String getIfscName() {
-		return ifscName;
-	}
-	public void setIfscName(String ifscName) {
-		this.ifscName = ifscName;
-	}
-	public String getIfmaAddressReferences() {
-		return ifmaAddressReferences;
-	}
-	public void setIfmaAddressReferences(String ifmaAddressReferences) {
-		this.ifmaAddressReferences = ifmaAddressReferences;
+	public void setIfmeEmailDomainCd(String ifmeEmailDomainCd) {
+		this.ifmeEmailDomainCd = ifmeEmailDomainCd;
 	}
 	public String getIfmpTelecomCd() {
 		return ifmpTelecomCd;
@@ -213,10 +210,10 @@ public class Member {
 	public void setIfmpTelecomName(String ifmpTelecomName) {
 		this.ifmpTelecomName = ifmpTelecomName;
 	}
-	public String getifmpNumberMobile() {
+	public String getIfmpNumberMobile() {
 		return ifmpNumberMobile;
 	}
-	public void setifmpNumberMobile(String ifmpNumberMobile) {
+	public void setIfmpNumberMobile(String ifmpNumberMobile) {
 		this.ifmpNumberMobile = ifmpNumberMobile;
 	}
 	public String getIfmpNumberHome() {
@@ -224,6 +221,30 @@ public class Member {
 	}
 	public void setIfmpNumberHome(String ifmpNumberHome) {
 		this.ifmpNumberHome = ifmpNumberHome;
+	}
+	public String getIfmaZipCode() {
+		return ifmaZipCode;
+	}
+	public void setIfmaZipCode(String ifmaZipCode) {
+		this.ifmaZipCode = ifmaZipCode;
+	}
+	public String getIfmaAddress1() {
+		return ifmaAddress1;
+	}
+	public void setIfmaAddress1(String ifmaAddress1) {
+		this.ifmaAddress1 = ifmaAddress1;
+	}
+	public String getIfmaAddress2() {
+		return ifmaAddress2;
+	}
+	public void setIfmaAddress2(String ifmaAddress2) {
+		this.ifmaAddress2 = ifmaAddress2;
+	}
+	public String getIfmaAddressReferences() {
+		return ifmaAddressReferences;
+	}
+	public void setIfmaAddressReferences(String ifmaAddressReferences) {
+		this.ifmaAddressReferences = ifmaAddressReferences;
 	}
 	
 }
