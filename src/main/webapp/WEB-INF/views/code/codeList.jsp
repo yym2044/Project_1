@@ -21,7 +21,10 @@ a {
 <a href="/infra/code/codeGroupList" style="text-decoration: none;">그룹보기</a>
 
 <hr>
-<form method="get" action="/infra/code/codeList">
+<form id="formList" method="post" action="/infra/code/codeList">
+
+<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default = "1"/>">
+
 	코드그룹 :
 	<select name="shIfcgSeq">
 		<option value="">::코드그룹::</option>
@@ -82,6 +85,7 @@ a {
 	</c:otherwise>
 </c:choose>
 
+<%-- 
 <nav class="mt-3" aria-label="...">
 	<ul class="pagination">
 		<c:if test="${vo.startPage gt vo.pageNumToShow}">
@@ -102,5 +106,38 @@ a {
 		</c:if>
 	</ul>
 </nav>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ --%>
+<nav class="mt-3" aria-label="...">
+	<ul class="pagination">
+		<c:if test="${vo.startPage gt vo.pageNumToShow}">
+			<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value="${vo.startPage - 1}"/>)">Previous</a></li>
+		</c:if>
+		<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+			<c:choose>
+				<c:when test="${i.index eq vo.thisPage}">
+					<li class="page-item active"><a class="page-link" href="javascript:goList(<c:out value="${i.index}"/>)">${i.index}</a></li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value="${i.index}"/>)">${i.index}</a></li>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${vo.endPage ne vo.totalPages}">
+			<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value="${vo.endPage + 1}"/>)">Next</a></li>
+		</c:if>
+	</ul>
+</nav>
+ 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+ <script type="text/javascript">
+ 
+ 	goList = function(seq){
+ 		$("#thisPage").val(seq)
+ 		$("#formList").submit();
+ 	}	
+ 
+ </script>
+ 

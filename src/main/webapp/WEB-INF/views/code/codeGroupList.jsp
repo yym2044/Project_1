@@ -20,6 +20,7 @@
 
 <form id="formList" method="post" action="/infra/code/codeGroupList">
 <input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+<input type="hidden" id="ifcgSeq" name="ifcgSeq">
 
 <select name="shIfcgDelNy" id="shIfcgDelNy">
 	<option value="">::삭제여부::</option>
@@ -37,7 +38,8 @@
 <input type="text" name="shValue" id="shValue" value="${vo.shValue}">
 <input type="submit" id="btnSubmit" value="검색">
 <input type="submit" id="btnSubmit2" value="검색">
-<a type="button" class="btn btn-outline-primary" href="/infra/code/codeGroupForm?shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>">등록</a>
+<a type="button" class="btn btn-outline-primary" href="javascript:goAdd();">등록</a>
+<%-- <a type="button" class="btn btn-outline-primary" href="/infra/code/codeGroupForm?shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>">등록</a> --%>
 <br>
 </form>
 <%-- <c:choose>
@@ -85,7 +87,8 @@
 				<c:forEach items="${list}" var="item" varStatus="status">
 					<tr>
 						<td><a href="/infra/code/codeGroupView2?ifcgSeq=<c:out value="${item.ifcgSeq}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>"><c:out value="${item.ifcgSeq}"/></a></td>
-						<td><a href="/infra/code/codeGroupView1?ifcgSeq=<c:out value="${item.ifcgSeq}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>"><c:out value="${item.ifcgName}"/></a></td>
+						<%-- <td><a href="/infra/code/codeGroupView1?ifcgSeq=<c:out value="${item.ifcgSeq}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>"><c:out value="${item.ifcgName}"/></a></td> --%>
+						<td><a href="javascript:goView1(<c:out value="${item.ifcgSeq}"/>)"><c:out value="${item.ifcgName}"/></a></td>
 						<td><c:out value="${item.ifcgNameEng}"/></td>
 						<td><c:out value="${item.ifcgDelNy}"/></td>
 					<tr>
@@ -99,20 +102,20 @@
 <nav class="mt-3" aria-label="...">
   <ul class="pagination">
     <c:if test="${vo.startPage gt vo.pageNumToShow}">
-    	<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value="${vo.startPage - 1}"/>);">Previous</a></li>
+    	<li class="page-item"><a class="page-link" href="javascript:goPage(<c:out value="${vo.startPage - 1}"/>);">Previous</a></li>
 	</c:if>
 	<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 		<c:choose>
 			<c:when test="${i.index eq vo.thisPage}">
-	                <li class="page-item active"><a class="page-link" href="javascript:goList(<c:out value="${i.index}"/>);">${i.index}</a></li>
+	                <li class="page-item active"><a class="page-link" href="javascript:goPage(<c:out value="${i.index}"/>);">${i.index}</a></li>
 			</c:when>
 			<c:otherwise>             
-	                <li class="page-item"><a class="page-link" href="javascript:goList(<c:out value="${i.index}"/>);">${i.index}</a></li>
+	                <li class="page-item"><a class="page-link" href="javascript:goPage(<c:out value="${i.index}"/>);">${i.index}</a></li>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>     
 	<c:if test="${vo.endPage ne vo.totalPages}">                
-		<li class="page-item"><a class="page-link" href="javascript:goList(<c:out value="${vo.endPage + 1}"/>);">Next</a></li>
+		<li class="page-item"><a class="page-link" href="javascript:goPage(<c:out value="${vo.endPage + 1}"/>);">Next</a></li>
 	</c:if>  
   </ul>
 </nav>
@@ -170,11 +173,22 @@
 	});
 	
 	
-	goList = function(seq){
+	goPage = function(pageNumber){
 		// form 객체를 가져온다.
-		$("#thisPage").val(seq);
+		$("#thisPage").val(pageNumber);
 		$("#formList").submit();
 		// 그 가져온 객체를 전달한다.
+	};
+	
+	goView1 = function(ifcgSeq){
+		$("#formList").attr("action", "/infra/code/codeGroupView1");
+		$("#ifcgSeq").val(ifcgSeq);
+		$("#formList").submit();		
+	};
+	
+	goAdd = function(){
+		$("#formList").attr("action", "/infra/code/codeGroupForm");
+		$("#formList").submit();
 	}
 	
 

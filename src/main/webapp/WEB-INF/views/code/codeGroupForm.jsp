@@ -6,7 +6,7 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
-<form method="post" action="/infra/code/codeGroupInst">
+<form id="formForm" method="post" action="/infra/code/codeGroupInst">
 
 	<input type="hidden" name="shOption" value="<c:out value="${vo.shOption}"/>">
 	<input type="hidden" name="shValue" value="<c:out value="${vo.shValue}"/>">
@@ -21,12 +21,18 @@
 	<input type="submit" id="btnSubmit" value="제출">
 </form>
 
-<a href="/infra/code/codeGroupList?shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>">목록으로</a>
+<a href="javascript:goList();">목록으로</a>
+<%-- <a href="/infra/code/codeGroupList?shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>">목록으로</a> --%>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/infra/resources/js/validation.js"></script>
 
 <script type="text/javascript">
+
+	goList = function(){
+		$("#formForm").attr("action", "/infra/code/codeGroupList");
+		$("#formForm").submit();
+	}
 
 	$("#btnSubmit").on("click", function(){
 	
@@ -34,6 +40,5 @@
 		
 		
 	});
-	
 
 </script>
