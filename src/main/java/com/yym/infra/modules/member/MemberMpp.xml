@@ -133,16 +133,6 @@
 		infrSearch
 	</select>
 	
-	<select id="selectListCode" resultMap="resultMapObj">
-	SELECT 
-		ifcdSeq
-		,ifcdName
-	FROM 
-		infrCode a
-	LEFT JOIN infrCodeGroup b on b.ifcgSeq = a.ifcgSeq
-	WHERE ifcgName LIKE "%등급%"
-	</select>
-
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT DISTINCT
 			a.ifmmSeq

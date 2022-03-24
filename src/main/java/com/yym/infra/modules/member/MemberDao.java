@@ -25,7 +25,6 @@ public class MemberDao {
 	
 	public List<Member> selectListSearch() {return sqlSession.selectList(namespace + ".selectListSearch", ""); }
 	
-	public List<Member> selectListCode() {return sqlSession.selectList(namespace + ".selectListCode", ""); }
 	
 //	INSERT
 	public int insertMember(Member dto){ return sqlSession.insert(namespace + ".insertMember", dto); }

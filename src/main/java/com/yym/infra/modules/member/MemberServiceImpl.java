@@ -31,10 +31,6 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectListSearch();
 	}
 	
-	@Override
-	public List<Member> selectListCode() throws Exception {
-		return dao.selectListCode();
-	}
 	
 	@Override
 	public int insertMember(Member dto) throws Exception {

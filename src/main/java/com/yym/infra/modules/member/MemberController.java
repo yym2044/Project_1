@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.yym.infra.modules.code.CodeServiceImpl;
+
 @Controller
 public class MemberController {
 
@@ -67,8 +69,7 @@ public class MemberController {
 //		model.addAttribute("list2", list2);
 		
 		//코드값 가져오기
-		List<Member> list = service.selectListCode();
-		model.addAttribute("list", list);
+		model.addAttribute("codeMemberGrade", CodeServiceImpl.selectListCachedCode("20"));
 		
 		return "member/memberForm";
 	}
@@ -90,8 +91,7 @@ public class MemberController {
 		model.addAttribute("rt", rt);
 		
 		//코드값 가져오기
-		List<Member> list = service.selectListCode();
-		model.addAttribute("list", list);
+		model.addAttribute("codeMemberGrade", CodeServiceImpl.selectListCachedCode("20"));
 		
 		return "member/memberEditForm";
 	}

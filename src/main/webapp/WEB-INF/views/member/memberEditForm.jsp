@@ -87,10 +87,11 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">등급설정</th>
 					<td class="text-start" colspan="3">
-						<select name="ifmmGradeCd">
-							<c:forEach items="${list}" var="item" varStatus="status">
-								<option value="<c:out value="${item.ifcdSeq}"/>">
-									<c:out value="${item.ifcdName}"/>
+						<select id="ifmmGradeCd" name="ifmmGradeCd">
+								<option value="0">::선택::</option>
+							<c:forEach items="${codeMemberGrade}" var="itemGrade" varStatus="statusGrade">
+								<option value="<c:out value="${itemGrade.ifcdSeq}"/>"<c:if test="${rt.ifmmGrade eq itemGrade.ifcdName}"> selected</c:if>>
+									<c:out value="${itemGrade.ifcdName}"/>
 								</option>
 							</c:forEach>
 						</select>
@@ -336,6 +337,12 @@
 					}
 					
 					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")){
+						return false;
+					}
+					
+					if($("#ifmmGradeCd").val() == 0){
+						alert("등급을 설정해주세요.");
+						$("#ifmmGradeCd").focus();
 						return false;
 					}
 						

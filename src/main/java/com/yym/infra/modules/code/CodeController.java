@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-//@RequestMapping(value = "/code/")			17번 라인 대신 (11번 라인 + 18번 라인)으로도 가능
+//@RequestMapping(value = "/code/")			21번 라인 대신 (15번 라인 + 22번 라인)으로도 가능
 public class CodeController {
 
 	@Autowired

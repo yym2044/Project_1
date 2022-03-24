@@ -48,4 +48,7 @@ public class CodeDao {
 	public int update_code(Code dto) {return sqlSession.update(namespace + ".update_code", dto);}
 	
 	public int delete_code(CodeVo vo) {return sqlSession.delete(namespace + ".delete_code", vo);}
+	
+	public List<Code> selectListForCache() {return sqlSession.selectList(namespace + ".selectListForCache", "");}
+
 }

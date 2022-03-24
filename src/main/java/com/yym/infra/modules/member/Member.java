@@ -2,9 +2,6 @@ package com.yym.infra.modules.member;
 
 public class Member {
 	
-	//코드
-	private Integer ifcdSeq;
-	private String ifcdName;
 	//검색어
 	private Integer ifscSeq;
 	private String ifscName;
@@ -40,18 +37,6 @@ public class Member {
 	private String ifmaAddress2;
 	private String ifmaAddressReferences;
 	//--------------------------------------------------------------
-	public Integer getIfcdSeq() {
-		return ifcdSeq;
-	}
-	public void setIfcdSeq(Integer ifcdSeq) {
-		this.ifcdSeq = ifcdSeq;
-	}
-	public String getIfcdName() {
-		return ifcdName;
-	}
-	public void setIfcdName(String ifcdName) {
-		this.ifcdName = ifcdName;
-	}
 	public String getIfmmSeq() {
 		return ifmmSeq;
 	}

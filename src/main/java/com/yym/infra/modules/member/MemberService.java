@@ -8,7 +8,6 @@ public interface MemberService {
 	public List<Member> selectListAllMember() throws Exception;
 	public List<Member> selectList(MemberVo vo) throws Exception; 
 	public List<Member> selectListSearch() throws Exception;
-	public List<Member> selectListCode() throws Exception;
 //	INSERT
 	public int insertMember(Member dto) throws Exception;
 	

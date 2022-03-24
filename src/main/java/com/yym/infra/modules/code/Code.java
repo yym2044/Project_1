@@ -1,5 +1,8 @@
 package com.yym.infra.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 	
 //	DTO
@@ -13,6 +16,8 @@ public class Code {
 	private Integer ifcdOrder;
 	
 	
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 	
 //------------
 	
