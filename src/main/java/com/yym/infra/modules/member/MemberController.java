@@ -50,8 +50,12 @@ public class MemberController {
 
 
 		Member rt = service.selectOne(vo);
+		Member rt1 = service.selectOnePhoneMobile(vo);
+		Member rt2 = service.selectOnePhoneHome(vo);
 				
 		model.addAttribute("rt", rt);
+		model.addAttribute("rt1", rt1);
+		model.addAttribute("rt2", rt2);
 		
 
 		return "member/memberView";
@@ -69,6 +73,7 @@ public class MemberController {
 //		model.addAttribute("list2", list2);
 		
 		//코드값 가져오기
+		model.addAttribute("codeTelecom", CodeServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeMemberGrade", CodeServiceImpl.selectListCachedCode("20"));
 		
 		return "member/memberForm";
@@ -88,10 +93,16 @@ public class MemberController {
 	public String memberEditForm(Model model, MemberVo vo) throws Exception {
 		
 		Member rt = service.selectOne(vo);
+		Member rt1 = service.selectOnePhoneMobile(vo);
+		Member rt2 = service.selectOnePhoneHome(vo);
+				
 		model.addAttribute("rt", rt);
+		model.addAttribute("rt1", rt1);
+		model.addAttribute("rt2", rt2);
 		
 		//코드값 가져오기
 		model.addAttribute("codeMemberGrade", CodeServiceImpl.selectListCachedCode("20"));
+		model.addAttribute("codeTelecom", CodeServiceImpl.selectListCachedCode("9"));
 		
 		return "member/memberEditForm";
 	}

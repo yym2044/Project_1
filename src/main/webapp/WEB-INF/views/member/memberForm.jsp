@@ -107,9 +107,9 @@
 					<td class="text-start" colspan="3">
 						<select name="ifmmGradeCd" id="ifmmGradeCd">
 							 <option value="0">::선택::</option>
-							 <c:forEach items="${codeMemberGrade}" var="itemGrade" varStatus="statusGrade">
-							 	<option value="<c:out value="${itemGrade.ifcdSeq}"/>">
-							 		<c:out value="${itemGrade.ifcdName}" />
+							 <c:forEach items="${codeMemberGrade}" var="item" varStatus="status">
+							 	<option value="<c:out value="${item.ifcdSeq}"/>">
+							 		<c:out value="${item.ifcdName}" />
 							 	</option>
 							 </c:forEach>
 						</select>
@@ -137,6 +137,14 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">휴대폰</th>
 					<td class="text-start" colspan="3">
+						<select id="ifmpTelecomCd" name="ifmpTelecomCd">
+							<option value="0">통신사</option>
+							<c:forEach items="${codeTelecom}" var="item" varStatus="status">
+								<option value="<c:out value="${item.ifcdSeq}"/>">
+									<c:out value="${item.ifcdName}"/>
+								</option>
+							</c:forEach>
+						</select>
 						<input type="text" name="ifmpNumberMobile" placeholder="01012345678" autocomplete="off">
 						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1">
 						<label for="sms_check">SMS 수신 동의</label>
@@ -391,6 +399,12 @@
 							if($("#ifmmGradeCd").val() == 0){
 								alert("등급을 설정해주세요.");
 								$("#ifmmGradeCd").focus();
+								return false;
+							}
+							
+							if($("#ifmpTelecomCd").val() == 0){
+								alert("통신사를 선택하세요.");
+								$("#ifmpTelecomCd").focus();
 								return false;
 							}
 						});

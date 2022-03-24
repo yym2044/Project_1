@@ -41,7 +41,8 @@ public class MemberDao {
 	public int updateMemberPhoneHome(Member dto) {return sqlSession.insert(namespace + ".updateMemberPhoneHome", dto); }
 	
 	public Member selectOne(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOne", vo);}
-	public Member selectOne(Member dto) {return sqlSession.selectOne(namespace + ".selectOne", dto);}
+	public Member selectOnePhoneMobile(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOnePhoneMobile", vo);}
+	public Member selectOnePhoneHome(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOnePhoneHome", vo);}
 	
 //	DELETE
 //	public int deleteMember(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMember", vo);}

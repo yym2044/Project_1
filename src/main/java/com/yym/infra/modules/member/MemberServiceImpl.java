@@ -47,11 +47,16 @@ public class MemberServiceImpl implements MemberService{
 	public Member selectOne(MemberVo vo) throws Exception {
 		return dao.selectOne(vo);
 	}
+	
 	@Override
-	public Member selectOne(Member dto) throws Exception {
-		return dao.selectOne(dto);
+	public Member selectOnePhoneMobile(MemberVo vo) throws Exception {
+		return dao.selectOnePhoneMobile(vo);
 	}
-
+	
+	@Override
+	public Member selectOnePhoneHome(MemberVo vo) throws Exception {
+		return dao.selectOnePhoneHome(vo);
+	}
 
 	@Override
 	public int updateMember(Member dto) throws Exception {

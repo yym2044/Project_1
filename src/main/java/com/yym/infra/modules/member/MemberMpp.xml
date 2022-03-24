@@ -151,10 +151,11 @@
 			, if(a.ifmmPushConsentNy=1,'수신동의','수신거부') as ifmmPushConsentNyText
 						
 			, b.ifmeEmailFull
-			
+			<!-- 
 			, (select ifmpNumber from infrMemberPhone where ifmpDeviceCd = 26 and ifmmSeq = #{ifmmSeq}) as ifmpNumberMobile
+			, (select ifcdName from infrCode where c.ifmpTelecomCd = ifcdSeq) as ifmpTelecomName
 			, (select ifmpNumber from infrMemberPhone where ifmpDeviceCd = 25 and  ifmmSeq = #{ifmmSeq}) as ifmpNumberHome
-			
+			 -->
 			, d.ifmaZipCode
 			, d.ifmaAddress1
 			, d.ifmaAddress2
@@ -162,11 +163,41 @@
 			
 		FROM infrMember a
 		LEFT JOIN infrMemberEmail b ON b.ifmmSeq = a.ifmmSeq AND b.ifmeDefaultNy = 1
-		LEFT JOIN infrMemberPhone c ON c.ifmmSeq = a.ifmmSeq
+		<!-- LEFT JOIN infrMemberPhone c ON c.ifmmSeq = a.ifmmSeq -->
 		LEFT JOIN infrMemberAddress d ON d.ifmmSeq = a.ifmmSeq AND d.ifmaDefaultNy = 1
 		WHERE
 			1=1
 		AND a.ifmmSeq = #{ifmmSeq}
+	</select>
+	
+	<select id="selectOnePhoneMobile" resultMap = "resultMapObj">
+		SELECT
+			(select ifcdName from infrCode where b.ifmpTelecomCd = ifcdSeq) as ifmpTelecomName
+            , ifmpNumber as ifmpNumberMobile
+        FROM
+			infrMember a
+        LEFT JOIN 
+			infrMemberPhone b
+		ON b.ifmmSeq = a.ifmmSeq
+        WHERE 1=1
+        AND a.ifmmSeq = #{ifmmSeq}
+        AND b.ifmpDeviceCd = 26
+        AND b.ifmpDefaultNy = 1
+	</select>
+	
+	<select id="selectOnePhoneHome" resultMap = "resultMapObj">
+		SELECT
+			(select ifcdName from infrCode where b.ifmpTelecomCd = ifcdSeq) as ifmpTelecomName
+            , ifmpNumber as ifmpNumberHome
+        FROM
+			infrMember a
+        LEFT JOIN 
+			infrMemberPhone b
+		ON b.ifmmSeq = a.ifmmSeq
+        WHERE 1=1
+        AND a.ifmmSeq = #{ifmmSeq}
+        AND b.ifmpDeviceCd = 25
+        AND b.ifmpDefaultNy = 1
 	</select>
 	
 	<!-- INSERT -->
@@ -243,11 +274,13 @@
 		ifmmSeq
         , ifmpNumber
         , ifmpDeviceCd
+        , ifmpTelecomCd
         , ifmpDefaultNy
     ) VALUES (
 		#{ifmmSeq}				
         , #{ifmpNumberMobile}		
         , 26
+        , #{ifmpTelecomCd}
         , 1
     )
 	</insert>

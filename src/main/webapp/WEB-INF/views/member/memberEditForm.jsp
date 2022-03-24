@@ -89,9 +89,9 @@
 					<td class="text-start" colspan="3">
 						<select id="ifmmGradeCd" name="ifmmGradeCd">
 								<option value="0">::선택::</option>
-							<c:forEach items="${codeMemberGrade}" var="itemGrade" varStatus="statusGrade">
-								<option value="<c:out value="${itemGrade.ifcdSeq}"/>"<c:if test="${rt.ifmmGrade eq itemGrade.ifcdName}"> selected</c:if>>
-									<c:out value="${itemGrade.ifcdName}"/>
+							<c:forEach items="${codeMemberGrade}" var="item" varStatus="status">
+								<option value="<c:out value="${item.ifcdSeq}"/>"<c:if test="${rt.ifmmGrade eq item.ifcdName}"> selected</c:if>>
+									<c:out value="${item.ifcdName}"/>
 								</option>
 							</c:forEach>
 						</select>
@@ -117,14 +117,22 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">휴대폰</th>
 					<td class="text-start" colspan="3">
-						<input type="text" name="ifmpNumberMobile" placeholder="01012345678" value="<c:out value="${rt.ifmpNumberMobile}"/>" autocomplete="off">
+						<select id="ifmpTelecomCd" name="ifmpTelecomCd">
+							<option value="0">통신사</option>
+							<c:forEach items="${codeTelecom}" var="item" varStatus="status">
+								<option value="<c:out value="${item.ifcdSeq}"/>" <c:if test="${rt1.ifmpTelecomName eq item.ifcdName}">selected</c:if>>
+									<c:out value="${item.ifcdName}"/>
+								</option>
+							</c:forEach>
+						</select>
+						<input type="text" name="ifmpNumberMobile" placeholder="01012345678" value="<c:out value="${rt1.ifmpNumberMobile}"/>" autocomplete="off">
 						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1" <c:if test="${rt.ifmmSmsConsentNyText eq '수신동의'}">checked</c:if>><label for="sms_check">SMS 수신 동의</label>
 						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
 					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">전화번호</th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmpNumberHome" placeholder="021234567" value="<c:out value="${rt.ifmpNumberHome}"/>" autocomplete="off"></td>
+					<td class="text-start" colspan="3"><input type="text" name="ifmpNumberHome" placeholder="021234567" value="<c:out value="${rt2.ifmpNumberHome}"/>" autocomplete="off"></td>
 				</tr>
 			</table>
 
@@ -343,6 +351,12 @@
 					if($("#ifmmGradeCd").val() == 0){
 						alert("등급을 설정해주세요.");
 						$("#ifmmGradeCd").focus();
+						return false;
+					}
+					
+					if($("#ifmpTelecomCd").val() == 0){
+						alert("통신사를 선택해주세요.");
+						$("#ifmpTelecomCd").focus();
 						return false;
 					}
 						

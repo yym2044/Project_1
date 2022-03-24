@@ -66,7 +66,7 @@
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">휴대폰</td>
-					<td class="text-start"><c:out value="${rt.ifmpNumberMobile}"/>
+					<td class="text-start"><span class="badge bg-info"><c:out value="${rt1.ifmpTelecomName}"/></span><c:out value="${rt1.ifmpNumberMobile}"/>
 					<span class="badge <c:choose>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신동의'}">bg-primary</c:when>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신거부'}">bg-danger</c:when>
@@ -76,7 +76,7 @@
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">전화번호</td>
-					<td class="text-start"><c:out value="${rt.ifmpNumberHome}"/></td>
+					<td class="text-start"><c:out value="${rt2.ifmpNumberHome}"/></td>
 				</tr>
 			</table>
 

@@ -29,6 +29,8 @@ public class Member {
 	//멤버_이메일
 	private String ifmeEmailFull;
 	//멤버_폰
+	private String ifmpTelecomCd;
+	private String ifmpTelecomName;
 	private String ifmpNumberMobile;
 	private String ifmpNumberHome;
 	//멤버_어드레스
@@ -163,18 +165,6 @@ public class Member {
 	public void setIfmeEmailFull(String ifmeEmailFull) {
 		this.ifmeEmailFull = ifmeEmailFull;
 	}
-	public String getIfmpNumberMobile() {
-		return ifmpNumberMobile;
-	}
-	public void setIfmpNumberMobile(String ifmpNumberMobile) {
-		this.ifmpNumberMobile = ifmpNumberMobile;
-	}
-	public String getIfmpNumberHome() {
-		return ifmpNumberHome;
-	}
-	public void setIfmpNumberHome(String ifmpNumberHome) {
-		this.ifmpNumberHome = ifmpNumberHome;
-	}
 	public String getIfmaAddress1() {
 		return ifmaAddress1;
 	}
@@ -210,6 +200,30 @@ public class Member {
 	}
 	public void setIfmaAddressReferences(String ifmaAddressReferences) {
 		this.ifmaAddressReferences = ifmaAddressReferences;
+	}
+	public String getIfmpTelecomCd() {
+		return ifmpTelecomCd;
+	}
+	public void setIfmpTelecomCd(String ifmpTelecomCd) {
+		this.ifmpTelecomCd = ifmpTelecomCd;
+	}
+	public String getIfmpTelecomName() {
+		return ifmpTelecomName;
+	}
+	public void setIfmpTelecomName(String ifmpTelecomName) {
+		this.ifmpTelecomName = ifmpTelecomName;
+	}
+	public String getifmpNumberMobile() {
+		return ifmpNumberMobile;
+	}
+	public void setifmpNumberMobile(String ifmpNumberMobile) {
+		this.ifmpNumberMobile = ifmpNumberMobile;
+	}
+	public String getIfmpNumberHome() {
+		return ifmpNumberHome;
+	}
+	public void setIfmpNumberHome(String ifmpNumberHome) {
+		this.ifmpNumberHome = ifmpNumberHome;
 	}
 	
 }
