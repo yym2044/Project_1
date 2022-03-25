@@ -16,11 +16,24 @@
 <link href="${path}/resources/css/style.css" rel="stylesheet"/>
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
+<title>회원정보</title>
 </head>
 <body>
 
-	<form>
+	<form id="formView" action="" method="post">
+	
+	
+		<input type="hidden" id="shIfmmGrade" name="shIfmmGrade" value="<c:out value="${vo.shIfmmGrade}"/>">
+		<input type="hidden" id="shIfmmEmailConsentNy" name="shIfmmEmailConsentNy" value="<c:out value="${vo.shIfmmEmailConsentNy}"/>">
+		<input type="hidden" id="shIfmmSmsConsentNy" name="shIfmmSmsConsentNy" value="<c:out value="${vo.shIfmmSmsConsentNy}"/>">
+		<input type="hidden" id="shIfmmPushConsentNy" name="shIfmmPushConsentNy" value="<c:out value="${vo.shIfmmPushConsentNy}"/>">
+		<input type="hidden" id="shIfscSeq" name="shIfscSeq" value="<c:out value="${vo.shIfscSeq}"/>">
+		<input type="hidden" id="searchBar" name="searchBar" value="<c:out value="${vo.searchBar}"/>">
+		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+		<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+		<input type="hidden" id="sort" name="sort" value="<c:out value="${vo.sort}"/>">
+		<input type="hidden" id="orderby" name="orderby" value="<c:out value="${vo.orderby}"/>">
+		<input type="hidden" id="ifmmSeq" name="ifmmSeq" value="<c:out value="${rt.ifmmSeq}"/>">
 
 		<div class="container-fluid">
 			<div class="row bg-dark mb-2" style="height: 42px;">
@@ -81,8 +94,11 @@
 			</table>
 
 			<div class="text-center">
-				<a href="/infra/member/memberList?rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">목록으로</a>
-				<a href="/infra/member/memberEditForm?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">정보수정</a>
+				<a href="javascript:goList();" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">목록으로</a>
+				<a href="javascript:goEdit();" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">정보수정</a>
+				
+				<%-- <a href="/infra/member/memberList?rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">목록으로</a> --%>
+				<%-- <a href="/infra/member/memberEditForm?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">정보수정</a> --%>
 			</div>
 
 			<div class="row mb-2">
@@ -127,6 +143,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 	<script src="${path}/resources/js/sidebars.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	<script type="text/javascript">
 		var count = 1;
@@ -158,7 +175,20 @@
 			my_tbody.deleteRow(my_tbody.rows.length - 1); // 하단부터 삭제
 		}
 	</script>
-
+	
+	<script type="text/javascript">
+	
+	goList = function(){
+		$("#formView").attr("action", "/infra/member/memberList");
+		$("#formView").submit();
+	}
+	
+	goEdit = function(){
+		$("#formView").attr("action", "/infra/member/memberEditForm");
+		$("#formView").submit();
+	}
+	
+	</script>
 </body>
 
 </html>

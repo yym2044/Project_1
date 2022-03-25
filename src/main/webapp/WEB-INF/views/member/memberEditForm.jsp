@@ -17,11 +17,23 @@
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet"/>
 <link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
+<title>회원정보 수정</title>
 </head>
 <body>
 
-	<form method="post" action="/infra/member/memberUpdt">
+	<form id="formEditForm" method="post" action="/infra/member/memberUpdt">
+		
+		<input type="hidden" id="shIfmmGrade" name="shIfmmGrade" value="<c:out value="${vo.shIfmmGrade}"/>">
+		<input type="hidden" id="shIfmmEmailConsentNy" name="shIfmmEmailConsentNy" value="<c:out value="${vo.shIfmmEmailConsentNy}"/>">
+		<input type="hidden" id="shIfmmSmsConsentNy" name="shIfmmSmsConsentNy" value="<c:out value="${vo.shIfmmSmsConsentNy}"/>">
+		<input type="hidden" id="shIfmmPushConsentNy" name="shIfmmPushConsentNy" value="<c:out value="${vo.shIfmmPushConsentNy}"/>">
+		<input type="hidden" id="shIfscSeq" name="shIfscSeq" value="<c:out value="${vo.shIfscSeq}"/>">
+		<input type="hidden" id="searchBar" name="searchBar" value="<c:out value="${vo.searchBar}"/>">
+		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+		<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+		<input type="hidden" id="sort" name="sort" value="<c:out value="${vo.sort}"/>">
+		<input type="hidden" id="orderby" name="orderby" value="<c:out value="${vo.orderby}"/>">
+		
 		
 		<!-- ifmmSeq -->
 		<input type="hidden" name="ifmmSeq" value="<c:out value="${rt.ifmmSeq}"/>">
@@ -224,7 +236,8 @@
 			 -->
 			<div class="text-center">
 				<input type="submit" id="btnSubmit" class="btn btn-sm btn-outline-success border border-3 container1" value="수정">
-				<a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="/infra/member/memberView?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>">취소</a>
+				<a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="javascript:goView();">취소</a>
+				<%-- <a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="/infra/member/memberView?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>">취소</a> --%>
 			</div>
 
 
@@ -516,6 +529,15 @@
 					}
 				});
 });
+	</script>
+	
+	<script type="text/javascript">
+	
+	goView = function(){
+		$("#formEditForm").attr("action", "/infra/member/memberView");
+		$("#formEditForm").submit();
+	}
+	
 	</script>
 
 </body>

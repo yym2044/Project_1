@@ -62,7 +62,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/member/memberForm")
-	public String memberForm(Model model, MemberVo vo) throws Exception {
+	public String memberForm(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {
 		
 		//멤버수 가져오기 -> ${fn:length(list2)+1}로 다음 ifmmSeq값을 얻음
 //		List<Member> list2 = service.selectList(vo);
@@ -91,7 +91,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/member/memberEditForm")
-	public String memberEditForm(Model model, MemberVo vo) throws Exception {
+	public String memberEditForm(Model model,@ModelAttribute("vo") MemberVo vo) throws Exception {
 		
 		Member rt = service.selectOne(vo);
 		Member rt1 = service.selectOnePhoneMobile(vo);
