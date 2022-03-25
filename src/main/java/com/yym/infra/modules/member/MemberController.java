@@ -101,7 +101,7 @@ public class MemberController {
 		// 입력을 작동시킨다.
 		service.insertMember(dto);
 		 
-		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
+//		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
 //		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
 //		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
 //		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
@@ -112,6 +112,8 @@ public class MemberController {
 //		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
 //		redirectAttributes.addAttribute("sort", vo.getSort());
 //		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+		
+		vo.setIfmmSeq(dto.getIfmmSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
