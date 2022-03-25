@@ -237,10 +237,10 @@
 						성별
 					</th>
 					<td class="text-start">
-						<input type="radio" name="ifmmGenderCd" id="man" value="3">
-						<label for="man">남성</label>
-						<input type="radio" name="ifmmGenderCd" id="woman" value="4">
-						<label for="woman">여성</label>
+						<input type="radio" class="form-check-input" name="ifmmGenderCd" id="man" value="3">
+						<label for="man" class="form-check-label">남성</label>
+						<input type="radio" class="form-check-input" name="ifmmGenderCd" id="woman" value="4">
+						<label for="woman" class="form-check-label">여성</label>
 					</td>
 				</tr>
 				<tr>
@@ -436,7 +436,7 @@
 				.on(
 						"click",
 						function() {
-
+							
 							if (!checkId($("#ifmmId"), $("#ifmmId").val(),
 									"아이디가 유효하지 않습니다. 다시 입력해주세요.")) {
 								return false;
@@ -467,10 +467,6 @@
 								return false;
 							}
 							
-							if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")) {
-								return false;
-							}
-							
 							if(!checkNoSelect($("#ifmmGradeCd"),$("#ifmmGradeCd").val(), "등급을 설정해주세요.")){
 								return false;
 							}
@@ -479,13 +475,21 @@
 								return false;
 							}
 							
+							if(!checkMobile($("#ifmpNumberMobile"),$("#ifmpNumberMobile").val(),"번호를 확인해주세요.")){
+								return false;
+							}
+							
 							if(!checkNoSelect($("#ifnaSeq"),$("#ifnaSeq").val(), "국적을 선택하세요.")){
 								return false;
 							}
-
-							if (!$("input:checked[Name='ifmmGenderCd']").is(
-									":checked")) {
+							
+							if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")) {
+								return false;
+							}
+							
+							if (!$("input:checked[Name='ifmmGenderCd']").is(":checked")) {
 								alert("성별을 선택해주세요.");
+								$("input[Name='ifmmGenderCd']").addClass("is-invalid");
 								return false;
 							}
 							

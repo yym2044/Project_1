@@ -398,7 +398,7 @@
 		.on(
 				"click",
 				function() {
-
+					
 					if (!checkId($("#ifmmId"), $("#ifmmId").val(),
 							"아이디가 유효하지 않습니다. 다시 입력해주세요.")) {
 						return false;
@@ -429,10 +429,6 @@
 						return false;
 					}
 					
-					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")) {
-						return false;
-					}
-					
 					if(!checkNoSelect($("#ifmmGradeCd"),$("#ifmmGradeCd").val(), "등급을 설정해주세요.")){
 						return false;
 					}
@@ -441,13 +437,21 @@
 						return false;
 					}
 					
+					if(!checkMobile($("#ifmpNumberMobile"),$("#ifmpNumberMobile").val(),"번호를 확인해주세요.")){
+						return false;
+					}
+					
 					if(!checkNoSelect($("#ifnaSeq"),$("#ifnaSeq").val(), "국적을 선택하세요.")){
 						return false;
 					}
-
-					if (!$("input:checked[Name='ifmmGenderCd']").is(
-							":checked")) {
+					
+					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")) {
+						return false;
+					}
+					
+					if (!$("input:checked[Name='ifmmGenderCd']").is(":checked")) {
 						alert("성별을 선택해주세요.");
+						$("input[Name='ifmmGenderCd']").addClass("is-invalid");
 						return false;
 					}
 					
