@@ -123,9 +123,14 @@
 							<a href="#" class="fs-6" style="text-decoration: none;">이메일 중복체크</a>
 						</span>
 						<span class="ms-2">
+							<!-- 
 							<input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1">
-							<label for="email_check">이메일 수신 동의</label>
 							<input type="hidden" name="ifmmEmailConsentNy" id="email_check_hidden" value="0">
+							 -->
+							<input type="checkbox" name="ifmmEmailConsent" id="ifmmEmailConsent">
+							<input type="hidden" name="ifmmEmailConsentNy" id="ifmmEmailConsentNy" value="0">
+							
+							<label for="email_check">이메일 수신 동의</label>
 						</span>
 					</td>
 				</tr>
@@ -173,9 +178,13 @@
 							</c:forEach>
 						</select>
 						<input type="text" id="ifmpNumberMobile" name="ifmpNumberMobile" class="form-control d-inline" style="width: 200px;" placeholder="01012345678" autocomplete="off">
+						<!-- 
 						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1">
-						<label for="sms_check">SMS 수신 동의</label>
 						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
+						 -->
+						<input type="checkbox" name="ifmmSmsConsent" id="ifmmSmsConsent">
+						<input type="hidden" name="ifmmSmsConsentNy" id="ifmmSmsConsentNy" value="0">
+						<label for="sms_check">SMS 수신 동의</label>
 					</td>
 				</tr>
 				<tr>
@@ -310,7 +319,7 @@
 			// my_tbody.deleteRow(0); // 상단부터 삭제
 			my_tbody.deleteRow(my_tbody.rows.length - 1); // 하단부터 삭제
 		}
-
+		/* 
 		if (document.getElementById("email_check").checked) {
 			document.getElementById("email_check_hidden").disabled = true;
 		}
@@ -318,7 +327,7 @@
 		if (document.getElementById("sms_check").checked) {
 			document.getElementById("sms_check_hidden").disabled = true;
 		}
-		
+		 */
 	</script>
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -456,7 +465,8 @@
 								return false;
 							}
 							
-							
+							setCheckboxValue($("#ifmmEmailConsent"), $("#ifmmEmailConsentNy"));
+							setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy"));
 							
 						});
 		/* 
@@ -604,6 +614,13 @@
 		$("#formForm").submit();
 	}
 	
+	setCheckboxValue = function(obj, targetObj){
+		if(obj.is(":checked")){
+			targetObj.val("1");
+		} else {
+			targetObj.val("0");
+		}
+	}
 	
 	</script>
 	

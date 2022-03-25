@@ -98,17 +98,20 @@ public class MemberController {
 		// 입력을 작동시킨다.
 		service.insertMember(dto);
 		
-		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
-		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
-		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
-		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
-		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
-		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
-		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
-		redirectAttributes.addAttribute("sort", vo.getSort());
-		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+//		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
+//		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
+//		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+//		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+//		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+//		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
+//		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
+//		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+//		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
+//		redirectAttributes.addAttribute("sort", vo.getSort());
+//		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+		
+		redirectAttributes.addFlashAttribute("dto", dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/member/memberView";
 	}
@@ -147,17 +150,20 @@ public class MemberController {
 		// 업데이트 하는 구문
 		service.updateMember(dto);
 		
-		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
-		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
-		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
-		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
-		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
-		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
-		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
-		redirectAttributes.addAttribute("sort", vo.getSort());
-		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+//		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
+//		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
+//		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+//		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+//		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+//		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
+//		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
+//		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+//		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
+//		redirectAttributes.addAttribute("sort", vo.getSort());
+//		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+		
+		redirectAttributes.addFlashAttribute("dto", dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/member/memberView";
 		
@@ -169,16 +175,18 @@ public class MemberController {
 		// 업데이트 하는 구문
 		service.deleteMember(vo);
 		
-		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
-		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
-		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
-		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
-		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
-		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
-		redirectAttributes.addAttribute("sort", vo.getSort());
-		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+//		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
+//		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+//		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+//		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+//		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
+//		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
+//		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+//		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
+//		redirectAttributes.addAttribute("sort", vo.getSort());
+//		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/member/memberList";
 		
