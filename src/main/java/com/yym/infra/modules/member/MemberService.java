@@ -9,6 +9,7 @@ public interface MemberService {
 	public List<Member> selectList(MemberVo vo) throws Exception; 
 	public List<Member> selectListSearch() throws Exception;
 	public List<Member> selectListNation() throws Exception;
+	public List<Member> selectNote(MemberVo vo) throws Exception;
 //	INSERT
 	public int insertMember(Member dto) throws Exception;
 	

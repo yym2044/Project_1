@@ -41,6 +41,12 @@ public class Member {
 	private String ifmaAddress1;
 	private String ifmaAddress2;
 	private String ifmaAddressReferences;
+	//멤버_노트
+	private String ifntSeq;
+	private String ifntContent;
+	private String ifntWriter;
+	private String noteDateTime;
+	
 	//국적
 	private String ifnaSeq;
 	private String ifnaName;
@@ -274,6 +280,30 @@ public class Member {
 	}
 	public void setIfnaCode3Char(String ifnaCode3Char) {
 		this.ifnaCode3Char = ifnaCode3Char;
+	}
+	public String getIfntSeq() {
+		return ifntSeq;
+	}
+	public void setIfntSeq(String ifntSeq) {
+		this.ifntSeq = ifntSeq;
+	}
+	public String getIfntContent() {
+		return ifntContent;
+	}
+	public void setIfntContent(String ifntContent) {
+		this.ifntContent = ifntContent;
+	}
+	public String getIfntWriter() {
+		return ifntWriter;
+	}
+	public void setIfntWriter(String ifntWriter) {
+		this.ifntWriter = ifntWriter;
+	}
+	public String getNoteDateTime() {
+		return noteDateTime;
+	}
+	public void setNoteDateTime(String noteDateTime) {
+		this.noteDateTime = noteDateTime;
 	}
 	
 }

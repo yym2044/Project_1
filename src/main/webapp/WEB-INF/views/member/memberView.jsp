@@ -13,16 +13,16 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<link href="${path}/resources/css/style.css" rel="stylesheet"/>
-<link href="${path}/resources/css/sidebars.css" rel="stylesheet"/>
+<link href="${path}/resources/css/style.css" rel="stylesheet" />
+<link href="${path}/resources/css/sidebars.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <title>회원정보</title>
 </head>
 <body>
 
 	<form id="formView" action="" method="post">
-	
-	
+
+
 		<input type="hidden" id="shIfmmGrade" name="shIfmmGrade" value="<c:out value="${vo.shIfmmGrade}"/>">
 		<input type="hidden" id="shIfmmEmailConsentNy" name="shIfmmEmailConsentNy" value="<c:out value="${vo.shIfmmEmailConsentNy}"/>">
 		<input type="hidden" id="shIfmmSmsConsentNy" name="shIfmmSmsConsentNy" value="<c:out value="${vo.shIfmmSmsConsentNy}"/>">
@@ -37,12 +37,16 @@
 
 		<div class="container-fluid">
 			<div class="row bg-dark mb-2" style="height: 42px;">
-				<div class="col col-md-12 text-white d-flex align-items-center"><c:out value="${rt.ifmmId}"/>님의 회원정보입니다.</div>
+				<div class="col col-md-12 text-white d-flex align-items-center">
+					<c:out value="${rt.ifmmId}" />
+					님의 회원정보입니다.
+				</div>
 			</div>
 
 			<div class="row mb-2">
 				<div class="col col-md-12 d-flex">
-					<i class="bi bi-caret-right-square-fill text-primary"></i> <span class="ms-2 fw-bold">회원 기본 정보</span>
+					<i class="bi bi-caret-right-square-fill text-primary"></i>
+					<span class="ms-2 fw-bold">회원 기본 정보</span>
 				</div>
 			</div>
 
@@ -51,73 +55,102 @@
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">아이디</td>
-					<td class="text-start"><c:out value="${rt.ifmmId}"/><span class="ms-2"><a href="#" class="fs-6"
-							style="text-decoration: none;">비번변경</a></span></td>
+					<td class="text-start">
+						<c:out value="${rt.ifmmId}" />
+						<span class="ms-2">
+							<a href="#" class="fs-6" style="text-decoration: none;">비번변경</a>
+						</span>
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">이름</td>
-					<td class="text-start"><c:out value="${rt.ifmmName}"/></td>
+					<td class="text-start">
+						<c:out value="${rt.ifmmName}" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">이메일</td>
 					<td class="text-start">
-						<c:out value="${rt.ifmeEmailFull}"/>
-					<span class="badge <c:choose>
+						<c:out value="${rt.ifmeEmailFull}" />
+						<span class="badge <c:choose>
 											<c:when test="${rt.ifmmEmailConsentNyText eq '수신동의'}">bg-primary</c:when>
 											<c:when test="${rt.ifmmEmailConsentNyText eq '수신거부'}">bg-secondary</c:when>
 										</c:choose> ms-1">
-					<c:out value="${rt.ifmmEmailConsentNyText}"/></span></td>
-					
+							<c:out value="${rt.ifmmEmailConsentNyText}" />
+						</span>
+					</td>
+
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">회원등급</td>
-					<td class="text-start"><span class="fw-bold"><c:out value="${rt.ifmmGrade}"/></span><span class="ms-2"><a href="#" class="" style="text-decoration: none;">등급변경</a></span></td>
+					<td class="text-start">
+						<span class="fw-bold">
+							<c:out value="${rt.ifmmGrade}" />
+						</span>
+						<span class="ms-2">
+							<a href="#" class="" style="text-decoration: none;">등급변경</a>
+						</span>
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">주소</td>
-					<td class="text-start"><c:out value="${rt.ifmaAddress1} ${rt.ifmaAddress2}"/></td>
+					<td class="text-start">
+						<c:out value="${rt.ifmaAddress1} ${rt.ifmaAddress2}" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">휴대폰</td>
-					<td class="text-start"><span class="badge bg-info"><c:out value="${rt1.ifmpTelecomName}"/></span><c:out value="${rt1.ifmpNumberMobile}"/>
-					<span class="badge <c:choose>
+					<td class="text-start">
+						<span class="badge bg-info">
+							<c:out value="${rt1.ifmpTelecomName}" />
+						</span>
+						<c:out value="${rt1.ifmpNumberMobile}" />
+						<span class="badge <c:choose>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신동의'}">bg-primary</c:when>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신거부'}">bg-secondary</c:when>
 										</c:choose> ms-1">
-					<c:out value="${rt.ifmmSmsConsentNyText}"/></span>
-				</td>
+							<c:out value="${rt.ifmmSmsConsentNyText}" />
+						</span>
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">전화번호</td>
-					<td class="text-start"><c:out value="${rt2.ifmpNumberHome}"/></td>
+					<td class="text-start">
+						<c:out value="${rt2.ifmpNumberHome}" />
+					</td>
 				</tr>
 			</table>
 
 			<div class="text-center">
 				<a href="javascript:goList();" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">목록으로</a>
 				<a href="javascript:goEdit();" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">정보수정</a>
-				
+
 				<%-- <a href="/infra/member/memberList?rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">목록으로</a> --%>
 				<%-- <a href="/infra/member/memberEditForm?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>" type="button" class="btn btn-outline-dark btn-sm border border-3 container1">정보수정</a> --%>
 			</div>
 
 			<div class="row mb-2">
 				<div class="col col-md-12 d-flex">
-					<i class="bi bi-caret-right-square-fill text-primary"></i> <span class="ms-2 fw-bold">추가 정보</span>
+					<i class="bi bi-caret-right-square-fill text-primary"></i>
+					<span class="ms-2 fw-bold">추가 정보</span>
 				</div>
 			</div>
 
 			<!-- table -->
 
 			<table class="table">
-				
+
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">국적</td>
-					<td class="text-start"><c:out value="${rt.ifnaName}"/></td>
+					<td class="text-start">
+						<c:out value="${rt.ifnaName}" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">가입일</td>
-					<td class="text-start"><c:out value="${rt.ifmmRegDate}"/></td>
+					<td class="text-start">
+						<c:out value="${rt.ifmmRegDate}" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">로그인</td>
@@ -125,22 +158,100 @@
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">생년월일</td>
-					<td class="text-start"><c:out value="${rt.ifmmDob}"/></td>
+					<td class="text-start">
+						<c:out value="${rt.ifmmDob}" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">성별</td>
-					<td class="text-start"><c:out value="${rt.ifmmGenderName}"/></td>
+					<td class="text-start">
+						<c:out value="${rt.ifmmGenderName}" />
+					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">마케팅 수신동의</td>
-					<td class="text-start"><c:out value="${rt.ifmmPushConsentNyText}"/></td>
+					<td class="text-start">
+						<c:out value="${rt.ifmmPushConsentNyText}" />
+					</td>
 				</tr>
 			</table>
 
+			<div class="row mb-2">
+				<div class="col col-md-12 d-flex">
+					<i class="bi bi-caret-right-square-fill text-primary"></i>
+					<span class="ms-2 fw-bold">관리자 운영 메모</span>
+				</div>
+			</div>
+
+			<div class="row mb-4">
+				<div class="col-12 col-lg-10 pe-0">
+					<input type="text" class="form-control" id="inputMemo" name="inputMemo" autocomplete="off">
+				</div>
+				<div class="col-12 col-lg text-end">
+					<a class="btn btn-outline-primary" onclick="add_row()" onclick="clearInput()">등록</a>
+					<a class="btn btn-outline-danger" onclick="delete_row()">삭제</a>
+				</div>
+			</div>
+			<div class="table-responsive">
+				<c:choose>
+					<c:when test="${fn:length(noteList) eq 0}">
+						<table class="table table-hover table-sm border border-1 box-white" style="min-width: 1000px; border-collapse: collapse;">
+							<thead>
+								<tr>
+									<th style="width: 100px;">번호</th>
+									<th>내용</th>
+									<th style="width: 200px;">작성일</th>
+									<th style="width: 100px;">작성자</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td colspan="5">관리자 메모가 없습니다.</td>
+								</tr>
+							</tbody>
+						</table>
+					</c:when>
+
+					<c:otherwise>
+
+						<table class="table table-hover table-sm border border-1 box-white" style="min-width: 700px; border-collapse: collapse;">
+							<thead>
+								<tr>
+									<th style="width: 100px;">번호</th>
+									<th>내용</th>
+									<th style="width: 200px;">작성일</th>
+									<th style="width: 100px;">작성자</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${noteList}" var="item" varStatus="status">
+									<tr>
+										<td style="width: 100px;">
+											<c:out value="${item.ifntSeq}" />
+										</td>
+										<td>
+											<c:out value="${item.ifntContent}" />
+										</td>
+										<td style="width: 200px;">
+											<c:out value="${item.noteDateTime}" />
+										</td>
+										<td style="width: 100px;">
+											<c:out value="${item.ifntWriter}" />
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+
+					</c:otherwise>
+				</c:choose>
+			</div>
 
 		</div>
 	</form>
-	
+
+
+
 
 
 
@@ -149,7 +260,7 @@
 	<script src="${path}/resources/js/sidebars.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		var count = 1;
 
 		function add_row() {
@@ -178,20 +289,18 @@
 			// my_tbody.deleteRow(0); // 상단부터 삭제
 			my_tbody.deleteRow(my_tbody.rows.length - 1); // 하단부터 삭제
 		}
-	</script>
-	
+	</script> -->
+
 	<script type="text/javascript">
-	
-	goList = function(){
-		$("#formView").attr("action", "/infra/member/memberList");
-		$("#formView").submit();
-	}
-	
-	goEdit = function(){
-		$("#formView").attr("action", "/infra/member/memberEditForm");
-		$("#formView").submit();
-	}
-	
+		goList = function() {
+			$("#formView").attr("action", "/infra/member/memberList");
+			$("#formView").submit();
+		}
+
+		goEdit = function() {
+			$("#formView").attr("action", "/infra/member/memberEditForm");
+			$("#formView").submit();
+		}
 	</script>
 </body>
 

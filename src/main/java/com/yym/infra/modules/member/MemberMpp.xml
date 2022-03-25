@@ -147,6 +147,20 @@
 		AND ifnaDelNy = 0
 	</select>
 	
+	<select id="selectNote" resultMap="resultMapObj">
+	SELECT
+		ifntSeq
+	    , ifntContent
+	    , (select ifmmName from infrMember a where a.ifmmSeq = ifntWriterCd) AS ifntWriter
+	    , regDateTime AS noteDateTime
+	FROM 
+		infrMemberNote
+	WHERE 1=1
+		AND ifmmSeq = #{ifmmSeq}
+		AND ifntUseNy = 1
+	    AND ifntDelNy = 0
+	</select>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT DISTINCT
 			a.ifmmSeq

@@ -60,6 +60,8 @@ public class MemberController {
 		model.addAttribute("rt1", rt1);
 		model.addAttribute("rt2", rt2);
 		
+		model.addAttribute("noteList", service.selectNote(vo));
+		
 
 		return "member/memberView";
 	}

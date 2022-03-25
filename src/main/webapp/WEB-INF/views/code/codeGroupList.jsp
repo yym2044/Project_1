@@ -91,7 +91,7 @@
 						<td><a href="javascript:goView1(<c:out value="${item.ifcgSeq}"/>)"><c:out value="${item.ifcgName}"/></a></td>
 						<td><c:out value="${item.ifcgNameEng}"/></td>
 						<td><c:out value="${item.ifcgDelNy}"/></td>
-					<tr>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
