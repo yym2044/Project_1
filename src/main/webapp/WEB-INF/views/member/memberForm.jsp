@@ -213,7 +213,7 @@
 					</th>
 					<td class="text-start">
 						<select id="ifnaSeq" name="ifnaSeq" class="form-select" style="width: 200px;">
-							<option>::선택::</option>
+							<option value="0">::선택::</option>
 								<c:forEach items="${listNation}" var="item" varStatus="status">
 									<option value="${item.ifnaSeq}">
 										<c:out value="${item.ifnaSeq}"/> | <c:out value="${item.ifnaName}"/>
@@ -228,7 +228,7 @@
 						생년월일
 					</th>
 					<td class="text-start">
-						<input type="text" id="ifmmDob" name="ifmmDob" class="form-control" style="width: 200px;">
+						<input type="text" id="ifmmDob" name="ifmmDob" class="form-control" style="width: 200px;" autocomplete="off">
 					</td>
 				</tr>
 				<tr>
@@ -455,11 +455,31 @@
 
 							if (!checkNull($("#ifmmName"),
 									$("#ifmmName").val(), "이름을 입력해주세요.")) {
+								/* $("#ifmmName").addClass("is-invalid"); */
 								return false;
 							}
 
-							if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(),
-									"생년월일을 입력해주세요.")) {
+							if (!checkNull($("#ifmeEmailAccount"), $("#ifmeEmailAccount").val(), "이메일을 입력해주세요")){
+								return false;
+							}
+							
+							if (!checkNull($("#ifmeEmailDomain"), $("#ifmeEmailDomain").val(), "도메인을 입력해주세요")){
+								return false;
+							}
+							
+							if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")) {
+								return false;
+							}
+							
+							if(!checkNoSelect($("#ifmmGradeCd"),$("#ifmmGradeCd").val(), "등급을 설정해주세요.")){
+								return false;
+							}
+							
+							if(!checkNoSelect($("#ifmpTelecomCd"),$("#ifmpTelecomCd").val(), "통신사를 선택하세요.")){
+								return false;
+							}
+							
+							if(!checkNoSelect($("#ifnaSeq"),$("#ifnaSeq").val(), "국적을 선택하세요.")){
 								return false;
 							}
 
@@ -469,22 +489,25 @@
 								return false;
 							}
 							
-							if($("#ifmmGradeCd").val() == 0){
-								alert("등급을 설정해주세요.");
-								$("#ifmmGradeCd").focus();
-								return false;
-							}
-							
-							if($("#ifmpTelecomCd").val() == 0){
-								alert("통신사를 선택하세요.");
-								$("#ifmpTelecomCd").focus();
-								return false;
-							}
-							
 							setCheckboxValue($("#ifmmEmailConsent"), $("#ifmmEmailConsentNy"));
 							setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy"));
 							
 						});
+		
+		$("input").keyup(function(){
+			$(this).removeClass("is-invalid");
+		});
+		$("input").on("change", function(){
+			$(this).removeClass("is-invalid");
+		});
+		$("#ifmeEmailDomainCd").on("change", function(){
+			$("#ifmeEmailDomain").removeClass("is-invalid");
+		});
+		$("select").on("change", function(){
+			$(this).removeClass("is-invalid");
+		});
+		
+		
 		/* 
 		$("#btnSubmit").on("click", function(){
 

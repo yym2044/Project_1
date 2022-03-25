@@ -190,7 +190,7 @@
 					</th>
 					<td class="text-start">
 						<select id="ifnaSeq" name="ifnaSeq" class="form-select" style="width: 200px;">
-							<option>::선택::</option>
+							<option value="0">::선택::</option>
 								<c:forEach items="${listNation}" var="item" varStatus="status">
 									<option value="${item.ifnaSeq}" <c:if test="${item.ifnaSeq eq rt.ifnaSeq}">selected</c:if>>
 										<c:out value="${item.ifnaSeq}"/> | <c:out value="${item.ifnaName}"/>
@@ -202,7 +202,7 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>생년월일</th>
 					<td class="text-start">
-						<input type="text" name="ifmmDob" id="ifmmDob" class="form-control" style="width: 200px;" value="<c:out value="${rt.ifmmDob}"/>">
+						<input type="text" name="ifmmDob" id="ifmmDob" class="form-control" style="width: 200px;" value="<c:out value="${rt.ifmmDob}"/>" autocomplete="off">
 					</td>
 				</tr>
 				<tr>
@@ -418,7 +418,15 @@
 						return false;
 					}
 					
-					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")){
+					if (!checkNull($("#ifmeEmailAccount"), $("#ifmeEmailAccount").val(), "이메일을 입력해주세요")){
+						return false;
+					}
+					
+					if (!checkNull($("#ifmeEmailDomain"), $("#ifmeEmailDomain").val(), "도메인을 입력해주세요")){
+						return false;
+					}
+					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(),
+							"생년월일을 입력해주세요.")) {
 						return false;
 					}
 					
@@ -431,6 +439,12 @@
 					if($("#ifmpTelecomCd").val() == 0){
 						alert("통신사를 선택해주세요.");
 						$("#ifmpTelecomCd").focus();
+						return false;
+					}
+					
+					if($("#ifnaSeq").val() == 0){
+						alert("국적을 선택하세요.");
+						$("#ifnaSeq").focus();
 						return false;
 					}
 					
