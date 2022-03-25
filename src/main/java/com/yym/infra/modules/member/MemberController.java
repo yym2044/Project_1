@@ -100,7 +100,7 @@ public class MemberController {
 		
 		// 입력을 작동시킨다.
 		service.insertMember(dto);
-		
+		 
 		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
 //		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
 //		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
