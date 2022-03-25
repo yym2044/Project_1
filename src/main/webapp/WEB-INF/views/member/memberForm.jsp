@@ -494,18 +494,7 @@
 							
 						});
 		
-		$("input").keyup(function(){
-			$(this).removeClass("is-invalid");
-		});
-		$("input").on("change", function(){
-			$(this).removeClass("is-invalid");
-		});
-		$("#ifmeEmailDomainCd").on("change", function(){
-			$("#ifmeEmailDomain").removeClass("is-invalid");
-		});
-		$("select").on("change", function(){
-			$(this).removeClass("is-invalid");
-		});
+		
 		
 		
 		/* 
