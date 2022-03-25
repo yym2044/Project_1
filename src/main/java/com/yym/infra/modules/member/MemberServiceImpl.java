@@ -31,6 +31,11 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectListSearch();
 	}
 	
+	@Override
+	public List<Member> selectListNation() throws Exception {
+		return dao.selectListNation();
+	}
+	
 	
 	@Override
 	public int insertMember(Member dto) throws Exception {
@@ -39,6 +44,7 @@ public class MemberServiceImpl implements MemberService{
 		dao.insertMemberEmail(dto);
 		dao.insertMemberPhoneHome(dto);
 		dao.insertMemberPhoneMobile(dto);
+		dao.insertMemberNationality(dto);
 		return 1;
 	}
 	
@@ -65,6 +71,7 @@ public class MemberServiceImpl implements MemberService{
 		dao.updateMemberEmail(dto);
 		dao.updateMemberPhoneHome(dto);
 		dao.updateMemberPhoneMobile(dto);
+		dao.updateMemberNationality(dto);
 		
 		return 1;
 	}

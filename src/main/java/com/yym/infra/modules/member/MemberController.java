@@ -80,6 +80,9 @@ public class MemberController {
 		model.addAttribute("codeMemberGrade", CodeServiceImpl.selectListCachedCode("20"));
 		model.addAttribute("codeEmailDomain", CodeServiceImpl.selectListCachedCode("6"));
 		
+		//국적 리스트
+		model.addAttribute("listNation", service.selectListNation());
+		
 		return "member/memberForm";
 	}
 	
@@ -98,7 +101,7 @@ public class MemberController {
 		// 입력을 작동시킨다.
 		service.insertMember(dto);
 		
-//		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
+		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
 //		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
 //		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
 //		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
@@ -110,7 +113,6 @@ public class MemberController {
 //		redirectAttributes.addAttribute("sort", vo.getSort());
 //		redirectAttributes.addAttribute("orderby", vo.getOrderby());
 		
-		redirectAttributes.addFlashAttribute("dto", dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/member/memberView";
@@ -131,6 +133,9 @@ public class MemberController {
 		model.addAttribute("codeMemberGrade", CodeServiceImpl.selectListCachedCode("20"));
 		model.addAttribute("codeTelecom", CodeServiceImpl.selectListCachedCode("9"));
 		model.addAttribute("codeEmailDomain", CodeServiceImpl.selectListCachedCode("6"));
+		
+		//국적 리스트
+		model.addAttribute("listNation", service.selectListNation());
 		
 		return "member/memberEditForm";
 	}
@@ -162,7 +167,6 @@ public class MemberController {
 //		redirectAttributes.addAttribute("sort", vo.getSort());
 //		redirectAttributes.addAttribute("orderby", vo.getOrderby());
 		
-		redirectAttributes.addFlashAttribute("dto", dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/member/memberView";

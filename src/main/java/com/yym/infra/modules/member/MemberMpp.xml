@@ -133,6 +133,20 @@
 		infrSearch
 	</select>
 	
+	<select id="selectListNation" resultMap="resultMapObj">
+	SELECT 
+		ifnaSeq
+		, ifnaName
+		, ifnaCode2Char
+		, ifnaCode3Char
+	FROM 
+		infrNationality 
+	WHERE 
+		1 = 1
+		AND ifnaUseNy = 1 
+		AND ifnaDelNy = 0
+	</select>
+	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT DISTINCT
 			a.ifmmSeq
@@ -164,13 +178,20 @@
 			, d.ifmaAddress2
 			, d.ifmaAddressReferences
 			
+			, e.ifnaSeq
+			, (select ifnaName from infrNationality where ifnaSeq = e.ifnaSeq) as ifnaName
+			, (select ifnaCode2Char from infrNationality where ifnaSeq = e.ifnaSeq) as ifnaCode2Char
+			, (select ifnaCode3Char from infrNationality where ifnaSeq = e.ifnaSeq) as ifnaCode3Char
+			
 		FROM infrMember a
 		LEFT JOIN infrMemberEmail b ON b.ifmmSeq = a.ifmmSeq AND b.ifmeDefaultNy = 1
 		<!-- LEFT JOIN infrMemberPhone c ON c.ifmmSeq = a.ifmmSeq -->
 		LEFT JOIN infrMemberAddress d ON d.ifmmSeq = a.ifmmSeq AND d.ifmaDefaultNy = 1
+		LEFT JOIN infrMemberNationality e ON e.ifmmSeq = a.ifmmSeq AND e.ifmnDefaultNy = 1
 		WHERE
 			1=1
 		AND a.ifmmSeq = #{ifmmSeq}
+		
 	</select>
 	
 	<select id="selectOnePhoneMobile" resultMap = "resultMapObj">
@@ -308,6 +329,20 @@
     )
 	</insert>
 	
+	<insert id="insertMemberNationality">
+	INSERT INTO 
+	infrMemberNationality (
+		ifmmSeq
+        , ifnaSeq
+        , ifmnDelNy
+        , ifmnDefaultNy
+    ) VALUES (
+		#{ifmmSeq}
+        , #{ifnaSeq}
+        , 0
+        , 1
+    )
+	</insert>
 	
 	
 	<!-- UPDATE -->
@@ -383,6 +418,15 @@
 		ifmmSeq = #{ifmmSeq}
 	AND
 		ifmpDeviceCd = 25	
+	</update>
+	
+	<update id="updateMemberNationality">
+	UPDATE infrMemberNationality
+	SET
+		 ifnaSeq = #{ifnaSeq}
+	WHERE
+		1 = 1
+	AND ifmmSeq = #{ifmmSeq}
 	</update>
 	
 	

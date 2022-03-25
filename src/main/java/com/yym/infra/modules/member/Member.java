@@ -41,6 +41,11 @@ public class Member {
 	private String ifmaAddress1;
 	private String ifmaAddress2;
 	private String ifmaAddressReferences;
+	//국적
+	private String ifnaSeq;
+	private String ifnaName;
+	private String ifnaCode2Char;
+	private String ifnaCode3Char;
 	//--------------------------------------------------------------
 	public Integer getIfscSeq() {
 		return ifscSeq;
@@ -245,6 +250,30 @@ public class Member {
 	}
 	public void setIfmaAddressReferences(String ifmaAddressReferences) {
 		this.ifmaAddressReferences = ifmaAddressReferences;
+	}
+	public String getIfnaSeq() {
+		return ifnaSeq;
+	}
+	public void setIfnaSeq(String ifnaSeq) {
+		this.ifnaSeq = ifnaSeq;
+	}
+	public String getIfnaName() {
+		return ifnaName;
+	}
+	public void setIfnaName(String ifnaName) {
+		this.ifnaName = ifnaName;
+	}
+	public String getIfnaCode2Char() {
+		return ifnaCode2Char;
+	}
+	public void setIfnaCode2Char(String ifnaCode2Char) {
+		this.ifnaCode2Char = ifnaCode2Char;
+	}
+	public String getIfnaCode3Char() {
+		return ifnaCode3Char;
+	}
+	public void setIfnaCode3Char(String ifnaCode3Char) {
+		this.ifnaCode3Char = ifnaCode3Char;
 	}
 	
 }

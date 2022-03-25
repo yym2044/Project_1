@@ -103,8 +103,12 @@
 						</select>
 						<span class="ms-2"><a href="#" class="fs-6" style="text-decoration: none;">이메일 중복체크</a></span>
 						<span class="ms-2">
+						<%-- 
 						<input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1" <c:if test="${rt.ifmmEmailConsentNyText eq '수신동의'}">checked</c:if>><label for="email_check">이메일 수신 동의</label>
 						<input type="hidden" name="ifmmEmailConsentNy" id="email_check_hidden" value="0">
+						 --%>
+						<input type="checkbox" name="ifmmEmailConsent" id="ifmmEmailConsent" <c:if test="${rt.ifmmEmailConsentNyText eq '수신동의'}">checked</c:if>><label for="ifmmEmailConsent">이메일 수신 동의</label>
+						<input type="hidden" name="ifmmEmailConsentNy" id="ifmmEmailConsentNy" value="0">
 						
 						</span>
 					</td>
@@ -155,8 +159,12 @@
 							</c:forEach>
 						</select>
 						<input type="text" id="ifmpNumberMobile" name="ifmpNumberMobile" class="form-control d-inline" style="width: 200px;" placeholder="01012345678" value="<c:out value="${rt1.ifmpNumberMobile}"/>" autocomplete="off">
+						<%-- 
 						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1" <c:if test="${rt.ifmmSmsConsentNyText eq '수신동의'}">checked</c:if>><label for="sms_check">SMS 수신 동의</label>
 						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
+						 --%>
+						<input type="checkbox" name="ifmmSmsConsent" id="ifmmSmsConsent" <c:if test="${rt.ifmmSmsConsentNyText eq '수신동의'}">checked</c:if>><label for="ifmmSmsConsent">SMS 수신 동의</label>
+						<input type="hidden" name="ifmmSmsConsentNy" id="ifmmSmsConsentNy" value="0">
 					</td>
 				</tr>
 				<tr>
@@ -175,6 +183,22 @@
 
 			<table class="table">
 				
+				<tr>
+					<th style="width: 200px;" class="bg-light text-start">
+						<span class="text-danger">*</span>
+						국적
+					</th>
+					<td class="text-start">
+						<select id="ifnaSeq" name="ifnaSeq" class="form-select" style="width: 200px;">
+							<option>::선택::</option>
+								<c:forEach items="${listNation}" var="item" varStatus="status">
+									<option value="${item.ifnaSeq}" <c:if test="${item.ifnaSeq eq rt.ifnaSeq}">selected</c:if>>
+										<c:out value="${item.ifnaSeq}"/> | <c:out value="${item.ifnaName}"/>
+									</option>
+								</c:forEach>
+						</select>
+					</td>
+				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>생년월일</th>
 					<td class="text-start">
@@ -334,7 +358,7 @@
 			my_tbody.deleteRow(my_tbody.rows.length - 1); // 하단부터 삭제
 		}
 		
-		
+		/* 
 		if(document.getElementById("email_check").checked) {
 		    document.getElementById("email_check_hidden").disabled = true;
 		}
@@ -342,7 +366,7 @@
 		if(document.getElementById("sms_check").checked) {
 		    document.getElementById("sms_check_hidden").disabled = true;
 		}
-
+		 */
 		
 	</script>
 	
@@ -410,7 +434,8 @@
 						return false;
 					}
 					
-						
+					setCheckboxValue($("#ifmmEmailConsent"), $("#ifmmEmailConsentNy"));
+					setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy"));	
 						
 
 				});
@@ -536,6 +561,14 @@
 	goView = function(){
 		$("#formEditForm").attr("action", "/infra/member/memberView");
 		$("#formEditForm").submit();
+	}
+	
+	setCheckboxValue = function(obj, targetObj){
+		if(obj.is(":checked")){
+			targetObj.val("1");
+		} else {
+			targetObj.val("0");
+		}
 	}
 	
 	</script>

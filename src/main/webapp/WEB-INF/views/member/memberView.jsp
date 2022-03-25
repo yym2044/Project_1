@@ -112,6 +112,10 @@
 			<table class="table">
 				
 				<tr>
+					<td style="width: 200px;" class="bg-light text-start">국적</td>
+					<td class="text-start"><c:out value="${rt.ifnaName}"/></td>
+				</tr>
+				<tr>
 					<td style="width: 200px;" class="bg-light text-start">가입일</td>
 					<td class="text-start"><c:out value="${rt.ifmmRegDate}"/></td>
 				</tr>

@@ -130,7 +130,7 @@
 							<input type="checkbox" name="ifmmEmailConsent" id="ifmmEmailConsent">
 							<input type="hidden" name="ifmmEmailConsentNy" id="ifmmEmailConsentNy" value="0">
 							
-							<label for="email_check">이메일 수신 동의</label>
+							<label for="ifmmEmailConsent">이메일 수신 동의</label>
 						</span>
 					</td>
 				</tr>
@@ -184,7 +184,7 @@
 						 -->
 						<input type="checkbox" name="ifmmSmsConsent" id="ifmmSmsConsent">
 						<input type="hidden" name="ifmmSmsConsentNy" id="ifmmSmsConsentNy" value="0">
-						<label for="sms_check">SMS 수신 동의</label>
+						<label for="ifmmSmsConsent">SMS 수신 동의</label>
 					</td>
 				</tr>
 				<tr>
@@ -206,6 +206,22 @@
 
 			<table class="table">
 
+				<tr>
+					<th style="width: 200px;" class="bg-light text-start">
+						<span class="text-danger">*</span>
+						국적
+					</th>
+					<td class="text-start">
+						<select id="ifnaSeq" name="ifnaSeq" class="form-select" style="width: 200px;">
+							<option>::선택::</option>
+								<c:forEach items="${listNation}" var="item" varStatus="status">
+									<option value="${item.ifnaSeq}">
+										<c:out value="${item.ifnaSeq}"/> | <c:out value="${item.ifnaName}"/>
+									</option>
+								</c:forEach>
+						</select>
+					</td>
+				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start">
 						<span class="text-danger">*</span>

@@ -24,6 +24,7 @@ public class MemberDao {
 	}
 	
 	public List<Member> selectListSearch() {return sqlSession.selectList(namespace + ".selectListSearch", ""); }
+	public List<Member> selectListNation() {return sqlSession.selectList(namespace + ".selectListNation", ""); }
 	
 	
 //	INSERT
@@ -32,13 +33,15 @@ public class MemberDao {
 	public int insertMemberAddress(Member dto) {return sqlSession.insert(namespace + ".insertMemberAddress", dto);}
 	public int insertMemberPhoneMobile(Member dto) {return sqlSession.insert(namespace + ".insertMemberPhoneMobile", dto);}
 	public int insertMemberPhoneHome(Member dto) {return sqlSession.insert(namespace + ".insertMemberPhoneHome", dto);}
+	public int insertMemberNationality(Member dto) {return sqlSession.insert(namespace + ".insertMemberNationality", dto);}
 	
 //	UPDATE
-	public int updateMember(Member dto) {return sqlSession.insert(namespace + ".updateMember", dto); }
-	public int updateMemberEmail(Member dto) {return sqlSession.insert(namespace + ".updateMemberEmail", dto); }
-	public int updateMemberAddress(Member dto) {return sqlSession.insert(namespace + ".updateMemberAddress", dto); }
-	public int updateMemberPhoneMobile(Member dto) {return sqlSession.insert(namespace + ".updateMemberPhoneMobile", dto); }
-	public int updateMemberPhoneHome(Member dto) {return sqlSession.insert(namespace + ".updateMemberPhoneHome", dto); }
+	public int updateMember(Member dto) {return sqlSession.update(namespace + ".updateMember", dto); }
+	public int updateMemberEmail(Member dto) {return sqlSession.update(namespace + ".updateMemberEmail", dto); }
+	public int updateMemberAddress(Member dto) {return sqlSession.update(namespace + ".updateMemberAddress", dto); }
+	public int updateMemberPhoneMobile(Member dto) {return sqlSession.update(namespace + ".updateMemberPhoneMobile", dto); }
+	public int updateMemberPhoneHome(Member dto) {return sqlSession.update(namespace + ".updateMemberPhoneHome", dto); }
+	public int updateMemberNationality(Member dto) {return sqlSession.update(namespace + ".updateMemberNationality", dto); }
 	
 	public Member selectOne(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOne", vo);}
 	public Member selectOnePhoneMobile(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOnePhoneMobile", vo);}
