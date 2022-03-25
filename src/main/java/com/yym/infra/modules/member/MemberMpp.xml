@@ -454,6 +454,12 @@
 	WHERE 1=1
 		AND ifmmSeq = #{checkbox1}
 	</delete>
+	<delete id="deleteMemberNationality">
+	DELETE FROM
+		infrMemberNationality
+	WHERE 1=1
+	 	AND ifmmSeq = #{checkbox1}
+	</delete>
 	
 	 
 	 

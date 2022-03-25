@@ -104,6 +104,7 @@ public class MemberServiceImpl implements MemberService{
 		dao.deleteMemberAddress(vo);
 		dao.deleteMemberEmail(vo);
 		dao.deleteMemberPhone(vo);
+		dao.deleteMemberNationality(vo);
 		dao.deleteMember(vo);
 		
 		return 1;

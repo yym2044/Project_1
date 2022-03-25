@@ -52,6 +52,7 @@ public class MemberDao {
 	public int deleteMemberEmail(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberEmail", vo);}
 	public int deleteMemberAddress(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberAddress", vo);}
 	public int deleteMemberPhone(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberPhone", vo);}
+	public int deleteMemberNationality(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberNationality", vo);}
 	
 	public int updateMemberDelNy(MemberVo vo) {return sqlSession.update(namespace + ".updateMemberDelNy", vo); }
 	
