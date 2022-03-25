@@ -129,13 +129,30 @@ public class CodeController {
 //		return "/code/codeGroupView1";
 //	}
 
+//	@RequestMapping(value = "/code/codeGroupUpdt") // SelectOne(Code dto) 새로 생성
+//	public String codeGroupUpdt(CodeVo vo, Code dto) throws Exception {
+//
+//		// 업데이트 하는 구문
+//		service.update(dto);
+//		
+//		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + makeQueryString(vo);
+//		
+//	}
+	
 	@RequestMapping(value = "/code/codeGroupUpdt") // SelectOne(Code dto) 새로 생성
-	public String codeGroupUpdt(CodeVo vo, Code dto) throws Exception {
-
+	public String codeGroupUpdt(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
+		
 		// 업데이트 하는 구문
 		service.update(dto);
 		
-		return "redirect:/code/codeGroupView1?ifcgSeq=" + dto.getIfcgSeq() + makeQueryString(vo);
+		redirectAttributes.addAttribute("ifcgSeq", dto.getIfcgSeq());
+		redirectAttributes.addAttribute("shOption", vo.getShOption());
+		redirectAttributes.addAttribute("shValue", vo.getShValue());
+		redirectAttributes.addAttribute("shIfcgDelNy", vo.getShIfcgDelNy());
+		redirectAttributes.addAttribute("shIfcgName", vo.getShIfcgName());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		
+		return "redirect:/code/codeGroupView1";
 		
 	}
 	
