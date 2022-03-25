@@ -394,7 +394,8 @@
 		});
 	
 	
-		$("#btnSubmit").on(
+		$("#btnSubmit")
+		.on(
 				"click",
 				function() {
 
@@ -413,11 +414,13 @@
 						$("#ifmmPwdConfirm").focus();
 						return false;
 					}
-					
-					if (!checkNull($("#ifmmName"), $("#ifmmName").val(), "이름을 입력해주세요.")){
+
+					if (!checkNull($("#ifmmName"),
+							$("#ifmmName").val(), "이름을 입력해주세요.")) {
+						/* $("#ifmmName").addClass("is-invalid"); */
 						return false;
 					}
-					
+
 					if (!checkNull($("#ifmeEmailAccount"), $("#ifmeEmailAccount").val(), "이메일을 입력해주세요")){
 						return false;
 					}
@@ -425,34 +428,47 @@
 					if (!checkNull($("#ifmeEmailDomain"), $("#ifmeEmailDomain").val(), "도메인을 입력해주세요")){
 						return false;
 					}
-					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(),
-							"생년월일을 입력해주세요.")) {
+					
+					if (!checkNull($("#ifmmDob"), $("#ifmmDob").val(), "생년월일을 입력해주세요.")) {
 						return false;
 					}
 					
-					if($("#ifmmGradeCd").val() == 0){
-						alert("등급을 설정해주세요.");
-						$("#ifmmGradeCd").focus();
+					if(!checkNoSelect($("#ifmmGradeCd"),$("#ifmmGradeCd").val(), "등급을 설정해주세요.")){
 						return false;
 					}
 					
-					if($("#ifmpTelecomCd").val() == 0){
-						alert("통신사를 선택해주세요.");
-						$("#ifmpTelecomCd").focus();
+					if(!checkNoSelect($("#ifmpTelecomCd"),$("#ifmpTelecomCd").val(), "통신사를 선택하세요.")){
 						return false;
 					}
 					
-					if($("#ifnaSeq").val() == 0){
-						alert("국적을 선택하세요.");
-						$("#ifnaSeq").focus();
+					if(!checkNoSelect($("#ifnaSeq"),$("#ifnaSeq").val(), "국적을 선택하세요.")){
+						return false;
+					}
+
+					if (!$("input:checked[Name='ifmmGenderCd']").is(
+							":checked")) {
+						alert("성별을 선택해주세요.");
 						return false;
 					}
 					
 					setCheckboxValue($("#ifmmEmailConsent"), $("#ifmmEmailConsentNy"));
-					setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy"));	
-						
-
+					setCheckboxValue($("#ifmmSmsConsent"), $("#ifmmSmsConsentNy"));
+					
 				});
+		
+		$("input").keyup(function(){
+			$(this).removeClass("is-invalid");
+		});
+		$("input").on("change", function(){
+			$(this).removeClass("is-invalid");
+		});
+		$("#ifmeEmailDomainCd").on("change", function(){
+			$("#ifmeEmailDomain").removeClass("is-invalid");
+		});
+		$("select").on("change", function(){
+			$(this).removeClass("is-invalid");
+		});
+		
 		
 		$("#ifmeEmailDomain").keyup(function(){
 
