@@ -15,6 +15,7 @@
 
 <link href="${path}/resources/css/style.css" rel="stylesheet"/>
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet"/>
+<link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 </head>
@@ -165,7 +166,7 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light text-start"><span class="text-danger">*</span>생년월일</th>
 					<td class="text-start">
-						<input type="date" name="ifmmDob" id="ifmmDob" class="form-control" style="width: 200px;" autocomplete="off" value="<c:out value="${rt.ifmmDob}"/>">
+						<input type="text" name="ifmmDob" id="ifmmDob" class="form-control" style="width: 200px;" value="<c:out value="${rt.ifmmDob}"/>">
 					</td>
 				</tr>
 				<tr>
@@ -334,8 +335,28 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/infra/resources/js/validation.js"></script>
+	<script src="/infra/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 	
 	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			$("#ifmmDob").datepicker();
+		});
+		
+		$.datepicker.setDefaults({
+		    dateFormat: 'yy-mm-dd',
+		    prevText: '이전 달',
+		    nextText: '다음 달',
+		    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		    showMonthAfterYear: true,
+		    yearSuffix: '년'
+		});
+	
+	
 		$("#btnSubmit").on(
 				"click",
 				function() {
@@ -447,9 +468,6 @@
 		
 	</script>
 	
-	
-	
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
 	<script type="text/javascript">
 		$(function() {
