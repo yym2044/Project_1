@@ -45,10 +45,10 @@ public class MemberDao {
 	public Member selectOnePhoneHome(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOnePhoneHome", vo);}
 	
 //	DELETE
-//	public int deleteMember(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMember", vo);}
-//	public int deleteMemberEmail(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberEmail", vo);}
-//	public int deleteMemberAddress(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberAddress", vo);}
-//	public int deleteMemberPhone(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberPhone", vo);}
+	public int deleteMember(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMember", vo);}
+	public int deleteMemberEmail(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberEmail", vo);}
+	public int deleteMemberAddress(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberAddress", vo);}
+	public int deleteMemberPhone(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberPhone", vo);}
 	
 	public int updateMemberDelNy(MemberVo vo) {return sqlSession.update(namespace + ".updateMemberDelNy", vo); }
 	

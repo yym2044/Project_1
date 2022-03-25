@@ -23,7 +23,7 @@ public interface MemberService {
 	public Member selectOnePhoneHome(MemberVo vo) throws Exception;
 	
 //	DELETE
-//	public int deleteMember(MemberVo vo) throws Exception;
+	public int deleteMember(MemberVo vo) throws Exception;
 //	public int deleteMemberEmail(MemberVo vo) throws Exception;
 //	public int deleteMemberAddress(MemberVo vo) throws Exception;
 //	public int deleteMemberPhone(MemberVo vo) throws Exception;

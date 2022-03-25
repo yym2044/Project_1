@@ -438,7 +438,19 @@ a {
 		 -->
 		<br>
 		<br>
-		<form method="get" action="/infra/member/updateDelNy">
+		<form id="formDelete" method="get" action="">
+		
+			<input type="hidden" id="shIfmmGrade" name="shIfmmGrade" value="<c:out value="${vo.shIfmmGrade}"/>">
+			<input type="hidden" id="shIfmmEmailConsentNy" name="shIfmmEmailConsentNy" value="<c:out value="${vo.shIfmmEmailConsentNy}"/>">
+			<input type="hidden" id="shIfmmSmsConsentNy" name="shIfmmSmsConsentNy" value="<c:out value="${vo.shIfmmSmsConsentNy}"/>">
+			<input type="hidden" id="shIfmmPushConsentNy" name="shIfmmPushConsentNy" value="<c:out value="${vo.shIfmmPushConsentNy}"/>">
+			<input type="hidden" id="shIfscSeq" name="shIfscSeq" value="<c:out value="${vo.shIfscSeq}"/>">
+			<input type="hidden" id="searchBar" name="searchBar" value="<c:out value="${vo.searchBar}"/>">
+			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
+			<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+			<input type="hidden" id="sort" name="sort" value="<c:out value="${vo.sort}"/>">
+			<input type="hidden" id="orderby" name="orderby" value="<c:out value="${vo.orderby}"/>">
+		
 			<div class="width92">
 				<div class="row">
 					<div class="col-8 col-md-3 p-auto d-flex justify-content-start align-items-center fs-5" style="margin-left: 12px;">
@@ -627,7 +639,7 @@ a {
 
 				<div class="row ps-2">
 					<div class="col col-md-4 ms-1 p-0">
-						<a class="btn btn-outline-danger" id="btnDelete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+						<a class="btn btn-outline-danger" id="btnDelete">	 <!-- data-bs-toggle="modal" data-bs-target="#deleteModal" -->
 							<i class="bi bi-trash"></i>
 						</a>
 						<a class="btn btn-outline-primary" href="javascript:goForm()">
@@ -728,8 +740,9 @@ a {
 						</div>
 						<div class="modal-body">선택항목을 삭제합니다.</div>
 						<div class="modal-footer">
-							<a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">확인</a>
-							<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+							<a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal">진짜삭제</a>
+							<a class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#updateDeleteConfirmModal">가짜삭제</a>
+							<button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">취소</button>
 						</div>
 					</div>
 				</div>
@@ -743,9 +756,27 @@ a {
 							<h5 class="modal-title">확인</h5>
 							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 						</div>
-						<div class="modal-body">정말 삭제합니다.</div>
+						<div class="modal-body">정말 삭제합니다.(진짜)</div>
 						<div class="modal-footer">
-							<input type="submit" class="btn btn-primary" value="확인">
+							<a href="javascript:goDelete()" class="btn btn-primary">확인</a>
+							<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- updateDeleteConfirmModal -->
+			<div class="modal fade" id="updateDeleteConfirmModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">확인</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+						<div class="modal-body">정말 삭제합니다.(가짜)</div>
+						<div class="modal-footer">
+							<!-- <input type="submit" class="btn btn-primary" value="확인"> -->
+							<a href="javascript:goUpdateDelete()" class="btn btn-primary">확인</a>
 							<button type="button" class="btn btn-danger" data-bs-dismiss="modal">취소</button>
 						</div>
 					</div>
@@ -1021,11 +1052,28 @@ a {
 		
 	});
 	
+	
+	$("input:checkbox[Name='checkbox1']").on("change", function(){
+		/* alert($(this).val()); */
+		if($("input:checked[Name='checkbox1']").is(":checked")){
+			$("#btnDelete").attr("data-bs-toggle", "modal");
+			$("#btnDelete").attr("data-bs-target", "#deleteModal");
+		} else {
+			$("#btnDelete").removeAttr("data-bs-toggle");
+			$("#btnDelete").removeAttr("data-bs-target");
+		}
+	});
+	
 	$("#btnDelete").on("click", function(){
 		if (!$("input:checked[Name='checkbox1']").is(":checked")){
 			alert("한 개 이상 선택해주세요");
 			return false;
+		} else {
+			
 		}
+		/* alert($("input:checked[Name='checkbox1']").val()); */
+		
+		
 	});
 	
 	</script>
@@ -1065,6 +1113,19 @@ a {
 		$("#formList").attr("action", "/infra/member/memberForm");
 		$("#formList").submit();
 	}
+	
+	goDelete = function(){
+		$("#formDelete").attr("action", "/infra/member/memberDele");
+		$("#formDelete").submit();
+	}
+	
+	goUpdateDelete = function(){
+		$("#formDelete").attr("action", "/infra/member/updateDelNy");
+		$("#formDelete").submit();
+	}
+	
+	/* /infra/member/memberDele */
+	/* /infra/member/updateDelNy */
 	</script>
 
 

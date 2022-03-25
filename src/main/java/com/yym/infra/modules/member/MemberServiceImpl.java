@@ -91,10 +91,16 @@ public class MemberServiceImpl implements MemberService{
 
 	
 
-//	@Override
-//	public int deleteMember(MemberVo vo) throws Exception {
-//		return dao.deleteMember(vo);
-//	}
+	@Override
+	public int deleteMember(MemberVo vo) throws Exception {
+		
+		dao.deleteMemberAddress(vo);
+		dao.deleteMemberEmail(vo);
+		dao.deleteMemberPhone(vo);
+		dao.deleteMember(vo);
+		
+		return 1;
+	}
 //
 //	@Override
 //	public int deleteMemberEmail(MemberVo vo) throws Exception {

@@ -163,24 +163,43 @@ public class MemberController {
 		
 	}
 	
-//	@RequestMapping(value = "/member/memberDele")
-//	public String memberDele(Model model, MemberVo vo) throws Exception {
-//		
-//		// 업데이트 하는 구문
-//		service.deleteMemberEmail(vo);
-//		service.deleteMemberAddress(vo);
-//		service.deleteMemberPhone(vo);
-//		service.deleteMember(vo);
-//		
-//		return "redirect:/member/memberList";
-//		
-//	}
+	@RequestMapping(value = "/member/memberDele")
+	public String memberDele(Model model, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		// 업데이트 하는 구문
+		service.deleteMember(vo);
+		
+		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
+		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
+		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
+		redirectAttributes.addAttribute("sort", vo.getSort());
+		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+		
+		return "redirect:/member/memberList";
+		
+	}
 	
 	@RequestMapping(value = "/member/updateDelNy")
-	public String updateDelNy(Model model, MemberVo vo) throws Exception {
+	public String updateDelNy(Model model, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
 		// 업데이트 하는 구문
 		service.updateMemberDelNy(vo);
+		
+		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
+		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
+		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
+		redirectAttributes.addAttribute("sort", vo.getSort());
+		redirectAttributes.addAttribute("orderby", vo.getOrderby());
 
 		return "redirect:/member/memberList";
 
