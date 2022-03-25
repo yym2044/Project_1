@@ -84,7 +84,7 @@ public class MemberController {
 	}
 	
 //	@RequestMapping(value = "/member/memberInst")
-//	public String memberInst(Model model, Member dto) throws Exception {
+//	public String memberInst(MemberVo vo, Member dto) throws Exception {
 //
 //		// 입력을 작동시킨다.
 //		service.insertMember(dto);
