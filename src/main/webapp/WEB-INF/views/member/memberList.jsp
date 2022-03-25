@@ -263,7 +263,12 @@ a {
 				</ol>
 			</nav>
 			
-			<form method="get" action="/infra/member/memberList">
+			<form id="formList" method="post" action="/infra/member/memberList">
+				<input type="hidden" id="thisPage" name="thisPage" value="${vo.thisPage}">
+				<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="${vo.rowNumToShow}">
+				<input type="hidden" id="sort" name="sort" value="${vo.sort}">
+				<input type="hidden" id="orderby" name="orderby" value="${vo.orderby}">
+				
 			<%-- <form method="get" action="/infra/member/memberList?shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&thisPage=<c:out value="${vo.thisPage}"/>"> --%>
 				<div class="row border border-1 my-2 box-white container1" id="searchBox">
 					<div class="col-12 col-md-9">
@@ -425,16 +430,6 @@ a {
 							</div>
 						 </div>
 						 
-						 <div class="text-end">
-							 <div class="btn-group btn-group-sm box-white" role="group">
-								<input type="submit" class="btn-check" id="btnradio1" autocomplete="off"> <label class="btn btn-outline-primary" for="btnradio1">view</label> 
-								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio2" autocomplete="off" value="5"> <label class="btn btn-outline-primary" for="btnradio2">5</label> 
-								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio3" autocomplete="off" value="10"> <label class="btn btn-outline-primary" for="btnradio3">10</label> 
-								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio4" autocomplete="off" value="20"> <label class="btn btn-outline-primary" for="btnradio4">20</label> 
-								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio5" autocomplete="off" value="50"> <label class="btn btn-outline-primary" for="btnradio5">50</label> 
-								<input type="radio" class="btn-check" name="rowNumToShow" id="btnradio6" autocomplete="off" value="100"> <label class="btn btn-outline-primary" for="btnradio6">100</label>
-							 </div>
-						</div>
 					 </div>
 				 </form>
 			</div>
@@ -466,13 +461,21 @@ a {
 									<button type="button" class="btn btn-sm btn-outline-dark" disabled>View</button>
 								</div>
 								<div class="btn-group me-2" role="group" aria-label="Second group">
+									<%-- 	GET 방식!!!!!
 									<a type="button" id="view3" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=3&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">3</a>
 									<a type="button" id="view5" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=5&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">5</a>
 									<a type="button" id="view10" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=10&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">10</a>
 									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=20&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">20</a>
 									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=50&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">50</a>
 									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=100&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">100</a>
-
+									 --%>
+									 <!-- POST 방식 -->
+									<a type="button" id="view3" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(3)">3</a>
+									<a type="button" id="view5" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(5)">5</a>
+									<a type="button" id="view10" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(10)">10</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 20}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(20)">20</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(50)">50</a>
+									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(100)">100</a>
 								</div>
 							</div>
 
@@ -1012,6 +1015,10 @@ a {
 		}
 	})
 	
+	changeRowNumToShow = function(num){
+		$("#rowNumToShow").val(num);
+		$("#formList").submit();
+	}
 	
 	
 	
