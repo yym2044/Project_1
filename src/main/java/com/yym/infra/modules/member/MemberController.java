@@ -190,16 +190,18 @@ public class MemberController {
 		// 업데이트 하는 구문
 		service.updateMemberDelNy(vo);
 		
-		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
-		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
-		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
-		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
-		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
-		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
-		redirectAttributes.addAttribute("sort", vo.getSort());
-		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+//		redirectAttributes.addFlashAttribute("shIfmmGrade", vo.getShIfmmGrade());
+//		redirectAttributes.addFlashAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+//		redirectAttributes.addFlashAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+//		redirectAttributes.addFlashAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+//		redirectAttributes.addFlashAttribute("shIfscSeq", vo.getShIfscSeq());
+//		redirectAttributes.addFlashAttribute("searchBar", vo.getSearchBar());
+//		redirectAttributes.addFlashAttribute("thisPage", vo.getThisPage());
+//		redirectAttributes.addFlashAttribute("rowNumToShow", vo.getRowNumToShow());
+//		redirectAttributes.addFlashAttribute("sort", vo.getSort());
+//		redirectAttributes.addFlashAttribute("orderby", vo.getOrderby());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
 
 		return "redirect:/member/memberList";
 
