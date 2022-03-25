@@ -1,12 +1,15 @@
 package com.yym.infra.modules.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yym.infra.modules.code.CodeServiceImpl;
 
@@ -80,14 +83,34 @@ public class MemberController {
 		return "member/memberForm";
 	}
 	
+//	@RequestMapping(value = "/member/memberInst")
+//	public String memberInst(Model model, Member dto) throws Exception {
+//
+//		// 입력을 작동시킨다.
+//		service.insertMember(dto);
+//		
+//		/* return "redirect:/member/memberList"; */
+//		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
+//	}
 	@RequestMapping(value = "/member/memberInst")
-	public String memberInst(Model model, Member dto) throws Exception {
-
+	public String memberInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
 		// 입력을 작동시킨다.
 		service.insertMember(dto);
 		
-		/* return "redirect:/member/memberList"; */
-		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
+		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
+		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
+		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
+		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
+		redirectAttributes.addAttribute("sort", vo.getSort());
+		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+		
+		return "redirect:/member/memberView";
 	}
 	
 	@RequestMapping(value = "/member/memberEditForm")
@@ -109,14 +132,35 @@ public class MemberController {
 		return "member/memberEditForm";
 	}
 	
+//	@RequestMapping(value = "/member/memberUpdt")
+//	public String memberUpdt(Model model, Member dto) throws Exception {
+//
+//		// 업데이트 하는 구문
+//		service.updateMember(dto);
+//
+//		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
+//
+//	}
 	@RequestMapping(value = "/member/memberUpdt")
-	public String memberUpdt(Model model, Member dto) throws Exception {
-
+	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
 		// 업데이트 하는 구문
 		service.updateMember(dto);
-
-		return "redirect:/member/memberView?ifmmSeq=" + dto.getIfmmSeq();
-
+		
+		redirectAttributes.addAttribute("ifmmSeq", dto.getIfmmSeq());
+		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
+		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+		redirectAttributes.addAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+		redirectAttributes.addAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+		redirectAttributes.addAttribute("shIfscSeq", vo.getShIfscSeq());
+		redirectAttributes.addAttribute("searchBar", vo.getSearchBar());
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("rowNumToShow", vo.getRowNumToShow());
+		redirectAttributes.addAttribute("sort", vo.getSort());
+		redirectAttributes.addAttribute("orderby", vo.getOrderby());
+		
+		return "redirect:/member/memberView";
+		
 	}
 	
 //	@RequestMapping(value = "/member/memberDele")
