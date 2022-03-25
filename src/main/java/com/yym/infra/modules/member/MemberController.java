@@ -113,6 +113,7 @@ public class MemberController {
 //		redirectAttributes.addAttribute("sort", vo.getSort());
 //		redirectAttributes.addAttribute("orderby", vo.getOrderby());
 		
+		System.out.println(vo.getIfmmSeq());	// null값 나옴..
 		vo.setIfmmSeq(dto.getIfmmSeq());
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
