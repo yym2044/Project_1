@@ -254,6 +254,9 @@ public class MemberController {
 		
 	}
 	
-	
-	
+	@RequestMapping(value = "/member/recaptchaTest")
+	public String recaptchaTest() throws Exception {
+		
+		return "/member/recaptchaTest";
+	}
 }
