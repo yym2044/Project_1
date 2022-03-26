@@ -18,8 +18,20 @@
 <link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <title>회원등록</title>
+
+<style type="text/css">
+
+	table th {
+	text-align: start;
+	vertical-align: middle;
+}
+
+</style>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
+
+<div class="g-recaptcha" data-sitekey="6Lfh2xIfAAAAADV0ECUUGtb1kWwEqZwh7z6iu-B8"></div>
 
 	<form id="formForm" method="post" action="/infra/member/memberInst">
 	
@@ -61,9 +73,9 @@
 
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">
-						<span class="text-danger">*</span>
+					<th style="width: 200px;" class="bg-light">
 						아이디
+						<span class="text-danger">*</span>
 					</th>
 					<td class="text-start" colspan="3">
 						<input type="text" name="ifmmId" id="ifmmId" class="form-control d-inline" style="width: 200px;" placeholder="영문(대소문자),숫자,특수문자" autocomplete="off">
@@ -73,36 +85,39 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">
-						<span class="text-danger">*</span>
+					<th style="width: 200px;" class="bg-light">
 						비밀번호
+						<span class="text-danger">*</span>
 					</th>
 					<td class="text-start">
-						<input type="password" name="ifmmPwd" id="ifmmPwd" class="form-control" style="width: 200px;" autocomplete="off">
+						<input type="password" name="ifmmPwd" id="ifmmPwd" class="pwd form-control" style="width: 200px;" autocomplete="off">
 						<div class="valid-feedback" id="ifmmPwdValidFeedBack">사용가능한 비밀번호입니다.</div>
 						<div class="invalid-feedback" id="ifmmPwdInvalidFeedBack">사용 불가능한 비밀번호입니다.</div>
 					</td>
-					<th style="width: 200px;" class="bg-light text-start">
-						<span class="text-danger">*</span>
+					<th style="width: 200px;" class="bg-light">
 						비밀번호확인
+						<span class="text-danger">*</span>
 					</th>
 					<td class="text-start">
-						<input type="password" name="ifmmPwdConfirm" class="form-control" id="ifmmPwdConfirm" style="width: 200px;" autocomplete="off" disabled>
+						<input type="password" name="ifmmPwdConfirm" class="pwd form-control" id="ifmmPwdConfirm" style="width: 200px;" autocomplete="off" disabled>
 						<div class="valid-feedback" id="ifmmPwdConfirmValidFeedBack">비밀번호가 일치합니다.</div>
 						<div class="invalid-feedback" id="ifmmPwdConfirmInvalidFeedBack">비밀번호가 일치하지 않습니다.</div>
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">
-						<span class="text-danger">*</span>
+					<th style="width: 200px;" class="bg-light">
 						이름
+						<span class="text-danger">*</span>
 					</th>
 					<td class="text-start" colspan="3">
 						<input type="text" name="ifmmName" class="form-control" id="ifmmName" style="width: 200px;" autocomplete="off">
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">이메일</th>
+					<th style="width: 200px;" class="bg-light">
+					이메일
+					<span class="text-danger">*</span>
+					</th>
 					<td class="text-start" colspan="3">
 						<!-- 
 						<input type="email" id="ifmeEmailFull" name="ifmeEmailFull" class="form-control d-inline" style="width: 200px;" autocomplete="off">
@@ -110,7 +125,7 @@
 						 
 						<input type="text" id="ifmeEmailAccount" name="ifmeEmailAccount" placeholder="your account" class="form-control d-inline" style="width:200px;">
 						<span>@</span>
-						<input type="text" id="ifmeEmailDomain" name="ifmeEmailDomain" class="form-control d-inline" style="width:200px;">
+						<input type="text" id="ifmeEmailDomain" name="ifmeEmailDomain" class="form-control d-inline" style="width:200px;" autocomplete="off">
 						<select id="ifmeEmailDomainCd" name="ifmeEmailDomainCd" class="form-select d-inline" style="width: 200px;">
 							<c:forEach items="${codeEmailDomain}" var="item" varStatus="status">
 								<option value="<c:out value="${item.ifcdSeq}"/>" <c:if test="${item.ifcdSeq eq 21}">selected</c:if>>
@@ -135,7 +150,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">등급설정</th>
+					<th style="width: 200px;" class="bg-light">등급설정</th>
 					<td class="text-start" colspan="3">
 						<select name="ifmmGradeCd" id="ifmmGradeCd" class="form-select" style="width: 150px;">
 							 <option value="0">::선택::</option>
@@ -148,7 +163,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">주소</th>
+					<th style="width: 200px;" class="bg-light">주소</th>
 					<td class="text-start" colspan="3">
 						<div class="row g-2">
 							<div class="col-12 d-flex align-items-center">
@@ -167,7 +182,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">휴대폰</th>
+					<th style="width: 200px;" class="bg-light">휴대폰</th>
 					<td class="text-start" colspan="3">
 						<select id="ifmpTelecomCd" name="ifmpTelecomCd" class="form-select d-inline" style="width: 100px;">
 							<option value="0">통신사</option>
@@ -188,7 +203,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">전화번호</th>
+					<th style="width: 200px;" class="bg-light">전화번호</th>
 					<td class="text-start" colspan="3">
 						<input type="text" id="ifmpNumberHome" name="ifmpNumberHome" class="form-control" style="width: 200px;" placeholder="021234567" autocomplete="off">
 					</td>
@@ -207,9 +222,9 @@
 			<table class="table">
 
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">
-						<span class="text-danger">*</span>
+					<th style="width: 200px;" class="bg-light">
 						국적
+						<span class="text-danger">*</span>
 					</th>
 					<td class="text-start">
 						<select id="ifnaSeq" name="ifnaSeq" class="form-select" style="width: 200px;">
@@ -223,18 +238,18 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">
-						<span class="text-danger">*</span>
+					<th style="width: 200px;" class="bg-light">
 						생년월일
+						<span class="text-danger">*</span>
 					</th>
 					<td class="text-start">
 						<input type="text" id="ifmmDob" name="ifmmDob" class="form-control" style="width: 200px;" autocomplete="off">
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">
-						<span class="text-danger">*</span>
+					<th style="width: 200px;" class="bg-light">
 						성별
+						<span class="text-danger">*</span>
 					</th>
 					<td class="text-start">
 						<input type="radio" class="form-check-input" name="ifmmGenderCd" id="man" value="3">
@@ -244,7 +259,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light text-start">마케팅 수신동의</th>
+					<th style="width: 200px;" class="bg-light">마케팅 수신동의</th>
 					<td class="text-start">
 						<select id="ifmmPushConsentNy" name="ifmmPushConsentNy" class="form-select" style="width:100px;">
 							<option value="1">예</option>
@@ -524,14 +539,17 @@
 
 		    if ($('#ifmeEmailDomain').val() == "naver.com"){        
 		    	
+		    	$(this).prop("readonly", true);
 		    	$("#ifmeEmailDomainCd").val("18").prop("selected", true);
 
 		    } else if ($('#ifmeEmailDomain').val() == "daum.net") {
 		        
+		    	$(this).prop("readonly", true);
 		    	$("#ifmeEmailDomainCd").val("19").prop("selected", true);
-
+		    	
 		    } else if ($('#ifmeEmailDomain').val() == "gmail.com") {
-		       
+		    	
+		    	$(this).prop("readonly", true);		       
 		    	$("#ifmeEmailDomainCd").val("20").prop("selected", true);
 		    	
 		    }
@@ -598,7 +616,7 @@
 			$("#ifmmPwdConfirmValidFeedBack").hide();
 			$("#ifmmPwdConfirmInvalidFeedBack").hide();
 		
-		$("input")
+		$("input.pwd")
 		.keyup(
 				function() {
 
