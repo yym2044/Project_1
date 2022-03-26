@@ -176,6 +176,8 @@
 				</tr>
 			</table>
 
+			<!-- 관리자 운영 메모 -->
+			
 			<div class="row mb-2">
 				<div class="col col-md-12 d-flex">
 					<i class="bi bi-caret-right-square-fill text-primary"></i>
@@ -189,7 +191,7 @@
 				</div>
 				<div class="col-12 col-lg text-end">
 					<a class="btn btn-outline-primary" href="javascript:addNote();">등록</a>
-					<a class="btn btn-outline-danger">삭제</a>
+					<a class="btn btn-outline-danger" href="javascript:deleteNote();">삭제</a>
 				</div>
 			</div>
 			<div class="table-responsive">
@@ -198,6 +200,7 @@
 						<table class="table table-hover table-sm border border-1 box-white" style="min-width: 1000px; border-collapse: collapse;">
 							<thead>
 								<tr>
+									<th style="width: 50px;"><input type="checkbox" disabled class="form-check-input" id="" name=""></th>
 									<th style="width: 100px;">번호</th>
 									<th>내용</th>
 									<th style="width: 200px;">작성일</th>
@@ -217,6 +220,7 @@
 						<table class="table table-hover table-sm border border-1 box-white" style="min-width: 700px; border-collapse: collapse;">
 							<thead>
 								<tr>
+									<th style="width: 50px;"><input type="checkbox" class="form-check-input" onclick="selectAllMemo(this)" id="" name="checkboxMemo"></th>
 									<th style="width: 100px;">번호</th>
 									<th>내용</th>
 									<th style="width: 200px;">작성일</th>
@@ -226,6 +230,7 @@
 							<tbody>
 								<c:forEach items="${noteList}" var="item" varStatus="status">
 									<tr>
+										<td style="width: 50px;"><input type="checkbox" class="form-check-input" id="" name="checkboxMemo" value="<c:out value="${item.ifntSeq}"/>"></td>
 										<td style="width: 100px;">
 											<c:out value="${item.ifntOrder}" />
 										</td>
@@ -290,8 +295,20 @@
 			my_tbody.deleteRow(my_tbody.rows.length - 1); // 하단부터 삭제
 		}
 	</script> -->
+	
+	<script type="text/javascript">
+	function selectAllMemo(selectAllMemo) {
+		const checkboxes 
+			= document.getElementsByName("checkboxMemo");
+		
+		checkboxes.forEach((checkbox) => {
+			checkbox.checked = selectAllMemo.checked;
+		})
+	}
+	</script>
 
 	<script type="text/javascript">
+	
 		goList = function() {
 			$("#formView").attr("action", "/infra/member/memberList");
 			$("#formView").submit();
@@ -306,6 +323,18 @@
 			$("#formView").attr("action", "/infra/member/memberNoteInst");
 			$("#formView").submit();
 		}
+		
+		deleteNote = function() {
+			$("#formView").attr("action", "/infra/member/memberNoteDele");
+			$("#formView").submit();
+		}
+		
+		$("input:checkbox[Name='checkboxMemo']").on("change", function(){
+			alert($(this).val());
+		});
+		
+		
+		
 	</script>
 </body>
 

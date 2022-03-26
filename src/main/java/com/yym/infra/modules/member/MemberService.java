@@ -33,4 +33,8 @@ public interface MemberService {
 //	public int deleteMemberPhone(MemberVo vo) throws Exception;
 	
 	public int updateMemberDelNy(MemberVo vo) throws Exception;
+	
+//	Note
+	public int deleteMemberNote(MemberVo vo) throws Exception;
+	
 }

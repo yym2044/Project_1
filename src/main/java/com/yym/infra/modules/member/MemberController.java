@@ -231,4 +231,29 @@ public class MemberController {
 
 	}
 	
+	@RequestMapping(value = "/member/memberNoteDele")
+	public String memberNoteDele(Model model, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		// 업데이트 하는 구문
+		service.deleteMemberNote(vo);
+		
+//		redirectAttributes.addFlashAttribute("shIfmmGrade", vo.getShIfmmGrade());
+//		redirectAttributes.addFlashAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
+//		redirectAttributes.addFlashAttribute("shIfmmSmsConsentNy", vo.getShIfmmSmsConsentNy());
+//		redirectAttributes.addFlashAttribute("shIfmmPushConsentNy", vo.getShIfmmPushConsentNy());
+//		redirectAttributes.addFlashAttribute("shIfscSeq", vo.getShIfscSeq());
+//		redirectAttributes.addFlashAttribute("searchBar", vo.getSearchBar());
+//		redirectAttributes.addFlashAttribute("thisPage", vo.getThisPage());
+//		redirectAttributes.addFlashAttribute("rowNumToShow", vo.getRowNumToShow());
+//		redirectAttributes.addFlashAttribute("sort", vo.getSort());
+//		redirectAttributes.addFlashAttribute("orderby", vo.getOrderby());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/memberView";
+		
+	}
+	
+	
+	
 }

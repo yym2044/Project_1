@@ -138,6 +138,14 @@ public class MemberServiceImpl implements MemberService{
 		return dao.updateMemberDelNy(vo);
 	}
 
-	
+	@Override
+	public int deleteMemberNote(MemberVo vo) throws Exception {
+		
+		dao.deleteMemberNote(vo);
+		dao.ifntOrder0();
+		dao.rearrangementNote(vo);
+		
+		return 1;
+	}
 
 }

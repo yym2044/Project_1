@@ -17,7 +17,9 @@ public class MemberVo {
 	private Integer shIfmmSmsConsentNy;
 	private Integer shIfmmPushConsentNy;
 	
+	//체크박스
 	private Integer checkbox1;
+	private Integer checkboxMemo;
 	
 //	정렬
 	private String sort;
@@ -222,6 +224,12 @@ public class MemberVo {
 	}
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+	public Integer getCheckboxMemo() {
+		return checkboxMemo;
+	}
+	public void setCheckboxMemo(Integer checkboxMemo) {
+		this.checkboxMemo = checkboxMemo;
 	}
 	
 }

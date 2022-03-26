@@ -497,6 +497,31 @@
 	 	AND ifmmSeq = #{checkbox1}
 	</delete>
 	
+	<!-- 메모 삭제 -->
+	<delete id="deleteMemberNote">
+	DELETE FROM
+		infrMemberNote
+	WHERE 1=1
+		AND ifntSeq = #{checkboxMemo}
+	</delete>
+	
+	
+	<!-- 메모 순번 재정렬 -->
+	<select id="ifntOrder0" resultMap="resultMapObj">
+	SELECT @ifntOrder:=0
+	</select>
+	
+	<update id="rearrangementNote">
+	UPDATE 
+		infrMembernote 
+	SET 
+		ifntOrder = @ifntOrder:=@ifntOrder+1 
+	WHERE 
+		ifmmSeq = #{ifmmSeq} 
+	ORDER BY 
+		ifntOrder
+	</update>
+	
 	 
 	 
 	 <update id="updateMemberDelNy">
