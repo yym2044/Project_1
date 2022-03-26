@@ -61,7 +61,6 @@ public class MemberDao {
 	
 //  DELETE note and UPDATE ifntOrder
 	public int deleteMemberNote(MemberVo vo) {return sqlSession.delete(namespace + ".deleteMemberNote", vo);}
-	public Member ifntOrder0() {return sqlSession.selectOne(namespace + ".ifntOrder0", "");}
 	public int rearrangementNote(MemberVo vo) {return sqlSession.update(namespace + ".rearrangementNote", vo);}
 	
 	

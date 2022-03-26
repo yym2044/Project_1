@@ -142,7 +142,7 @@ public class MemberServiceImpl implements MemberService{
 	public int deleteMemberNote(MemberVo vo) throws Exception {
 		
 		dao.deleteMemberNote(vo);
-		dao.ifntOrder0();
+//		dao.ifntOrder0();
 		dao.rearrangementNote(vo);
 		
 		return 1;
