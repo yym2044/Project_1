@@ -185,11 +185,11 @@
 
 			<div class="row mb-4">
 				<div class="col-12 col-lg-10 pe-0">
-					<input type="text" class="form-control" id="inputMemo" name="inputMemo" autocomplete="off">
+					<input type="text" class="form-control" id="ifntContent" name="ifntContent" autocomplete="off">
 				</div>
 				<div class="col-12 col-lg text-end">
-					<a class="btn btn-outline-primary" onclick="add_row()" onclick="clearInput()">등록</a>
-					<a class="btn btn-outline-danger" onclick="delete_row()">삭제</a>
+					<a class="btn btn-outline-primary" href="javascript:addNote();">등록</a>
+					<a class="btn btn-outline-danger">삭제</a>
 				</div>
 			</div>
 			<div class="table-responsive">
@@ -227,7 +227,7 @@
 								<c:forEach items="${noteList}" var="item" varStatus="status">
 									<tr>
 										<td style="width: 100px;">
-											<c:out value="${item.ifntSeq}" />
+											<c:out value="${item.ifntOrder}" />
 										</td>
 										<td>
 											<c:out value="${item.ifntContent}" />
@@ -299,6 +299,11 @@
 
 		goEdit = function() {
 			$("#formView").attr("action", "/infra/member/memberEditForm");
+			$("#formView").submit();
+		}
+		
+		addNote = function() {
+			$("#formView").attr("action", "/infra/member/memberNoteInst");
 			$("#formView").submit();
 		}
 	</script>

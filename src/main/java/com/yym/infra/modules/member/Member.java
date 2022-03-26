@@ -43,6 +43,7 @@ public class Member {
 	private String ifmaAddressReferences;
 	//멤버_노트
 	private String ifntSeq;
+	private String ifntOrder;
 	private String ifntContent;
 	private String ifntWriter;
 	private String noteDateTime;
@@ -304,6 +305,12 @@ public class Member {
 	}
 	public void setNoteDateTime(String noteDateTime) {
 		this.noteDateTime = noteDateTime;
+	}
+	public String getIfntOrder() {
+		return ifntOrder;
+	}
+	public void setIfntOrder(String ifntOrder) {
+		this.ifntOrder = ifntOrder;
 	}
 	
 }

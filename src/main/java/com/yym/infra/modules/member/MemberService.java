@@ -13,6 +13,8 @@ public interface MemberService {
 //	INSERT
 	public int insertMember(Member dto) throws Exception;
 	
+	public int insertMemberNote(Member dto) throws Exception;
+	
 //	UPDATE
 	public int updateMember(Member dto) throws Exception;
 //	public int updateMemberEmail(Member dto) throws Exception;

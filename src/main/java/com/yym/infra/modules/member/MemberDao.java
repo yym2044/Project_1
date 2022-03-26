@@ -36,6 +36,8 @@ public class MemberDao {
 	public int insertMemberPhoneHome(Member dto) {return sqlSession.insert(namespace + ".insertMemberPhoneHome", dto);}
 	public int insertMemberNationality(Member dto) {return sqlSession.insert(namespace + ".insertMemberNationality", dto);}
 	
+	public int insertMemberNote(Member dto) {return sqlSession.insert(namespace + ".insertMemberNote", dto);}
+	
 //	UPDATE
 	public int updateMember(Member dto) {return sqlSession.update(namespace + ".updateMember", dto); }
 	public int updateMemberEmail(Member dto) {return sqlSession.update(namespace + ".updateMemberEmail", dto); }

@@ -121,6 +121,15 @@ public class MemberController {
 		return "redirect:/member/memberView";
 	}
 	
+	@RequestMapping(value = "/member/memberNoteInst")
+	public String memberNoteInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.insertMemberNote(dto);
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/memberView";
+	}
+	
 	@RequestMapping(value = "/member/memberEditForm")
 	public String memberEditForm(Model model,@ModelAttribute("vo") MemberVo vo) throws Exception {
 		

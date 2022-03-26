@@ -150,6 +150,7 @@
 	<select id="selectNote" resultMap="resultMapObj">
 	SELECT
 		ifntSeq
+		, ifntOrder
 	    , ifntContent
 	    , (select ifmmName from infrMember a where a.ifmmSeq = ifntWriterCd) AS ifntWriter
 	    , regDateTime AS noteDateTime
@@ -356,6 +357,27 @@
         , 0
         , 1
     )
+	</insert>
+	
+	<insert id="insertMemberNote">
+	INSERT INTO
+		infrMemberNote (
+			ifmmSeq
+			, ifntOrder
+			, ifntContent
+			, ifntWriterCd
+			, regDateTime
+            , ifntUseNy
+            , ifntDelNy
+		) VALUES (
+			#{ifmmSeq}
+			, (SELECT ifnull(max(a.ifntOrder),0) + 1 FROM infrMemberNote a WHERE a.ifmmSeq = #{ifmmSeq})
+			, #{ifntContent}
+			, 1
+			, now()
+            , 1
+            , 0
+		)
 	</insert>
 	
 	
