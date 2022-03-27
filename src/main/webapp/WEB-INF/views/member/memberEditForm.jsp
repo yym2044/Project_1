@@ -445,7 +445,7 @@
 						return false;
 					}
 					
-					if(!checkMobile($("#ifmpNumberMobile"),$("#ifmpNumberMobile").val(),"번호를 확인해주세요.")){
+					if(!checkOnlyNumber($("#ifmpNumberMobile"),$("#ifmpNumberMobile").val(),"숫자로만 입력해주세요.")){
 						return false;
 					}
 					

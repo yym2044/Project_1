@@ -266,6 +266,12 @@
 						</select>
 					</td>
 				</tr>
+				<tr>
+					<th style="width: 200px;" class="bg-light">자동 등록 방지</th>
+					<td class="text-start">
+						<div class="g-recaptcha" data-sitekey="6Lfh2xIfAAAAADV0ECUUGtb1kWwEqZwh7z6iu-B8" data-callback="getSuccess"></div>
+					</td>
+				</tr>
 			</table>
 			
 			
@@ -453,8 +459,16 @@
 						"click",
 						function() {
 							
+							if(!checkNull($("#ifmmId"), $("#ifmmId").val(), "아이디를 입력해주세요.")){
+								return false;
+							}
+							
 							if (!checkId($("#ifmmId"), $("#ifmmId").val(),
 									"아이디가 유효하지 않습니다. 다시 입력해주세요.")) {
+								return false;
+							}
+							
+							if(!checkNull($("#ifmmPwd"), $("#ifmmPwd").val(), "비밀번호를 입력해주세요.")){
 								return false;
 							}
 
@@ -491,7 +505,11 @@
 								return false;
 							}
 							
-							if(!checkMobile($("#ifmpNumberMobile"),$("#ifmpNumberMobile").val(),"번호를 확인해주세요.")){
+							if(!checkNull($("#ifmpNumberMobile"), $("#ifmpNumberMobile").val(), "휴대폰 번호를 입력해주세요.")){
+								return false;
+							}
+							
+							if(!checkOnlyNumber($("#ifmpNumberMobile"),$("#ifmpNumberMobile").val(),"숫자로만 입력해주세요.")){
 								return false;
 							}
 							
@@ -506,6 +524,11 @@
 							if (!$("input:checked[Name='ifmmGenderCd']").is(":checked")) {
 								alert("성별을 선택해주세요.");
 								$("input[Name='ifmmGenderCd']").addClass("is-invalid");
+								return false;
+							}
+							
+							if(!isSuccess){
+								alert("자동 등록 방지를 확인해주세요.");
 								return false;
 							}
 							
@@ -675,6 +698,17 @@
 	
 	</script>
 	
+	<!-- reCAPTCHA s -->
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	
+	<script type="text/javascript">
+	var isSuccess = false;
+	getSuccess = function(){
+		isSuccess = true;
+	}
+	<!-- reCAPTCHA s -->
+	
+	</script>
 </body>
 
 </html>
