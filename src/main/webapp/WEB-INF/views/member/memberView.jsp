@@ -191,7 +191,7 @@
 				</div>
 				<div class="col-12 col-lg text-end">
 					<a class="btn btn-outline-primary" href="javascript:addNote();">등록</a>
-					<a class="btn btn-outline-danger" href="javascript:deleteNote();">삭제</a>
+					<a id="btnDelete" class="btn btn-outline-danger" href="javascript:deleteNote();">삭제</a>
 				</div>
 			</div>
 			<div class="table-responsive">
@@ -230,7 +230,7 @@
 							<tbody>
 								<c:forEach items="${noteList}" var="item" varStatus="status">
 									<tr>
-										<td style="width: 50px;"><input type="checkbox" class="form-check-input" id="" name="checkboxMemo" value="<c:out value="${item.ifntSeq}"/>"></td>
+										<td style="width: 50px;"><input type="checkbox" class="form-check-input" id="" name="checkboxMemo" value="<c:out value="${item.ifntOrder}"/>"></td>
 										<td style="width: 100px;">
 											<c:out value="${item.ifntOrder}" />
 										</td>
@@ -330,8 +330,29 @@
 		}
 		
 		$("input:checkbox[Name='checkboxMemo']").on("change", function(){
-			alert($(this).val());
+			alert($(this).val() + "번 메모");
 		});
+		
+		$("#btnDelete").on("click", function(){
+			if (!$("input:checked[Name='checkboxMemo']").is(":checked")){
+				alert("한 개 이상 선택해주세요");
+				return false;
+			} else {
+				var delConfirm = confirm($("input:checked[Name='checkboxMemo']").val() + "번 메모를 삭제할까요?");
+				if(delConfirm){
+					var delConfirm2 = confirm("삭제하면 복구할 수 없습니다. 정말로 삭제할까요?");
+					
+					if(delConfirm2){
+						alert("삭제가 완료되었습니다.");
+					} else {
+						return false;
+					}
+					
+				} else {
+					return false;
+				}
+			}
+ 		});
 		
 		
 		
