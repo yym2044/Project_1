@@ -680,7 +680,7 @@ a {
 					<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
 						<c:choose>
 							<c:when test="${i.index eq vo.thisPage}">
-								<li class="page-item active"><a class="page-link" href="javascript:goPage(<c:out value="${i.index}"/>)">${i.index}</a></li>
+								<li class="page-item active"><a class="page-link disableLink" href="javascript:goPage(<c:out value="${i.index}"/>)">${i.index}</a></li>
 								<%-- <li class="page-item active"><a class="page-link" href="/infra/member/memberList?thisPage=${i.index}&rowNumToShow=${vo.rowNumToShow}&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">${i.index}</a></li> --%>
 							</c:when>
 							<c:otherwise>
@@ -1079,6 +1079,9 @@ a {
 	</script>
 	
 	<script type="text/javascript">
+	
+	document.querySelector(".disableLink").removeAttribute('href');
+
 	changeRowNumToShow = function(num){
 		$("#rowNumToShow").val(num);
 		$("#formList").submit();
