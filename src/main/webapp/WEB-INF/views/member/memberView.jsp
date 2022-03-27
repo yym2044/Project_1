@@ -322,6 +322,8 @@
 		addNote = function() {
 			$("#formView").attr("action", "/infra/member/memberNoteInst");
 			$("#formView").submit();
+			
+			alert("메모 등록 완료.");
 		}
 		
 		deleteNote = function() {
@@ -343,7 +345,7 @@
 					var delConfirm2 = confirm("삭제하면 복구할 수 없습니다. 정말로 삭제할까요?");
 					
 					if(delConfirm2){
-						alert("삭제가 완료되었습니다.");
+						alert("삭제 완료.");
 					} else {
 						return false;
 					}
