@@ -27,6 +27,7 @@
 }
 
 </style>
+
 </head>
 <body>
 
@@ -706,9 +707,9 @@
 	getSuccess = function(){
 		isSuccess = true;
 	}
-	<!-- reCAPTCHA s -->
 	
 	</script>
+	<!-- reCAPTCHA e -->
 </body>
 
 </html>
