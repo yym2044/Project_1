@@ -322,7 +322,7 @@ a {
 								<div class="row g-3 d-flex align-items-center">
 									<div class="col-4 col-md-2">
 										<select name="shOptionDate" id="shOptionDate" class="form-select form-select-sm">
-											<option value="0">선택하세요</option>
+											<option value="0">날짜</option>
 											<option value="1"<c:if test="${vo.shOptionDate eq 1}">selected</c:if>>등록일</option>
 											<option value="2"<c:if test="${vo.shOptionDate eq 2}">selected</c:if>>수정일</option>
 											<option value="3"<c:if test="${vo.shOptionDate eq 3}">selected</c:if>>생년월일</option>
@@ -332,7 +332,7 @@ a {
 										<input type="text" name="shDateStart" id="shDateStart" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateStart}"</c:if> autocomplete="off">
 									</div>
 									<div class="col-8 col-md-3 d-flex justify-content-end">
-										<span style="padding-right: 12px;">~</span>
+										<span id="text1" style="padding-right: 12px;">~</span>
 										<input type="text" name="shDateEnd" id="shDateEnd" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="종료일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateEnd}"</c:if> autocomplete="off">
 									</div>
 									<!-- 
@@ -357,7 +357,7 @@ a {
 								<div class="row g-3 d-flex align-items-center">
 									<div class="col-4 col-md-2">
 										<select name="shIfscSeq" id="shIfscSeq" class="form-select form-select-sm">
-											<option value="0">선택하세요</option>
+											<option value="0">검색구분</option>
 											<c:forEach items="${listSearch}" var="item" varStatus="status">
 												<option value="${item.ifscSeq}" <c:if test="${vo.shIfscSeq eq item.ifscSeq}">selected</c:if>>
 													<c:out value="${item.ifscName}" />
@@ -1062,11 +1062,12 @@ a {
 	$(document).ready(function(){
 		if($("#shOptionDate").val() == 0){
 			$("#shDateStart").attr('disabled', true);
-			$("#shDateEnd").attr('disabled', true);
 			$("#shDateStart").val('');
+			$("#shDateEnd").attr('disabled', true);
 			$("#shDateEnd").val('');
 			$("#shOptionDate").attr("placeholder", "시작일");
 			$("#shDateEnd").attr("placeholder", "종료일");
+
 		} else if ($("#shOptionDate").val() != 0) {
 			$("#shDateStart").attr('disabled', false);
 			$("#shDateEnd").attr('disabled', false);
@@ -1076,11 +1077,12 @@ a {
 	$("#shOptionDate").on("change", function(){
 		if($("#shOptionDate").val() == 0){
 			$("#shDateStart").attr('disabled', true);
-			$("#shDateEnd").attr('disabled', true);
 			$("#shDateStart").val('');
+			$("#shDateEnd").attr('disabled', true);
 			$("#shDateEnd").val('');
 			$("#shOptionDate").attr("placeholder", "시작일");
 			$("#shDateEnd").attr("placeholder", "종료일");
+
 		} else if ($("#shOptionDate").val() != 0) {
 			$("#shDateStart").attr('disabled', false);
 			$("#shDateEnd").attr('disabled', false);

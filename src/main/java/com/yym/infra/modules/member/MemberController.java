@@ -1,5 +1,6 @@
 package com.yym.infra.modules.member;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.yym.infra.common.constants.Constants;
 import com.yym.infra.common.util.UtilDateTime;
 import com.yym.infra.modules.code.CodeServiceImpl;
 
@@ -32,6 +34,12 @@ public class MemberController {
 		
 		vo.setParamsPaging(count);
 		
+		
+		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShDateStart());
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
+		
+		
 		if(count != 0) {
 			
 			List<Member> list = service.selectList(vo);
@@ -51,6 +59,7 @@ public class MemberController {
 	}
 	
 	
+
 	@RequestMapping(value = "/member/memberView")
 	public String memberView(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {
 
