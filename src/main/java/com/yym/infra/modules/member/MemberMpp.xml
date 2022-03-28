@@ -91,11 +91,11 @@
 		 	</when>
 		 	<when test="sort == 'sortRedt' and orderby == 'top'">
 				ORDER BY
-					ifmmRegDate
+					a.regDateTime
 		 	</when>
 		 	<when test="sort == 'sortRedt' and orderby == 'bottom'">
 				ORDER BY
-					ifmmRegDate desc
+					a.regDateTime desc
 		 	</when>
 		 </choose>
 	</sql>
@@ -116,7 +116,6 @@
 			, a.ifmmFavoriteColor
 			, a.ifmmDelNy
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGradeCd) as ifmmGrade
-			, a.ifmmRegDate
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
 			, a.regDateTime
 			, a.modDateTime
@@ -161,7 +160,7 @@
 		, ifntOrder
 	    , ifntContent
 	    , (select ifmmName from infrMember a where a.ifmmSeq = ifntWriterCd) AS ifntWriter
-	    , regDateTime AS noteDateTime
+	    , regDateTime
 	FROM 
 		infrMemberNote
 	WHERE 1=1
@@ -181,7 +180,8 @@
 			, a.ifmmFavoriteColor
 			, a.ifmmDelNy
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGradeCd) as ifmmGrade
-			, a.ifmmRegDate
+			, a.regDateTime
+			, a.modDateTime
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
 			, if(a.ifmmEmailConsentNy=1,'수신동의','수신거부') as ifmmEmailConsentNyText
 			, if(a.ifmmSmsConsentNy=1,'수신동의','수신거부') as ifmmSmsConsentNyText
@@ -284,7 +284,7 @@
 		, ifmmDob
 		, ifmmDelNy
 		, ifmmGradeCd
-		, ifmmRegDate
+		<!-- , ifmmRegDate -->
 		, ifmmStatusCd
 		, ifmmEmailConsentNy
 		, ifmmSmsConsentNy
@@ -298,7 +298,7 @@
 		, #{ifmmDob}
 		, 0
 		, #{ifmmGradeCd}
-		, curdate()
+		<!-- , curdate() -->
 		, 78
 		, #{ifmmEmailConsentNy}
 		, #{ifmmSmsConsentNy}

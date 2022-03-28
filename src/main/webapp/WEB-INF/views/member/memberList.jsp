@@ -652,7 +652,7 @@ a {
 												<c:out value="${item.ifmmStatus}" />
 											</td>
 											<td>
-												<c:out value="${item.ifmmRegDate}" />
+												<fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd"/>
 											</td>
 											<td>
 												<div class="d-flex justify-content-center align-items-center">

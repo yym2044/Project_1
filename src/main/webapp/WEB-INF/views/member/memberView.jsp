@@ -150,9 +150,15 @@
 					</td>
 				</tr>
 				<tr>
-					<td style="width: 200px;" class="bg-light text-start">가입일</td>
+					<td style="width: 200px;" class="bg-light text-start">가입일시</td>
 					<td class="text-start">
-						<c:out value="${rt.ifmmRegDate}" />
+						<fmt:formatDate value="${rt.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 200px;" class="bg-light text-start">수정일시</td>
+					<td class="text-start">
+						<fmt:formatDate value="${rt.modDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
 					</td>
 				</tr>
 				<tr>
@@ -241,7 +247,7 @@
 											<c:out value="${item.ifntContent}" />
 										</td>
 										<td style="width: 200px;">
-											<c:out value="${item.noteDateTime}" />
+											<fmt:formatDate value="${item.regDateTime}" pattern="yy.MM.dd HH:mm:ss"/>
 										</td>
 										<td style="width: 100px;">
 											<c:out value="${item.ifntWriter}" />

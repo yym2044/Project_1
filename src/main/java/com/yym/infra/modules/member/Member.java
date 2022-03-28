@@ -19,7 +19,6 @@ public class Member {
 	private Integer ifmmGradeCd;
 	private String ifmmGrade;
 	private Integer ifmmDelNy;
-	private String ifmmRegDate;
 	private Integer ifmmStatusCd;
 	private String ifmmStatus;
 	private Integer ifmmEmailConsentNy;
@@ -48,7 +47,6 @@ public class Member {
 	private String ifntOrder;
 	private String ifntContent;
 	private String ifntWriter;
-	private String noteDateTime;
 	
 	//국적
 	private String ifnaSeq;
@@ -145,12 +143,6 @@ public class Member {
 	}
 	public void setIfmmDelNy(Integer ifmmDelNy) {
 		this.ifmmDelNy = ifmmDelNy;
-	}
-	public String getIfmmRegDate() {
-		return ifmmRegDate;
-	}
-	public void setIfmmRegDate(String ifmmRegDate) {
-		this.ifmmRegDate = ifmmRegDate;
 	}
 	public Integer getIfmmStatusCd() {
 		return ifmmStatusCd;
@@ -295,12 +287,6 @@ public class Member {
 	}
 	public void setIfntWriter(String ifntWriter) {
 		this.ifntWriter = ifntWriter;
-	}
-	public String getNoteDateTime() {
-		return noteDateTime;
-	}
-	public void setNoteDateTime(String noteDateTime) {
-		this.noteDateTime = noteDateTime;
 	}
 	public String getIfnaSeq() {
 		return ifnaSeq;
