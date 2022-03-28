@@ -11,6 +11,10 @@ public class MemberVo {
 	
 	private Integer shIfmmGrade;
 	
+	private Integer shOptionDate;
+	private String shDateStart;
+	private String shDateEnd;
+	
 //	private Integer shIfmmConsentNy;		// String 타입으로 하는 경우 다중선택시 오류발생
 	
 	private Integer shIfmmEmailConsentNy;
@@ -238,6 +242,24 @@ public class MemberVo {
 	}
 	public void setCheckboxMemo(Integer checkboxMemo) {
 		this.checkboxMemo = checkboxMemo;
+	}
+	public Integer getShOptionDate() {
+		return shOptionDate;
+	}
+	public void setShOptionDate(Integer shOptionDate) {
+		this.shOptionDate = shOptionDate;
+	}
+	public String getShDateStart() {
+		return shDateStart;
+	}
+	public void setShDateStart(String shDateStart) {
+		this.shDateStart = shDateStart;
+	}
+	public String getShDateEnd() {
+		return shDateEnd;
+	}
+	public void setShDateEnd(String shDateEnd) {
+		this.shDateEnd = shDateEnd;
 	}
 	
 }

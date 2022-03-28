@@ -20,6 +20,12 @@
 			<when test="shIfscSeq == 3">AND b.ifmeEmailFull LIKE concat('%',#{searchBar},'%')</when>
 		</choose>
 		
+		<choose>
+			<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND DATE_ADD(#{shDateEnd}, INTERVAL 1 DAY)</when>
+			<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND DATE_ADD(#{shDateEnd}, INTERVAL 1 DAY)</when>
+			<when test="shOptionDate == 3">AND a.ifmmDob BETWEEN #{shDateStart} AND DATE_ADD(#{shDateEnd}, INTERVAL 1 DAY)</when>
+		</choose>
+		
 		<!-- 	체크를 여러개 해도 하나만 선택되는 결과를 보여준다.
 		<choose>
 			<when test="shIfmmEmailConsentNy == 1">AND ifmmEmailConsentNy = 1</when>
@@ -112,6 +118,8 @@
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGradeCd) as ifmmGrade
 			, a.ifmmRegDate
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
+			, a.regDateTime
+			, a.modDateTime
 			, b.ifmeEmailFull
 		 <include refid="selectListCommon"/>
 		 LIMIT #{startRnumForMysql}, #{rowNumToShow}

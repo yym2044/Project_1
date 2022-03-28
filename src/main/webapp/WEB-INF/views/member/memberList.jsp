@@ -20,6 +20,7 @@
 
 <link href="${path}/resources/css/style.css" rel="stylesheet" />
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet" />
+<link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 <style type="text/css">
@@ -270,6 +271,7 @@ a {
 				<input type="hidden" id="orderby" name="orderby" value="${vo.orderby}">
 				<input type="hidden" id="ifmmSeq" name="ifmmSeq">
 				
+				
 			<%-- <form method="get" action="/infra/member/memberList?shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&thisPage=<c:out value="${vo.thisPage}"/>"> --%>
 				<div class="row border border-1 my-2 box-white container1" id="searchBox">
 					<div class="col-12 col-md-9">
@@ -321,17 +323,17 @@ a {
 									<div class="col-4 col-md-2">
 										<select name="shOptionDate" id="shOptionDate" class="form-select form-select-sm">
 											<option value="0">선택하세요</option>
-											<option value="1">등록일</option>
-											<option value="2">수정일</option>
-											<option value="3">생년월일</option>
+											<option value="1"<c:if test="${vo.shOptionDate eq 1}">selected</c:if>>등록일</option>
+											<option value="2"<c:if test="${vo.shOptionDate eq 2}">selected</c:if>>수정일</option>
+											<option value="3"<c:if test="${vo.shOptionDate eq 3}">selected</c:if>>생년월일</option>
 										</select>
 									</div>
 									<div class="col-8 col-md-2">
-										<input name="shDateStart" id="shDateStart" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shIfscSeq ne 0}">value="${vo.searchBar}"</c:if> autocomplete="off">
+										<input type="text" name="shDateStart" id="shDateStart" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateStart}"</c:if> autocomplete="off">
 									</div>
 									<div class="col-8 col-md-3 d-flex justify-content-end">
 										<span style="padding-right: 12px;">~</span>
-										<input name="shDateEnd" id="shDateEnd" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="종료일" <c:if test="${vo.shIfscSeq ne 0}">value="${vo.searchBar}"</c:if> autocomplete="off">
+										<input type="text" name="shDateEnd" id="shDateEnd" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="종료일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateEnd}"</c:if> autocomplete="off">
 									</div>
 									<!-- 
 									<div class="col-9 col-md">
@@ -486,6 +488,9 @@ a {
 			<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 			<input type="hidden" id="sort" name="sort" value="<c:out value="${vo.sort}"/>">
 			<input type="hidden" id="orderby" name="orderby" value="<c:out value="${vo.orderby}"/>">
+			<input type="hidden" id="shOptionDate" name="shOptionDate" value="<c:out value="${vo.shOptionDate}"/>">
+			<input type="hidden" id="shDateStart" name="shDateStart" value="<c:out value="${vo.shDateStart}"/>">
+			<input type="hidden" id="shDateEnd" name="shDateEnd" value="<c:out value="${vo.shDateEnd}"/>">
 		
 			<div class="width92">
 				<div class="row">
@@ -1028,7 +1033,29 @@ a {
 	<script src="${path}/resources/js/sidebars.js"></script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/infra/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 	<script src="/infra/resources/js/validation.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#shDateStart").datepicker();
+		$("#shDateEnd").datepicker();
+	});
+	
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
+	
+	</script>
 
 	<script type="text/javascript">
 	

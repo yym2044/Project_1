@@ -34,6 +34,9 @@
 		<input type="hidden" id="sort" name="sort" value="<c:out value="${vo.sort}"/>">
 		<input type="hidden" id="orderby" name="orderby" value="<c:out value="${vo.orderby}"/>">
 		<input type="hidden" id="ifmmSeq" name="ifmmSeq" value="<c:out value="${rt.ifmmSeq}"/>">
+		<input type="hidden" id="shOptionDate" name="shOptionDate" value="<c:out value="${vo.shOptionDate}"/>">
+		<input type="hidden" id="shDateStart" name="shDateStart" value="<c:out value="${vo.shDateStart}"/>">
+		<input type="hidden" id="shDateEnd" name="shDateEnd" value="<c:out value="${vo.shDateEnd}"/>">
 
 		<div class="container-fluid">
 			<div class="row bg-dark mb-2" style="height: 42px;">
