@@ -79,9 +79,11 @@
 					</th>
 					<td class="text-start" colspan="3">
 						<input type="text" name="ifmmId" id="ifmmId" class="form-control d-inline" style="width: 200px;" placeholder="영문(대소문자),숫자,특수문자" autocomplete="off">
+						<!-- 
 						<span class="ms-2">
 							<a href="#" class="fs-6" style="text-decoration: none;">아이디 중복체크</a>
 						</span>
+						 -->
 					</td>
 				</tr>
 				<tr>
@@ -133,10 +135,11 @@
 								</option>
 							</c:forEach>
 						</select>
-						
+						<!-- 
 						<span class="ms-2">
 							<a href="#" class="fs-6" style="text-decoration: none;">이메일 중복체크</a>
 						</span>
+						 -->
 						<span class="ms-2">
 							<!-- 
 							<input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1">
@@ -707,6 +710,7 @@
 	getSuccess = function(){
 		isSuccess = true;
 	}
+	
 	
 	</script>
 	<!-- reCAPTCHA e -->

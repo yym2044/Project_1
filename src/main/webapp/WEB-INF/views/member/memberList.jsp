@@ -161,7 +161,7 @@ a {
 		<!-- offcanvas end -->
 
 
-
+		<!-- 
 		<div class="row bg-secondary">
 			<div class="col">
 				<ul class="nav">
@@ -182,7 +182,7 @@ a {
 				</button>
 			</div>
 		</div>
-
+		 -->
 
 		<!-- NavBar 수정할 거 -->
 		<!-- 

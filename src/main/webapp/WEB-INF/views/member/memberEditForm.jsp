@@ -63,8 +63,12 @@
 			<table class="table" style="border-collapse: collapse;">
 				<tr>
 					<th style="width: 200px;" class="bg-light">아이디<span class="text-danger">*</span></th>
-					<td class="text-start" colspan="3"><input type="text" name="ifmmId" id="ifmmId" class="form-control d-inline" style="width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>" autocomplete="off"><span class="ms-2"><a href="#" class="fs-6"
-							style="text-decoration: none;">아이디 중복체크</a></span></td>
+					<td class="text-start" colspan="3"><input type="text" name="ifmmId" id="ifmmId" class="form-control d-inline" style="width: 200px;" placeholder="영문(대소문자),숫자,특수문자" value="<c:out value="${rt.ifmmId}"/>" autocomplete="off">
+					<!-- 
+					<span class="ms-2"><a href="#" class="fs-6"
+							style="text-decoration: none;">아이디 중복체크</a></span>
+					 -->		
+					</td>
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light">비밀번호<span class="text-danger">*</span></th>
@@ -109,7 +113,9 @@
 								</option>
 							</c:forEach>
 						</select>
+						<!-- 
 						<span class="ms-2"><a href="#" class="fs-6" style="text-decoration: none;">이메일 중복체크</a></span>
+						 -->
 						<span class="ms-2">
 						<%-- 
 						<input type="checkbox" name="ifmmEmailConsentNy" id="email_check" value="1" <c:if test="${rt.ifmmEmailConsentNyText eq '수신동의'}">checked</c:if>><label for="email_check">이메일 수신 동의</label>
