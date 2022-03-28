@@ -56,9 +56,17 @@ public class Member {
 	private String ifnaCode2Char;
 	private String ifnaCode3Char;
 	
-	//
-	private Date RegDateTime;
-	private Date ModDateTime;
+	//RegMod
+	private String regIp;
+	private String regSeq;
+	private String regDeviceCd;
+	private Date regDateTime;
+	private Date regDateTimeSvr;
+	private String modIp;
+	private String modSeq;
+	private String modDeviceCd;
+	private Date modDateTime;
+	private Date modDateTimeSvr;
 	//--------------------------------------------------------------
 	public Integer getIfscSeq() {
 		return ifscSeq;
@@ -264,6 +272,36 @@ public class Member {
 	public void setIfmaAddressReferences(String ifmaAddressReferences) {
 		this.ifmaAddressReferences = ifmaAddressReferences;
 	}
+	public String getIfntSeq() {
+		return ifntSeq;
+	}
+	public void setIfntSeq(String ifntSeq) {
+		this.ifntSeq = ifntSeq;
+	}
+	public String getIfntOrder() {
+		return ifntOrder;
+	}
+	public void setIfntOrder(String ifntOrder) {
+		this.ifntOrder = ifntOrder;
+	}
+	public String getIfntContent() {
+		return ifntContent;
+	}
+	public void setIfntContent(String ifntContent) {
+		this.ifntContent = ifntContent;
+	}
+	public String getIfntWriter() {
+		return ifntWriter;
+	}
+	public void setIfntWriter(String ifntWriter) {
+		this.ifntWriter = ifntWriter;
+	}
+	public String getNoteDateTime() {
+		return noteDateTime;
+	}
+	public void setNoteDateTime(String noteDateTime) {
+		this.noteDateTime = noteDateTime;
+	}
 	public String getIfnaSeq() {
 		return ifnaSeq;
 	}
@@ -288,47 +326,65 @@ public class Member {
 	public void setIfnaCode3Char(String ifnaCode3Char) {
 		this.ifnaCode3Char = ifnaCode3Char;
 	}
-	public String getIfntSeq() {
-		return ifntSeq;
+	public String getRegIp() {
+		return regIp;
 	}
-	public void setIfntSeq(String ifntSeq) {
-		this.ifntSeq = ifntSeq;
+	public void setRegIp(String regIp) {
+		this.regIp = regIp;
 	}
-	public String getIfntContent() {
-		return ifntContent;
+	public String getRegSeq() {
+		return regSeq;
 	}
-	public void setIfntContent(String ifntContent) {
-		this.ifntContent = ifntContent;
+	public void setRegSeq(String regSeq) {
+		this.regSeq = regSeq;
 	}
-	public String getIfntWriter() {
-		return ifntWriter;
+	public String getRegDeviceCd() {
+		return regDeviceCd;
 	}
-	public void setIfntWriter(String ifntWriter) {
-		this.ifntWriter = ifntWriter;
-	}
-	public String getNoteDateTime() {
-		return noteDateTime;
-	}
-	public void setNoteDateTime(String noteDateTime) {
-		this.noteDateTime = noteDateTime;
-	}
-	public String getIfntOrder() {
-		return ifntOrder;
-	}
-	public void setIfntOrder(String ifntOrder) {
-		this.ifntOrder = ifntOrder;
+	public void setRegDeviceCd(String regDeviceCd) {
+		this.regDeviceCd = regDeviceCd;
 	}
 	public Date getRegDateTime() {
-		return RegDateTime;
+		return regDateTime;
 	}
 	public void setRegDateTime(Date regDateTime) {
-		RegDateTime = regDateTime;
+		this.regDateTime = regDateTime;
+	}
+	public Date getRegDateTimeSvr() {
+		return regDateTimeSvr;
+	}
+	public void setRegDateTimeSvr(Date regDateTimeSvr) {
+		this.regDateTimeSvr = regDateTimeSvr;
+	}
+	public String getModIp() {
+		return modIp;
+	}
+	public void setModIp(String modIp) {
+		this.modIp = modIp;
+	}
+	public String getModSeq() {
+		return modSeq;
+	}
+	public void setModSeq(String modSeq) {
+		this.modSeq = modSeq;
+	}
+	public String getModDeviceCd() {
+		return modDeviceCd;
+	}
+	public void setModDeviceCd(String modDeviceCd) {
+		this.modDeviceCd = modDeviceCd;
 	}
 	public Date getModDateTime() {
-		return ModDateTime;
+		return modDateTime;
 	}
 	public void setModDateTime(Date modDateTime) {
-		ModDateTime = modDateTime;
+		this.modDateTime = modDateTime;
+	}
+	public Date getModDateTimeSvr() {
+		return modDateTimeSvr;
+	}
+	public void setModDateTimeSvr(Date modDateTimeSvr) {
+		this.modDateTimeSvr = modDateTimeSvr;
 	}
 	
 }

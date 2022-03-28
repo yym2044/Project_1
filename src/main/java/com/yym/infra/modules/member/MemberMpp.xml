@@ -240,6 +240,31 @@
 	</select>
 	
 	<!-- INSERT -->
+	<sql id="insertRegMod">
+		<!-- , regIp
+		, regSeq
+		, regDeviceCd -->
+		, regDateTime
+		<!-- , regDateTimeSvr
+		, modIp
+		, modSeq
+		, modDeviceCd -->
+		, modDateTime
+		<!-- , modDateTimeSvr -->
+	</sql>
+	
+	<sql id="insertRegModValue">
+		<!-- ,#{regIp}
+		,#{regSeq}
+		,#{regDeviceCd} -->
+		,#{regDateTime}
+		<!-- ,#{regDateTimeSvr}
+		,#{modIp}
+		,#{modSeq}
+		,#{modDeviceCd} -->
+		,#{modDateTime}
+		<!-- ,#{modDateTimeSvr} -->
+	</sql>
 	
 	<insert id="insertMember">
 	INSERT INTO
@@ -256,6 +281,7 @@
 		, ifmmEmailConsentNy
 		, ifmmSmsConsentNy
 		, ifmmPushConsentNy
+	<include refid="insertRegMod"/>
 	) VALUES (
 		#{ifmmName}
 		, #{ifmmId}
@@ -269,7 +295,8 @@
 		, #{ifmmEmailConsentNy}
 		, #{ifmmSmsConsentNy}
 		, #{ifmmPushConsentNy}
-	);
+	<include refid="insertRegModValue"/>
+	)
 	
 	<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
 		SELECT last_insert_id()
@@ -285,6 +312,7 @@
 		, ifmeEmailDomain
 		, ifmeEmailDomainCd
 		, ifmeDefaultNy
+		<include refid="insertRegMod"/>
 	) VALUES (
 		#{ifmmSeq}
 		, concat(#{ifmeEmailAccount},'@',#{ifmeEmailDomain})
@@ -292,6 +320,7 @@
 		, #{ifmeEmailDomain}
 		, #{ifmeEmailDomainCd}		
 		, 1
+		<include refid="insertRegModValue"/>
 	)
 	</insert>
 	<insert id="insertMemberAddress">
@@ -303,6 +332,7 @@
 		, ifmaAddress2
 		, ifmaAddressReferences
         , ifmaDefaultNy
+        <include refid="insertRegMod"/>
 	) VALUES (
 		#{ifmmSeq}
 		, #{ifmaZipCode}
@@ -310,6 +340,7 @@
 		, #{ifmaAddress2}
 		, #{ifmaAddressReferences}
         , 1
+        <include refid="insertRegModValue"/>
 	);
 	</insert>
 	
@@ -321,12 +352,14 @@
         , ifmpDeviceCd
         , ifmpTelecomCd
         , ifmpDefaultNy
+        <include refid="insertRegMod"/>
     ) VALUES (
 		#{ifmmSeq}				
         , #{ifmpNumberMobile}		
         , 26
         , #{ifmpTelecomCd}
         , 1
+        <include refid="insertRegModValue"/>
     )
 	</insert>
 	<insert id="insertMemberPhoneHome">
@@ -336,11 +369,13 @@
         , ifmpNumber
         , ifmpDeviceCd
         , ifmpDefaultNy
+        <include refid="insertRegMod"/>
     ) VALUES (
 		#{ifmmSeq}
         , #{ifmpNumberHome}		
         , 25
         , 1
+        <include refid="insertRegModValue"/>
     )
 	</insert>
 	
@@ -351,11 +386,13 @@
         , ifnaSeq
         , ifmnDelNy
         , ifmnDefaultNy
+        <include refid="insertRegMod"/>
     ) VALUES (
 		#{ifmmSeq}
         , #{ifnaSeq}
         , 0
         , 1
+        <include refid="insertRegModValue"/>
     )
 	</insert>
 	
@@ -366,22 +403,30 @@
 			, ifntOrder
 			, ifntContent
 			, ifntWriterCd
-			, regDateTime
             , ifntUseNy
             , ifntDelNy
+            <include refid="insertRegMod"/>
 		) VALUES (
 			#{ifmmSeq}
 			, (SELECT ifnull(max(a.ifntOrder),0) + 1 FROM infrMemberNote a WHERE a.ifmmSeq = #{ifmmSeq})
 			, #{ifntContent}
 			, 1
-			, now()
             , 1
             , 0
+            <include refid="insertRegModValue"/>
 		)
 	</insert>
 	
 	
 	<!-- UPDATE -->
+	
+	<sql id="updateModValue">
+		<!-- , modIp = #{modIp}
+		, modSeq = #{modSeq}
+		, modDeviceCd = #{modDeviceCd} -->
+		, modDateTime = #{modDateTime}
+		<!-- , modDateTimeSvr = #{modDateTimeSvr} -->
+	</sql>
 	
 	<update id="updateMember">
 	UPDATE infrMember
@@ -397,6 +442,7 @@
 		, ifmmEmailConsentNy = #{ifmmEmailConsentNy}
 		, ifmmSmsConsentNy = #{ifmmSmsConsentNy}
 		, ifmmPushConsentNy = #{ifmmPushConsentNy}
+		<include refid="updateModValue"/>
 	WHERE
 		1 = 1
 	AND
@@ -410,6 +456,7 @@
 		, ifmeEmailDomain = #{ifmeEmailDomain}
 		, ifmeEmailDomainCd = #{ifmeEmailDomainCd}
 		, ifmeDefaultNy = 1
+		<include refid="updateModValue"/>
 	WHERE
 		1 = 1
 	AND
@@ -423,6 +470,7 @@
 		, ifmaAddress2 = #{ifmaAddress2}
 		, ifmaAddressReferences = #{ifmaAddressReferences}
 		, ifmaDefaultNy = 1
+		<include refid="updateModValue"/>
 	WHERE
 		1 = 1
 	AND
@@ -435,6 +483,7 @@
 		ifmpNumber = #{ifmpNumberMobile}
 		, ifmpDeviceCd = 26
 		, ifmpDefaultNy = 1
+		<include refid="updateModValue"/>
 	WHERE
 		1 = 1
 	AND
@@ -448,6 +497,7 @@
 		ifmpNumber = #{ifmpNumberHome}
 		, ifmpDeviceCd = 25
 		, ifmpDefaultNy = 1
+		<include refid="updateModValue"/>
 	WHERE
 		1 = 1
 	AND
@@ -460,9 +510,11 @@
 	UPDATE infrMemberNationality
 	SET
 		 ifnaSeq = #{ifnaSeq}
+		 <include refid="updateModValue"/>
 	WHERE
 		1 = 1
 	AND ifmmSeq = #{ifmmSeq}
+
 	</update>
 	
 	

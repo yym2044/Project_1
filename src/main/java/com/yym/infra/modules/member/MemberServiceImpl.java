@@ -61,6 +61,10 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int insertMemberNote(Member dto) throws Exception {
+		
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
+		
 		return dao.insertMemberNote(dto);
 	}
 
@@ -81,6 +85,10 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int updateMember(Member dto) throws Exception {
+		
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
+		
 		dao.updateMember(dto);
 		dao.updateMemberAddress(dto);
 		dao.updateMemberEmail(dto);

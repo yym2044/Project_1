@@ -273,7 +273,7 @@ a {
 			<%-- <form method="get" action="/infra/member/memberList?shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&thisPage=<c:out value="${vo.thisPage}"/>"> --%>
 				<div class="row border border-1 my-2 box-white container1" id="searchBox">
 					<div class="col-12 col-md-9">
-						<div class="row my-2 pt-2">
+						<div class="row my-3 pt-2">
 							<div class="col-12 col-md-2 fw-bold">ㆍ회원등급</div>
 							<div class="col-12 col-md-10">
 								<div class="form-check-inline">
@@ -290,7 +290,7 @@ a {
 								</div>
 							</div>
 						</div>
-						<div class="row my-2">
+						<div class="row my-3">
 							<div class="col-12 col-md-2 fw-bold">ㆍ수신동의</div>
 							<div class="col-12 col-md-10">
 								<!-- 
@@ -313,7 +313,42 @@ a {
 								</div>
 							</div>
 						</div>
-						<div class="row my-2 pb-2">
+						<div class="row my-3">
+							<div class="col-12 col-md-2 fw-bold">ㆍ날짜</div>
+							<div class="col-md-10">
+
+								<div class="row g-3 d-flex align-items-center">
+									<div class="col-4 col-md-2">
+										<select name="shOptionDate" id="shOptionDate" class="form-select form-select-sm">
+											<option value="0">선택하세요</option>
+											<option value="1">등록일</option>
+											<option value="2">수정일</option>
+											<option value="3">생년월일</option>
+										</select>
+									</div>
+									<div class="col-8 col-md-2">
+										<input name="shDateStart" id="shDateStart" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shIfscSeq ne 0}">value="${vo.searchBar}"</c:if> autocomplete="off">
+									</div>
+									<div class="col-8 col-md-3 d-flex justify-content-end">
+										<span style="padding-right: 12px;">~</span>
+										<input name="shDateEnd" id="shDateEnd" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="종료일" <c:if test="${vo.shIfscSeq ne 0}">value="${vo.searchBar}"</c:if> autocomplete="off">
+									</div>
+									<!-- 
+									<div class="col-9 col-md">
+										<input type="checkbox" class="form-check-input" id="memberOnline"> <label for="memberOnline"
+											class="form-check-label">현재 접속중인 회원만 검색</label>
+									</div>
+									 -->
+									<div class="col col-md d-md-none mt-3">
+										<button class="btn btn-info btn-sm">
+											<span class="text-white">검색</span>
+										</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="row my-3">
 							<div class="col-12 col-md-2 fw-bold">ㆍ검색어</div>
 							<div class="col-md-10">
 
@@ -346,6 +381,7 @@ a {
 
 							</div>
 						</div>
+						
 					</div>
 					<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
 
@@ -995,6 +1031,34 @@ a {
 	<script src="/infra/resources/js/validation.js"></script>
 
 	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		if($("#shOptionDate").val() == 0){
+			$("#shDateStart").attr('disabled', true);
+			$("#shDateEnd").attr('disabled', true);
+			$("#shDateStart").val('');
+			$("#shDateEnd").val('');
+			$("#shOptionDate").attr("placeholder", "시작일");
+			$("#shDateEnd").attr("placeholder", "종료일");
+		} else if ($("#shOptionDate").val() != 0) {
+			$("#shDateStart").attr('disabled', false);
+			$("#shDateEnd").attr('disabled', false);
+		}
+	});
+	
+	$("#shOptionDate").on("change", function(){
+		if($("#shOptionDate").val() == 0){
+			$("#shDateStart").attr('disabled', true);
+			$("#shDateEnd").attr('disabled', true);
+			$("#shDateStart").val('');
+			$("#shDateEnd").val('');
+			$("#shOptionDate").attr("placeholder", "시작일");
+			$("#shDateEnd").attr("placeholder", "종료일");
+		} else if ($("#shOptionDate").val() != 0) {
+			$("#shDateStart").attr('disabled', false);
+			$("#shDateEnd").attr('disabled', false);
+		}
+	});
 	
 	$(document).ready(function(){
 		if($("#shIfscSeq").val() == 0){
