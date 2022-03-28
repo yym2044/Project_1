@@ -50,6 +50,7 @@ public class MemberVo {
 
 		totalPages = totalRows / rowNumToShow;
 		
+		// 검색결과가 안나올 때 thisPage가 0이 되는데 다시 1로 바꿔줘야 오류가 발생안함
 		if(thisPage == 0) {
 			thisPage = 1;
 			startRnumForMysql = 0;
