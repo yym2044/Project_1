@@ -1,5 +1,7 @@
 package com.yym.infra.modules.member;
 
+import java.util.Date;
+
 public class Member {
 	
 	//검색어
@@ -53,6 +55,10 @@ public class Member {
 	private String ifnaName;
 	private String ifnaCode2Char;
 	private String ifnaCode3Char;
+	
+	//
+	private Date RegDateTime;
+	private Date ModDateTime;
 	//--------------------------------------------------------------
 	public Integer getIfscSeq() {
 		return ifscSeq;
@@ -311,6 +317,18 @@ public class Member {
 	}
 	public void setIfntOrder(String ifntOrder) {
 		this.ifntOrder = ifntOrder;
+	}
+	public Date getRegDateTime() {
+		return RegDateTime;
+	}
+	public void setRegDateTime(Date regDateTime) {
+		RegDateTime = regDateTime;
+	}
+	public Date getModDateTime() {
+		return ModDateTime;
+	}
+	public void setModDateTime(Date modDateTime) {
+		ModDateTime = modDateTime;
 	}
 	
 }
