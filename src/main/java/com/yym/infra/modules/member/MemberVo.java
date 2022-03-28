@@ -49,6 +49,11 @@ public class MemberVo {
 		totalRows = totalRowsParam;
 
 		totalPages = totalRows / rowNumToShow;
+		
+		if(thisPage == 0) {
+			thisPage = 1;
+			startRnumForMysql = 0;
+		}
 
 		if (totalRows % rowNumToShow > 0) {
 			totalPages = totalPages+ 1;
