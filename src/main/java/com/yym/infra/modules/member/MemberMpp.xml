@@ -531,11 +531,15 @@
 	UPDATE
 		infrMemberPhone
 	SET
-		ifmpNumber = #{ifmpNumber}
+		ifmpDefaultNy = #{ifmpDefaultNy}
+		, ifmpTypeCd = #{ifmpTypeCd}
+		, ifmpDeviceCd = #{ifmpDeviceCd}
 		, ifmpTelecomCd = #{ifmpTelecomCd}
+		, ifmpNumber = #{ifmpNumber}
 		<include refid="updateModValue"/>
 	WHERE 1=1
 		AND ifmmSeq = #{ifmmSeq}
+		AND ifmpDeviceCd = #{ifmpDeviceCd}
 	
 	</update>
 	<!-- <update id="updateMemberPhoneMobile">

@@ -204,7 +204,7 @@
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light">전화번호</th>
-					<td class="text-start" colspan="3">
+					<td class="text-start">
 						<input type="hidden" id="ifmpDefaultNyArray1" name="ifmpDefaultNyArray" value="0">
 						<input type="hidden" id="ifmpTypeCdArray1" name="ifmpTypeCdArray" value="22">
 						<input type="hidden" id="ifmpDeviceCdArray1" name="ifmpDeviceCdArray" value="25">

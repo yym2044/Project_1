@@ -27,6 +27,8 @@
 <c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>	<!-- listCodeGender에 값을 담음 -->
 <c:set var="listCodeTelecom" value="${CodeServiceImpl.selectListCachedCode('9')}"/>  <!-- listCodeTelecom(list 변수)에 값을 담음 --> 
 
+
+
 <c:forEach items="${listPhone}" var="item" varStatus="status">
 	<c:choose>
 		<c:when test="${item.ifmpDeviceCd eq 25}"><c:set var="ifmpNumberHome" value="${item.ifmpNumber}"/></c:when>
@@ -167,6 +169,12 @@
 									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
 			               		</c:when>
 		              		</c:choose>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 200px;" class="bg-light text-start">팩스번호</td>
+					<td class="text-start">
+						<c:out value="${ifmpNumberFax}"/>
 					</td>
 				</tr>
 			</table>

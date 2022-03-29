@@ -137,4 +137,20 @@ public class CodeServiceImpl implements CodeService{
 		return rt;
 	}
 	
+	public static Code selectOneCachedCode(String ifcdSeq) throws Exception {
+		Code rt = new Code();
+		for(Code codeRow : Code.cachedCodeArrayList) {
+			if(codeRow.getIfcdSeq().equals(ifcdSeq)) {
+				rt = codeRow;
+			} else {
+				// by pass
+			}
+		}
+		return rt;
+	}
+	
+	public static void clear() throws Exception {
+		Code.cachedCodeArrayList.clear();
+	}
+	
 }

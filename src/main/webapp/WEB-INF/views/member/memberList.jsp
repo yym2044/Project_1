@@ -7,6 +7,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
+<jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl"/>	<!-- 코드서비스임플 클래스 바로 사용 -->
+
 <!DOCTYPE html>
 <html>
 <head>
