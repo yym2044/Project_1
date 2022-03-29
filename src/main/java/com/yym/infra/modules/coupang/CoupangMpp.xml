@@ -8,6 +8,12 @@
 
 	<resultMap id="resultMapObj" type="com.yym.infra.modules.coupang.Coupang"></resultMap>
 	
+	<select id="selectList" resultMap="resultMapObj">
+	SELECT
+		
+	
+	
+	</select>
 	
 
 
