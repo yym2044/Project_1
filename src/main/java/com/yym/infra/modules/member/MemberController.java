@@ -28,13 +28,6 @@ public class MemberController {
 		System.out.println("UtilDateTime.nowDate : " + UtilDateTime.nowDate());
 		System.out.println("UtilDateTime.nowString() : " + UtilDateTime.nowString());
 
-		int count = service.selectListCount(vo);
-		
-		String count2 = String.valueOf(count);
-		
-		vo.setParamsPaging(count);
-		
-		
 		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
 		
 		vo.setShPeriod(vo.getShPeriod() == null ? 0 : vo.getShPeriod());
@@ -53,6 +46,11 @@ public class MemberController {
 			vo.setShDateEnd(UtilDateTime.nowString());
 		}
 		
+		int count = service.selectListCount(vo);
+		
+		String count2 = String.valueOf(count);
+		
+		vo.setParamsPaging(count);
 		
 		
 		if(count != 0) {

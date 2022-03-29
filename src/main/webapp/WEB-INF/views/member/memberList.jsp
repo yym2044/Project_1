@@ -332,7 +332,7 @@ a {
 											<option value="1"<c:if test="${vo.shPeriod eq 1}">selected</c:if>>일주일</option>
 											<option value="2"<c:if test="${vo.shPeriod eq 2}">selected</c:if>>한 달</option>
 											<option value="3"<c:if test="${vo.shPeriod eq 3}">selected</c:if>>일 년</option>
-											<option value="0"<c:if test="${vo.shPeriod eq 0}">selected</c:if>>상세설정</option>
+											<option value="0"<c:if test="${vo.shPeriod eq 0}">selected</c:if>>직접입력</option>
 										</select>
 									</div>
 									
