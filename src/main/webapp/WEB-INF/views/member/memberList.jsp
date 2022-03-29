@@ -41,7 +41,7 @@ a {
 	<div class="container-fluid bg-light">
 
 		<div class="row box-white pt-3 collapse show" id="firstRow">
-			<div class="col-6 col-md-2">
+			<div class="col-6 col-md-2 offset-md-1 pe-2">
 				<img src="${path}/resources/images/xdmin/coupang.png" class="img-fluid">
 			</div>
 			<div class="col-6 col-md-5 fs-4 mb-2 d-md-block d-none">Coupang Management System Project_1</div>
@@ -58,7 +58,7 @@ a {
 			<div class="col-2 col-md-1 mb-2 p-0 text-end pe-2 d-md-block d-none">
 				<img src="${path}/resources/images/xdmin/lee.jpg" style="width: 40px; height: 50px;" class="rounded-circle border border-5">
 			</div>
-			<div class="col-4 col-md mb-2 d-md-block d-none">
+			<div class="col-4 col-md-1 mb-2 d-md-block d-none">
 				<div class="row dropdown">
 					<a href="#" class="link-dark text-decoration-none dropdown-toggle ps-0" data-bs-toggle="dropdown"> Yun (CEO) </a>
 					<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
@@ -329,11 +329,11 @@ a {
 										</select>
 									</div>
 									<div class="col-8 col-md-2">
-										<input type="text" name="shDateStart" id="shDateStart" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateStart}"</c:if> autocomplete="off">
+										<input type="text" name="shDateStart" id="shDateStart" class="shDate form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateStart}"</c:if> autocomplete="off">
 									</div>
 									<div class="col-8 col-md-3 d-flex justify-content-end">
 										<span id="text1" style="padding-right: 12px;">~</span>
-										<input type="text" name="shDateEnd" id="shDateEnd" class="form-control form-control-sm" disabled style="width: 150px;" placeholder="종료일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateEnd}"</c:if> autocomplete="off">
+										<input type="text" name="shDateEnd" id="shDateEnd" class="shDate form-control form-control-sm" disabled style="width: 150px;" placeholder="종료일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateEnd}"</c:if> autocomplete="off">
 									</div>
 									<!-- 
 									<div class="col-9 col-md">
@@ -1087,6 +1087,24 @@ a {
 			$("#shDateStart").attr('disabled', false);
 			$("#shDateEnd").attr('disabled', false);
 		}
+	});
+	
+	$("#shDateStart").on("focus", function(){
+		var preStart = $("#shDateStart").val();	
+	});
+	$("#shDateEnd").on("focus", function(){
+		var preEnd = $("#shDateEnd").val();
+	});
+	
+	$("#shDateStart").on("change", function(){
+		if($(this).val() > $("#shEndDate").val()){
+			alert("날짜 선택이 잘못되었습니다.");
+			$(this).val(preStart);
+		}
+	})
+	
+	$("input.shDate").on("change", function(){
+		alert(preStart);
 	});
 	
 	$(document).ready(function(){
