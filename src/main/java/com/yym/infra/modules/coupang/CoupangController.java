@@ -14,6 +14,8 @@ public class CoupangController {
 	@RequestMapping(value = "/coupang/mainPage")
 	public String mainPage(Model model) throws Exception {
 		
+		model.addAttribute("list", service.selectCategory());
+		
 		return "coupang/mainPage";
 	}
 }

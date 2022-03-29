@@ -15,6 +15,6 @@ public class CoupangDao {
 	
 	private static String namespace = "com.yym.infra.modules.coupang.CoupangMpp";
 	
-	public List<Coupang> selectList() {return sqlSession.selectList(namespace + ".selectList", "");}
+	public List<Coupang> selectCategory() {return sqlSession.selectList(namespace + ".selectCategory", "");}
 	
 }

@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface CoupangService {
 
-	public List<Coupang> selectList() throws Exception;
+	public List<Coupang> selectCategory() throws Exception;
 }

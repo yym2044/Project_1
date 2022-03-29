@@ -12,9 +12,9 @@ public class CoupangServiceImpl implements CoupangService {
 	CoupangDao dao;
 		
 	@Override
-	public List<Coupang> selectList() throws Exception {
+	public List<Coupang> selectCategory() throws Exception {
 		
-		return dao.selectList();
+		return dao.selectCategory();
 	}
 
 	

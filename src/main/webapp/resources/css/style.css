@@ -12,15 +12,27 @@
 } */
 
 .randomProduct{
-	width: 200px;
+	width: 230px;
 }
 
 .width60 {
 	width: 60%;
 	margin: auto;
 }
+.width65 {
+	width: 65%;
+	margin: auto;
+}
+.width70 {
+	width: 70%;
+	margin: auto;
+}
 .width75 {
 	width: 75%;
+	margin: auto;
+}
+.width77 {
+	width: 77%;
 	margin: auto;
 }
 .width80 {
@@ -35,12 +47,12 @@
 	width: 90%;
 	margin: auto;
 }
-.width95 {
-	width: 95%;
-	margin: auto;
-}
 .width92 {
 	width: 92%;
+	margin: auto;
+}
+.width95 {
+	width: 95%;
 	margin: auto;
 }
 
