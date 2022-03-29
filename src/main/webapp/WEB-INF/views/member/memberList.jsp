@@ -1089,23 +1089,31 @@ a {
 		}
 	});
 	
-	$("#shDateStart").on("focus", function(){
-		var preStart = $("#shDateStart").val();	
+	//날짜선택 범위 잘못 지정 시 start
+	var preStart;
+	var preEnd;
+	
+	$("#shDateStart").on("click", function(){
+		preStart = $("#shDateStart").val();	
 	});
-	$("#shDateEnd").on("focus", function(){
-		var preEnd = $("#shDateEnd").val();
+	$("#shDateEnd").on("click", function(){
+		preEnd = $("#shDateEnd").val();
 	});
 	
 	$("#shDateStart").on("change", function(){
-		if($(this).val() > $("#shEndDate").val()){
+		if($("#shDateStart").val() > $("#shDateEnd").val()){
 			alert("날짜 선택이 잘못되었습니다.");
 			$(this).val(preStart);
 		}
 	})
 	
-	$("input.shDate").on("change", function(){
-		alert(preStart);
-	});
+	$("#shDateEnd").on("change", function(){
+		if($("#shDateStart").val() > $("#shDateEnd").val()){
+			alert("날짜 선택이 잘못되었습니다.");
+			$(this).val(preEnd);
+		}
+	})
+	//날짜선택 범위 잘못 지정 시 end
 	
 	$(document).ready(function(){
 		if($("#shIfscSeq").val() == 0){
