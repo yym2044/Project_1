@@ -52,8 +52,23 @@ public class MemberServiceImpl implements MemberService{
 		dao.insertMember(dto);
 		dao.insertMemberAddress(dto);
 		dao.insertMemberEmail(dto);
-		dao.insertMemberPhoneHome(dto);
-		dao.insertMemberPhoneMobile(dto);
+//		dao.insertMemberPhoneHome(dto);
+//		dao.insertMemberPhoneMobile(dto);
+		
+		
+		// infrMemberPhone
+		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
+			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
+			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
+			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
+			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
+			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
+			
+			dao.insertPhone(dto);
+		}
+		
+		
+		
 		dao.insertMemberNationality(dto);
 		
 		return 1;
@@ -74,14 +89,18 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public Member selectOnePhoneMobile(MemberVo vo) throws Exception {
-		return dao.selectOnePhoneMobile(vo);
+	public List<Member> selectListPhone(MemberVo vo) throws Exception {
+		return dao.selectListPhone(vo);
 	}
-	
-	@Override
-	public Member selectOnePhoneHome(MemberVo vo) throws Exception {
-		return dao.selectOnePhoneHome(vo);
-	}
+//	@Override
+//	public Member selectOnePhoneMobile(MemberVo vo) throws Exception {
+//		return dao.selectOnePhoneMobile(vo);
+//	}
+//	
+//	@Override
+//	public Member selectOnePhoneHome(MemberVo vo) throws Exception {
+//		return dao.selectOnePhoneHome(vo);
+//	}
 
 	@Override
 	public int updateMember(Member dto) throws Exception {
@@ -92,9 +111,20 @@ public class MemberServiceImpl implements MemberService{
 		dao.updateMember(dto);
 		dao.updateMemberAddress(dto);
 		dao.updateMemberEmail(dto);
-		dao.updateMemberPhoneHome(dto);
-		dao.updateMemberPhoneMobile(dto);
+//		dao.updateMemberPhoneHome(dto);
+//		dao.updateMemberPhoneMobile(dto);
 		dao.updateMemberNationality(dto);
+		
+		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
+			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
+			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
+			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
+			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
+			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
+			
+			dao.updateMemberPhone(dto);
+		}
+		
 		
 		return 1;
 	}

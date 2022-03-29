@@ -25,6 +25,19 @@
 <body>
 
 <c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>	<!-- listCodeGender에 값을 담음 -->
+<c:set var="listCodeTelecom" value="${CodeServiceImpl.selectListCachedCode('9')}"/>  <!-- listCodeTelecom(list 변수)에 값을 담음 --> 
+
+<c:forEach items="${listPhone}" var="item" varStatus="status">
+	<c:choose>
+		<c:when test="${item.ifmpDeviceCd eq 25}"><c:set var="ifmpNumberHome" value="${item.ifmpNumber}"/></c:when>
+		<c:when test="${item.ifmpDeviceCd eq 26}">
+			<c:set var="ifmpNumberMobile" value="${item.ifmpNumber}"/>
+			<c:set var="ifmpTelecomMobile" value="${item.ifmpTelecomCd}"/>
+		</c:when>
+		<c:when test="${item.ifmpDeviceCd eq 27}"><c:set var="ifmpNumberFax" value="${item.ifmpNumber}"/></c:when>	
+		<c:otherwise></c:otherwise>
+	</c:choose>
+</c:forEach>
 
 	<form id="formView" action="" method="post">
 
@@ -111,10 +124,12 @@
 					<td style="width: 200px;" class="bg-light text-start">휴대폰</td>
 					<td class="text-start">
 						<span class="badge bg-info">
-							<c:out value="${rt1.ifmpTelecomName}" />
+							<c:forEach items="${listCodeTelecom}" var="item" varStatus="status">
+								<c:if test="${item.ifcdSeq eq ifmpTelecomMobile}"><c:out value="${item.ifcdName}"/></c:if>
+							</c:forEach>
 						</span>
 						<%-- <c:out value="${rt1.ifmpNumberMobile}" /> --%>
-						<c:set var="numberPhone" value="${rt1.ifmpNumberMobile}"/>
+						<c:set var="numberPhone" value="${ifmpNumberMobile}"/>
 			               	<c:choose>
 			               		<c:when test="${fn:length(numberPhone) eq 10 }">
 									<c:out value="${fn:substring(numberPhone,0,3)}"/>
@@ -139,7 +154,7 @@
 					<td style="width: 200px;" class="bg-light text-start">전화번호</td>
 					<td class="text-start">
 						<%-- <c:out value="${rt2.ifmpNumberHome}" /> --%>
-						<c:set var="numberPhone" value="${rt2.ifmpNumberHome}"/>
+						<c:set var="numberPhone" value="${ifmpNumberHome}"/>
 			               	<c:choose>
 			               		<c:when test="${fn:length(numberPhone) eq 9 }">
 									<c:out value="${fn:substring(numberPhone,0,2)}"/>

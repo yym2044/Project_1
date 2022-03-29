@@ -34,10 +34,27 @@ public class Member {
 	private String ifmeEmailDomain;
 	private String ifmeEmailDomainCd;
 	//멤버_폰
-	private String ifmpTelecomCd;
-	private String ifmpTelecomName;
-	private String ifmpNumberMobile;
-	private String ifmpNumberHome;
+//	private String ifmpTelecomCd;
+//	private String ifmpTelecomName;
+//	private String ifmpNumberMobile;
+//	private String ifmpNumberHome;
+	
+//	infrMemberPhone
+	private String ifmpSeq;
+	private Integer ifmpDefaultNy;
+	private Integer ifmpTypeCd;
+	private Integer ifmpDeviceCd;
+	private Integer ifmpTelecomCd;
+	private String ifmpNumber;
+	private Integer ifmpDelNy;
+//	infrMemberPhoneArray
+	private Integer[] ifmpDefaultNyArray;
+	private Integer[] ifmpTypeCdArray;
+	private Integer[] ifmpDeviceCdArray;
+	private Integer[] ifmpTelecomCdArray;
+	private String[] ifmpNumberArray;
+	private Integer[] ifmpDelNyArray;
+	
 	//멤버_어드레스
 	private String ifmaZipCode;
 	private String ifmaAddress1;
@@ -193,6 +210,12 @@ public class Member {
 	public void setIfmmPushConsentNyText(String ifmmPushConsentNyText) {
 		this.ifmmPushConsentNyText = ifmmPushConsentNyText;
 	}
+	public String getIfmmDesc() {
+		return ifmmDesc;
+	}
+	public void setIfmmDesc(String ifmmDesc) {
+		this.ifmmDesc = ifmmDesc;
+	}
 	public String getIfmeEmailFull() {
 		return ifmeEmailFull;
 	}
@@ -217,29 +240,83 @@ public class Member {
 	public void setIfmeEmailDomainCd(String ifmeEmailDomainCd) {
 		this.ifmeEmailDomainCd = ifmeEmailDomainCd;
 	}
-	public String getIfmpTelecomCd() {
+	public String getIfmpSeq() {
+		return ifmpSeq;
+	}
+	public void setIfmpSeq(String ifmpSeq) {
+		this.ifmpSeq = ifmpSeq;
+	}
+	public Integer getIfmpDefaultNy() {
+		return ifmpDefaultNy;
+	}
+	public void setIfmpDefaultNy(Integer ifmpDefaultNy) {
+		this.ifmpDefaultNy = ifmpDefaultNy;
+	}
+	public Integer getIfmpTypeCd() {
+		return ifmpTypeCd;
+	}
+	public void setIfmpTypeCd(Integer ifmpTypeCd) {
+		this.ifmpTypeCd = ifmpTypeCd;
+	}
+	public Integer getIfmpDeviceCd() {
+		return ifmpDeviceCd;
+	}
+	public void setIfmpDeviceCd(Integer ifmpDeviceCd) {
+		this.ifmpDeviceCd = ifmpDeviceCd;
+	}
+	public Integer getIfmpTelecomCd() {
 		return ifmpTelecomCd;
 	}
-	public void setIfmpTelecomCd(String ifmpTelecomCd) {
+	public void setIfmpTelecomCd(Integer ifmpTelecomCd) {
 		this.ifmpTelecomCd = ifmpTelecomCd;
 	}
-	public String getIfmpTelecomName() {
-		return ifmpTelecomName;
+	public String getIfmpNumber() {
+		return ifmpNumber;
 	}
-	public void setIfmpTelecomName(String ifmpTelecomName) {
-		this.ifmpTelecomName = ifmpTelecomName;
+	public void setIfmpNumber(String ifmpNumber) {
+		this.ifmpNumber = ifmpNumber;
 	}
-	public String getIfmpNumberMobile() {
-		return ifmpNumberMobile;
+	public Integer getIfmpDelNy() {
+		return ifmpDelNy;
 	}
-	public void setIfmpNumberMobile(String ifmpNumberMobile) {
-		this.ifmpNumberMobile = ifmpNumberMobile;
+	public void setIfmpDelNy(Integer ifmpDelNy) {
+		this.ifmpDelNy = ifmpDelNy;
 	}
-	public String getIfmpNumberHome() {
-		return ifmpNumberHome;
+	public Integer[] getIfmpDefaultNyArray() {
+		return ifmpDefaultNyArray;
 	}
-	public void setIfmpNumberHome(String ifmpNumberHome) {
-		this.ifmpNumberHome = ifmpNumberHome;
+	public void setIfmpDefaultNyArray(Integer[] ifmpDefaultNyArray) {
+		this.ifmpDefaultNyArray = ifmpDefaultNyArray;
+	}
+	public Integer[] getIfmpTypeCdArray() {
+		return ifmpTypeCdArray;
+	}
+	public void setIfmpTypeCdArray(Integer[] ifmpTypeCdArray) {
+		this.ifmpTypeCdArray = ifmpTypeCdArray;
+	}
+	public Integer[] getIfmpDeviceCdArray() {
+		return ifmpDeviceCdArray;
+	}
+	public void setIfmpDeviceCdArray(Integer[] ifmpDeviceCdArray) {
+		this.ifmpDeviceCdArray = ifmpDeviceCdArray;
+	}
+	public Integer[] getIfmpTelecomCdArray() {
+		return ifmpTelecomCdArray;
+	}
+	public void setIfmpTelecomCdArray(Integer[] ifmpTelecomCdArray) {
+		this.ifmpTelecomCdArray = ifmpTelecomCdArray;
+	}
+	public String[] getIfmpNumberArray() {
+		return ifmpNumberArray;
+	}
+	public void setIfmpNumberArray(String[] ifmpNumberArray) {
+		this.ifmpNumberArray = ifmpNumberArray;
+	}
+	public Integer[] getIfmpDelNyArray() {
+		return ifmpDelNyArray;
+	}
+	public void setIfmpDelNyArray(Integer[] ifmpDelNyArray) {
+		this.ifmpDelNyArray = ifmpDelNyArray;
 	}
 	public String getIfmaZipCode() {
 		return ifmaZipCode;
@@ -372,12 +449,6 @@ public class Member {
 	}
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
-	}
-	public String getIfmmDesc() {
-		return ifmmDesc;
-	}
-	public void setIfmmDesc(String ifmmDesc) {
-		this.ifmmDesc = ifmmDesc;
 	}
 	
 }

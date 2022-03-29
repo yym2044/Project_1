@@ -23,8 +23,9 @@ public interface MemberService {
 //	public int updateMemberPhoneHome(Member dto) throws Exception;
 	
 	public Member selectOne(MemberVo vo) throws Exception;
-	public Member selectOnePhoneMobile(MemberVo vo) throws Exception;
-	public Member selectOnePhoneHome(MemberVo vo) throws Exception;
+	public List<Member> selectListPhone(MemberVo vo) throws Exception;
+//	public Member selectOnePhoneMobile(MemberVo vo) throws Exception;
+//	public Member selectOnePhoneHome(MemberVo vo) throws Exception;
 	
 //	DELETE
 	public int deleteMember(MemberVo vo) throws Exception;

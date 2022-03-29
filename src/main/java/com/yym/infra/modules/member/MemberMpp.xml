@@ -220,7 +220,22 @@
 		
 	</select>
 	
-	<select id="selectOnePhoneMobile" resultMap = "resultMapObj">
+	<select id="selectListPhone" resultMap="resultMapObj">
+		SELECT
+			ifmpSeq
+			, ifmpDefaultNy
+			, ifmpTypeCd
+			, ifmpDeviceCd
+			, ifmpTelecomCd
+			, ifmpNumber
+		FROM
+			infrMemberPhone
+		WHERE 1=1
+			AND ifmpDelNy = 0
+			AND ifmmSeq = #{ifmmSeq}
+	</select>
+	
+	<!-- <select id="selectOnePhoneMobile" resultMap = "resultMapObj">
 		SELECT
 			(select ifcdName from infrCode where b.ifmpTelecomCd = ifcdSeq) as ifmpTelecomName
             , ifmpNumber as ifmpNumberMobile
@@ -248,7 +263,7 @@
         AND a.ifmmSeq = #{ifmmSeq}
         AND b.ifmpDeviceCd = 25
         AND b.ifmpDefaultNy = 1
-	</select>
+	</select> -->
 	
 	<!-- INSERT -->
 	<sql id="insertRegMod">
@@ -355,7 +370,31 @@
 	);
 	</insert>
 	
-	<insert id="insertMemberPhoneMobile">
+	<insert id="insertPhone">
+		INSERT INTO
+			infrMemberPhone (
+				ifmpDefaultNy
+				, ifmpTypeCd
+				, ifmpDeviceCd
+				, ifmpTelecomCd
+				, ifmpNumber
+				, ifmpDelNy
+				<include refid="insertRegMod"/>
+				, ifmmSeq
+			) VALUES (
+				#{ifmpDefaultNy}
+				, #{ifmpTypeCd}
+				, #{ifmpDeviceCd}
+				, #{ifmpTelecomCd}
+				, #{ifmpNumber}
+				, 0
+				<include refid="insertRegModValue"/>
+				, #{ifmmSeq}
+			)
+	
+	</insert>
+	
+	<!-- <insert id="insertMemberPhoneMobile">
 	INSERT INTO
 	infrMemberPhone (
 		ifmmSeq
@@ -388,7 +427,7 @@
         , 1
         <include refid="insertRegModValue"/>
     )
-	</insert>
+	</insert> -->
 	
 	<insert id="insertMemberNationality">
 	INSERT INTO 
@@ -488,7 +527,18 @@
 		ifmmSeq = #{ifmmSeq}
 	</update>
 	
-	<update id="updateMemberPhoneMobile">
+	<update id="updateMemberPhone">
+	UPDATE
+		infrMemberPhone
+	SET
+		ifmpNumber = #{ifmpNumber}
+		, ifmpTelecomCd = #{ifmpTelecomCd}
+		<include refid="updateModValue"/>
+	WHERE 1=1
+		AND ifmmSeq = #{ifmmSeq}
+	
+	</update>
+	<!-- <update id="updateMemberPhoneMobile">
 	UPDATE infrMemberPhone
 	SET
 		ifmpNumber = #{ifmpNumberMobile}
@@ -515,7 +565,7 @@
 		ifmmSeq = #{ifmmSeq}
 	AND
 		ifmpDeviceCd = 25	
-	</update>
+	</update> -->
 	
 	<update id="updateMemberNationality">
 	UPDATE infrMemberNationality

@@ -190,15 +190,18 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light">휴대폰</th>
 					<td class="text-start" colspan="3">
-						<select id="ifmpTelecomCd" name="ifmpTelecomCd" class="form-select d-inline" style="width: 100px;">
+						<select id="ifmpTelecomCdArray0" name="ifmpTelecomCdArray" class="form-select d-inline" style="width: 100px;">
 							<option value="0">통신사</option>
-							<c:forEach items="${codeTelecom}" var="item" varStatus="status">
-								<option value="<c:out value="${item.ifcdSeq}"/>">
-									<c:out value="${item.ifcdName}"/>
+							<c:forEach items="${codeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+								<option value="<c:out value="${itemTelecom.ifcdSeq}"/>">
+									<c:out value="${itemTelecom.ifcdName}"/>
 								</option>
 							</c:forEach>
 						</select>
-						<input type="text" id="ifmpNumberMobile" name="ifmpNumberMobile" class="form-control d-inline" style="width: 200px;" placeholder="01012345678" autocomplete="off">
+						<input type="hidden" id="ifmpDefaultNyArray0" name="ifmpDefaultNyArray" value="1">
+						<input type="hidden" id="ifmpTypeCdArray0" name="ifmpTypeCdArray" value="22">
+						<input type="hidden" id="ifmpDeviceCdArray0" name="ifmpDeviceCdArray" value="26">
+						<input type="text" id="ifmpNumberArray0" name="ifmpNumberArray" class="form-control d-inline" style="width: 200px;" placeholder="01012345678" autocomplete="off">
 						<!-- 
 						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1">
 						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
@@ -210,8 +213,20 @@
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light">전화번호</th>
-					<td class="text-start" colspan="3">
-						<input type="text" id="ifmpNumberHome" name="ifmpNumberHome" class="form-control" style="width: 200px;" placeholder="021234567" autocomplete="off">
+					<td class="text-start">
+						<input type="hidden" id="ifmpDefaultNyArray1" name="ifmpDefaultNyArray" value="0">
+						<input type="hidden" id="ifmpTypeCdArray1" name="ifmpTypeCdArray" value="22">
+						<input type="hidden" id="ifmpDeviceCdArray1" name="ifmpDeviceCdArray" value="25">
+						<input type="hidden" id="ifmpTelecomCdArray1" name="ifmpTelecomCdArray" value="">
+						<input type="text" id="ifmpNumberArray1" name="ifmpNumberArray" class="form-control" style="width: 200px;" placeholder="021234567" autocomplete="off">
+					</td>
+					<th style="width: 200px;" class="bg-light">팩스번호</th>
+					<td class="text-start">
+						<input type="hidden" id="ifmpDefaultNyArray2" name="ifmpDefaultNyArray" value="0">
+						<input type="hidden" id="ifmpTypeCdArray2" name="ifmpTypeCdArray" value="22">
+						<input type="hidden" id="ifmpDeviceCdArray2" name="ifmpDeviceCdArray" value="27">
+						<input type="hidden" id="ifmpTelecomCdArray2" name="ifmpTelecomCdArray" value="">
+						<input type="text" id="ifmpNumberArray2" name="ifmpNumberArray" class="form-control" style="width: 200px;" placeholder="021234567" autocomplete="off">
 					</td>
 				</tr>
 			</table>
@@ -512,11 +527,11 @@
 								return false;
 							}
 							
-							if(!checkNull($("#ifmpNumberMobile"), $("#ifmpNumberMobile").val(), "휴대폰 번호를 입력해주세요.")){
+							if(!checkNull($("#ifmpNumberArray0"), $("#ifmpNumberArray0").val(), "휴대폰 번호를 입력해주세요.")){
 								return false;
 							}
 							
-							if(!checkOnlyNumber($("#ifmpNumberMobile"),$("#ifmpNumberMobile").val(),"숫자로만 입력해주세요.")){
+							if(!checkOnlyNumber($("#ifmpNumberArray0"),$("#ifmpNumberArray0").val(),"숫자로만 입력해주세요.")){
 								return false;
 							}
 							

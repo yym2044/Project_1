@@ -29,6 +29,21 @@
 </head>
 <body>
 
+<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>	<!-- listCodeGender에 값을 담음 -->
+<c:set var="listCodeTelecom" value="${CodeServiceImpl.selectListCachedCode('9')}"/>  <!-- listCodeTelecom(list 변수)에 값을 담음 --> 
+
+<c:forEach items="${listPhone}" var="item" varStatus="status">
+	<c:choose>
+		<c:when test="${item.ifmpDeviceCd eq 25}"><c:set var="ifmpNumberHome" value="${item.ifmpNumber}"/></c:when>
+		<c:when test="${item.ifmpDeviceCd eq 26}">
+			<c:set var="ifmpNumberMobile" value="${item.ifmpNumber}"/>
+			<c:set var="ifmpTelecomMobile" value="${item.ifmpTelecomCd}"/>
+		</c:when>
+		<c:when test="${item.ifmpDeviceCd eq 27}"><c:set var="ifmpNumberFax" value="${item.ifmpNumber}"/></c:when>	
+		<c:otherwise></c:otherwise>
+	</c:choose>
+</c:forEach>
+
 	<form id="formEditForm" method="post" action="/infra/member/memberUpdt">
 		
 		<input type="hidden" id="shIfmmGrade" name="shIfmmGrade" value="<c:out value="${vo.shIfmmGrade}"/>">
@@ -167,15 +182,18 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light">휴대폰</th>
 					<td class="text-start" colspan="3">
-						<select id="ifmpTelecomCd" name="ifmpTelecomCd" class="form-select d-inline" style="width: 100px;">
+						<select id="ifmpTelecomCdArray0" name="ifmpTelecomCdArray" class="form-select d-inline" style="width: 100px;">
 							<option value="0">통신사</option>
 							<c:forEach items="${codeTelecom}" var="item" varStatus="status">
-								<option value="<c:out value="${item.ifcdSeq}"/>" <c:if test="${rt1.ifmpTelecomName eq item.ifcdName}">selected</c:if>>
+								<option value="<c:out value="${item.ifcdSeq}"/>" <c:if test="${ifmpTelecomMobile eq item.ifcdSeq}">selected</c:if>>
 									<c:out value="${item.ifcdName}"/>
 								</option>
 							</c:forEach>
 						</select>
-						<input type="text" id="ifmpNumberMobile" name="ifmpNumberMobile" class="form-control d-inline" style="width: 200px;" placeholder="01012345678" value="<c:out value="${rt1.ifmpNumberMobile}"/>" autocomplete="off">
+						<input type="hidden" id="ifmpDefaultNyArray0" name="ifmpDefaultNyArray" value="1">
+						<input type="hidden" id="ifmpTypeCdArray0" name="ifmpTypeCdArray" value="22">
+						<input type="hidden" id="ifmpDeviceCdArray0" name="ifmpDeviceCdArray" value="26">
+						<input type="text" id="ifmpNumberArray0" name="ifmpNumberArray" class="form-control d-inline" style="width: 200px;" placeholder="01012345678" value="<c:out value="${ifmpNumberMobile}"/>" autocomplete="off">
 						<%-- 
 						<input type="checkbox" name="ifmmSmsConsentNy" id="sms_check" value="1" <c:if test="${rt.ifmmSmsConsentNyText eq '수신동의'}">checked</c:if>><label for="sms_check">SMS 수신 동의</label>
 						<input type="hidden" name="ifmmSmsConsentNy" id="sms_check_hidden" value="0">
@@ -186,7 +204,21 @@
 				</tr>
 				<tr>
 					<th style="width: 200px;" class="bg-light">전화번호</th>
-					<td class="text-start" colspan="3"><input type="text" id="ifmpNumberHome" name="ifmpNumberHome" class="form-control" style="width: 200px;" placeholder="021234567" value="<c:out value="${rt2.ifmpNumberHome}"/>" autocomplete="off"></td>
+					<td class="text-start" colspan="3">
+						<input type="hidden" id="ifmpDefaultNyArray1" name="ifmpDefaultNyArray" value="0">
+						<input type="hidden" id="ifmpTypeCdArray1" name="ifmpTypeCdArray" value="22">
+						<input type="hidden" id="ifmpDeviceCdArray1" name="ifmpDeviceCdArray" value="25">
+						<input type="hidden" id="ifmpTelecomCdArray1" name="ifmpTelecomCdArray" value="">
+						<input type="text" id="ifmpNumberArray1" name="ifmpNumberArray" class="form-control" style="width: 200px;" placeholder="02" value="<c:out value="${ifmpNumberHome}"/>" autocomplete="off">
+					</td>
+					<th style="width: 200px;" class="bg-light">팩스번호</th>
+					<td class="text-start">
+						<input type="hidden" id="ifmpDefaultNyArray2" name="ifmpDefaultNyArray" value="0">
+						<input type="hidden" id="ifmpTypeCdArray2" name="ifmpTypeCdArray" value="22">
+						<input type="hidden" id="ifmpDeviceCdArray2" name="ifmpDeviceCdArray" value="27">
+						<input type="hidden" id="ifmpTelecomCdArray2" name="ifmpTelecomCdArray" value="">
+						<input type="text" id="ifmpNumberArray2" name="ifmpNumberArray" class="form-control" style="width: 200px;" placeholder="021234567" value="<c:out value="${ifmpNumberFax}"/>" autocomplete="off">
+					</td>
 				</tr>
 			</table>
 
@@ -455,7 +487,7 @@
 						return false;
 					}
 					
-					if(!checkOnlyNumber($("#ifmpNumberMobile"),$("#ifmpNumberMobile").val(),"숫자로만 입력해주세요.")){
+					if(!checkOnlyNumber($("#ifmpNumberArray0"),$("#ifmpNumberArray0").val(),"숫자로만 입력해주세요.")){
 						return false;
 					}
 					
