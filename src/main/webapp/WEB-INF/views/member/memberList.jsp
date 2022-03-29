@@ -20,7 +20,7 @@
 
 <link href="${path}/resources/css/style.css" rel="stylesheet" />
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet" />
-<link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"/>
+<link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 <style type="text/css">
@@ -246,32 +246,36 @@ a {
 	</div>
 
 	<div class="container-fluid bg-light">
-		<br>
+
+		<form id="formList" method="post" action="/infra/member/memberList">
+			<input type="hidden" id="thisPage" name="thisPage" value="${vo.thisPage}">
+			<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="${vo.rowNumToShow}">
+			<input type="hidden" id="sort" name="sort" value="${vo.sort}">
+			<input type="hidden" id="orderby" name="orderby" value="${vo.orderby}">
+			<input type="hidden" id="ifmmSeq" name="ifmmSeq">
+			<input type="hidden" name="checkboxSeqArray" >
+
+			<br>
 
 
-		<!-- 웹 화면 -->
-		<div class="width90 d-none d-sm-block">
+			<!-- 웹 화면 -->
+			<div class="width90 d-none d-sm-block">
 
-			<h4 class="d-flex">
-				<i class="bi bi-grip-vertical text-danger"></i>회원관리
-			</h4>
+				<h4 class="d-flex">
+					<i class="bi bi-grip-vertical text-danger"></i>회원관리
+				</h4>
 
-			<nav style="-bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item fs-6"><a href="#" style="text-decoration: none;">사이트운영</a></li>
-					<li class="breadcrumb-item active" aria-current="page"><a href="#" style="text-decoration: none;">회원관리</a></li>
-				</ol>
-			</nav>
-			
-			<form id="formList" method="post" action="/infra/member/memberList">
-				<input type="hidden" id="thisPage" name="thisPage" value="${vo.thisPage}">
-				<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="${vo.rowNumToShow}">
-				<input type="hidden" id="sort" name="sort" value="${vo.sort}">
-				<input type="hidden" id="orderby" name="orderby" value="${vo.orderby}">
-				<input type="hidden" id="ifmmSeq" name="ifmmSeq">
-				
-				
-			<%-- <form method="get" action="/infra/member/memberList?shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&thisPage=<c:out value="${vo.thisPage}"/>"> --%>
+				<nav style="-bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item fs-6"><a href="#" style="text-decoration: none;">사이트운영</a></li>
+						<li class="breadcrumb-item active" aria-current="page"><a href="#" style="text-decoration: none;">회원관리</a></li>
+					</ol>
+				</nav>
+
+
+
+
+				<%-- <form method="get" action="/infra/member/memberList?shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&thisPage=<c:out value="${vo.thisPage}"/>"> --%>
 				<div class="row border border-1 my-2 box-white container1" id="searchBox">
 					<div class="col-12 col-md-9">
 						<div class="row my-3 pt-2">
@@ -322,20 +326,20 @@ a {
 									<div class="col-4 col-md-2">
 										<select name="shOptionDate" id="shOptionDate" class="form-select form-select-sm">
 											<option value="0">날짜</option>
-											<option value="1"<c:if test="${vo.shOptionDate eq 1}">selected</c:if>>등록일</option>
-											<option value="2"<c:if test="${vo.shOptionDate eq 2}">selected</c:if>>수정일</option>
-											<option value="3"<c:if test="${vo.shOptionDate eq 3}">selected</c:if>>생년월일</option>
+											<option value="1" <c:if test="${vo.shOptionDate eq 1}">selected</c:if>>등록일</option>
+											<option value="2" <c:if test="${vo.shOptionDate eq 2}">selected</c:if>>수정일</option>
+											<option value="3" <c:if test="${vo.shOptionDate eq 3}">selected</c:if>>생년월일</option>
 										</select>
 									</div>
 									<div class="col-md-2" style="width: 120px;">
 										<select id="shPeriod" name="shPeriod" class="form-select d-inline" style="font-size: small;" disabled>
-											<option value="1"<c:if test="${vo.shPeriod eq 1}">selected</c:if>>일주일</option>
-											<option value="2"<c:if test="${vo.shPeriod eq 2}">selected</c:if>>한 달</option>
-											<option value="3"<c:if test="${vo.shPeriod eq 3}">selected</c:if>>일 년</option>
-											<option value="0"<c:if test="${vo.shPeriod eq 0}">selected</c:if>>직접입력</option>
+											<option value="1" <c:if test="${vo.shPeriod eq 1}">selected</c:if>>일주일</option>
+											<option value="2" <c:if test="${vo.shPeriod eq 2}">selected</c:if>>한 달</option>
+											<option value="3" <c:if test="${vo.shPeriod eq 3}">selected</c:if>>일 년</option>
+											<option value="0" <c:if test="${vo.shPeriod eq 0}">selected</c:if>>직접입력</option>
 										</select>
 									</div>
-									
+
 									<div class="col-8 col-md-2">
 										<input type="text" name="shDateStart" id="shDateStart" class="shDate form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateStart}"</c:if> autocomplete="off">
 									</div>
@@ -391,7 +395,7 @@ a {
 
 							</div>
 						</div>
-						
+
 					</div>
 					<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
 
@@ -404,63 +408,63 @@ a {
 						 -->
 					</div>
 				</div>
-			</form>
-		</div>
 
-		<!-- 모바일 -->
-		<div class="width90 d-sm-none">
+			</div>
 
-			<div class="row mb-2">
-				<div class="col">
-					<a class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#filterMobile">상세검색</a>
+			<!-- 모바일 -->
+			<div class="width90 d-sm-none">
+
+				<div class="row mb-2">
+					<div class="col">
+						<a class="btn btn-outline-secondary" data-bs-toggle="collapse" data-bs-target="#filterMobile">상세검색</a>
+					</div>
+				</div>
+				<div class="box-light">
+					<div class="collapse" id="filterMobile">
+
+						<div class="row d-flex align-items-center mb-1">
+							<div class="col-3 fw-bold">회원등급</div>
+							<div class="col">
+								<select class="form-select">
+									<option>전체</option>
+									<option>탈퇴대기자</option>
+									<option>가입신청자</option>
+									<option>일반회원</option>
+									<option>VIP회원</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="row d-flex align-items-center mb-1">
+							<div class="col-3 fw-bold">수신동의</div>
+							<div class="col">
+								<select class="form-select">
+									<option>전체</option>
+									<option>SMS</option>
+									<option>E-MAIL</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="row d-flex align-items-center mb-2">
+							<div class="col-3 fw-bold">검색어</div>
+							<div class="col">
+								<input type="text" class="form-control" placeholder="이름, 아이디, 이메일">
+							</div>
+						</div>
+
+						<div class="row d-flex justify-content-center">
+							<div class="col d-flex justify-content-center">
+								<a class="btn btn-info btn-sm" style="width: 150px;">
+									<span class="text-white fw-bold">검색</span>
+								</a>
+							</div>
+						</div>
+
+					</div>
 				</div>
 			</div>
-			<div class="box-light">
-				<div class="collapse" id="filterMobile">
-
-					<div class="row d-flex align-items-center mb-1">
-						<div class="col-3 fw-bold">회원등급</div>
-						<div class="col">
-							<select class="form-select">
-								<option>전체</option>
-								<option>탈퇴대기자</option>
-								<option>가입신청자</option>
-								<option>일반회원</option>
-								<option>VIP회원</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="row d-flex align-items-center mb-1">
-						<div class="col-3 fw-bold">수신동의</div>
-						<div class="col">
-							<select class="form-select">
-								<option>전체</option>
-								<option>SMS</option>
-								<option>E-MAIL</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="row d-flex align-items-center mb-2">
-						<div class="col-3 fw-bold">검색어</div>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="이름, 아이디, 이메일">
-						</div>
-					</div>
-
-					<div class="row d-flex justify-content-center">
-						<div class="col d-flex justify-content-center">
-							<a class="btn btn-info btn-sm" style="width: 150px;">
-								<span class="text-white fw-bold">검색</span>
-							</a>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<!-- 
+			<!-- 
 		<div class="width92">
 			<div class="row">
 				<form>
@@ -482,24 +486,9 @@ a {
 			</div>
 		</div>
 		 -->
-		<br>
-		<br>
-		<form id="formDelete" method="get" action="">
-		
-			<input type="hidden" id="shIfmmGrade" name="shIfmmGrade" value="<c:out value="${vo.shIfmmGrade}"/>">
-			<input type="hidden" id="shIfmmEmailConsentNy" name="shIfmmEmailConsentNy" value="<c:out value="${vo.shIfmmEmailConsentNy}"/>">
-			<input type="hidden" id="shIfmmSmsConsentNy" name="shIfmmSmsConsentNy" value="<c:out value="${vo.shIfmmSmsConsentNy}"/>">
-			<input type="hidden" id="shIfmmPushConsentNy" name="shIfmmPushConsentNy" value="<c:out value="${vo.shIfmmPushConsentNy}"/>">
-			<input type="hidden" id="shIfscSeq" name="shIfscSeq" value="<c:out value="${vo.shIfscSeq}"/>">
-			<input type="hidden" id="searchBar" name="searchBar" value="<c:out value="${vo.searchBar}"/>">
-			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}"/>">
-			<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-			<input type="hidden" id="sort" name="sort" value="<c:out value="${vo.sort}"/>">
-			<input type="hidden" id="orderby" name="orderby" value="<c:out value="${vo.orderby}"/>">
-			<input type="hidden" id="shOptionDate" name="shOptionDate" value="<c:out value="${vo.shOptionDate}"/>">
-			<input type="hidden" id="shDateStart" name="shDateStart" value="<c:out value="${vo.shDateStart}"/>">
-			<input type="hidden" id="shDateEnd" name="shDateEnd" value="<c:out value="${vo.shDateEnd}"/>">
-		
+			<br>
+			<br>
+
 			<div class="width92">
 				<div class="row">
 					<div class="col-8 col-md-3 p-auto d-flex justify-content-start align-items-center fs-5" style="margin-left: 12px;">
@@ -531,7 +520,7 @@ a {
 									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 50}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=50&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">50</a>
 									<a type="button" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 100}">outline-</c:if>secondary" href="/infra/member/memberList?rowNumToShow=100&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>">100</a>
 									 --%>
-									 <!-- POST 방식 -->
+									<!-- POST 방식 -->
 									<a type="button" id="view3" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 3}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(3)">3</a>
 									<a type="button" id="view5" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 5}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(5)">5</a>
 									<a type="button" id="view10" class="btn btn-sm btn-<c:if test="${vo.rowNumToShow eq 10}">outline-</c:if>secondary" href="javascript:changeRowNumToShow(10)">10</a>
@@ -582,7 +571,7 @@ a {
 								<thead>
 									<tr>
 										<th>
-											<input type="checkbox" name="checkbox1" onclick="selectAll1(this)" class="form-check-input">
+											<input type="checkbox" id="checkboxAll" name="" class="form-check-input">
 										</th>
 										<th>
 											<c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortNo'}">
@@ -660,7 +649,7 @@ a {
 												<c:out value="${item.ifmmStatus}" />
 											</td>
 											<td>
-												<fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd"/>
+												<fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd" />
 											</td>
 											<td>
 												<div class="d-flex justify-content-center align-items-center">
@@ -671,7 +660,7 @@ a {
 														<i class="bi bi-envelope"></i>
 													</a>
 													<a href="javascript:goView(<c:out value="${item.ifmmSeq}"/>)" class="btn btn-sm btn-outline-dark py-0">
-													<%-- <a href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>" class="btn btn-sm btn-outline-dark py-0"> --%>
+														<%-- <a href="/infra/member/memberView?ifmmSeq=${item.ifmmSeq}&rowNumToShow=<c:out value="${vo.rowNumToShow}"/>&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>&sort=<c:out value="${vo.sort}"/>&orderby=<c:out value="${vo.orderby}"/>" class="btn btn-sm btn-outline-dark py-0"> --%>
 														<%-- onclick="window.open('memberView?ifmmSeq=${item.ifmmSeq}','name','resizable=no width=1000 height=500');return false" --%>
 														관리
 													</a>
@@ -688,7 +677,8 @@ a {
 
 				<div class="row ps-2">
 					<div class="col col-md-4 ms-1 p-0">
-						<a class="btn btn-outline-danger" id="btnDelete">	 <!-- data-bs-toggle="modal" data-bs-target="#deleteModal" -->
+						<a class="btn btn-outline-danger" id="btnDelete">
+							<!-- data-bs-toggle="modal" data-bs-target="#deleteModal" -->
 							<i class="bi bi-trash"></i>
 						</a>
 						<a class="btn btn-outline-primary" href="javascript:goForm()">
@@ -813,7 +803,7 @@ a {
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- updateDeleteConfirmModal -->
 			<div class="modal fade" id="updateDeleteConfirmModal">
 				<div class="modal-dialog">
@@ -831,124 +821,124 @@ a {
 					</div>
 				</div>
 			</div>
-		</form>
 
-		<!-- excelModal -->
-		<div class="modal fade" id="excelModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title fw-bold" id="staticBackdropLabel">Export data to Excel</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<div class="bg-light text-center">
-							<span class="fw-bold">파일명</span>
-							<input type="text">
-							<span class="fw-bold">.csv</span>
+			<!-- excelModal -->
+			<div class="modal fade" id="excelModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title fw-bold" id="staticBackdropLabel">Export data to Excel</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<br>
-						<table class="table table-sm table-hover">
-							<thead class="bg-light">
-								<tr class="text-center">
-									<td colspan="4">출력항목</td>
+						<div class="modal-body">
+							<div class="bg-light text-center">
+								<span class="fw-bold">파일명</span>
+								<input type="text">
+								<span class="fw-bold">.csv</span>
+							</div>
+							<br>
+							<table class="table table-sm table-hover">
+								<thead class="bg-light">
+									<tr class="text-center">
+										<td colspan="4">출력항목</td>
+									</tr>
+								</thead>
+								<tr>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch11">
+									</td>
+									<td>
+										<label for="ch11" class="form-check-label">아이디</label>
+									</td>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch12">
+									</td>
+									<td>
+										<label for="ch12" class="form-check-label">이름</label>
+									</td>
 								</tr>
-							</thead>
-							<tr>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch11">
-								</td>
-								<td>
-									<label for="ch11" class="form-check-label">아이디</label>
-								</td>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch12">
-								</td>
-								<td>
-									<label for="ch12" class="form-check-label">이름</label>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch1">
-								</td>
-								<td>
-									<label for="ch1" class="form-check-label">이메일</label>
-								</td>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch2">
-								</td>
-								<td>
-									<label for="ch2" class="form-check-label">생년월일</label>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch3">
-								</td>
-								<td>
-									<label for="ch3" class="form-check-label">메일수신동의</label>
-								</td>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch4">
-								</td>
-								<td>
-									<label for="ch4" class="form-check-label">주소</label>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch5">
-								</td>
-								<td>
-									<label for="ch5" class="form-check-label">전화번호</label>
-								</td>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch6">
-								</td>
-								<td>
-									<label for="ch6" class="form-check-label">휴대전화</label>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch7">
-								</td>
-								<td>
-									<label for="ch7" class="form-check-label">SMS수신동의</label>
-								</td>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch8">
-								</td>
-								<td>
-									<label for="ch8" class="form-check-label">별명</label>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch9">
-								</td>
-								<td>
-									<label for="ch9" class="form-check-label">등급</label>
-								</td>
-								<td>
-									<input type="checkbox" class="form-check-input" id="ch10">
-								</td>
-								<td>
-									<label for="ch10" class="form-check-label">성별</label>
-								</td>
-							</tr>
+								<tr>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch1">
+									</td>
+									<td>
+										<label for="ch1" class="form-check-label">이메일</label>
+									</td>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch2">
+									</td>
+									<td>
+										<label for="ch2" class="form-check-label">생년월일</label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch3">
+									</td>
+									<td>
+										<label for="ch3" class="form-check-label">메일수신동의</label>
+									</td>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch4">
+									</td>
+									<td>
+										<label for="ch4" class="form-check-label">주소</label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch5">
+									</td>
+									<td>
+										<label for="ch5" class="form-check-label">전화번호</label>
+									</td>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch6">
+									</td>
+									<td>
+										<label for="ch6" class="form-check-label">휴대전화</label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch7">
+									</td>
+									<td>
+										<label for="ch7" class="form-check-label">SMS수신동의</label>
+									</td>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch8">
+									</td>
+									<td>
+										<label for="ch8" class="form-check-label">별명</label>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch9">
+									</td>
+									<td>
+										<label for="ch9" class="form-check-label">등급</label>
+									</td>
+									<td>
+										<input type="checkbox" class="form-check-input" id="ch10">
+									</td>
+									<td>
+										<label for="ch10" class="form-check-label">성별</label>
+									</td>
+								</tr>
 
-						</table>
+							</table>
 
-					</div>
-					<div class="modal-footer d-flex justify-content-center">
-						<button type="button" class="btn btn-primary">다운</button>
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+						</div>
+						<div class="modal-footer d-flex justify-content-center">
+							<button type="button" class="btn btn-primary">다운</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 
 
@@ -974,14 +964,14 @@ a {
 
 	<script type="text/javascript">
 
-	function selectAll1(selectAll1) {
+	/* function selectAll1(selectAll1) {
 		const checkboxes 
 			= document.getElementsByName("checkbox1");
 		
 		checkboxes.forEach((checkbox) => {
 			checkbox.checked = selectAll1.checked;
 		})
-	}
+	} */
 	
 	function selectAll2(selectAll2) {
 		const checkboxes 
@@ -1045,6 +1035,28 @@ a {
 	<script src="/infra/resources/js/validation.js"></script>
 
 	<script type="text/javascript">
+	
+	
+	
+	$("#checkboxAll").click(function(){
+		if($("#checkboxAll").is(":checked")){
+			$("input[name=checkbox1]").prop("checked", true);
+		} else {
+			$("input[name=checkbox1]").prop("checked", false);
+		}
+	});
+	
+	$("input[name=checkbox1]").click(function(){
+		var total = $("input[name=checkbox1]").length;
+		var checked = $("input[name=checkbox1]:checked").length;
+		
+		if(total != checked){
+			$("#checkboxAll").prop("checked", false);
+		} else {
+			$("#checkboxAll").prop("checked", true);
+		}
+	});
+	
 	$(document).ready(function(){
 		$("#shDateStart").datepicker();
 		$("#shDateEnd").datepicker();
@@ -1230,7 +1242,7 @@ a {
 	});
 	
 	</script>
-	
+
 	<script type="text/javascript">
 	
 	document.querySelector(".disableLink").removeAttribute('href');
@@ -1270,14 +1282,29 @@ a {
 		$("#formList").submit();
 	}
 	
+	//체크박스 다수를 담을 배열
+	var checkbox1Array = [];
+	
 	goDelete = function(){
-		$("#formDelete").attr("action", "/infra/member/memberDele");
-		$("#formDelete").submit();
+		$("input[name=checkbox1]:checked").each(function(){
+			checkbox1Array.push($(this).val());
+		});
+		
+		$("input:hidden[name=checkboxSeqArray]").val(checkbox1Array);
+		
+		$("#formList").attr("action", "/infra/member/memberDele");
+		$("#formList").submit();
 	}
 	
 	goUpdateDelete = function(){
-		$("#formDelete").attr("action", "/infra/member/updateDelNy");
-		$("#formDelete").submit();
+		$("input[name=checkbox1]:checked").each(function(){
+			checkbox1Array.push($(this).val());
+		});
+		
+		$("input:hidden[name=checkboxSeqArray]").val(checkbox1Array);
+		
+		$("#formList").attr("action", "/infra/member/updateDelNy");
+		$("#formList").submit();
 	}
 	
 	/* /infra/member/memberDele */

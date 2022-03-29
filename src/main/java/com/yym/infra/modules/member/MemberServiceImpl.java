@@ -124,11 +124,19 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int deleteMember(MemberVo vo) throws Exception {
 		
-		dao.deleteMemberAddress(vo);
-		dao.deleteMemberEmail(vo);
-		dao.deleteMemberPhone(vo);
-		dao.deleteMemberNationality(vo);
-		dao.deleteMember(vo);
+		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		
+		for(String checkboxSeq : checkboxSeqArray) {
+			vo.setIfmmSeq(checkboxSeq);
+			
+			dao.deleteMemberAddress(vo);
+			dao.deleteMemberEmail(vo);
+			dao.deleteMemberPhone(vo);
+			dao.deleteMemberNationality(vo);
+			dao.deleteMember(vo);
+			
+		}
+		
 		
 		return 1;
 	}
@@ -150,7 +158,15 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int updateMemberDelNy(MemberVo vo) throws Exception {
-		return dao.updateMemberDelNy(vo);
+		
+		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		
+		for(String checkboxSeq : checkboxSeqArray) {
+			vo.setIfmmSeq(checkboxSeq);
+			dao.updateMemberDelNy(vo);
+		}
+		
+		return 1;
 	}
 
 	@Override

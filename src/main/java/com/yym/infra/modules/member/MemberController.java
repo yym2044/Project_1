@@ -215,8 +215,8 @@ public class MemberController {
 	@RequestMapping(value = "/member/memberDele")
 	public String memberDele(Model model, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		
-		// 업데이트 하는 구문
 		service.deleteMember(vo);
+		
 		
 //		redirectAttributes.addAttribute("shIfmmGrade", vo.getShIfmmGrade());
 //		redirectAttributes.addAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());
@@ -238,8 +238,8 @@ public class MemberController {
 	@RequestMapping(value = "/member/updateDelNy")
 	public String updateDelNy(Model model, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
-		// 업데이트 하는 구문
 		service.updateMemberDelNy(vo);
+		
 		
 //		redirectAttributes.addFlashAttribute("shIfmmGrade", vo.getShIfmmGrade());
 //		redirectAttributes.addFlashAttribute("shIfmmEmailConsentNy", vo.getShIfmmEmailConsentNy());

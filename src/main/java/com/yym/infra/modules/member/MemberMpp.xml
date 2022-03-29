@@ -184,6 +184,7 @@
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGradeCd) as ifmmGrade
 			, a.regDateTime
 			, a.modDateTime
+			, a.ifmmDesc
 			, (select ifcdName from infrCode where ifcdSeq = a.ifmmStatusCd) as ifmmStatus
 			, if(a.ifmmEmailConsentNy=1,'수신동의','수신거부') as ifmmEmailConsentNyText
 			, if(a.ifmmSmsConsentNy=1,'수신동의','수신거부') as ifmmSmsConsentNyText
@@ -532,31 +533,31 @@
 	DELETE FROM
 		infrMember
 	WHERE 1=1
-		AND ifmmSeq = #{checkbox1}
+		AND ifmmSeq = #{ifmmSeq}
 	</delete>
 	<delete id="deleteMemberEmail">
 	DELETE FROM
 		infrMemberEmail
-	WHERE 1=1
-		AND ifmmSeq = #{checkbox1}
+	WHERE 1=1  
+		AND ifmmSeq = #{ifmmSeq}
 	</delete>
 	<delete id="deleteMemberAddress">
 	DELETE FROM
 		infrMemberAddress
 	WHERE 1=1
-		AND ifmmSeq = #{checkbox1}
+		AND ifmmSeq = #{ifmmSeq}
 	</delete>
 	<delete id="deleteMemberPhone">
 	DELETE FROM
 		infrMemberPhone
 	WHERE 1=1
-		AND ifmmSeq = #{checkbox1}
+		AND ifmmSeq = #{ifmmSeq}
 	</delete>
 	<delete id="deleteMemberNationality">
 	DELETE FROM
 		infrMemberNationality
 	WHERE 1=1
-	 	AND ifmmSeq = #{checkbox1}
+	 	AND ifmmSeq = #{ifmmSeq}
 	</delete>
 	
 	<!-- 메모 삭제 s -->
@@ -592,7 +593,7 @@
  	 	ifmmDelNy = 1
  	 WHERE
  	 	1=1
-		AND ifmmSeq = #{checkbox1}
+		AND ifmmSeq = #{ifmmSeq}
 	 
 	 </update>
 	 

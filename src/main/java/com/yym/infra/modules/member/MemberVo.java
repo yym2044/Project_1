@@ -23,8 +23,8 @@ public class MemberVo {
 	private Integer shIfmmPushConsentNy;
 	
 	//체크박스
-	private Integer checkbox1;
 	private Integer checkboxMemo;
+	private String[] checkboxSeqArray;
 	
 //	정렬
 	private String sort;
@@ -154,12 +154,7 @@ public class MemberVo {
 	public void setShIfmmGrade(Integer shIfmmGrade) {
 		this.shIfmmGrade = shIfmmGrade;
 	}
-	public Integer getCheckbox1() {
-		return checkbox1;
-	}
-	public void setCheckbox1(Integer checkbox1) {
-		this.checkbox1 = checkbox1;
-	}
+
 	public String getSort() {
 		return sort;
 	}
@@ -267,6 +262,12 @@ public class MemberVo {
 	}
 	public void setShPeriod(Integer shPeriod) {
 		this.shPeriod = shPeriod;
+	}
+	public String[] getCheckboxSeqArray() {
+		return checkboxSeqArray;
+	}
+	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+		this.checkboxSeqArray = checkboxSeqArray;
 	}
 	
 }

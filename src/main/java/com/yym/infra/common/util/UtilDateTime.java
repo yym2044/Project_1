@@ -24,7 +24,7 @@ public class UtilDateTime {
 
 	public static String nowString() throws Exception {
 		LocalDateTime localDateTime = LocalDateTime.now();
-		String localDateTimeString = localDateTime.format(DateTimeFormatter.ofPattern(Constants.DATETIME_FORMAT_BASIC));
+		String localDateTimeString = localDateTime.format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT_BASIC));
 		return localDateTimeString;
 	}
 
@@ -52,7 +52,7 @@ public class UtilDateTime {
 		}
 
 		String localDateTimeNewString = localDateTimeNew
-				.format(DateTimeFormatter.ofPattern(Constants.DATETIME_FORMAT_BASIC));
+				.format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT_BASIC));
 		return localDateTimeNewString;
 	}
 	

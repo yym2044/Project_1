@@ -27,6 +27,7 @@ public class Member {
 	private String ifmmSmsConsentNyText;
 	private Integer ifmmPushConsentNy;
 	private String ifmmPushConsentNyText;
+	private String ifmmDesc;
 	//멤버_이메일
 	private String ifmeEmailFull;
 	private String ifmeEmailAccount;
@@ -371,6 +372,12 @@ public class Member {
 	}
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
+	}
+	public String getIfmmDesc() {
+		return ifmmDesc;
+	}
+	public void setIfmmDesc(String ifmmDesc) {
+		this.ifmmDesc = ifmmDesc;
 	}
 	
 }

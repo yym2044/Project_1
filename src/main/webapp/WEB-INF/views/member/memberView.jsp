@@ -9,6 +9,8 @@
 
 <jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl"/>	<!-- 코드서비스임플 클래스 바로 사용 -->
 
+<% pageContext.setAttribute("br", "\n"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -215,6 +217,13 @@
 					<td style="width: 200px;" class="bg-light text-start">마케팅 수신동의</td>
 					<td class="text-start">
 						<c:out value="${rt.ifmmPushConsentNyText}" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 200px;" class="bg-light text-start">ifmmDesc</td>
+					<td class="text-start">
+						 <%-- <p>${fn:replace(rt.ifmmDesc, br, '<br/>')}</p> --%>
+           				 <p><c:out value="${fn:replace(rt.ifmmDesc, br, '<br/>')}" escapeXml = "false"/>
 					</td>
 				</tr>
 			</table>
