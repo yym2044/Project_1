@@ -8,11 +8,21 @@
 
 	<resultMap id="resultMapObj" type="com.yym.infra.modules.coupang.Coupang"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-	SELECT
-		
-	
-	
+	<select id="selectCategory" resultMap="resultMapObj">
+	SELECT 
+		ifctSeq
+	    , ifctName
+	    , ifctParents
+	    , ifctDepth
+	FROM
+		infrCategory
+	WHERE
+		1 = 1
+		AND ifctParents = 1
+	    AND ifctUseNy = 1
+	    AND ifctDelNy = 0
+	ORDER BY
+		ifctOrder
 	</select>
 	
 
