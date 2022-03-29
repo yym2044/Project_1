@@ -7,6 +7,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
+<jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl"/>	<!-- 코드서비스임플 클래스 바로 사용 -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +21,8 @@
 <title>회원정보</title>
 </head>
 <body>
+
+<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>	<!-- listCodeGender에 값을 담음 -->
 
 	<form id="formView" action="" method="post">
 
@@ -107,7 +111,20 @@
 						<span class="badge bg-info">
 							<c:out value="${rt1.ifmpTelecomName}" />
 						</span>
-						<c:out value="${rt1.ifmpNumberMobile}" />
+						<%-- <c:out value="${rt1.ifmpNumberMobile}" /> --%>
+						<c:set var="numberPhone" value="${rt1.ifmpNumberMobile}"/>
+			               	<c:choose>
+			               		<c:when test="${fn:length(numberPhone) eq 10 }">
+									<c:out value="${fn:substring(numberPhone,0,3)}"/>
+									- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+			               		</c:when>
+			               		<c:otherwise>
+									<c:out value="${fn:substring(numberPhone,0,3)}"/>
+									- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+									- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+			               		</c:otherwise>
+		              		</c:choose>
 						<span class="badge <c:choose>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신동의'}">bg-primary</c:when>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신거부'}">bg-secondary</c:when>
@@ -119,7 +136,20 @@
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">전화번호</td>
 					<td class="text-start">
-						<c:out value="${rt2.ifmpNumberHome}" />
+						<%-- <c:out value="${rt2.ifmpNumberHome}" /> --%>
+						<c:set var="numberPhone" value="${rt2.ifmpNumberHome}"/>
+			               	<c:choose>
+			               		<c:when test="${fn:length(numberPhone) eq 9 }">
+									<c:out value="${fn:substring(numberPhone,0,2)}"/>
+									- <c:out value="${fn:substring(numberPhone,2,5)}"/>
+									- <c:out value="${fn:substring(numberPhone,5,9)}"/>
+			               		</c:when>
+			               		<c:when test="${fn:length(numberPhone) eq 10}">
+									<c:out value="${fn:substring(numberPhone,0,3)}"/>
+									- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+			               		</c:when>
+		              		</c:choose>
 					</td>
 				</tr>
 			</table>
@@ -175,6 +205,10 @@
 					<td style="width: 200px;" class="bg-light text-start">성별</td>
 					<td class="text-start">
 						<c:out value="${rt.ifmmGenderName}" />
+						<c:out value="${rt.ifmmGenderCd}"/>
+						<c:forEach items="${listCodeGender}" var="itemGender" varStatus="statusGender">
+							<c:if test="${rt.ifmmGenderCd eq itemGender.ifcdSeq}"><c:out value="${itemGender.ifcdName}"/></c:if>
+						</c:forEach>
 					</td>
 				</tr>
 				<tr>
