@@ -343,11 +343,11 @@ a {
 									</div>
 
 									<div class="col-8 col-md-2">
-										<input type="text" name="shDateStart" id="shDateStart" class="shDate form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateStart}"</c:if> autocomplete="off">
+										<input type="text" name="shDateStart" id="shDateStart" readonly class="shDate form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateStart}"</c:if> autocomplete="off">
 									</div>
 									<div class="col-8 col-md-3 d-flex justify-content-end">
 										<span id="text1" style="padding-right: 12px;">~</span>
-										<input type="text" name="shDateEnd" id="shDateEnd" class="shDate form-control form-control-sm" disabled style="width: 150px;" placeholder="종료일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateEnd}"</c:if> autocomplete="off">
+										<input type="text" name="shDateEnd" id="shDateEnd" readonly class="shDate form-control form-control-sm" disabled style="width: 150px;" placeholder="종료일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateEnd}"</c:if> autocomplete="off">
 									</div>
 									<!-- 
 									<div class="col-9 col-md">
@@ -1117,10 +1117,15 @@ a {
 		}
 	});
 	
+	$(document).ready(function(){
+		if($("#shPeriod").val() == 0){
+			$("input.shDate").attr('readonly', false);
+		}
+	})
+	
 	$("#shPeriod").on("change", function(){
 		if($(this).val() != 0){
 			$("#formList").submit();
-			$("input.shDate").attr('readonly', true);
 		} else {
 			$("input.shDate").attr('readonly', false);
 		}
