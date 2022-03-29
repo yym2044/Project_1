@@ -12,6 +12,7 @@ public class MemberVo {
 	private Integer shIfmmGrade;
 	
 	private Integer shOptionDate;
+	private Integer shPeriod;
 	private String shDateStart;
 	private String shDateEnd;
 	
@@ -260,6 +261,12 @@ public class MemberVo {
 	}
 	public void setShDateEnd(String shDateEnd) {
 		this.shDateEnd = shDateEnd;
+	}
+	public Integer getShPeriod() {
+		return shPeriod;
+	}
+	public void setShPeriod(Integer shPeriod) {
+		this.shPeriod = shPeriod;
 	}
 	
 }

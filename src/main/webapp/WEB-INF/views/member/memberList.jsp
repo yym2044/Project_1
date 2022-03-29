@@ -328,11 +328,11 @@ a {
 										</select>
 									</div>
 									<div class="col-md-2" style="width: 120px;">
-										<select>
-											<option>일주일</option>
-											<option>한 달</option>
-											<option>일 년</option>
-											<option>상세설정</option>
+										<select id="shPeriod" name="shPeriod" class="form-select d-inline" style="font-size: small;" disabled>
+											<option value="1"<c:if test="${vo.shPeriod eq 1}">selected</c:if>>일주일</option>
+											<option value="2"<c:if test="${vo.shPeriod eq 2}">selected</c:if>>한 달</option>
+											<option value="3"<c:if test="${vo.shPeriod eq 3}">selected</c:if>>일 년</option>
+											<option value="0"<c:if test="${vo.shPeriod eq 0}">selected</c:if>>상세설정</option>
 										</select>
 									</div>
 									
@@ -1069,14 +1069,17 @@ a {
 	
 	$(document).ready(function(){
 		if($("#shOptionDate").val() == 0){
+			$("#shPeriod").attr('disabled', true);
+			$("#shPeriod option:eq(3)").prop("selected", true);
 			$("#shDateStart").attr('disabled', true);
-			$("#shDateStart").val('');
+			//$("#shDateStart").val('');
 			$("#shDateEnd").attr('disabled', true);
-			$("#shDateEnd").val('');
+			//$("#shDateEnd").val('');
 			$("#shOptionDate").attr("placeholder", "시작일");
 			$("#shDateEnd").attr("placeholder", "종료일");
 
 		} else if ($("#shOptionDate").val() != 0) {
+			$("#shPeriod").attr('disabled', false);
 			$("#shDateStart").attr('disabled', false);
 			$("#shDateEnd").attr('disabled', false);
 		}
@@ -1084,18 +1087,31 @@ a {
 	
 	$("#shOptionDate").on("change", function(){
 		if($("#shOptionDate").val() == 0){
+			$("#shPeriod").attr('disabled', true);
+			$("#shPeriod option:eq(3)").prop("selected", true);
 			$("#shDateStart").attr('disabled', true);
-			$("#shDateStart").val('');
+			//$("#shDateStart").val('');
 			$("#shDateEnd").attr('disabled', true);
-			$("#shDateEnd").val('');
+			//$("#shDateEnd").val('');
 			$("#shOptionDate").attr("placeholder", "시작일");
 			$("#shDateEnd").attr("placeholder", "종료일");
 
 		} else if ($("#shOptionDate").val() != 0) {
+			$("#shPeriod").attr('disabled', false);
 			$("#shDateStart").attr('disabled', false);
 			$("#shDateEnd").attr('disabled', false);
 		}
 	});
+	
+	$("#shPeriod").on("change", function(){
+		if($(this).val() != 0){
+			$("#formList").submit();
+			$("input.shDate").attr('readonly', true);
+		} else {
+			$("input.shDate").attr('readonly', false);
+		}
+	});
+	
 	
 	//날짜선택 범위 잘못 지정 시 start
 	var preStart;
@@ -1103,9 +1119,11 @@ a {
 	
 	$("#shDateStart").on("click", function(){
 		preStart = $("#shDateStart").val();	
+		$(this).removeClass("is-invalid");
 	});
 	$("#shDateEnd").on("click", function(){
 		preEnd = $("#shDateEnd").val();
+		$(this).removeClass("is-invalid");
 	});
 	
 	$("#shDateStart").on("change", function(){
@@ -1176,6 +1194,14 @@ a {
 			}
 		}
 		
+		if($("#shOptionDate").val() != 0 && $("#shPeriod").val() == 0){
+			if(!checkNull($("#shDateStart"),$("#shDateStart").val(), "시작일을 입력해주세요.")){
+				return false;
+			}
+			if(!checkNull($("#shDateEnd"),$("#shDateEnd").val(), "종료일을 입력해주세요.")){
+				return false;
+			}
+		}
 		
 	});
 	

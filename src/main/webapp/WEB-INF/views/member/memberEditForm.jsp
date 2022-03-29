@@ -276,8 +276,9 @@
 			</div>
 			 -->
 			<div class="text-center">
+				<a type="button" class="btn btn-sm btn-outline-info border border-3 container1" href="javascript:goList();">목록</a>
 				<input type="submit" id="btnSubmit" class="btn btn-sm btn-outline-success border border-3 container1" value="수정">
-				<a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="javascript:goView();">취소</a>
+				<a type="button" class="btn btn-sm btn-outline-danger border border-3 container1" href="javascript:goView();">취소</a>
 				<%-- <a type="button" class="btn btn-sm btn-outline-dark border border-3 container1" href="/infra/member/memberView?ifmmSeq=<c:out value="${rt.ifmmSeq}"/>">취소</a> --%>
 			</div>
 
@@ -614,6 +615,11 @@
 	
 	goView = function(){
 		$("#formEditForm").attr("action", "/infra/member/memberView");
+		$("#formEditForm").submit();
+	}
+	
+	goList = function(){
+		$("#formEditForm").attr("action", "/infra/member/memberList");
 		$("#formEditForm").submit();
 	}
 	
