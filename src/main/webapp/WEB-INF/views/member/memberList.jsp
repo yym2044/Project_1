@@ -253,14 +253,13 @@ a {
 		<div class="width90 d-none d-sm-block">
 
 			<h4 class="d-flex">
-				<i class="bi bi-grip-vertical text-danger"></i>회원리스트
+				<i class="bi bi-grip-vertical text-danger"></i>회원관리
 			</h4>
 
 			<nav style="-bs-breadcrumb-divider: '&gt;';" aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item fs-6"><a href="#" style="text-decoration: none;">사이트운영</a></li>
-					<li class="breadcrumb-item"><a href="#" style="text-decoration: none;">회원관리</a></li>
-					<li class="breadcrumb-item active" aria-current="page"><b>회원리스트</b></li>
+					<li class="breadcrumb-item active" aria-current="page"><a href="#" style="text-decoration: none;">회원관리</a></li>
 				</ol>
 			</nav>
 			
@@ -328,6 +327,15 @@ a {
 											<option value="3"<c:if test="${vo.shOptionDate eq 3}">selected</c:if>>생년월일</option>
 										</select>
 									</div>
+									<div class="col-md-2" style="width: 120px;">
+										<select>
+											<option>일주일</option>
+											<option>한 달</option>
+											<option>일 년</option>
+											<option>상세설정</option>
+										</select>
+									</div>
+									
 									<div class="col-8 col-md-2">
 										<input type="text" name="shDateStart" id="shDateStart" class="shDate form-control form-control-sm" disabled style="width: 150px;" placeholder="시작일" <c:if test="${vo.shOptionDate ne 0}">value="${vo.shDateStart}"</c:if> autocomplete="off">
 									</div>
