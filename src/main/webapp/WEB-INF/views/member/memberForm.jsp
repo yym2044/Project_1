@@ -289,6 +289,12 @@
 					</td>
 				</tr>
 				<tr>
+					<th style="width: 200px;" class="bg-light">ifmmDesc</th>
+					<td class="text-start">
+						<textarea id="ifmmDesc" name="ifmmDesc" class="form-control" style="font-size: small;"></textarea>
+					</td>
+				</tr>
+				<tr>
 					<th style="width: 200px;" class="bg-light">자동 등록 방지</th>
 					<td class="text-start">
 						<div class="g-recaptcha" data-sitekey="6Lfh2xIfAAAAADV0ECUUGtb1kWwEqZwh7z6iu-B8" data-callback="getSuccess"></div>

@@ -307,6 +307,7 @@
 		, ifmmEmailConsentNy
 		, ifmmSmsConsentNy
 		, ifmmPushConsentNy
+		, ifmmDesc
 	<include refid="insertRegMod"/>
 	) VALUES (
 		#{ifmmName}
@@ -321,6 +322,7 @@
 		, #{ifmmEmailConsentNy}
 		, #{ifmmSmsConsentNy}
 		, #{ifmmPushConsentNy}
+		, #{ifmmDesc}
 	<include refid="insertRegModValue"/>
 	)
 	
@@ -492,6 +494,7 @@
 		, ifmmEmailConsentNy = #{ifmmEmailConsentNy}
 		, ifmmSmsConsentNy = #{ifmmSmsConsentNy}
 		, ifmmPushConsentNy = #{ifmmPushConsentNy}
+		, ifmmDesc = #{ifmmDesc}
 		<include refid="updateModValue"/>
 	WHERE
 		1 = 1

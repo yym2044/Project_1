@@ -245,7 +245,8 @@
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">ifmmDesc</td>
 					<td class="text-start">
-						 <%-- <p>${fn:replace(rt.ifmmDesc, br, '<br/>')}</p> --%>
+						 <%-- <p>${fn:replace(rt.ifmmDesc, br, '<br/>')}</p> 둘 다 가능 --%>	
+						 <%-- <% pageContext.setAttribute("br", "\n"); %> 같이 써줘야 함, 위에 이미 있음 --%>
            				 <p><c:out value="${fn:replace(rt.ifmmDesc, br, '<br/>')}" escapeXml = "false"/>
 					</td>
 				</tr>

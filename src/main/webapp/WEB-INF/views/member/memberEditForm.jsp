@@ -270,6 +270,12 @@
 						</select>
 					</td>
 				</tr>
+				<tr>
+					<th style="width: 200px;" class="bg-light">ifmmDesc</th>
+					<td class="text-start">
+						<textarea id="ifmmDesc" name="ifmmDesc" class="form-control" style="font-size: small;"><c:out value="${rt.ifmmDesc}"/></textarea>
+					</td>
+				</tr>
 			</table>
 			<!-- 
 			<div class="row mb-2">
