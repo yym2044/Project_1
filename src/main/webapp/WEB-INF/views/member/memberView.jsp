@@ -186,7 +186,7 @@
 						<c:forEach items="${listAddressOnline}" var="item" varStatus="status">
 							<c:choose>
 								<c:when test="${item.ifaoTypeCd eq 33}">
-									<c:out value="${item.ifaoUrl}"/>
+									<c:out value="${item.ifaoUrl}"/><br>
 								</c:when>
 							</c:choose>
 						</c:forEach>
@@ -199,7 +199,7 @@
 					<td class="text-start">
 						<c:forEach items="${listAddressOnline}" var="item" varStatus="status">
 							<c:if test="${item.ifaoTypeCd eq 34}">
-								<c:out value="${item.ifaoUrl}"/>
+								<c:out value="${item.ifaoUrl}"/><br>
 							</c:if>
 						</c:forEach>
 					</td>

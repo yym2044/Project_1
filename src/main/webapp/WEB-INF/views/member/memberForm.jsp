@@ -229,6 +229,16 @@
 						<input type="text" id="ifmpNumberArray2" name="ifmpNumberArray" class="form-control" style="width: 200px;" placeholder="021234567" autocomplete="off">
 					</td>
 				</tr>
+				<tr>
+					<th style="width: 200px;" class="bg-light">홈페이지</th>
+					<td class="text-start">
+						
+					</td>
+					<th style="width: 200px;" class="bg-light">SNS</th>
+					<td class="text-start">
+						
+					</td>
+				</tr>
 			</table>
 
 			<div class="row mb-2">
