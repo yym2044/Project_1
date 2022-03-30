@@ -13,7 +13,6 @@ public class Member {
 	private String ifmmPwd;
 	private String ifmmName;
 	private String ifmmGenderCd;
-	private String ifmmGenderName;
 	private String ifmmDob;
 	private String ifmmFavoriteColor;
 	private Integer ifmmGradeCd;
@@ -125,12 +124,6 @@ public class Member {
 	}
 	public void setIfmmGenderCd(String ifmmGenderCd) {
 		this.ifmmGenderCd = ifmmGenderCd;
-	}
-	public String getIfmmGenderName() {
-		return ifmmGenderName;
-	}
-	public void setIfmmGenderName(String ifmmGenderName) {
-		this.ifmmGenderName = ifmmGenderName;
 	}
 	public String getIfmmDob() {
 		return ifmmDob;

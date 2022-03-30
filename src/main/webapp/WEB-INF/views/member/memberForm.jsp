@@ -288,10 +288,10 @@
 						</select>
 					</td>
 				</tr>
-				<tr>
+				<tr style="height: 95px;">
 					<th style="width: 200px;" class="bg-light">ifmmDesc</th>
 					<td class="text-start">
-						<textarea id="ifmmDesc" name="ifmmDesc" class="form-control" style="font-size: small;"></textarea>
+						<textarea id="ifmmDesc" name="ifmmDesc" class="form-control" style="font-size: small; height: 78px; resize: none;"></textarea>
 					</td>
 				</tr>
 				<tr>

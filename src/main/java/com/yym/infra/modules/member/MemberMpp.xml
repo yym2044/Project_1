@@ -112,7 +112,6 @@
 			, a.ifmmName
 			, a.ifmmId
 			, a.ifmmGenderCd
-			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGenderCd) as ifmmGenderName
 			, a.ifmmDob
 			, a.ifmmFavoriteColor
 			, a.ifmmDelNy
@@ -177,7 +176,6 @@
 			, a.ifmmId
 			, a.ifmmPwd
 			, a.ifmmGenderCd
-			, (select ifcdName from infrCode where ifcdSeq = a.ifmmGenderCd) as ifmmGenderName
 			, a.ifmmDob
 			, a.ifmmFavoriteColor
 			, a.ifmmDelNy

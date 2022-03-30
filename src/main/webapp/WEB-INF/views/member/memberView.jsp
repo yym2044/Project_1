@@ -229,8 +229,6 @@
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">성별</td>
 					<td class="text-start">
-						<c:out value="${rt.ifmmGenderName}" />
-						<c:out value="${rt.ifmmGenderCd}"/>
 						<c:forEach items="${listCodeGender}" var="itemGender" varStatus="statusGender">
 							<c:if test="${rt.ifmmGenderCd eq itemGender.ifcdSeq}"><c:out value="${itemGender.ifcdName}"/></c:if>
 						</c:forEach>

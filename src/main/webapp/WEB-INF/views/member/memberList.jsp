@@ -7,7 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
-<jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl"/>	<!-- 코드서비스임플 클래스 바로 사용 -->
+<jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl" scope="page"/>	<!-- 코드서비스임플 클래스 바로 사용 -->
 
 <!DOCTYPE html>
 <html>
@@ -402,7 +402,7 @@ a {
 					<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
 
 						<input type="submit" id="btnSubmit" class="btn btn-info btn-lg text-white" value="검색">
-						<a class="btn btn-warning btn-sm text-white" href="javascript:loadCodeList;">Load</a>
+						<a class="btn btn-warning btn-sm text-white">Load</a>
 						<!-- 
 						<button class="btn btn-info btn-lg">
 							<span class="text-white">검색</span>
@@ -1082,7 +1082,10 @@ a {
 	<script type="text/javascript">
 	
 	loadCodeList = function(){
-		
+	<%-- <%
+		CodeServiceImpl.selectListForCache();
+	%> --%>
+	
 	}
 	
 	$(document).ready(function(){
@@ -1240,6 +1243,16 @@ a {
 		}
 	});
 	
+	$("#checkboxAll").on("change", function(){
+		if($("input:checked[Name='checkbox1']").is(":checked")){
+			$("#btnDelete").attr("data-bs-toggle", "modal");
+			$("#btnDelete").attr("data-bs-target", "#deleteModal");
+		} else {
+			$("#btnDelete").removeAttr("data-bs-toggle");
+			$("#btnDelete").removeAttr("data-bs-target");
+		}
+	});
+	
 	$("#btnDelete").on("click", function(){
 		if (!$("input:checked[Name='checkbox1']").is(":checked")){
 			alert("한 개 이상 선택해주세요");
@@ -1326,4 +1339,3 @@ a {
 </body>
 </html>
 
-<%-- <c:out value="${item.ifmmSeq}"/> | <c:out value="${item.ifmmId}"/> | <c:out value="${item.ifmmName}"/> | <c:out value="${item.ifmmId}"/> | <c:out value="${item.ifmmGenderName}"/> | <c:out value="${item.ifmmDob}"/> | <c:out value="${item.ifmmFavoriteColor}"/> | <c:out value="${item.ifmmDelNy}"/> <br> --%>
