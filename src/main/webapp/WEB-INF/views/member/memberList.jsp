@@ -7,7 +7,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
-<jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl" scope="page"/>	<!-- 코드서비스임플 클래스 바로 사용 -->
+<jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl" scope="page" />
+<!-- 코드서비스임플 클래스 바로 사용 -->
 
 <!DOCTYPE html>
 <html>
@@ -38,6 +39,8 @@ a {
 
 </head>
 <body>
+
+	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>	<!-- listCodeGender에 값을 담음 -->
 
 
 	<div class="container-fluid bg-light">
@@ -255,7 +258,7 @@ a {
 			<input type="hidden" id="sort" name="sort" value="${vo.sort}">
 			<input type="hidden" id="orderby" name="orderby" value="${vo.orderby}">
 			<input type="hidden" id="ifmmSeq" name="ifmmSeq">
-			<input type="hidden" name="checkboxSeqArray" >
+			<input type="hidden" name="checkboxSeqArray">
 
 			<br>
 
@@ -627,6 +630,7 @@ a {
 												<%-- <a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortRedt&orderby=bottom">가입일</a> --%>
 											</c:if>
 										</th>
+										<th>성별</th>
 										<th>관리</th>
 									</tr>
 								</thead>
@@ -654,6 +658,24 @@ a {
 											<td>
 												<fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd" />
 											</td>
+											<td>
+												<!-- 방법1 -->
+												<c:forEach items="${listCodeGender}" var="itemGender" varStatus="statusGender">
+													<c:if test="${item.ifmmGenderCd eq itemGender.ifcdSeq}"><c:out value="${itemGender.ifcdName}"/></c:if>
+												</c:forEach>
+												<!-- 방법2 -->
+											<%-- 
+												<c:choose>
+													<c:when test="${item.ifmmGenderCd eq 3}">
+														남성
+													</c:when>
+													<c:when test="${item.ifmmGenderCd eq 4}">
+														여성
+													</c:when>
+												</c:choose>
+												 --%>
+											</td>
+											
 											<td>
 												<div class="d-flex justify-content-center align-items-center">
 													<a href="#" class="btn btn-sm btn-outline-dark py-0">
@@ -1339,4 +1361,3 @@ a {
 
 </body>
 </html>
-

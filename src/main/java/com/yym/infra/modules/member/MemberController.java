@@ -59,23 +59,23 @@ public class MemberController {
 		System.out.println("UtilDateTime.nowDate : " + UtilDateTime.nowDate());
 		System.out.println("UtilDateTime.nowString() : " + UtilDateTime.nowString());
 
-		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
-		
-		vo.setShPeriod(vo.getShPeriod() == null ? 0 : vo.getShPeriod());
-		
-		if(vo.getShPeriod() == 0) {
-			vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL, 1) : vo.getShDateStart());
-			vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
-		} else if(vo.getShPeriod() == 1) {
-			vo.setShDateStart(UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL, 1));
-			vo.setShDateEnd(UtilDateTime.nowString());
-		} else if(vo.getShPeriod() == 2) {
-			vo.setShDateStart(UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), -1, 2));
-			vo.setShDateEnd(UtilDateTime.nowString());
-		} else if(vo.getShPeriod() == 3) {
-			vo.setShDateStart(UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), -1, 3));
-			vo.setShDateEnd(UtilDateTime.nowString());
-		}
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+//		
+//		vo.setShPeriod(vo.getShPeriod() == null ? 0 : vo.getShPeriod());
+//		
+//		if(vo.getShPeriod() == 0) {
+//			vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL, 1) : vo.getShDateStart());
+//			vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
+//		} else if(vo.getShPeriod() == 1) {
+//			vo.setShDateStart(UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL, 1));
+//			vo.setShDateEnd(UtilDateTime.nowString());
+//		} else if(vo.getShPeriod() == 2) {
+//			vo.setShDateStart(UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), -1, 2));
+//			vo.setShDateEnd(UtilDateTime.nowString());
+//		} else if(vo.getShPeriod() == 3) {
+//			vo.setShDateStart(UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), -1, 3));
+//			vo.setShDateEnd(UtilDateTime.nowString());
+//		}
 		
 		int count = service.selectListCount(vo);
 		
@@ -117,7 +117,7 @@ public class MemberController {
 //		model.addAttribute("rt2", rt2);
 		
 		//회원이 갖는 파생 데이터들
-		model.addAttribute("listAdressOnline", service.selectListAddressOnline(vo));
+		model.addAttribute("listAddressOnline", service.selectListAddressOnline(vo));
 		model.addAttribute("listPhone", service.selectListPhone(vo));
 		model.addAttribute("noteList", service.selectNote(vo));
 		

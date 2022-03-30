@@ -178,6 +178,32 @@
 						<c:out value="${ifmpNumberFax}"/>
 					</td>
 				</tr>
+				<tr>
+					<td style="width: 200px;" class="bg-light text-start">
+						홈페이지
+					</td>
+					<td class="text-start">
+						<c:forEach items="${listAddressOnline}" var="item" varStatus="status">
+							<c:choose>
+								<c:when test="${item.ifaoTypeCd eq 33}">
+									<c:out value="${item.ifaoUrl}"/>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+					</td>
+				</tr>		<%-- <c:choose><c:when></c:when></c:choose> 이나 <c:if></c:if>를 사용. 둘 다 가능한 듯 --%>
+				<tr>
+					<td style="width: 200px;" class="bg-light text-start">
+						SNS
+					</td>
+					<td class="text-start">
+						<c:forEach items="${listAddressOnline}" var="item" varStatus="status">
+							<c:if test="${item.ifaoTypeCd eq 34}">
+								<c:out value="${item.ifaoUrl}"/>
+							</c:if>
+						</c:forEach>
+					</td>
+				</tr>
 			</table>
 
 			<div class="text-center">
@@ -461,3 +487,5 @@
 </body>
 
 </html>
+
+
