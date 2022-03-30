@@ -1,6 +1,5 @@
 package com.yym.infra.modules.member;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +18,14 @@ public class MemberController {
 
 	@Autowired
 	MemberServiceImpl service;
+	
+	@RequestMapping(value = "/member/loginForm")
+	public String loginForm() throws Exception {
+		
+		
+		return "member/loginForm";
+	}
+	
 	
 	@RequestMapping(value = "/member/memberList")
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
