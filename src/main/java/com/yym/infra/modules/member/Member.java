@@ -54,6 +54,23 @@ public class Member {
 	private String[] ifmpNumberArray;
 	private Integer[] ifmpDelNyArray;
 	
+//	infrMemberAddressOnline
+	private String ifaoSeq;
+	private Integer ifaoTypeCd;
+	private Integer ifaoDefaultNy;
+	private Integer ifaoSnsTypeCd;
+	private String ifaoTitle;
+	private String ifaoUrl;
+	
+//	infrMemberAddressOnlineArray
+	private String[] ifaoSeqArray;
+	private Integer[] ifaoTypeCdArray;
+	private Integer[] ifaoDefaultNyArray;
+	private Integer[] ifaoSnsTypeCdArray;
+	private String[] ifaoTitleArray;
+	private String[] ifaoUrlArray;
+	
+	
 	//멤버_어드레스
 	private String ifmaZipCode;
 	private String ifmaAddress1;
@@ -442,6 +459,78 @@ public class Member {
 	}
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
+	}
+	public String getIfaoSeq() {
+		return ifaoSeq;
+	}
+	public void setIfaoSeq(String ifaoSeq) {
+		this.ifaoSeq = ifaoSeq;
+	}
+	public Integer getIfaoTypeCd() {
+		return ifaoTypeCd;
+	}
+	public void setIfaoTypeCd(Integer ifaoTypeCd) {
+		this.ifaoTypeCd = ifaoTypeCd;
+	}
+	public Integer getIfaoDefaultNy() {
+		return ifaoDefaultNy;
+	}
+	public void setIfaoDefaultNy(Integer ifaoDefaultNy) {
+		this.ifaoDefaultNy = ifaoDefaultNy;
+	}
+	public Integer getIfaoSnsTypeCd() {
+		return ifaoSnsTypeCd;
+	}
+	public void setIfaoSnsTypeCd(Integer ifaoSnsTypeCd) {
+		this.ifaoSnsTypeCd = ifaoSnsTypeCd;
+	}
+	public String getIfaoTitle() {
+		return ifaoTitle;
+	}
+	public void setIfaoTitle(String ifaoTitle) {
+		this.ifaoTitle = ifaoTitle;
+	}
+	public String getIfaoUrl() {
+		return ifaoUrl;
+	}
+	public void setIfaoUrl(String ifaoUrl) {
+		this.ifaoUrl = ifaoUrl;
+	}
+	public String[] getIfaoSeqArray() {
+		return ifaoSeqArray;
+	}
+	public void setIfaoSeqArray(String[] ifaoSeqArray) {
+		this.ifaoSeqArray = ifaoSeqArray;
+	}
+	public Integer[] getIfaoTypeCdArray() {
+		return ifaoTypeCdArray;
+	}
+	public void setIfaoTypeCdArray(Integer[] ifaoTypeCdArray) {
+		this.ifaoTypeCdArray = ifaoTypeCdArray;
+	}
+	public Integer[] getIfaoDefaultNyArray() {
+		return ifaoDefaultNyArray;
+	}
+	public void setIfaoDefaultNyArray(Integer[] ifaoDefaultNyArray) {
+		this.ifaoDefaultNyArray = ifaoDefaultNyArray;
+	}
+	public Integer[] getIfaoSnsTypeCdArray() {
+		return ifaoSnsTypeCdArray;
+	}
+	public void setIfaoSnsTypeCdArray(Integer[] ifaoSnsTypeCdArray) {
+		this.ifaoSnsTypeCdArray = ifaoSnsTypeCdArray;
+	}
+	public String[] getIfaoTitleArray() {
+		return ifaoTitleArray;
+	}
+	public void setIfaoTitleArray(String[] ifaoTitleArray) {
+		this.ifaoTitleArray = ifaoTitleArray;
+	}
+	public String[] getIfaoUrlArray() {
+		return ifaoUrlArray;
+	}
+	public void setIfaoUrlArray(String[] ifaoUrlArray) {
+		this.ifaoUrlArray = ifaoUrlArray;
 	}
 	
 }

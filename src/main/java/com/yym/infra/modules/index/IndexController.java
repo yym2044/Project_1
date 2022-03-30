@@ -11,7 +11,7 @@ public class IndexController {
 	public String indexView() throws Exception {
 		
 		
-		return "index/indexView";
+		return "/index/indexView";
 	}
 	
 }

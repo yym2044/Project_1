@@ -14,7 +14,7 @@
 <head>
 <meta charset="uTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원목록</title>
+<title>인덱스!!</title>
 <%-- <link href="${path}/resources/css/bootstrap.min.css" rel="stylesheet"/> --%>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -24,6 +24,8 @@
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet" />
 <link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+<script src="https://kit.fontawesome.com/fbbc6db919.js" crossorigin="anonymous"></script>
 
 <style type="text/css">
 th, td {
@@ -49,7 +51,9 @@ a {
 	<div class="col-12">
 		sessId : 
 	</div>
-	<button class="btn btn-outline-danger">종료</button>
+	<div class="col-2">
+		<button class="btn btn-outline-danger"><i class="bi bi-power"></i></button>
+	</div>
 </div>
 
 

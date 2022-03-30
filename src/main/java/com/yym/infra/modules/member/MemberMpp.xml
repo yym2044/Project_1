@@ -8,6 +8,20 @@
 
 	<resultMap id="resultMapObj"
 		type="com.yym.infra.modules.member.Member"></resultMap>
+		
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+			ifmmSeq
+			, ifmmId
+			, ifmmName
+			, ifmmDesc
+		FROM
+			infrMember
+		WHERE 1=1
+			AND ifmmId = #{ifmmId}
+			AND ifmmPwd = #{ifmmPwd}
+	</select>
+		
 
 	<sql id="selectListCommon">
 		FROM infrMember a
@@ -230,6 +244,21 @@
 			infrMemberPhone
 		WHERE 1=1
 			AND ifmpDelNy = 0
+			AND ifmmSeq = #{ifmmSeq}
+	</select>
+	
+	<select id="selectListAddressOnline" resultMap="resultMapObj">
+		SELECT
+			ifaoSeq
+			, ifaoDefaultNy
+			, ifaoTypeCd
+			, ifaoSnsTypeCd
+			, ifaoUrl
+			, ifaoTitle
+		FROM
+			infrMemberAddressOnline
+		WHERE 1=1
+			AND ifaoDelNy = 0
 			AND ifmmSeq = #{ifmmSeq}
 	</select>
 	

@@ -86,7 +86,7 @@
 										class="bi bi-person-circle text-secondary"></i>
 								</label>
 								</span> -->
-							<input type="text" class="form-control" id="Username" placeholder="아이디" aria-label="Username"
+							<input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="아이디" aria-label="Username"
 								aria-describedby="userIcon">
 						</div>
 
@@ -95,13 +95,13 @@
 										class="bi bi-file-lock2-fill text-secondary"></i>
 								</label>
 								</span> -->
-							<input type="password" class="form-control" id="Password" placeholder="비밀번호" aria-label="Password"
+							<input type="password" class="form-control" id="ifmmPwd" name="ifmmPwd" placeholder="비밀번호" aria-label="Password"
 								aria-describedby="passwordIcon">
 						</div>
 
 					</div>
 					<div class="col-4 mt-4">
-						<button class="btn btn-outline-dark container3" style="width: 100%; height: 100%; border-radius: 10px;">
+						<button id="btnLogin" name="btnLogin" class="btn btn-outline-dark container3" style="width: 100%; height: 100%; border-radius: 10px;">
 							<span class="fw-bold">로그인</span>
 						</button>
 					</div>
@@ -367,6 +367,34 @@
 <br>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+	
+	$("#btnLogin").on("click", function(){
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/infra/member/loginProc"
+			,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/infra/index/indexView";
+				} else {
+					alert("회원없음");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+		
+	});
+
+
+</script>
 
 <script type="text/javascript">
 	function selectAll1(selectAll1) {

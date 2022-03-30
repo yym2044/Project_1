@@ -16,6 +16,8 @@ public class MemberDao {
 	
 	private static String namespace = "com.yym.infra.modules.member.MemberMpp";
 
+	public Member selectOneLogin(Member dto) {return sqlSession.selectOne(namespace + ".selectOneLogin", dto); }
+	
 	public int selectListCount(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectListCount", vo); }
 	public List<Member> selectListAllMember() {return sqlSession.selectList(namespace + ".selectListAllMember", "");}
 	
@@ -50,6 +52,7 @@ public class MemberDao {
 	
 	public Member selectOne(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOne", vo);}
 	public List<Member> selectListPhone(MemberVo vo) {return sqlSession.selectList(namespace + ".selectListPhone", vo);}
+	public List<Member> selectListAddressOnline(MemberVo vo) {return sqlSession.selectList(namespace + ".selectListAddressOnline", vo); }
 //	public Member selectOnePhoneMobile(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOnePhoneMobile", vo);}
 //	public Member selectOnePhoneHome(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectOnePhoneHome", vo);}
 	

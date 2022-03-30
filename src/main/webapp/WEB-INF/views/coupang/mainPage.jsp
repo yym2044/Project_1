@@ -26,8 +26,7 @@
 <body>
 
 	<div class="container-fluid">
-
-
+		
 		<div class="row bg-light">
 			<div class="col">
 				<ul class="nav">

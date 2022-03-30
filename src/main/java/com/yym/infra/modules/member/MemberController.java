@@ -1,12 +1,17 @@
 package com.yym.infra.modules.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.yym.infra.common.constants.Constants;
@@ -19,11 +24,30 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
-	@RequestMapping(value = "/member/loginForm")
+	@RequestMapping(value = "member/loginForm")
 	public String loginForm() throws Exception {
 		
 		
 		return "member/loginForm";
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/member/loginProc")
+	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Member rtMember = service.selectOneLogin(dto);
+
+		if(rtMember != null) {
+//			rtMember = service.selectOneLogin(dto);
+			
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
 	}
 	
 	
@@ -92,6 +116,8 @@ public class MemberController {
 //		model.addAttribute("rt1", rt1);
 //		model.addAttribute("rt2", rt2);
 		
+		//회원이 갖는 파생 데이터들
+		model.addAttribute("listAdressOnline", service.selectListAddressOnline(vo));
 		model.addAttribute("listPhone", service.selectListPhone(vo));
 		model.addAttribute("noteList", service.selectNote(vo));
 		
@@ -169,8 +195,6 @@ public class MemberController {
 	public String memberEditForm(Model model,@ModelAttribute("vo") MemberVo vo) throws Exception {
 		
 		Member rt = service.selectOne(vo);
-		List<Member> listPhone = service.selectListPhone(vo);
-		model.addAttribute("listPhone", listPhone);
 //		Member rt1 = service.selectOnePhoneMobile(vo);
 //		Member rt2 = service.selectOnePhoneHome(vo);
 				
@@ -185,7 +209,9 @@ public class MemberController {
 		
 		//국적 리스트
 		model.addAttribute("listNation", service.selectListNation());
-		
+		//회원이 갖는 파생 데이터들
+		model.addAttribute("listPhone", service.selectListPhone(vo));
+		model.addAttribute("listAddressOnline", service.selectListAddressOnline(vo));
 		return "member/memberEditForm";
 	}
 	

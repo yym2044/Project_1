@@ -14,6 +14,11 @@ public class MemberServiceImpl implements MemberService{
 	MemberDao dao;
 	
 	@Override
+	public Member selectOneLogin(Member dto) throws Exception {
+		return dao.selectOneLogin(dto);
+	}
+	
+	@Override
 	public int selectListCount(MemberVo vo) throws Exception {
 		return dao.selectListCount(vo);
 	}
@@ -91,6 +96,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public List<Member> selectListPhone(MemberVo vo) throws Exception {
 		return dao.selectListPhone(vo);
+	}
+	
+	@Override
+	public List<Member> selectListAddressOnline(MemberVo vo) throws Exception {
+		return dao.selectListAddressOnline(vo);
 	}
 //	@Override
 //	public Member selectOnePhoneMobile(MemberVo vo) throws Exception {

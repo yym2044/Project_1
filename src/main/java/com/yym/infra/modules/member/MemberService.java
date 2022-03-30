@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface MemberService {
 	
+	public Member selectOneLogin(Member dto) throws Exception;
+	
 	public int selectListCount(MemberVo vo) throws Exception;
 	public List<Member> selectListAllMember() throws Exception;
 	public List<Member> selectList(MemberVo vo) throws Exception; 
@@ -24,6 +26,7 @@ public interface MemberService {
 	
 	public Member selectOne(MemberVo vo) throws Exception;
 	public List<Member> selectListPhone(MemberVo vo) throws Exception;
+	public List<Member> selectListAddressOnline(MemberVo vo) throws Exception;
 //	public Member selectOnePhoneMobile(MemberVo vo) throws Exception;
 //	public Member selectOnePhoneHome(MemberVo vo) throws Exception;
 	
