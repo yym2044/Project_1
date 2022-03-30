@@ -620,7 +620,7 @@
 	DELETE FROM
 		infrMemberNote
 	WHERE 1=1
-		AND ifntOrder = #{checkboxMemo}
+		AND ifntOrder = #{ifntOrder}
 		AND ifmmSeq = #{ifmmSeq}
 	</delete>
 	<!-- 메모 삭제 e -->

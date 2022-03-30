@@ -23,8 +23,10 @@ public class MemberVo {
 	private Integer shIfmmPushConsentNy;
 	
 	//체크박스
-	private Integer checkboxMemo;
 	private String[] checkboxSeqArray;
+	private String[] checkboxNoteArray;
+	
+	private String ifntOrder;
 	
 //	정렬
 	private String sort;
@@ -233,12 +235,6 @@ public class MemberVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
-	public Integer getCheckboxMemo() {
-		return checkboxMemo;
-	}
-	public void setCheckboxMemo(Integer checkboxMemo) {
-		this.checkboxMemo = checkboxMemo;
-	}
 	public Integer getShOptionDate() {
 		return shOptionDate;
 	}
@@ -268,6 +264,18 @@ public class MemberVo {
 	}
 	public void setCheckboxSeqArray(String[] checkboxSeqArray) {
 		this.checkboxSeqArray = checkboxSeqArray;
+	}
+	public String[] getCheckboxNoteArray() {
+		return checkboxNoteArray;
+	}
+	public void setCheckboxNoteArray(String[] checkboxNoteArray) {
+		this.checkboxNoteArray = checkboxNoteArray;
+	}
+	public String getIfntOrder() {
+		return ifntOrder;
+	}
+	public void setIfntOrder(String ifntOrder) {
+		this.ifntOrder = ifntOrder;
 	}
 	
 }

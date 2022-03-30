@@ -58,6 +58,7 @@
 		<input type="hidden" id="shOptionDate" name="shOptionDate" value="<c:out value="${vo.shOptionDate}"/>">
 		<input type="hidden" id="shDateStart" name="shDateStart" value="<c:out value="${vo.shDateStart}"/>">
 		<input type="hidden" id="shDateEnd" name="shDateEnd" value="<c:out value="${vo.shDateEnd}"/>">
+		<input type="hidden" id="checkboxNoteArray" name="checkboxNoteArray">
 
 		<div class="container-fluid">
 			<div class="row bg-dark mb-2" style="height: 42px;">
@@ -294,7 +295,7 @@
 						<table class="table table-hover table-sm border border-1 box-white" style="min-width: 700px; border-collapse: collapse;">
 							<thead>
 								<tr>
-									<th style="width: 50px;"><input type="checkbox" class="form-check-input" onclick="selectAllMemo(this)" id="" name="checkboxMemo"></th>
+									<th style="width: 50px;"><input type="checkbox" class="form-check-input" id="checkboxNoteAll" name="" value=""></th>
 									<th style="width: 100px;">번호</th>
 									<th>내용</th>
 									<th style="width: 200px;">작성일</th>
@@ -304,7 +305,7 @@
 							<tbody>
 								<c:forEach items="${noteList}" var="item" varStatus="status">
 									<tr>
-										<td style="width: 50px;"><input type="checkbox" class="form-check-input" id="" name="checkboxMemo" value="<c:out value="${item.ifntOrder}"/>"></td>
+										<td style="width: 50px;"><input type="checkbox" class="form-check-input" id="" name="checkboxNote" value="<c:out value="${item.ifntOrder}"/>"></td>
 										<td style="width: 100px;">
 											<c:out value="${item.ifntOrder}" />
 										</td>
@@ -351,13 +352,13 @@
 			var cell3 = row.insertCell(2);
 			var cell4 = row.insertCell(3);
 			cell1.innerHTML = count;
-			cell2.innerHTML = document.getElementById("inputMemo").value;
+			cell2.innerHTML = document.getElementById("inputNote").value;
 			cell3.innerHTML = new Date().toLocaleString();
 			cell4.innerHTML = 'Master';
 
 			count += 1;
 
-			var input = document.getElementById('inputMemo');
+			var input = document.getElementById('inputNote');
 			input.value = null;
 		}
 
@@ -370,16 +371,29 @@
 		}
 	</script> -->
 	
+	
+	<!-- 체크박스 전체선택 -->
 	<script type="text/javascript">
-	function selectAllMemo(selectAllMemo) {
-		const checkboxes 
-			= document.getElementsByName("checkboxMemo");
+	$("#checkboxNoteAll").click(function(){
+		if($(this).is(":checked")){
+			$("input[name=checkboxNote]").prop("checked", true);
+		} else {
+			$("input[name=checkboxNote]").prop("checked", false);
+		}
+	});
+	
+	$("input[name=checkboxNote]").click(function(){
+		var total = $("input[name=checkboxNote]").length;
+		var checked = $("input[name=checkboxNote]:checked").length;
 		
-		checkboxes.forEach((checkbox) => {
-			checkbox.checked = selectAllMemo.checked;
-		})
-	}
+		if(total != checked){
+			$("#checkboxNoteAll").prop("checked", false);
+		} else {
+			$("#checkboxNoteAll").prop("checked", true);
+		}
+	});
 	</script>
+	
 
 	<script type="text/javascript">
 	
@@ -396,25 +410,36 @@
 		addNote = function() {
 			$("#formView").attr("action", "/infra/member/memberNoteInst");
 			$("#formView").submit();
-			
-			alert("메모 등록 완료.");
 		}
 		
 		deleteNote = function() {
+			
+			
 			$("#formView").attr("action", "/infra/member/memberNoteDele");
 			$("#formView").submit();
 		}
 		
-		$("input:checkbox[Name='checkboxMemo']").on("change", function(){
+		/* $("input:checkbox[Name='checkboxNote']").on("change", function(){
 			alert($(this).val() + "번 메모");
-		});
+		}); */
 		
 		$("#btnDelete").on("click", function(){
-			if (!$("input:checked[Name='checkboxMemo']").is(":checked")){
+			
+			var checkboxNoteArray = [];
+			
+			$("input[name=checkboxNote]:checked").each(function(){
+				checkboxNoteArray.push($(this).val());
+			});
+			
+			$("input:hidden[name=checkboxNoteArray]").val(checkboxNoteArray);
+			
+			var numberString = $("input:hidden[name=checkboxNoteArray]").val();
+			
+			if (!$("input:checked[Name='checkboxNote']").is(":checked")){
 				alert("한 개 이상 선택해주세요");
 				return false;
 			} else {
-				var delConfirm = confirm($("input:checked[Name='checkboxMemo']").val() + "번 메모를 삭제할까요?");
+				var delConfirm = confirm(numberString + "번 메모를 삭제할까요?");
 				if(delConfirm){
 					var delConfirm2 = confirm("삭제하면 복구할 수 없습니다. 정말로 삭제할까요?");
 					

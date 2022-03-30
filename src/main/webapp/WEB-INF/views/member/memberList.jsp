@@ -576,12 +576,13 @@ a {
 											<input type="checkbox" id="checkboxAll" name="" class="form-check-input">
 										</th>
 										<th>
-											<c:if test="${vo.orderby eq 'bottom' or vo.sort ne 'sortNo'}">
-												<a href="javascript:sortAsc('sortNo')">번호</a>
+											<!-- sortNo만 조건 살짝 다름(처음에 누르면 내림차순 먼저 되도록) -->
+											<c:if test="${vo.orderby eq 'top' or vo.sort ne 'sortNo'}">
+												<a href="javascript:sortDesc('sortNo')">번호</a>
 												<%-- <a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=top&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>">번호</a> --%>
 											</c:if>
-											<c:if test="${vo.orderby eq 'top' and vo.sort eq 'sortNo'}">
-												<a href="javascript:sortDesc('sortNo')">번호</a>
+											<c:if test="${vo.orderby eq 'bottom' and vo.sort eq 'sortNo'}">
+												<a href="javascript:sortAsc('sortNo')">번호</a>
 												<%-- <a href="/infra/member/memberList?rowNumToShow=${vo.rowNumToShow}&sort=sortNo&orderby=bottom&shIfmmGrade=<c:out value="${vo.shIfmmGrade}"/>&shIfmmEmailConsentNy=<c:out value="${vo.shIfmmEmailConsentNy}"/>&shIfmmSmsConsentNy=<c:out value="${vo.shIfmmSmsConsentNy}"/>&shIfmmPushConsentNy=<c:out value="${vo.shIfmmPushConsentNy}"/>&shIfscSeq=<c:out value="${vo.shIfscSeq}"/>&searchBar=<c:out value="${vo.searchBar}"/>&thisPage=<c:out value="${vo.thisPage}"/>">번호</a> --%>
 											</c:if>
 										</th>

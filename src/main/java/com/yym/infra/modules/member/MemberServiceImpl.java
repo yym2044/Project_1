@@ -202,8 +202,13 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int deleteMemberNote(MemberVo vo) throws Exception {
 		
-		dao.deleteMemberNote(vo);
-//		dao.ifntOrder0();
+		String[] checkboxNoteArray = vo.getCheckboxNoteArray();
+		
+		for(String checkboxNote : checkboxNoteArray) {
+			vo.setIfntOrder(checkboxNote);
+			dao.deleteMemberNote(vo);
+		}
+		
 		dao.rearrangementNote(vo);
 		
 		return 1;
