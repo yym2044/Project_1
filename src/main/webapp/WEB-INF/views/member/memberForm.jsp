@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="path" value="${pageContext.request.contextPath}" />
+
 <!-- 추가 -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -10,10 +10,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<link href="${path}/resources/css/style.css" rel="stylesheet" />
+<link href="${path}/resources/css/style.css" rel="stylesheet">
+<link href="/infra/resources/css/style.css" rel="stylesheet">
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet" />
 <link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -31,6 +32,12 @@
 </head>
 <body>
 
+<div class="cc-selector">
+	<input id="visa" type="radio" name="credit-card" value="visa" />
+	<label class="drinkcard-cc visa" for="visa"></label>
+	<input id="mastercard" type="radio" name="credit-card" value="mastercard" />
+	<label class="drinkcard-cc mastercard"for="mastercard"></label>
+</div>
 
 
 	<form id="formForm" method="post" action="/infra/member/memberInst">
@@ -232,7 +239,10 @@
 				<tr>
 					<th style="width: 200px;" class="bg-light">홈페이지</th>
 					<td class="text-start">
-						
+						<input type="hidden" id="ifaoTypeCdArray1_0" name="ifaoTypeCdArray1" value="33">
+						<input type="hidden" id="ifaoSnsTypeCdArray1_0" name="ifaoSnsTypeCdArray1" value="">
+						<input type="hidden" id="ifaoTitleArray1_0" name="ifaoTitleArray1" value="">
+						<input type="radio" name="ifaoDefaultNyArray1" value="1" checked><input type="text" id="ifaoUrlArray1_0" name="ifaoUrlArray1">
 					</td>
 					<th style="width: 200px;" class="bg-light">SNS</th>
 					<td class="text-start">
