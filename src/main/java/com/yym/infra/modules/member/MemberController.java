@@ -46,7 +46,14 @@ public class MemberController {
 			httpSession.setAttribute("sessName", rtMember.getIfmmName());
 			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
 			
-			returnMap.put("rt", "success");
+			if(rtMember.getIfmmAdminNy() == 0) {
+				returnMap.put("rt", "successGoMain");
+			} else if(rtMember.getIfmmAdminNy() == 1) {
+				returnMap.put("rt", "successGoIndex");
+			} else {
+				returnMap.put("rt", "fail");
+			}
+			
 		} else {
 			returnMap.put("rt", "fail");
 		}

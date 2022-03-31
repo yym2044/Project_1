@@ -371,27 +371,29 @@
 
 <script type="text/javascript">
 	
-	$("#btnLogin").on("click", function(){
-		
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/infra/member/loginProc"
-			,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
-			,success: function(response) {
-				if(response.rt == "success") {
-					location.href = "/infra/index/indexView";
-				} else {
-					alert("로그인 실패");
-				}
+$("#btnLogin").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/infra/member/loginProc"
+		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
+		,success: function(response) {
+			if(response.rt == "successGoIndex") {
+				location.href = "/infra/index/indexView";
+			} else if(response.rt == "successGoMain") {
+				location.href = "/infra/coupang/mainPage";
+			} else {
+				alert("로그인 실패");
 			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-		
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
 	});
+	
+});
 	
 	//엔터키 쳤을 때 로그인 하는 방법 (input id칸이랑 pwd칸에 [onkeyup="enterkey();"] 추가)
 	function enterkey() {
@@ -404,8 +406,10 @@
     			,url: "/infra/member/loginProc"
     			,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
     			,success: function(response) {
-    				if(response.rt == "success") {
+    				if(response.rt == "successGoIndex") {
     					location.href = "/infra/index/indexView";
+    				} else if(response.rt == "successGoMain") {
+    					location.href = "/infra/coupang/mainPage";
     				} else {
     					alert("로그인 실패");
     				}

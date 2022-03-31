@@ -42,8 +42,17 @@
 			</div>
 			<div class="col d-flex justify-content-end">
 				<ul class="nav">
-					<li class="nav-item"><a class="nav-link link-dark" href="/infra/member/loginForm">로그인</a></li>
-					<li class="nav-item"><a class="nav-link link-dark" href="./regForm1.html">회원가입</a></li>
+					<li class="nav-item">
+						<c:choose>
+							<c:when test="${empty sessSeq}">
+								<a class="nav-link link-dark" href="/infra/member/loginForm">로그인</a>
+							</c:when>
+							<c:otherwise>
+								<a class="nav-link link-dark" href="javascript:logOut()">로그아웃</a>
+							</c:otherwise>
+						</c:choose>
+					</li>
+					<li class="nav-item"><a class="nav-link link-dark" href="/infra/member/regForm1">회원가입</a></li>
 					<li class="nav-item"><a class="nav-link link-dark" href="#">고객센터</a></li>
 				</ul>
 			</div>
@@ -498,5 +507,34 @@
 
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	
+	
+	<script type="text/javascript">
+		
+		logOut = function(){
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/infra/member/logOutProc"
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/infra/coupang/mainPage";
+					} else {
+						alert("로그아웃 실패");
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+			
+			alert("로그아웃 완료");
+			
+		}
+	
+	</script>
 </body>
 </html>
