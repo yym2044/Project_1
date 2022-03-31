@@ -4,17 +4,16 @@
 
 <!-- 추가 -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<c:set var="path" value="${pageContext.request.contextPath}" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<link href="${path}/resources/css/style.css" rel="stylesheet">
-<link href="/infra/resources/css/style.css" rel="stylesheet">
+<link href="${path}/resources/css/style.css?after" rel="stylesheet">
 <link href="${path}/resources/css/sidebars.css" rel="stylesheet" />
 <link href="${path}/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -31,14 +30,14 @@
 
 </head>
 <body>
-
-<div class="cc-selector">
-	<input id="visa" type="radio" name="credit-card" value="visa" />
-	<label class="drinkcard-cc visa" for="visa"></label>
-	<input id="mastercard" type="radio" name="credit-card" value="mastercard" />
-	<label class="drinkcard-cc mastercard"for="mastercard"></label>
-</div>
-
+	<!-- 
+	<div class="cc-selector">
+		<input id="visa" type="radio" name="credit-card" value="visa" />
+		<label class="drinkcard-cc visa" for="visa"></label>
+		<input id="mastercard" type="radio" name="credit-card" value="mastercard" />
+		<label class="drinkcard-cc mastercard"for="mastercard"></label>
+	</div>
+	 -->
 
 	<form id="formForm" method="post" action="/infra/member/memberInst">
 	
@@ -242,11 +241,16 @@
 						<input type="hidden" id="ifaoTypeCdArray1_0" name="ifaoTypeCdArray1" value="33">
 						<input type="hidden" id="ifaoSnsTypeCdArray1_0" name="ifaoSnsTypeCdArray1" value="">
 						<input type="hidden" id="ifaoTitleArray1_0" name="ifaoTitleArray1" value="">
-						<input type="radio" name="ifaoDefaultNyArray1" value="1" checked><input type="text" id="ifaoUrlArray1_0" name="ifaoUrlArray1">
+						<input type="radio" id="ifaoDefaultNyArray1_0" name="ifaoDefaultNyArray1" value="1" checked>
+						<input type="text" class="form-control" id="ifaoUrlArray1_0" name="ifaoUrlArray1" placeholder="https://">
 					</td>
 					<th style="width: 200px;" class="bg-light">SNS</th>
 					<td class="text-start">
-						
+						<input type="hidden" id="ifaoTypeCdArray2_0" name="ifaoTypeCdArray2" value="34">
+						<input type="hidden" id="ifaoSnsTypeCdArray2_0" name="ifaoSnsTypeCdArray2" value="">
+						<input type="hidden" id="ifaoTitleArray2_0" name="ifaoTitleArray2" value="">
+						<input type="radio" id="ifaoDefaultNyArray2_0" name="ifaoDefaultNyArray2" value="1" checked>
+						<input type="text" class="form-control" id="ifaoUrlArray2_0" name="ifaoUrlArray2" placeholder="SNS주소">
 					</td>
 				</tr>
 			</table>
@@ -483,6 +487,10 @@
 
 	<script type="text/javascript">
 	
+	$(document).ready(function(){
+		$("#ifaoDefaultNyArray1_0").hide();
+		$("#ifaoDefaultNyArray2_0").hide();
+	});
 	
 	$(document).ready(function(){
 		$("#ifmmDob").datepicker();
