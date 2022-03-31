@@ -59,6 +59,7 @@
 		<input type="hidden" id="shDateStart" name="shDateStart" value="<c:out value="${vo.shDateStart}"/>">
 		<input type="hidden" id="shDateEnd" name="shDateEnd" value="<c:out value="${vo.shDateEnd}"/>">
 		<input type="hidden" id="checkboxNoteArray" name="checkboxNoteArray">
+		<input type="hidden" id="ifntWriterCd" name="ifntWriterCd" value="${sessSeq}">
 
 		<div class="container-fluid">
 			<div class="row bg-dark mb-2" style="height: 42px;">

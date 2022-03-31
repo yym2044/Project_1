@@ -9,6 +9,7 @@ public class Member {
 	private String ifscName;
 	//멤버
 	private String ifmmSeq;
+	private Integer ifmmAdminNy;
 	private String ifmmId;
 	private String ifmmPwd;
 	private String ifmmName;
@@ -89,6 +90,7 @@ public class Member {
 	private String ifntOrder;
 	private String ifntContent;
 	private String ifntWriter;
+	private String ifntWriterCd;
 	
 	//국적
 	private String ifnaSeq;
@@ -563,6 +565,18 @@ public class Member {
 	}
 	public void setIfaoUrlArray2(String[] ifaoUrlArray2) {
 		this.ifaoUrlArray2 = ifaoUrlArray2;
+	}
+	public String getIfntWriterCd() {
+		return ifntWriterCd;
+	}
+	public void setIfntWriterCd(String ifntWriterCd) {
+		this.ifntWriterCd = ifntWriterCd;
+	}
+	public Integer getIfmmAdminNy() {
+		return ifmmAdminNy;
+	}
+	public void setIfmmAdminNy(Integer ifmmAdminNy) {
+		this.ifmmAdminNy = ifmmAdminNy;
 	}
 	
 }

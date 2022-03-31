@@ -22,12 +22,14 @@
 <input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 <input type="hidden" id="ifcgSeq" name="ifcgSeq">
 
+<c:out value="${sessSeq}"/>
+<c:out value="${sessId}"/>
+<c:out value="${sessName}"/>
 <select name="shIfcgDelNy" id="shIfcgDelNy">
 	<option value="">::삭제여부::</option>
 	<option value="2" <c:if test="${vo.shIfcgDelNy eq 2}">selected</c:if>>Y</option>
 	<option value="1" <c:if test="${vo.shIfcgDelNy eq 1}">selected</c:if>>N</option>
 </select>
-
 그룹이름 : <input type="text" name="shIfcgName" id="shIfcgName" value="${vo.shIfcgName}">
 ||
 <select name="shOption" id="shOption">

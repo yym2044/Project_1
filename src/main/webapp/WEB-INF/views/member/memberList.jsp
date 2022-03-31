@@ -65,13 +65,16 @@ a {
 			</div>
 			<div class="col-4 col-md-1 mb-2 d-md-block d-none">
 				<div class="row dropdown">
-					<a href="#" class="link-dark text-decoration-none dropdown-toggle ps-0" data-bs-toggle="dropdown"> Yun (CEO) </a>
+					<a href="#" class="link-dark text-decoration-none dropdown-toggle ps-0" data-bs-toggle="dropdown"> <c:choose><c:when test="${not empty sessSeq}"><c:out value="${sessId}"/></c:when><c:otherwise>로그인 정보 없음</c:otherwise></c:choose> </a>
 					<ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+						<li><a class="dropdown-item" href="javascript:logOut();">Sign out</a></li>
+						<!-- 
 						<li><a class="dropdown-item" href="#">New project...</a></li>
 						<li><a class="dropdown-item" href="#">Settings</a></li>
 						<li><a class="dropdown-item" href="#">Profile</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><a class="dropdown-item" href="#">Sign out</a></li>
+						 -->
 					</ul>
 				</div>
 				<div class="row">Administrator</div>
@@ -1061,7 +1064,26 @@ a {
 
 	<script type="text/javascript">
 	
-	
+	logOut = function(){
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/infra/member/logOutProc"
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/infra/member/loginForm";
+				} else {
+					alert("로그아웃 실패");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+		
+	}
 	
 	$("#checkboxAll").click(function(){
 		if($("#checkboxAll").is(":checked")){

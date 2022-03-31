@@ -43,18 +43,24 @@ a {
 
 <div class="row">
 	<div class="col-12">
-		sessSeq : 
+		sessSeq : <c:out value="${sessSeq}"/>
 	</div>
 	<div class="col-12">
-		sessName : 
+		sessId : <c:out value="${sessId}"/> 
 	</div>
 	<div class="col-12">
-		sessId : 
+		sessName : <c:out value="${sessName}"/>
 	</div>
 	<div class="col-2">
-		<button class="btn btn-outline-danger"><i class="bi bi-power"></i></button>
+		<c:if test="${not empty sessSeq}">
+			<button id="btnLogOut" name="btnLogOut" class="btn btn-outline-danger"><i class="bi bi-power"></i></button>
+		</c:if>
 	</div>
 </div>
+
+<c:if test="${sessAdminNy eq 1}">
+	<a class="btn btn-outline-success" href="/infra/member/memberList">회원관리</a>
+</c:if>
 
 
 
@@ -133,6 +139,27 @@ a {
 
 	<script type="text/javascript">
 	
+	$("#btnLogOut").click(function(){
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/infra/member/logOutProc"
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/infra/member/loginForm";
+				} else {
+					alert("로그아웃 실패");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+		
+	});
+		
 	
 	
 	$("#checkboxAll").click(function(){

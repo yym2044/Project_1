@@ -12,6 +12,7 @@
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
 			ifmmSeq
+			, ifmmAdminNy
 			, ifmmId
 			, ifmmName
 			, ifmmDesc
@@ -511,7 +512,7 @@
 			#{ifmmSeq}
 			, (SELECT ifnull(max(a.ifntOrder),0) + 1 FROM infrMemberNote a WHERE a.ifmmSeq = #{ifmmSeq})
 			, #{ifntContent}
-			, 1
+			, #{ifntWriterCd}
             , 1
             , 0
             <include refid="insertRegModValue"/>

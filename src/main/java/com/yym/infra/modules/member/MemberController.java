@@ -40,7 +40,11 @@ public class MemberController {
 		Member rtMember = service.selectOneLogin(dto);
 
 		if(rtMember != null) {
-//			rtMember = service.selectOneLogin(dto);
+			
+			httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
+			httpSession.setAttribute("sessId", rtMember.getIfmmId());
+			httpSession.setAttribute("sessName", rtMember.getIfmmName());
+			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
 			
 			returnMap.put("rt", "success");
 		} else {
@@ -48,8 +52,18 @@ public class MemberController {
 		}
 		return returnMap;
 	}
-	
-	
+
+	@ResponseBody
+	@RequestMapping(value = "/member/logOutProc")
+	public Map<String, Object> logOutProc(HttpSession httpSession) throws Exception {
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		
+		return returnMap;
+	}
+ 	
 	@RequestMapping(value = "/member/memberList")
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 	public String memberList(Model model, @ModelAttribute("vo") MemberVo vo) throws Exception {

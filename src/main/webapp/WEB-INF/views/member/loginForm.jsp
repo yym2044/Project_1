@@ -86,7 +86,7 @@
 										class="bi bi-person-circle text-secondary"></i>
 								</label>
 								</span> -->
-							<input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="아이디" aria-label="Username"
+							<input type="text" class="form-control" onkeyup="enterkey();" id="ifmmId" name="ifmmId" placeholder="아이디" autocomplete="on" aria-label="Username"
 								aria-describedby="userIcon">
 						</div>
 
@@ -95,7 +95,7 @@
 										class="bi bi-file-lock2-fill text-secondary"></i>
 								</label>
 								</span> -->
-							<input type="password" class="form-control" id="ifmmPwd" name="ifmmPwd" placeholder="비밀번호" aria-label="Password"
+							<input type="password" class="form-control" onkeyup="enterkey();" id="ifmmPwd" name="ifmmPwd" placeholder="비밀번호" aria-label="Password"
 								aria-describedby="passwordIcon">
 						</div>
 
@@ -392,6 +392,34 @@
 		});
 		
 	});
+	
+	//엔터키 쳤을 때 로그인 하는 방법 (input id칸이랑 pwd칸에 [onkeyup="enterkey();"] 추가)
+	function enterkey() {
+        if (window.event.keyCode == 13) {
+ 				
+        	$.ajax({
+    			async: true 
+    			,cache: false
+    			,type: "post"
+    			,url: "/infra/member/loginProc"
+    			,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
+    			,success: function(response) {
+    				if(response.rt == "success") {
+    					location.href = "/infra/index/indexView";
+    				} else {
+    					alert("회원없음");
+    				}
+    			}
+    			,error : function(jqXHR, textStatus, errorThrown){
+    				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+    			}
+    		});
+        	
+             
+        	}
+		}
+
+
 
 
 </script>
