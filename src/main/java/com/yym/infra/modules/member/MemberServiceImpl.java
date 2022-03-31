@@ -72,6 +72,26 @@ public class MemberServiceImpl implements MemberService{
 			dao.insertPhone(dto);
 		}
 		
+		//홈페이지
+		for(int i=0; i<dto.getIfaoUrlArray1().length; i++) {
+			dto.setIfaoDefaultNy(dto.getIfaoDefaultNyArray1()[i]);
+			dto.setIfaoTypeCd(dto.getIfaoTypeCdArray1()[i]);
+			dto.setIfaoSnsTypeCd(dto.getIfaoSnsTypeCdArray1()[i]);
+			dto.setIfaoTitle(dto.getIfaoTitleArray1()[i]);
+			dto.setIfaoUrl(dto.getIfaoUrlArray1()[i]);
+			
+			dao.insertAddressOnline(dto);
+		}
+		//SNS
+		for(int i=0; i<dto.getIfaoUrlArray2().length; i++) {
+			dto.setIfaoDefaultNy(dto.getIfaoDefaultNyArray2()[i]);
+			dto.setIfaoTypeCd(dto.getIfaoTypeCdArray2()[i]);
+			dto.setIfaoSnsTypeCd(dto.getIfaoSnsTypeCdArray2()[i]);
+			dto.setIfaoTitle(dto.getIfaoTitleArray2()[i]);
+			dto.setIfaoUrl(dto.getIfaoUrlArray2()[i]);
+			
+			dao.insertAddressOnline(dto);
+		}
 		
 		
 		dao.insertMemberNationality(dto);

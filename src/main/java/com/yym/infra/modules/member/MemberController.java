@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.yym.infra.common.constants.Constants;
 import com.yym.infra.common.util.UtilDateTime;
 import com.yym.infra.modules.code.CodeServiceImpl;
 

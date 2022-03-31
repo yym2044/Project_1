@@ -420,7 +420,29 @@
 				<include refid="insertRegModValue"/>
 				, #{ifmmSeq}
 			)
+	</insert>
 	
+	<insert id="insertAddressOnline">
+		INSERT INTO
+			infrMemberAddressOnline (
+				ifaoDefaultNy
+				, ifaoTypeCd
+				, ifaoSnsTypeCd
+				, ifaoTitle
+				, ifaoUrl
+				, ifaoDelNy
+				<include refid="insertRegMod"/>
+				, ifmmSeq
+			) VALUES (
+				#{ifaoDefaultNy}
+				, #{ifaoTypeCd}
+				, #{ifaoSnsTypeCd}
+				, #{ifaoTitle}
+				, #{ifaoUrl}
+				, #{ifaoDelNy}
+				<include refid="insertRegModValue"/>
+				, #{ifmmSeq}
+			)
 	</insert>
 	
 	<!-- <insert id="insertMemberPhoneMobile">
