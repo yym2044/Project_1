@@ -42,7 +42,7 @@
 			</div>
 			<div class="col d-flex justify-content-end">
 				<ul class="nav">
-					<li class="nav-item"><a class="nav-link link-dark" href="./loginWeb2.html">로그인</a></li>
+					<li class="nav-item"><a class="nav-link link-dark" href="/infra/member/loginForm">로그인</a></li>
 					<li class="nav-item"><a class="nav-link link-dark" href="./regForm1.html">회원가입</a></li>
 					<li class="nav-item"><a class="nav-link link-dark" href="#">고객센터</a></li>
 				</ul>

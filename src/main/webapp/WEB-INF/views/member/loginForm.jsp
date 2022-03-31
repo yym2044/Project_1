@@ -383,7 +383,7 @@
 				if(response.rt == "success") {
 					location.href = "/infra/index/indexView";
 				} else {
-					alert("회원없음");
+					alert("로그인 실패");
 				}
 			}
 			,error : function(jqXHR, textStatus, errorThrown){
@@ -407,7 +407,7 @@
     				if(response.rt == "success") {
     					location.href = "/infra/index/indexView";
     				} else {
-    					alert("회원없음");
+    					alert("로그인 실패");
     				}
     			}
     			,error : function(jqXHR, textStatus, errorThrown){
