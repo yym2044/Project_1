@@ -101,7 +101,7 @@ public class MemberVo {
 		System.out.println("getStartRnumForMysql(): " + startRnumForMysql);
 		
 	}
-//------------
+//------------ 
 	public String getIfmmSeq() {
 		return ifmmSeq;
 	}

@@ -668,7 +668,7 @@ a {
 												</c:forEach>
 												<!-- 방법2 -->
 											<%-- 
-												<c:choose>
+												<c:choose> 
 													<c:when test="${item.ifmmGenderCd eq 3}">
 														남성
 													</c:when>

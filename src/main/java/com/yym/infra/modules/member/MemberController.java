@@ -102,7 +102,7 @@ public class MemberController {
 		
 		String count2 = String.valueOf(count);
 		
-		vo.setParamsPaging(count);
+		vo.setParamsPaging(count); 
 		
 		
 		if(count != 0) {
