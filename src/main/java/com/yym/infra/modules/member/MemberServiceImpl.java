@@ -54,6 +54,9 @@ public class MemberServiceImpl implements MemberService{
 		dto.setRegDateTime(UtilDateTime.nowDate());
 		dto.setModDateTime(UtilDateTime.nowDate());
 		
+		
+		
+		
 		dao.insertMember(dto);
 		dao.insertMemberAddress(dto);
 		dao.insertMemberEmail(dto);
