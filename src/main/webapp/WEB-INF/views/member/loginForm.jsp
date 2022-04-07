@@ -390,7 +390,7 @@
 						}
 					})
 				},
-			redirectUri: '${REDIRECT_URI}'
+			redirectUri: 'http://localhost:8080/infra/index/indexView'
 			});
 		}
 	</script>
