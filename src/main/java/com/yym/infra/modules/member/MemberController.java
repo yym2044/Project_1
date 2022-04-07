@@ -31,6 +31,12 @@ public class MemberController {
 		return "member/loginForm";
 	}
 	
+	@RequestMapping(value = "member/loginKakao")
+	public String loginKakao() throws Exception {
+		
+		return "member/loginKakao";
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/member/loginProc")

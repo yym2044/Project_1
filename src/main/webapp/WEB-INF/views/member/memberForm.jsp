@@ -191,8 +191,8 @@
 								<input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" class="form-control d-inline bg-light" style="width: 300px;" readonly placeholder="참고항목">
 								<div class="row mt-1">
 									<div class="col">
-										<input type="text" name="ifmaLat" id="ifmaLat" class="form-control d-inline" style="width: 100px;" readonly placeholder="위도">
-										<input type="text" name="ifmaLng" id="ifmaLng" class="form-control d-inline" style="width: 100px;" readonly placeholder="경도">
+										<input type="text" name="ifmaLat" id="ifmaLat" class="form-control d-inline" style="width: 147px;" readonly placeholder="위도">
+										<input type="text" name="ifmaLng" id="ifmaLng" class="form-control d-inline" style="width: 147px;" readonly placeholder="경도">
 									</div>
 								</div>
 							</div> 

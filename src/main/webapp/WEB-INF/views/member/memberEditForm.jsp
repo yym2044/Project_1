@@ -190,6 +190,12 @@ table th {
 								<input type="text" name="ifmaAddress1" id="sample6_address" class="form-control d-block" placeholder="주소" readonly style="width: 300px;" value="<c:out value="${rt.ifmaAddress1}"/>">
 								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" class="form-control d-inline mt-2" placeholder="상세주소" autocomplete="off" style="width: 300px;" value="<c:out value="${rt.ifmaAddress2}"/>">
 								<input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" class="form-control d-inline" style="width: 300px;" readonly placeholder="참고항목" value="<c:out value="${rt.ifmaAddressReferences}"/>">
+								<div class="row mt-1">
+									<div class="col">
+										<input type="text" name="ifmaLat" id="ifmaLat" value="${rt.ifmaLat}" class="form-control d-inline" style="width: 147px;" readonly placeholder="위도">
+										<input type="text" name="ifmaLng" id="ifmaLng" value="${rt.ifmaLng}" class="form-control d-inline" style="width: 147px;" readonly placeholder="경도">
+									</div>
+								</div>
 							</div>
 						</div>
 

@@ -216,6 +216,8 @@
 			, d.ifmaAddress1
 			, d.ifmaAddress2
 			, d.ifmaAddressReferences
+			, d.ifmaLat
+			, d.ifmaLng
 			
 			, e.ifnaSeq
 			, (select ifnaName from infrNationality where ifnaSeq = e.ifnaSeq) as ifnaName
@@ -577,6 +579,8 @@
 		, ifmaAddress2 = #{ifmaAddress2}
 		, ifmaAddressReferences = #{ifmaAddressReferences}
 		, ifmaDefaultNy = 1
+		, ifmaLat = #{ifmaLat}
+		, ifmaLng = #{ifmaLng}
 		<include refid="updateModValue"/>
 	WHERE
 		1 = 1

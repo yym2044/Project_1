@@ -122,6 +122,8 @@
 					<td style="width: 200px;" class="bg-light text-start">주소</td>
 					<td class="text-start">
 						<c:out value="${rt.ifmaAddress1} ${rt.ifmaAddress2}" />
+						<span class="badge bg-primary"><fmt:formatNumber value="${rt.ifmaLat}"/></span>
+						<span class="badge bg-danger"><fmt:formatNumber value="${rt.ifmaLng}"/></span>
 					</td>
 				</tr>
 				<tr>
