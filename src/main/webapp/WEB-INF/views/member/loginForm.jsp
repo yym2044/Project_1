@@ -153,6 +153,8 @@
 					</div>
 				</div>
 			</div>
+			
+			<a href="javascript:kakaoLogout();">카카오 로그아웃</a>
 
 
 
@@ -374,25 +376,59 @@
 		window.Kakao.init("5ed5d21a3ed5c47a1675f773a28a15f9");
 		console.log(Kakao.isInitialized());
 		
-		function kakaoLogin() {
+		/* function kakaoLogin() {
 			Kakao.Auth.authorize({
 				scope:'profile_nickname, profile_image, account_email, gender',
+				throughTalk: false,  // 간편로그인 true false
 				success: function(authObj) {
 					console.log(authObj);
 					window.Kakao.API.request({
 						url:'/v2/user/me',
-						/* success: res => {
-							const kakao_account = res.kakao_account;
-							console.log(kakao_account);
-						} */
+//						success: res => {
+//							const kakao_account = res.kakao_account;
+//							console.log(kakao_account);
+//						}
 						success: function(response){
 							console.log(response);
 						}
 					})
 				},
-			redirectUri: 'http://localhost:8080/infra/index/indexView'
+				redirectUri: 'http://localhost:8080/infra/index/indexView'
 			});
+		} */
+		
+		function kakaoLogin() {
+			Kakao.Auth.login({
+				scope:'profile_nickname, profile_image, account_email, gender',
+				success: function(authObj) {
+					console.log(authObj);
+					Kakao.API.request({
+						url:'/v2/user/me',
+						success: res => {
+							const kakao_account = res.kakao_account;
+							console.log(kakao_account);
+							Kakao.Auth.setAccessToken(ACCESS_TOKEN);
+						}
+						
+					})
+				},
+				redirectUri: 'http://localhost:8080/infra/member/loginForm'
+			});
+			
+			
+			
 		}
+		
+		function kakaoLogout(){
+			if (!Kakao.Auth.getAccessToken()) {
+				  console.log('Not logged in.');
+				  return;
+				}
+				Kakao.Auth.logout(function() {
+				  console.log(Kakao.Auth.getAccessToken());
+				});
+		}
+		
 	</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
