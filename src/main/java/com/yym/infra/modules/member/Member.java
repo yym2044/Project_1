@@ -85,6 +85,8 @@ public class Member {
 	private String ifmaAddress1;
 	private String ifmaAddress2;
 	private String ifmaAddressReferences;
+	private Double ifmaLat;
+	private Double ifmaLng;
 	//멤버_노트
 	private String ifntSeq;
 	private String ifntOrder;
@@ -577,6 +579,18 @@ public class Member {
 	}
 	public void setIfmmAdminNy(Integer ifmmAdminNy) {
 		this.ifmmAdminNy = ifmmAdminNy;
+	}
+	public Double getIfmaLat() {
+		return ifmaLat;
+	}
+	public void setIfmaLat(Double ifmaLat) {
+		this.ifmaLat = ifmaLat;
+	}
+	public Double getIfmaLng() {
+		return ifmaLng;
+	}
+	public void setIfmaLng(Double ifmaLng) {
+		this.ifmaLng = ifmaLng;
 	}
 	
 }

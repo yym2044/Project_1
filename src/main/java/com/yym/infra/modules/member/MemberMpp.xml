@@ -388,6 +388,8 @@
 		, ifmaAddress2
 		, ifmaAddressReferences
         , ifmaDefaultNy
+        , ifmaLat
+        , ifmaLng
         <include refid="insertRegMod"/>
 	) VALUES (
 		#{ifmmSeq}
@@ -396,6 +398,8 @@
 		, #{ifmaAddress2}
 		, #{ifmaAddressReferences}
         , 1
+        , #{ifmaLat}
+        , #{ifmaLng}
         <include refid="insertRegModValue"/>
 	);
 	</insert>

@@ -189,7 +189,13 @@
 								<input type="text" name="ifmaAddress1" id="sample6_address" class="form-control d-block bg-light" placeholder="주소" readonly style="width: 300px;">
 								<input type="text" name="ifmaAddress2" id="sample6_detailAddress" class="form-control d-inline mt-2" placeholder="상세주소" autocomplete="off" style="width: 300px;">
 								<input type="text" name="ifmaAddressReferences" id="sample6_extraAddress" class="form-control d-inline bg-light" style="width: 300px;" readonly placeholder="참고항목">
-							</div>
+								<div class="row mt-1">
+									<div class="col">
+										<input type="text" name="ifmaLat" id="ifmaLat" class="form-control d-inline" style="width: 100px;" readonly placeholder="위도">
+										<input type="text" name="ifmaLng" id="ifmaLng" class="form-control d-inline" style="width: 100px;" readonly placeholder="경도">
+									</div>
+								</div>
+							</div> 
 						</div>
 					</td>
 				</tr>
@@ -421,6 +427,7 @@
 	</script>
 
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a22eb429a9acc65dd1cdb17f32e5e275&libraries=services"></script>
 
 	
 
@@ -475,10 +482,38 @@
 							// 커서를 상세주소 필드로 이동한다.
 							document.getElementById("sample6_detailAddress")
 									.focus();
+							
+							
+							var geocoder = new daum.maps.services.Geocoder();
+							
+							geocoder.addressSearch(addr, function(result, status){
+								
+								if (status == daum.maps.services.Status.OK) {
+									document.getElementById("ifmaLat").value = result[0].y;
+									document.getElementById("ifmaLng").value = result[0].x;
+								}
+								
+							});
+							
+							
 						}
 					}).open();
 		}
 	</script>
+	
+	<!-- <script type="text/javascript">
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	geocoder.addressSearch(addr, function(result, status){
+		
+		if (status == kakao.maps.services.Status.OK) {
+			document.getElementById("ifmaLat").value = result[0].y;
+			document.getElementById("ifmaLng").value = result[0].x;
+		}
+		
+	});
+	
+	</script> -->
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
