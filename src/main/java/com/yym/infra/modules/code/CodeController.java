@@ -1,12 +1,15 @@
 package com.yym.infra.modules.code;
 
+import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -52,6 +55,25 @@ public class CodeController {
 	@RequestMapping(value = "/code/codeGroupInst")
 	public String codeGroupInst(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 
+		
+		System.out.println("dto.getFile() : " + dto.getFile());
+		
+		MultipartFile multipartFile = dto.getFile();
+		
+		System.out.println("dto.getFile().getOriginalFilename() : " + dto.getFile().getOriginalFilename());
+		System.out.println("multipartFile.getOriginalFilename() : " + multipartFile.getOriginalFilename());
+		
+		String fileName = multipartFile.getOriginalFilename();
+		String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+		String uuid = UUID.randomUUID().toString();
+		String uuidFildName = uuid + "." + ext;
+		
+		multipartFile.transferTo(new File("C:/factory/ws_sts_4130/Project_1/src/main/webapp/resources/uploaded/" + uuidFildName));
+		multipartFile.transferTo(new File("C:/factory/ws_sts_4130/Project_1/src/main/webapp/resources/uploaded/" + fileName));
+		
+		dto.setOriginalFileName(fileName);
+		dto.setUuidFileName(uuidFildName);
+		
 		// 입력이 되어야 함
 		service.insert(dto);
 		

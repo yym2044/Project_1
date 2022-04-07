@@ -67,9 +67,13 @@
 		INSERT INTO infrCodeGroup (
 			ifcgName
 			,ifcgDelNy
+			,originalFileName
+			,uuidFileName
 		) VALUES (
 			#{ifcgName}
 			,0
+			,#{originalFileName}
+			,#{uuidFileName}
 		)
 		
 		<selectKey resultType="String" keyProperty="ifcgSeq" order="AFTER">
@@ -84,6 +88,8 @@
 			a.ifcgSeq
 			, a.ifcgName
 			, a.ifcgDelNy
+			, a.originalFileName
+			, a.uuidFileName
 		FROM 
 			cpcpcp.infrCodeGroup a
 		WHERE 1=1

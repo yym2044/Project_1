@@ -29,6 +29,7 @@ public class CodeVo {
 	private Integer RNUM;
 	
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
+	
 
 	//------------
 	
@@ -268,5 +269,6 @@ public class CodeVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
+
 	
 }

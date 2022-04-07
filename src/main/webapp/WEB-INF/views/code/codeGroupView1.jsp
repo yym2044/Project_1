@@ -24,6 +24,10 @@
 <a id="btnDelete" href="/infra/code/codeGroupDele?ifcgSeq=${rt.ifcgSeq}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>">삭제(진짜)</a>
 <a id="btnUpdateDelete" href="/infra/code/codeGroupNele?ifcgSeq=${rt.ifcgSeq}&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>&shIfcgDelNy=<c:out value="${vo.shIfcgDelNy}"/>&shIfcgName=<c:out value="${vo.shIfcgName}"/>&thisPage=<c:out value="${vo.thisPage}"/>">삭제(가짜)</a>
 
+<%-- <img src="/infra/resources/uploaded/${rt.originalFileName}"> --%>
+<br><img src="/infra/resources/uploaded/${rt.uuidFileName}">
+<br><a href="/infra/resources/uploaded/${rt.uuidFileName}"><img src="/resources/uploaded/<c:out value="${rt.uuidFileName}"/>"/></a><br>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script type="text/javascript">
