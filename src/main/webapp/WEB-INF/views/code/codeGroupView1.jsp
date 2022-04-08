@@ -26,8 +26,7 @@
 
 <%-- <img src="/infra/resources/uploaded/${rt.originalFileName}"> --%>
 <br><img src="/infra/resources/uploaded/${rt.uuidFileName}">
-<br><a href="/infra/resources/uploaded/${rt.uuidFileName}"><img src="/resources/uploaded/<c:out value="${rt.uuidFileName}"/>"/></a><br>
-
+<br><a href="/infra/resources/uploaded/${rt.uuidFileName}" download="${rt.originalFileName}">다운로드</a><br>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script type="text/javascript">

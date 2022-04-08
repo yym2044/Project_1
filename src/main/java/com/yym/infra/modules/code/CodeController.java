@@ -66,13 +66,13 @@ public class CodeController {
 		String fileName = multipartFile.getOriginalFilename();
 		String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
 		String uuid = UUID.randomUUID().toString();
-		String uuidFildName = uuid + "." + ext;
+		String uuidFileName = uuid + "." + ext;
 		
-		multipartFile.transferTo(new File("C:/factory/ws_sts_4130/Project_1/src/main/webapp/resources/uploaded/" + uuidFildName));
+		multipartFile.transferTo(new File("C:/factory/ws_sts_4130/Project_1/src/main/webapp/resources/uploaded/" + uuidFileName));
 		multipartFile.transferTo(new File("C:/factory/ws_sts_4130/Project_1/src/main/webapp/resources/uploaded/" + fileName));
 		
 		dto.setOriginalFileName(fileName);
-		dto.setUuidFileName(uuidFildName);
+		dto.setUuidFileName(uuidFileName);
 		
 		// 입력이 되어야 함
 		service.insert(dto);
