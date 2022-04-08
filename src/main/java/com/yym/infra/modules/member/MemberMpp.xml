@@ -295,6 +295,29 @@
         AND b.ifmpDefaultNy = 1
 	</select> -->
 	
+	<select id="selectListMemberUploaded" resultMap = "resultMapObj">
+	
+		SELECT
+			seq
+			, type
+			, defaultNy
+			, sort
+			, originalName
+			, uuidName
+			, ext
+			, size
+			, delNy
+			, pseq
+			, path
+		FROM
+			infrMemberUploaded
+		WHERE 1=1
+			AND pseq = #{ifmmSeq}
+		ORDER BY
+			sort
+	
+	</select>
+	
 	<!-- INSERT -->
 	<sql id="insertRegMod">
 		<!-- , regIp
@@ -553,6 +576,7 @@
 		, delNy
 		<include refid="insertReg"/>
 		, pseq
+		, path
 	) VALUES (
 		#{type}
 		, #{defaultNy}
@@ -564,6 +588,7 @@
 		, 0
 		<include refid="insertRegValue"/>
 		, #{pseq}
+		, #{path}
 	)
 	</insert>
 	<!-- uploaded e -->

@@ -7,9 +7,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
 
-<jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl"/>	<!-- 코드서비스임플 클래스 바로 사용 -->
+<jsp:useBean id="CodeServiceImpl" class="com.yym.infra.modules.code.CodeServiceImpl" />
+<!-- 코드서비스임플 클래스 바로 사용 -->
 
-<% pageContext.setAttribute("br", "\n"); %>
+<%
+pageContext.setAttribute("br", "\n");
+%>
 
 <!DOCTYPE html>
 <html>
@@ -24,22 +27,28 @@
 </head>
 <body>
 
-<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}"/>	<!-- listCodeGender에 값을 담음 -->
-<c:set var="listCodeTelecom" value="${CodeServiceImpl.selectListCachedCode('9')}"/>  <!-- listCodeTelecom(list 변수)에 값을 담음 --> 
+	<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('2')}" />
+	<!-- listCodeGender에 값을 담음 -->
+	<c:set var="listCodeTelecom" value="${CodeServiceImpl.selectListCachedCode('9')}" />
+	<!-- listCodeTelecom(list 변수)에 값을 담음 -->
 
 
 
-<c:forEach items="${listPhone}" var="item" varStatus="status">
-	<c:choose>
-		<c:when test="${item.ifmpDeviceCd eq 25}"><c:set var="ifmpNumberHome" value="${item.ifmpNumber}"/></c:when>
-		<c:when test="${item.ifmpDeviceCd eq 26}">
-			<c:set var="ifmpNumberMobile" value="${item.ifmpNumber}"/>
-			<c:set var="ifmpTelecomMobile" value="${item.ifmpTelecomCd}"/>
-		</c:when>
-		<c:when test="${item.ifmpDeviceCd eq 27}"><c:set var="ifmpNumberFax" value="${item.ifmpNumber}"/></c:when>	
-		<c:otherwise></c:otherwise>
-	</c:choose>
-</c:forEach>
+	<c:forEach items="${listPhone}" var="item" varStatus="status">
+		<c:choose>
+			<c:when test="${item.ifmpDeviceCd eq 25}">
+				<c:set var="ifmpNumberHome" value="${item.ifmpNumber}" />
+			</c:when>
+			<c:when test="${item.ifmpDeviceCd eq 26}">
+				<c:set var="ifmpNumberMobile" value="${item.ifmpNumber}" />
+				<c:set var="ifmpTelecomMobile" value="${item.ifmpTelecomCd}" />
+			</c:when>
+			<c:when test="${item.ifmpDeviceCd eq 27}">
+				<c:set var="ifmpNumberFax" value="${item.ifmpNumber}" />
+			</c:when>
+			<c:otherwise></c:otherwise>
+		</c:choose>
+	</c:forEach>
 
 	<form id="formView" action="" method="post">
 
@@ -122,8 +131,12 @@
 					<td style="width: 200px;" class="bg-light text-start">주소</td>
 					<td class="text-start">
 						<c:out value="${rt.ifmaAddress1} ${rt.ifmaAddress2}" />
-						<span class="badge bg-primary"><fmt:formatNumber value="${rt.ifmaLat}"/></span>
-						<span class="badge bg-danger"><fmt:formatNumber value="${rt.ifmaLng}"/></span>
+						<span class="badge bg-primary">
+							<fmt:formatNumber value="${rt.ifmaLat}" />
+						</span>
+						<span class="badge bg-danger">
+							<fmt:formatNumber value="${rt.ifmaLng}" />
+						</span>
 					</td>
 				</tr>
 				<tr>
@@ -131,23 +144,25 @@
 					<td class="text-start">
 						<span class="badge bg-info">
 							<c:forEach items="${listCodeTelecom}" var="item" varStatus="status">
-								<c:if test="${item.ifcdSeq eq ifmpTelecomMobile}"><c:out value="${item.ifcdName}"/></c:if>
+								<c:if test="${item.ifcdSeq eq ifmpTelecomMobile}">
+									<c:out value="${item.ifcdName}" />
+								</c:if>
 							</c:forEach>
 						</span>
 						<%-- <c:out value="${rt1.ifmpNumberMobile}" /> --%>
-						<c:set var="numberPhone" value="${ifmpNumberMobile}"/>
-			               	<c:choose>
-			               		<c:when test="${fn:length(numberPhone) eq 10 }">
-									<c:out value="${fn:substring(numberPhone,0,3)}"/>
-									- <c:out value="${fn:substring(numberPhone,3,6)}"/>
-									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
-			               		</c:when>
-			               		<c:otherwise>
-									<c:out value="${fn:substring(numberPhone,0,3)}"/>
-									- <c:out value="${fn:substring(numberPhone,3,7)}"/>
-									- <c:out value="${fn:substring(numberPhone,7,11)}"/>
-			               		</c:otherwise>
-		              		</c:choose>
+						<c:set var="numberPhone" value="${ifmpNumberMobile}" />
+						<c:choose>
+							<c:when test="${fn:length(numberPhone) eq 10 }">
+								<c:out value="${fn:substring(numberPhone,0,3)}" />
+									- <c:out value="${fn:substring(numberPhone,3,6)}" />
+									- <c:out value="${fn:substring(numberPhone,6,10)}" />
+							</c:when>
+							<c:otherwise>
+								<c:out value="${fn:substring(numberPhone,0,3)}" />
+									- <c:out value="${fn:substring(numberPhone,3,7)}" />
+									- <c:out value="${fn:substring(numberPhone,7,11)}" />
+							</c:otherwise>
+						</c:choose>
 						<span class="badge <c:choose>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신동의'}">bg-primary</c:when>
 											<c:when test="${rt.ifmmSmsConsentNyText eq '수신거부'}">bg-secondary</c:when>
@@ -160,52 +175,64 @@
 					<td style="width: 200px;" class="bg-light text-start">전화번호</td>
 					<td class="text-start">
 						<%-- <c:out value="${rt2.ifmpNumberHome}" /> --%>
-						<c:set var="numberPhone" value="${ifmpNumberHome}"/>
-			               	<c:choose>
-			               		<c:when test="${fn:length(numberPhone) eq 9 }">
-									<c:out value="${fn:substring(numberPhone,0,2)}"/>
-									- <c:out value="${fn:substring(numberPhone,2,5)}"/>
-									- <c:out value="${fn:substring(numberPhone,5,9)}"/>
-			               		</c:when>
-			               		<c:when test="${fn:length(numberPhone) eq 10}">
-									<c:out value="${fn:substring(numberPhone,0,3)}"/>
-									- <c:out value="${fn:substring(numberPhone,3,6)}"/>
-									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
-			               		</c:when>
-		              		</c:choose>
+						<c:set var="numberPhone" value="${ifmpNumberHome}" />
+						<c:choose>
+							<c:when test="${fn:length(numberPhone) eq 9 }">
+								<c:out value="${fn:substring(numberPhone,0,2)}" />
+									- <c:out value="${fn:substring(numberPhone,2,5)}" />
+									- <c:out value="${fn:substring(numberPhone,5,9)}" />
+							</c:when>
+							<c:when test="${fn:length(numberPhone) eq 10}">
+								<c:out value="${fn:substring(numberPhone,0,3)}" />
+									- <c:out value="${fn:substring(numberPhone,3,6)}" />
+									- <c:out value="${fn:substring(numberPhone,6,10)}" />
+							</c:when>
+						</c:choose>
 					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">팩스번호</td>
 					<td class="text-start">
-						<c:out value="${ifmpNumberFax}"/>
+						<c:out value="${ifmpNumberFax}" />
 					</td>
 				</tr>
 				<tr>
-					<td style="width: 200px;" class="bg-light text-start">
-						홈페이지
-					</td>
+					<td style="width: 200px;" class="bg-light text-start">홈페이지</td>
 					<td class="text-start">
 						<c:forEach items="${listAddressOnline}" var="item" varStatus="status">
 							<c:choose>
 								<c:when test="${item.ifaoTypeCd eq 33}">
-									<c:out value="${item.ifaoUrl}"/><br>
+									<c:out value="${item.ifaoUrl}" />
+									<br>
 								</c:when>
 							</c:choose>
 						</c:forEach>
 					</td>
-				</tr>		<%-- <c:choose><c:when></c:when></c:choose> 이나 <c:if></c:if>를 사용. 둘 다 가능한 듯 --%>
+				</tr>
+				<%-- <c:choose><c:when></c:when></c:choose> 이나 <c:if></c:if>를 사용. 둘 다 가능한 듯 --%>
 				<tr>
-					<td style="width: 200px;" class="bg-light text-start">
-						SNS
-					</td>
+					<td style="width: 200px;" class="bg-light text-start">SNS</td>
 					<td class="text-start">
 						<c:forEach items="${listAddressOnline}" var="item" varStatus="status">
 							<c:if test="${item.ifaoTypeCd eq 34}">
-								<c:out value="${item.ifaoUrl}"/><br>
+								<c:out value="${item.ifaoUrl}" />
+								<br>
 							</c:if>
 						</c:forEach>
 					</td>
+				</tr>
+				<tr>
+					<td style="width: 200px;" class="bg-light text-start">이미지</td>
+					<td>
+						<c:forEach items="${listUploaded}" var="item" varStatus="status">
+							<c:if test="${item.type eq 0}">
+								<img style="width: 200px;" src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>">
+							</c:if>
+						</c:forEach>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 200px;" class="bg-light text-start">파일</td>
 				</tr>
 			</table>
 
@@ -237,13 +264,13 @@
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">가입일시</td>
 					<td class="text-start">
-						<fmt:formatDate value="${rt.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+						<fmt:formatDate value="${rt.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">수정일시</td>
 					<td class="text-start">
-						<fmt:formatDate value="${rt.modDateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+						<fmt:formatDate value="${rt.modDateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 					</td>
 				</tr>
 				<tr>
@@ -260,7 +287,9 @@
 					<td style="width: 200px;" class="bg-light text-start">성별</td>
 					<td class="text-start">
 						<c:forEach items="${listCodeGender}" var="itemGender" varStatus="statusGender">
-							<c:if test="${rt.ifmmGenderCd eq itemGender.ifcdSeq}"><c:out value="${itemGender.ifcdName}"/></c:if>
+							<c:if test="${rt.ifmmGenderCd eq itemGender.ifcdSeq}">
+								<c:out value="${itemGender.ifcdName}" />
+							</c:if>
 						</c:forEach>
 					</td>
 				</tr>
@@ -273,15 +302,16 @@
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">ifmmDesc</td>
 					<td class="text-start">
-						 <%-- <p>${fn:replace(rt.ifmmDesc, br, '<br/>')}</p> 둘 다 가능 --%>	
-						 <%-- <% pageContext.setAttribute("br", "\n"); %> 같이 써줘야 함, 위에 이미 있음 --%>
-           				 <p><c:out value="${fn:replace(rt.ifmmDesc, br, '<br/>')}" escapeXml = "false"/>
+						<%-- <p>${fn:replace(rt.ifmmDesc, br, '<br/>')}</p> 둘 다 가능 --%>
+						<%-- <% pageContext.setAttribute("br", "\n"); %> 같이 써줘야 함, 위에 이미 있음 --%>
+						<p>
+							<c:out value="${fn:replace(rt.ifmmDesc, br, '<br/>')}" escapeXml="false" />
 					</td>
 				</tr>
 			</table>
 
 			<!-- 관리자 운영 메모 -->
-			
+
 			<div class="row mb-2">
 				<div class="col col-md-12 d-flex">
 					<i class="bi bi-caret-right-square-fill text-primary"></i>
@@ -304,7 +334,9 @@
 						<table class="table table-hover table-sm border border-1 box-white" style="min-width: 1000px; border-collapse: collapse;">
 							<thead>
 								<tr>
-									<th style="width: 50px;"><input type="checkbox" disabled class="form-check-input" id="" name=""></th>
+									<th style="width: 50px;">
+										<input type="checkbox" disabled class="form-check-input" id="" name="">
+									</th>
 									<th style="width: 100px;">번호</th>
 									<th>내용</th>
 									<th style="width: 200px;">작성일</th>
@@ -324,7 +356,9 @@
 						<table class="table table-hover table-sm border border-1 box-white" style="min-width: 700px; border-collapse: collapse;">
 							<thead>
 								<tr>
-									<th style="width: 50px;"><input type="checkbox" class="form-check-input" id="checkboxNoteAll" name="" value=""></th>
+									<th style="width: 50px;">
+										<input type="checkbox" class="form-check-input" id="checkboxNoteAll" name="" value="">
+									</th>
 									<th style="width: 100px;">번호</th>
 									<th>내용</th>
 									<th style="width: 200px;">작성일</th>
@@ -334,7 +368,9 @@
 							<tbody>
 								<c:forEach items="${noteList}" var="item" varStatus="status">
 									<tr>
-										<td style="width: 50px;"><input type="checkbox" class="form-check-input" id="" name="checkboxNote" value="<c:out value="${item.ifntOrder}"/>"></td>
+										<td style="width: 50px;">
+											<input type="checkbox" class="form-check-input" id="" name="checkboxNote" value="<c:out value="${item.ifntOrder}"/>">
+										</td>
 										<td style="width: 100px;">
 											<c:out value="${item.ifntOrder}" />
 										</td>
@@ -342,7 +378,7 @@
 											<c:out value="${item.ifntContent}" />
 										</td>
 										<td style="width: 200px;">
-											<fmt:formatDate value="${item.regDateTime}" pattern="yy.MM.dd HH:mm:ss"/>
+											<fmt:formatDate value="${item.regDateTime}" pattern="yy.MM.dd HH:mm:ss" />
 										</td>
 										<td style="width: 100px;">
 											<c:out value="${item.ifntWriter}" />
@@ -399,33 +435,32 @@
 			my_tbody.deleteRow(my_tbody.rows.length - 1); // 하단부터 삭제
 		}
 	</script> -->
-	
-	
+
+
 	<!-- 체크박스 전체선택 -->
 	<script type="text/javascript">
-	$("#checkboxNoteAll").click(function(){
-		if($(this).is(":checked")){
-			$("input[name=checkboxNote]").prop("checked", true);
-		} else {
-			$("input[name=checkboxNote]").prop("checked", false);
-		}
-	});
-	
-	$("input[name=checkboxNote]").click(function(){
-		var total = $("input[name=checkboxNote]").length;
-		var checked = $("input[name=checkboxNote]:checked").length;
-		
-		if(total != checked){
-			$("#checkboxNoteAll").prop("checked", false);
-		} else {
-			$("#checkboxNoteAll").prop("checked", true);
-		}
-	});
+		$("#checkboxNoteAll").click(function() {
+			if ($(this).is(":checked")) {
+				$("input[name=checkboxNote]").prop("checked", true);
+			} else {
+				$("input[name=checkboxNote]").prop("checked", false);
+			}
+		});
+
+		$("input[name=checkboxNote]").click(function() {
+			var total = $("input[name=checkboxNote]").length;
+			var checked = $("input[name=checkboxNote]:checked").length;
+
+			if (total != checked) {
+				$("#checkboxNoteAll").prop("checked", false);
+			} else {
+				$("#checkboxNoteAll").prop("checked", true);
+			}
+		});
 	</script>
-	
+
 
 	<script type="text/javascript">
-	
 		goList = function() {
 			$("#formView").attr("action", "/infra/member/memberList");
 			$("#formView").submit();
@@ -435,57 +470,53 @@
 			$("#formView").attr("action", "/infra/member/memberEditForm");
 			$("#formView").submit();
 		}
-		
+
 		addNote = function() {
 			$("#formView").attr("action", "/infra/member/memberNoteInst");
 			$("#formView").submit();
 		}
-		
+
 		deleteNote = function() {
-			
-			
+
 			$("#formView").attr("action", "/infra/member/memberNoteDele");
 			$("#formView").submit();
 		}
-		
+
 		/* $("input:checkbox[Name='checkboxNote']").on("change", function(){
 			alert($(this).val() + "번 메모");
 		}); */
-		
-		$("#btnDelete").on("click", function(){
-			
+
+		$("#btnDelete").on("click", function() {
+
 			var checkboxNoteArray = [];
-			
-			$("input[name=checkboxNote]:checked").each(function(){
+
+			$("input[name=checkboxNote]:checked").each(function() {
 				checkboxNoteArray.push($(this).val());
 			});
-			
+
 			$("input:hidden[name=checkboxNoteArray]").val(checkboxNoteArray);
-			
+
 			var numberString = $("input:hidden[name=checkboxNoteArray]").val();
-			
-			if (!$("input:checked[Name='checkboxNote']").is(":checked")){
+
+			if (!$("input:checked[Name='checkboxNote']").is(":checked")) {
 				alert("한 개 이상 선택해주세요");
 				return false;
 			} else {
 				var delConfirm = confirm(numberString + "번 메모를 삭제할까요?");
-				if(delConfirm){
+				if (delConfirm) {
 					var delConfirm2 = confirm("삭제하면 복구할 수 없습니다. 정말로 삭제할까요?");
-					
-					if(delConfirm2){
+
+					if (delConfirm2) {
 						alert("삭제 완료.");
 					} else {
 						return false;
 					}
-					
+
 				} else {
 					return false;
 				}
 			}
- 		});
-		
-		
-		
+		});
 	</script>
 </body>
 

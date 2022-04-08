@@ -119,6 +119,8 @@ public class MemberServiceImpl implements MemberService{
 			dto.setSort(j);
 			dto.setPseq(dto.getIfmmSeq());
 			
+			
+			
 			dao.insertMemberUploaded(dto);
 			j++;
 		}
@@ -179,6 +181,11 @@ public class MemberServiceImpl implements MemberService{
 //	public Member selectOnePhoneHome(MemberVo vo) throws Exception {
 //		return dao.selectOnePhoneHome(vo);
 //	}
+	
+	@Override
+	public List<Member> selectListMemberUploaded(MemberVo vo) throws Exception {
+		return dao.selectListMemberUploaded(vo);
+	}
 
 	@Override
 	public int updateMember(Member dto) throws Exception {

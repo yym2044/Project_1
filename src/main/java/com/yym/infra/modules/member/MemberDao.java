@@ -28,7 +28,7 @@ public class MemberDao {
 	public List<Member> selectListSearch() {return sqlSession.selectList(namespace + ".selectListSearch", ""); }
 	public List<Member> selectListNation() {return sqlSession.selectList(namespace + ".selectListNation", ""); }
 	public List<Member> selectNote(MemberVo vo) {return sqlSession.selectList(namespace + ".selectNote", vo); }
-	
+	public List<Member> selectListMemberUploaded(MemberVo vo) {return sqlSession.selectList(namespace + ".selectListMemberUploaded", vo); }
 	
 //	INSERT
 	public int insertMember(Member dto){ return sqlSession.insert(namespace + ".insertMember", dto); }

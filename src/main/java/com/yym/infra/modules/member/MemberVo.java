@@ -28,6 +28,8 @@ public class MemberVo {
 	
 	private String ifntOrder;
 	
+	private String pseq;
+	
 //	정렬
 	private String sort;
 	private String orderby;
@@ -277,6 +279,12 @@ public class MemberVo {
 	}
 	public void setIfntOrder(String ifntOrder) {
 		this.ifntOrder = ifntOrder;
+	}
+	public String getPseq() {
+		return pseq;
+	}
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
 	}
 	
 }

@@ -118,6 +118,7 @@ public class Member {
 	private long size;
 	private Integer delNy;
 	private String pseq;
+	private String path;
 	
 	//RegMod
 	private String regIp;
@@ -688,6 +689,12 @@ public class Member {
 	}
 	public void setPseq(String pseq) {
 		this.pseq = pseq;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	
 }

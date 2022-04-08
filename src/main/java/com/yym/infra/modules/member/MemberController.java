@@ -147,6 +147,7 @@ public class MemberController {
 		model.addAttribute("listAddressOnline", service.selectListAddressOnline(vo));
 		model.addAttribute("listPhone", service.selectListPhone(vo));
 		model.addAttribute("noteList", service.selectNote(vo));
+		model.addAttribute("listUploaded", service.selectListMemberUploaded(vo));
 		
 
 		return "member/memberView";
