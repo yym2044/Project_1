@@ -460,15 +460,21 @@
 	
 	addUploadLi = function (seq, i, name){
 		
+		
 		var li = '';
 		li += '<li id="li_' + seq + '_' + i + '" class="list-group-item d-flex justify-content-between align-items-center">';
 		li += name;
-		li += '<span class="badge bg-danger rounded-pill" onClick="delLi(' + seq + ',' + i + ')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
+		li += '<span style="cursor: pointer;" class="badge bg-danger rounded-circle" onClick="delLi(' + seq + ',' + i + ')"><i class="bi bi-x-circle"></i></span>';
 		li += '</li>';		
 		
 		$("#ulFile" + seq).append(li);
 		
 	}
+	
+	
+	
+	
+	
 	
 	delLi = function(seq, i) {
 		$("#li_" + seq + "_" + i).remove();

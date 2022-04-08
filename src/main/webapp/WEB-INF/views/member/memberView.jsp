@@ -223,16 +223,24 @@ pageContext.setAttribute("br", "\n");
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">이미지</td>
-					<td>
+					<td class="text-start">
 						<c:forEach items="${listUploaded}" var="item" varStatus="status">
 							<c:if test="${item.type eq 0}">
-								<img style="width: 200px;" src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>">
+								<img style="height: 200px;" src="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>">
 							</c:if>
 						</c:forEach>
 					</td>
 				</tr>
 				<tr>
 					<td style="width: 200px;" class="bg-light text-start">파일</td>
+					<td class="text-start">
+						<c:forEach items="${listUploaded}" var="item" varStatus="status">
+							<c:if test="${item.type eq 1}">
+								<a download="<c:out value="${item.originalName}"/>" href="<c:out value="${item.path}"/><c:out value="${item.uuidName}"/>"><c:out value="${item.originalName }"/></a>
+								<br>
+							</c:if>
+						</c:forEach>
+					</td>
 				</tr>
 			</table>
 

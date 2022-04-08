@@ -102,6 +102,7 @@ public class Member {
 	private String ifnaCode2Char;
 	private String ifnaCode3Char;
 	
+	//스프링에 파일을 올리기 위해
 	private MultipartFile[] file0;
 	private MultipartFile[] file1;
 	
