@@ -52,7 +52,7 @@
 	</div>
 	 -->
 
-	<form id="formForm" method="post" action="/infra/member/memberInst">
+	<form id="formForm" method="post" action="/infra/member/memberInst" enctype="multipart/form-data">
 	
 		<input type="hidden" id="shIfmmGrade" name="shIfmmGrade" value="<c:out value="${vo.shIfmmGrade}"/>">
 		<input type="hidden" id="shIfmmEmailConsentNy" name="shIfmmEmailConsentNy" value="<c:out value="${vo.shIfmmEmailConsentNy}"/>">

@@ -2,6 +2,8 @@ package com.yym.infra.modules.member;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Member {
 	
 	//검색어
@@ -99,6 +101,9 @@ public class Member {
 	private String ifnaName;
 	private String ifnaCode2Char;
 	private String ifnaCode3Char;
+	
+	private MultipartFile[] file0;
+	private MultipartFile[] file1;
 	
 	//RegMod
 	private String regIp;
@@ -591,6 +596,18 @@ public class Member {
 	}
 	public void setIfmaLng(Double ifmaLng) {
 		this.ifmaLng = ifmaLng;
+	}
+	public MultipartFile[] getFile0() {
+		return file0;
+	}
+	public void setFile0(MultipartFile[] file0) {
+		this.file0 = file0;
+	}
+	public MultipartFile[] getFile1() {
+		return file1;
+	}
+	public void setFile1(MultipartFile[] file1) {
+		this.file1 = file1;
 	}
 	
 }

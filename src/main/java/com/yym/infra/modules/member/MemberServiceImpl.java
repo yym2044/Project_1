@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.yym.infra.common.util.UtilDateTime;
+import com.yym.infra.common.util.UtilUpload;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -57,6 +59,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		
 		
+		
 		dao.insertMember(dto);
 		dao.insertMemberAddress(dto);
 		dao.insertMemberEmail(dto);
@@ -100,6 +103,26 @@ public class MemberServiceImpl implements MemberService{
 		System.out.println(dto.getIfaoUrlArray2().length);	//1 들어오는데 뭐지
 		
 		dao.insertMemberNationality(dto);
+		
+		
+		//추가 start
+		
+		for(MultipartFile multipartFile : dto.getFile0() ) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			
+			UtilUpload.upload(multipartFile, pathModule, dto);
+		}
+		
+		for(MultipartFile multipartFile : dto.getFile1() ) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			
+			UtilUpload.upload(multipartFile, pathModule, dto);
+		}
+		
+		
+		
+		//추가 end
+		
 		
 		return 1;
 	}
