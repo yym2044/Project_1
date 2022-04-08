@@ -107,16 +107,36 @@ public class MemberServiceImpl implements MemberService{
 		
 		//추가 start
 		
+		int j = 0;
 		for(MultipartFile multipartFile : dto.getFile0() ) {
 			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
 			
 			UtilUpload.upload(multipartFile, pathModule, dto);
+			
+			dto.setTableName("infrMemberUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setPseq(dto.getIfmmSeq());
+			
+			dao.insertMemberUploaded(dto);
+			j++;
 		}
 		
+		j = 0;
 		for(MultipartFile multipartFile : dto.getFile1() ) {
 			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
 			
 			UtilUpload.upload(multipartFile, pathModule, dto);
+			
+			dto.setTableName("infrMemberUploaded");
+			dto.setType(1);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setPseq(dto.getIfmmSeq());
+			
+			dao.insertMemberUploaded(dto);
+			j++;
 		}
 		
 		

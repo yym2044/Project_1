@@ -322,6 +322,21 @@
 		<!-- ,#{modDateTimeSvr} -->
 	</sql>
 	
+	<sql id="insertReg">
+		<!-- , regIp
+		, regSeq
+		, regDeviceCd -->
+		, regDateTime
+		<!-- , regDateTimeSvr -->
+	</sql>
+	<sql id="insertRegValue">
+		<!-- ,#{regIp}
+		,#{regSeq}
+		,#{regDeviceCd} -->
+		,#{regDateTime}
+		<!-- ,#{regDateTimeSvr} -->
+	</sql>
+	
 	<insert id="insertMember">
 	INSERT INTO
 	infrMember (
@@ -524,6 +539,34 @@
             <include refid="insertRegModValue"/>
 		)
 	</insert>
+	
+	<!-- uploaded s -->
+	<insert id="insertMemberUploaded">
+	INSERT INTO ${tableName} (
+		type
+		, defaultNy
+		, sort
+		, originalName
+		, uuidName
+		, ext
+		, size
+		, delNy
+		<include refid="insertReg"/>
+		, pseq
+	) VALUES (
+		#{type}
+		, #{defaultNy}
+		, #{sort}
+		, #{originalName}
+		, #{uuidName}
+		, #{ext}
+		, #{size}
+		, 0
+		<include refid="insertRegValue"/>
+		, #{pseq}
+	)
+	</insert>
+	<!-- uploaded e -->
 	
 	
 	<!-- UPDATE -->

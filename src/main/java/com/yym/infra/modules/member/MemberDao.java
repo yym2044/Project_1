@@ -42,6 +42,8 @@ public class MemberDao {
 	
 	public int insertMemberNote(Member dto) {return sqlSession.insert(namespace + ".insertMemberNote", dto);}
 	
+	public int insertMemberUploaded(Member dto) {return sqlSession.insert(namespace + ".insertMemberUploaded", dto); }
+	
 //	UPDATE
 	public int updateMember(Member dto) {return sqlSession.update(namespace + ".updateMember", dto); }
 	public int updateMemberEmail(Member dto) {return sqlSession.update(namespace + ".updateMemberEmail", dto); }
