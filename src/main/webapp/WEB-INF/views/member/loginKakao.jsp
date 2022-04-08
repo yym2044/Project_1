@@ -16,30 +16,28 @@
 </head>
 <body>
 	
-	<a href="javascript:kakaoLogin();"><img src="${path}/resources/images/xdmin/sns_icon/icon_round_kakaotalk_48.png" style="border-radius: 50%;"
-							class="btn-3d yellow"></a>	
 	
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	<script type="text/javascript">
 		Kakao.init("5ed5d21a3ed5c47a1675f773a28a15f9");
-
+		console.log(Kakao.isInitialized());
+		
 		Kakao.Auth.login({
-			scope:'profile_nickname, profile_image, account_email, gender'
-			success: function(authOb) {
+			success : function(authObj) {
+				console.log(authObj);
+				
 				Kakao.API.request({
 					url:'/v2/user/me',
-					success: function(res) {
+					success : function(res){
 						console.log(res);
 						
-						var id = res.id;
-						var email = res.kakao_account.email;
-						var name = res.properties.nickname;
-						var html = '<BR>' + email + '<BR>' + name;
-						
-						$('body').append(html);
 					}
-		})
+				})
+			}
+		});
+		
 	</script>
 
 </body>
