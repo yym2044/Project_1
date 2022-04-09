@@ -351,6 +351,8 @@
 
 </div>
 
+<input id="ifmmId_kakao" type="hidden" value="2192233189">
+
 <br>
 <br>
 <br>
@@ -426,11 +428,12 @@
 	  
 $("#btnLoginKakao").on("click", function(){
 	$.ajax({
-		  async: true
+		  async: false
 		  ,cache: false
 		  ,type:"post"
 		  ,url: "/infra/member/loginProcKakao"
-		  ,data : {"ifmmId" : "2192233189"}
+		  ,data : {"ifmmId" : $("#ifmmId_kakao").val()}
+		  ,dataType : "text"
 		  ,success: function(response){
 			  alert(response.rt);
 			  if(response.rt == "successGoIndex") {

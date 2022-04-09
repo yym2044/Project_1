@@ -41,7 +41,7 @@ public class MemberController {
 	@RequestMapping(value = "/member/loginProcKakao")
 	public Map<String, Object> loginProcKakao(Member dto, HttpSession httpSession) throws Exception {
 		
-		Map<String, Object> returnMap = new HashMap<String, Object>();
+		Map<String, Object> rtMap = new HashMap<String, Object>();
 		
 		Member rtMember = service.selectOneLoginKakao(dto);
 		
@@ -52,18 +52,18 @@ public class MemberController {
 			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
 			
 			if(rtMember.getIfmmAdminNy() == 0) {
-				returnMap.put("rt", "successGoMain");
+				rtMap.put("rt", "successGoMain");
 			} else if(rtMember.getIfmmAdminNy() == 1) {
-				returnMap.put("rt", "successGoIndex");
+				rtMap.put("rt", "successGoIndex");
 			} else {
-				returnMap.put("rt", "fail");
+				rtMap.put("rt", "fail");
 			}
 		} else {
-			returnMap.put("rt", "fail");
+			rtMap.put("rt", "fail");
 		}
 		
 		
-		return returnMap;
+		return rtMap;
 	}
 	
 	@ResponseBody
