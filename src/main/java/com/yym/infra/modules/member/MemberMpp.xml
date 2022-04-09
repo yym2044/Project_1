@@ -22,6 +22,19 @@
 			AND ifmmId = #{ifmmId}
 			AND ifmmPwd = #{ifmmPwd}
 	</select>
+	
+	<select id="selectOneLoginKakao" resultMap="resultMapObj">
+	SELECT
+		ifmmSeq
+		, ifmmAdminNy
+		, ifmmId
+		, ifmmName
+		, ifmmDesc
+	FROM
+		infrMember
+	WHERE 1=1
+		AND ifmmId = #{ifmmId}
+	</select>
 		
 
 	<sql id="selectListCommon">

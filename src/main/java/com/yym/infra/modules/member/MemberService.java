@@ -5,6 +5,7 @@ import java.util.List;
 public interface MemberService {
 	
 	public Member selectOneLogin(Member dto) throws Exception;
+	public Member selectOneLoginKakao(Member dto) throws Exception;
 	
 	public int selectListCount(MemberVo vo) throws Exception;
 	public List<Member> selectListAllMember() throws Exception;

@@ -416,31 +416,36 @@
 				  success: function(res){
 					  console.log(res);
 					  
+					  var id_kakao = res.id;
+					  console.log(id_kakao);
 					  
-					  $.ajax({
-						  async: true
-						  ,cache: false
-						  ,type: "post"
-						  ,url: "/infra/member/loginProcKakao"
-						  ,success: function(response){
-							  console.log(response.rt);
-							  console.log(response);
-						  	/* location.href = "/infra/index/indexView"; */
-						  }
-						  ,error : function(jqXHR, textStatus, errorThrown){
-							alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-						  }
-						  ,complete : function(response){
-							  console.log(response.rt);
-							  console.log(response);
-						  }
-					  });
-					  
-					
 				  }
-			  })
+			  });
 		  }
-	  })
+	  });
+	  
+$("#btnLoginKakao").on("click", function(){
+	$.ajax({
+		  async: true
+		  ,cache: false
+		  ,type:"post"
+		  ,url: "/infra/member/loginProcKakao"
+		  ,data : {"ifmmId" : "2192233189"}
+		  ,success: function(response){
+			  alert(response.rt);
+			  if(response.rt == "successGoIndex") {
+				  location.href = "/infra/index/indexView";
+			  } else if (response.rt == "successGoMain") {
+				  location.href = "/infra/coupang/mainPage";
+			  } else {
+				  alert("로그인 실패");
+			  }
+		  }
+		  ,error : function(){
+			  alert("error");
+		  }
+	  });
+});
 
 </script>
 
@@ -455,6 +460,7 @@ $("#btnLogin").on("click", function(){
 		,url: "/infra/member/loginProc"
 		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
 		,success: function(response) {
+			alert(response.rt);
 			console.log(response);
 			if(response.rt == "successGoIndex") {
 				location.href = "/infra/index/indexView";

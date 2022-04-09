@@ -19,6 +19,10 @@ public class MemberServiceImpl implements MemberService{
 	public Member selectOneLogin(Member dto) throws Exception {
 		return dao.selectOneLogin(dto);
 	}
+	@Override
+	public Member selectOneLoginKakao(Member dto) throws Exception {
+		return dao.selectOneLoginKakao(dto);
+	}
 	
 	@Override
 	public int selectListCount(MemberVo vo) throws Exception {

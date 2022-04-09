@@ -43,11 +43,25 @@ public class MemberController {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		dto.setIfmmSeq("1");
+		Member rtMember = service.selectOneLoginKakao(dto);
 		
-		httpSession.setAttribute("sessSeq", dto.getIfmmSeq());
+		if(rtMember != null) {
+			httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
+			httpSession.setAttribute("sessId", rtMember.getIfmmId());
+			httpSession.setAttribute("sessName", rtMember.getIfmmName());
+			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
+			
+			if(rtMember.getIfmmAdminNy() == 0) {
+				returnMap.put("rt", "successGoMain");
+			} else if(rtMember.getIfmmAdminNy() == 1) {
+				returnMap.put("rt", "successGoIndex");
+			} else {
+				returnMap.put("rt", "fail");
+			}
+		} else {
+			returnMap.put("rt", "fail");
+		}
 		
-		returnMap.put("rt", "success");
 		
 		return returnMap;
 	}
@@ -80,7 +94,7 @@ public class MemberController {
 		}
 		return returnMap;
 	}
-
+	
 	@ResponseBody
 	@RequestMapping(value = "/member/logOutProc")
 	public Map<String, Object> logOutProc(HttpSession httpSession) throws Exception {
