@@ -37,6 +37,16 @@ public class MemberController {
 		return "member/loginKakao";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/member/loginProcKakao")
+	public Map<String, Object> loginProcKakao(HttpSession httpSession) throws Exception {
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		httpSession.setAttribute("sessSeq", "1");
+		
+		return returnMap;
+	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/member/loginProc")

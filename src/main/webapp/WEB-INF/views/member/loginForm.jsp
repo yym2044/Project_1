@@ -146,6 +146,7 @@
 						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_kakaotalk_48.png" style="border-radius: 50%;"
 							class="btn-3d yellow">
 					</a>
+					<button id="btnLoginKakao" type="button" class="btn btn-warning">카카오 로그인</button>
 					</div>
 					<div class="col-md-1 text-center">
 						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_google_48.png" style="border-radius: 50%;"
@@ -371,10 +372,12 @@
 <br>
 <br>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
-<script>
+
+<script type="text/javascript">
 
 	Kakao.init('5ed5d21a3ed5c47a1675f773a28a15f9');
 	console.log(Kakao.isInitialized());
@@ -400,8 +403,8 @@
 			 }
 		 })
 		  */
-		  
-	}
+		
+	};
 	
 	
 	Kakao.Auth.createLoginButton({
@@ -412,18 +415,7 @@
 				  url:'/v2/user/me',
 				  success: function(res){
 					  console.log(res);
-					  /* 
-					  $.ajax({
-						  async: true
-						  , cache: false
-						  , type: "post"
-						  , url: "/infra/member/loginProcKakao"
-						  , data : {"ifmmId" : res.id}
-						  , success : function(response){
-							  
-						  }						  	
-					  })
-					   */
+					 
 				  }
 			  })
 		  }
@@ -431,8 +423,30 @@
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+$("#btnLoginKakao").on("click", function(){
+
+	$.ajax({
+		  async: true
+		  ,cache: false
+		  ,type: "post"
+		  ,url: "/infra/member/loginProcKakao"
+		  ,success: function(response){
+			  console.log(response.rt);
+			  console.log(response);
+		  	/* location.href = "/infra/index/indexView"; */
+		  }
+		  ,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	  });
+	
+})
+
+
+</script>
+
 
 <script type="text/javascript">
 	
@@ -445,6 +459,7 @@ $("#btnLogin").on("click", function(){
 		,url: "/infra/member/loginProc"
 		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
 		,success: function(response) {
+			console.log(response);
 			if(response.rt == "successGoIndex") {
 				location.href = "/infra/index/indexView";
 			} else if(response.rt == "successGoMain") {
