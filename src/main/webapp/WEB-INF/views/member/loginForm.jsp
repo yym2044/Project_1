@@ -415,38 +415,34 @@
 				  url:'/v2/user/me',
 				  success: function(res){
 					  console.log(res);
-					 
+					  
+					  
+					  $.ajax({
+						  async: true
+						  ,cache: false
+						  ,type: "post"
+						  ,url: "/infra/member/loginProcKakao"
+						  ,success: function(response){
+							  console.log(response.rt);
+							  console.log(response);
+						  	/* location.href = "/infra/index/indexView"; */
+						  }
+						  ,error : function(jqXHR, textStatus, errorThrown){
+							alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+						  }
+						  ,complete : function(response){
+							  console.log(response.rt);
+							  console.log(response);
+						  }
+					  });
+					  
+					
 				  }
 			  })
 		  }
 	  })
 
 </script>
-
-<script type="text/javascript">
-
-$("#btnLoginKakao").on("click", function(){
-
-	$.ajax({
-		  async: true
-		  ,cache: false
-		  ,type: "post"
-		  ,url: "/infra/member/loginProcKakao"
-		  ,success: function(response){
-			  console.log(response.rt);
-			  console.log(response);
-		  	/* location.href = "/infra/index/indexView"; */
-		  }
-		  ,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-	  });
-	
-})
-
-
-</script>
-
 
 <script type="text/javascript">
 	

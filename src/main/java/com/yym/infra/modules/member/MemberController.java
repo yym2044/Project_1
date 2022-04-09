@@ -39,11 +39,15 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/member/loginProcKakao")
-	public Map<String, Object> loginProcKakao(HttpSession httpSession) throws Exception {
+	public Map<String, Object> loginProcKakao(Member dto, HttpSession httpSession) throws Exception {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		httpSession.setAttribute("sessSeq", "1");
+		dto.setIfmmSeq("1");
+		
+		httpSession.setAttribute("sessSeq", dto.getIfmmSeq());
+		
+		returnMap.put("rt", "success");
 		
 		return returnMap;
 	}
