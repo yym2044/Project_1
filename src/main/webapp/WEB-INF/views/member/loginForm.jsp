@@ -146,7 +146,7 @@
 						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_kakaotalk_48.png" style="border-radius: 50%;"
 							class="btn-3d yellow">
 					</a>
-					<button id="btnLoginKakao" type="button" class="btn btn-warning">카카오 로그인</button>
+					<button id="btnLoginKakao" class="btn btn-warning">카카오 로그인</button>
 					</div>
 					<div class="col-md-1 text-center">
 						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_google_48.png" style="border-radius: 50%;"
@@ -381,78 +381,6 @@
 
 <script type="text/javascript">
 
-	Kakao.init('5ed5d21a3ed5c47a1675f773a28a15f9');
-	console.log(Kakao.isInitialized());
-	
-	
-	kakaoLogin = function(){
-		/* 
-		Kakao.Auth.authorize({
-			redirectUri: 'http://localhost:8080/infra/member/loginKakao'
-		});
-		 */
-		/*  
-		 Kakao.Auth.loginForm({
-			 success : function(authObj) {
-				 console.log(authObj);
-				 
-				 Kakao.API.request({
-					 url:'/v2/user/me',
-					 success: function(res){
-						 console.log(res);
-					 }
-				 })
-			 }
-		 })
-		  */
-		
-	};
-	
-	
-	Kakao.Auth.createLoginButton({
-		  container: '#kakao-login-btn',
-		  success: function(authObj) {
-			  console.log(authObj);
-			  Kakao.API.request({
-				  url:'/v2/user/me',
-				  success: function(res){
-					  console.log(res);
-					  
-					  var id_kakao = res.id;
-					  console.log(id_kakao);
-					  
-				  }
-			  });
-		  }
-	  });
-	  
-$("#btnLoginKakao").on("click", function(){
-	$.ajax({
-		  async: false
-		  ,cache: false
-		  ,type:"post"
-		  ,url: "/infra/member/loginProcKakao"
-		  ,data : {"ifmmId" : $("#ifmmId_kakao").val()}
-		  ,dataType : "text"
-		  ,success: function(response){
-			  alert(response.rt);
-			  if(response.rt == "successGoIndex") {
-				  location.href = "/infra/index/indexView";
-			  } else if (response.rt == "successGoMain") {
-				  location.href = "/infra/coupang/mainPage";
-			  } else {
-				  alert("로그인 실패");
-			  }
-		  }
-		  ,error : function(){
-			  alert("error");
-		  }
-	  });
-});
-
-</script>
-
-<script type="text/javascript">
 	
 $("#btnLogin").on("click", function(){
 	
@@ -461,10 +389,37 @@ $("#btnLogin").on("click", function(){
 		,cache: false
 		,type: "post"
 		,url: "/infra/member/loginProc"
+		/* 
 		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
 		,success: function(response) {
-			alert(response.rt);
-			console.log(response);
+			
+			if(response.rt == "successGoIndex") {
+				location.href = "/infra/index/indexView";
+			} else if(response.rt == "successGoMain") {
+				location.href = "/infra/coupang/mainPage";
+			} else {
+				alert("로그인 실패");
+			}
+			
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+		 */
+	});
+	
+});
+	
+$("#btnLoginKakao").on("click", function(){
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/infra/member/why"
+		/* 
+		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
+		,success: function(response) {
 			if(response.rt == "successGoIndex") {
 				location.href = "/infra/index/indexView";
 			} else if(response.rt == "successGoMain") {
@@ -476,6 +431,7 @@ $("#btnLogin").on("click", function(){
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
+		 */
 	});
 	
 });
@@ -512,6 +468,34 @@ $("#btnLogin").on("click", function(){
 
 
 </script>
+
+<!-- <script type="text/javascript">
+
+$("#btnLoginKakao").on("click", function(){
+	$.ajax({
+		  async: true
+		  ,cache: false
+		  ,type:"post"
+		  ,url: "/infra/member/loginProcKakao"
+		  ,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
+		  ,success: function(response){
+			  alert(response);
+			  alert(response.rt);
+			  if(response.rt == "successGoIndex") {
+				  location.href = "/infra/index/indexView";
+			  } else if (response.rt == "successGoMain") {
+				  location.href = "/infra/coupang/mainPage";
+			  } else {
+				  alert("로그인 실패");
+			  }
+		  }
+		  ,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+	  });
+});
+
+</script> -->
 
 <script type="text/javascript">
 	function selectAll1(selectAll1) {

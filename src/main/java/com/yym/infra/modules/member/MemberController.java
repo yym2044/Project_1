@@ -37,34 +37,6 @@ public class MemberController {
 		return "member/loginKakao";
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/member/loginProcKakao")
-	public Map<String, Object> loginProcKakao(Member dto, HttpSession httpSession) throws Exception {
-		
-		Map<String, Object> rtMap = new HashMap<String, Object>();
-		
-		Member rtMember = service.selectOneLoginKakao(dto);
-		
-		if(rtMember != null) {
-			httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
-			httpSession.setAttribute("sessId", rtMember.getIfmmId());
-			httpSession.setAttribute("sessName", rtMember.getIfmmName());
-			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
-			
-			if(rtMember.getIfmmAdminNy() == 0) {
-				rtMap.put("rt", "successGoMain");
-			} else if(rtMember.getIfmmAdminNy() == 1) {
-				rtMap.put("rt", "successGoIndex");
-			} else {
-				rtMap.put("rt", "fail");
-			}
-		} else {
-			rtMap.put("rt", "fail");
-		}
-		
-		
-		return rtMap;
-	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/member/loginProc")
@@ -72,26 +44,41 @@ public class MemberController {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		Member rtMember = service.selectOneLogin(dto);
-
-		if(rtMember != null) {
-			
-			httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
-			httpSession.setAttribute("sessId", rtMember.getIfmmId());
-			httpSession.setAttribute("sessName", rtMember.getIfmmName());
-			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
-			
-			if(rtMember.getIfmmAdminNy() == 0) {
-				returnMap.put("rt", "successGoMain");
-			} else if(rtMember.getIfmmAdminNy() == 1) {
-				returnMap.put("rt", "successGoIndex");
-			} else {
-				returnMap.put("rt", "fail");
-			}
-			
-		} else {
-			returnMap.put("rt", "fail");
-		}
+//		Member rtMember = service.selectOneLogin(dto);
+//
+//		if(rtMember != null) {
+//			
+//			httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
+//			httpSession.setAttribute("sessId", rtMember.getIfmmId());
+//			httpSession.setAttribute("sessName", rtMember.getIfmmName());
+//			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
+//			
+//			if(rtMember.getIfmmAdminNy() == 0) {
+//				returnMap.put("rt", "successGoMain");
+//			} else if(rtMember.getIfmmAdminNy() == 1) {
+//				returnMap.put("rt", "successGoIndex");
+//			} else {
+//				returnMap.put("rt", "fail");
+//			}
+//			
+//		} else {
+//			returnMap.put("rt", "fail");
+//		}
+		
+		System.out.println("제발");
+		
+		return returnMap;
+	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/member/why")
+	public Map<String, Object> why(Member dto, HttpSession httpSession) throws Exception {
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		System.out.println("하.....................................");
+		
 		return returnMap;
 	}
 	
@@ -105,6 +92,7 @@ public class MemberController {
 		
 		return returnMap;
 	}
+	
  	
 	@RequestMapping(value = "/member/memberList")
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
