@@ -154,7 +154,8 @@
 				</div>
 			</div>
 			
-			<a href="javascript:kakaoLogout();">카카오 로그아웃</a>
+			<div id="kakao-login-btn"></div>
+			<a href="https://developers.kakao.com/logout">카카오 로그아웃</a>
 
 
 
@@ -370,6 +371,7 @@
 <br>
 <br>
 
+
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 <script>
@@ -379,13 +381,53 @@
 	
 	
 	kakaoLogin = function(){
-		
+		/* 
 		Kakao.Auth.authorize({
 			redirectUri: 'http://localhost:8080/infra/member/loginKakao'
 		});
-		
+		 */
+		/*  
+		 Kakao.Auth.loginForm({
+			 success : function(authObj) {
+				 console.log(authObj);
+				 
+				 Kakao.API.request({
+					 url:'/v2/user/me',
+					 success: function(res){
+						 console.log(res);
+					 }
+				 })
+			 }
+		 })
+		  */
+		  
 	}
 	
+	
+	Kakao.Auth.createLoginButton({
+		  container: '#kakao-login-btn',
+		  success: function(authObj) {
+			  console.log(authObj);
+			  Kakao.API.request({
+				  url:'/v2/user/me',
+				  success: function(res){
+					  console.log(res);
+					  /* 
+					  $.ajax({
+						  async: true
+						  , cache: false
+						  , type: "post"
+						  , url: "/infra/member/loginProcKakao"
+						  , data : {"ifmmId" : res.id}
+						  , success : function(response){
+							  
+						  }						  	
+					  })
+					   */
+				  }
+			  })
+		  }
+	  })
 
 </script>
 
