@@ -273,7 +273,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th style="width: 200px;" class="bg-light"><label for="file0" class="form-label input-file-button">이미지 첨부</label></th>
+					<th style="width: 200px;" class="bg-light"><label for="file0" class="form-label input-file-button">이미지 첨부</label><button id="checkImg" type="button">파일체크버튼</button></th>
 					<td class="text-start">
 					
 						<input class="form-control form-control-sm" id="file0" name="file0" onChange="upload(0, 2);" type="file" multiple="multiple" style="display:none;">
@@ -424,6 +424,14 @@
 	<script src="/infra/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 
 	<script src="${path}/resources/js/sidebars.js"></script>
+	
+	<script type="text/javascript">
+	$("#checkImg").on("click", function(){
+		alert($("#file0").val());
+		alert($("#file1").val());
+	});
+
+	</script>
 	
 	<script type="text/javascript">
 	
