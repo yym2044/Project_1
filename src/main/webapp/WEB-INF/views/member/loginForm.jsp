@@ -413,10 +413,10 @@ $("#btnLogin").on("click", function(){
 $("#btnLoginKakao").on("click", function(){
 	
 	$.ajax({
-		async: true 
-		,cache: false
+		async: false 
+		,cache: true
 		,type: "post"
-		,url: "/infra/member/why"
+		,url: "/infra/member/loginProc2"
 		/* 
 		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
 		,success: function(response) {
