@@ -20,8 +20,8 @@ public class MemberServiceImpl implements MemberService{
 		return dao.selectOneLogin(dto);
 	}
 	@Override
-	public Member selectOneLoginKakao(Member dto) throws Exception {
-		return dao.selectOneLoginKakao(dto);
+	public Member selectOneLoginSns(Member dto) throws Exception {
+		return dao.selectOneLoginSns(dto);
 	}
 	
 	@Override

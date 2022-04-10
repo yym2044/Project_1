@@ -36,7 +36,10 @@ public class MemberController {
 		
 		return "member/loginKakao";
 	}
-	
+	@RequestMapping(value = "member/loginNaver")
+	public String loginNaver() throws Exception {
+		return "member/loginNaver";
+	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/member/loginProc")
@@ -72,12 +75,12 @@ public class MemberController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "/member/loginProcKakao")
-	public Map<String, Object> loginProcKakao(Member dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "/member/loginProcSns")
+	public Map<String, Object> loginProcSns(Member dto, HttpSession httpSession) throws Exception {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		Member rtMember = service.selectOneLoginKakao(dto);
+		Member rtMember = service.selectOneLoginSns(dto);
 
 		if(rtMember != null) {
 			

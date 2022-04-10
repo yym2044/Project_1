@@ -23,6 +23,22 @@
 			AND ifmmPwd = #{ifmmPwd}
 	</select>
 	
+ 	<select id="selectOneLoginSns" resultMap="resultMapObj">
+	SELECT
+		a.ifmmSeq
+	    , a.ifmmAdminNy
+	    , a.ifmmId
+	    , a.ifmmName
+	    , a.ifmmDesc
+	FROM
+		infrMember a
+	LEFT JOIN
+		infrMemberEmail b 
+	ON b.ifmmSeq = a.ifmmSeq
+	WHERE 1=1
+		AND b.ifmeEmailFull = #{ifmeEmailFull}
+	</select>
+	<!-- 이렇게 할까 위처럼 할까..
 	<select id="selectOneLoginKakao" resultMap="resultMapObj">
 	SELECT
 		ifmmSeq
@@ -35,7 +51,7 @@
 	WHERE 1=1
 		AND ifmmId = #{ifmmId}
 	</select>
-		
+	 -->	
 
 	<sql id="selectListCommon">
 		FROM infrMember a

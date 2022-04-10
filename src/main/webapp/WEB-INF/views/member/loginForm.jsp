@@ -139,14 +139,14 @@
 							class="btn-3d blue">
 					</div>
 					<div class="col-md-1 text-center">
-						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_naver_48.png" style="border-radius: 50%;" class="btn-3d green">
+						<%-- <img src="${path}/resources/images/xdmin/sns_icon/icon_round_naver_48.png" style="border-radius: 50%;" class="btn-3d green"> --%>
+						<div id="naver_id_login" class="btn-3d green"></div>
 					</div>
 					<div class="col-md-1 text-center">
 					<a href="javascript:kakaoLogin();">
 						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_kakaotalk_48.png" style="border-radius: 50%;"
 							class="btn-3d yellow">
 					</a>
-					<button id="btnLoginKakao" class="btn btn-warning">카카오 로그인</button>
 					</div>
 					<div class="col-md-1 text-center">
 						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_google_48.png" style="border-radius: 50%;"
@@ -353,6 +353,8 @@
 
 <input id="ifmmId_kakao" type="hidden" value="">
 
+
+
 <br>
 <br>
 <br>
@@ -377,6 +379,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("Yn6Xl_G7XXgjvBNNusVk", "http://localhost:8080/infra/member/loginNaver");
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("green", 1, 50);
+	naver_id_login.setDomain("http://localhost:8080/");
+	naver_id_login.setState(state);
+	/* naver_id_login.setPopup(); */
+	naver_id_login.init_naver_id_login();
+</script>
+
 
 <script type="text/javascript">
 
@@ -407,11 +421,10 @@
 							  async: true
 							  ,cache: false
 							  ,type:"post"
-							  ,url: "/infra/member/loginProcKakao"
-							  ,data : { "ifmmId" : $("#ifmmId_kakao").val() }
+							  ,url: "/infra/member/loginProcSns"
+							  /* ,data : { "ifmmId" : res.id } */
+							  ,data : { "ifmeEmailFull" : res.kakao_account.email }
 							  ,success: function(response){
-								  alert(response);
-								  alert(response.rt);
 								  if(response.rt == "successGoIndex") {
 									  location.href = "/infra/index/indexView";
 								  } else if (response.rt == "successGoMain") {
@@ -457,31 +470,6 @@
 
 <script type="text/javascript">
 
-$("#btnLoginKakao").on("click", function(){
-	$.ajax({
-		  async: true
-		  ,cache: false
-		  ,type:"post"
-		  ,url: "/infra/member/loginProcKakao"
-		  ,data : { "ifmmId" : $("#ifmmId_kakao").val() }
-		  ,success: function(response){
-			  alert(response);
-			  alert(response.rt);
-			  if(response.rt == "successGoIndex") {
-				  location.href = "/infra/index/indexView";
-			  } else if (response.rt == "successGoMain") {
-				  location.href = "/infra/coupang/mainPage";
-			  } else {
-				  alert("로그인 실패");
-			  }
-		  }
-		  ,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-	  });
-});
-
-	
 $("#btnLogin").on("click", function(){
 	
 	$.ajax({
