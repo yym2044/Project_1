@@ -44,43 +44,65 @@ public class MemberController {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-//		Member rtMember = service.selectOneLogin(dto);
-//
-//		if(rtMember != null) {
-//			
-//			httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
-//			httpSession.setAttribute("sessId", rtMember.getIfmmId());
-//			httpSession.setAttribute("sessName", rtMember.getIfmmName());
-//			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
-//			
-//			if(rtMember.getIfmmAdminNy() == 0) {
-//				returnMap.put("rt", "successGoMain");
-//			} else if(rtMember.getIfmmAdminNy() == 1) {
-//				returnMap.put("rt", "successGoIndex");
-//			} else {
-//				returnMap.put("rt", "fail");
-//			}
-//			
-//		} else {
-//			returnMap.put("rt", "fail");
-//		}
+		Member rtMember = service.selectOneLogin(dto);
+
+		if(rtMember != null) {
+			
+			httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
+			httpSession.setAttribute("sessId", rtMember.getIfmmId());
+			httpSession.setAttribute("sessName", rtMember.getIfmmName());
+			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
+			
+			if(rtMember.getIfmmAdminNy() == 0) {
+				returnMap.put("rt", "successGoMain");
+			} else if(rtMember.getIfmmAdminNy() == 1) {
+				returnMap.put("rt", "successGoIndex");
+			} else {
+				returnMap.put("rt", "fail");
+			}
+			
+		} else {
+			returnMap.put("rt", "fail");
+		}
 		
-		System.out.println("제발");
 		
 		return returnMap;
 	}
+	
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "/member/loginProc2")
-	public Map<String, Object> loginProc2(Member dto, HttpSession httpSession) throws Exception {
+	@RequestMapping(value = "/member/loginProcKakao")
+	public Map<String, Object> loginProcKakao(Member dto, HttpSession httpSession) throws Exception {
 		
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		System.out.println("하.....................................");
+		Member rtMember = service.selectOneLoginKakao(dto);
+
+		if(rtMember != null) {
+			
+			httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
+			httpSession.setAttribute("sessId", rtMember.getIfmmId());
+			httpSession.setAttribute("sessName", rtMember.getIfmmName());
+			httpSession.setAttribute("sessAdminNy", rtMember.getIfmmAdminNy());
+			
+			if(rtMember.getIfmmAdminNy() == 0) {
+				returnMap.put("rt", "successGoMain");
+			} else if(rtMember.getIfmmAdminNy() == 1) {
+				returnMap.put("rt", "successGoIndex");
+			} else {
+				returnMap.put("rt", "fail");
+			}
+			
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		
 		
 		return returnMap;
 	}
+	
+	
 	
 	@ResponseBody
 	@RequestMapping(value = "/member/logOutProc")

@@ -351,7 +351,7 @@
 
 </div>
 
-<input id="ifmmId_kakao" type="hidden" value="2192233189">
+<input id="ifmmId_kakao" type="hidden" value="">
 
 <br>
 <br>
@@ -378,8 +378,108 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
+<script type="text/javascript">
+
+	Kakao.init('5ed5d21a3ed5c47a1675f773a28a15f9');
+	console.log(Kakao.isInitialized());
+	
+	
+	kakaoLogin = function(){
+		/* 
+		Kakao.Auth.authorize({
+			redirectUri: 'http://localhost:8080/infra/member/loginKakao'
+		});
+		 */
+		 
+		 Kakao.Auth.login({
+			 success : function(authObj) {
+				 console.log(authObj);
+				 
+				 Kakao.API.request({
+					 url:'/v2/user/me',
+					 success: function(res){
+						 console.log(res);
+						 
+						 $("#ifmmId_kakao").val(res.id);
+						 
+						 // ajax
+						 $.ajax({
+							  async: true
+							  ,cache: false
+							  ,type:"post"
+							  ,url: "/infra/member/loginProcKakao"
+							  ,data : { "ifmmId" : $("#ifmmId_kakao").val() }
+							  ,success: function(response){
+								  alert(response);
+								  alert(response.rt);
+								  if(response.rt == "successGoIndex") {
+									  location.href = "/infra/index/indexView";
+								  } else if (response.rt == "successGoMain") {
+									  location.href = "/infra/coupang/mainPage";
+								  } else {
+									  alert("로그인 실패");
+								  }
+							  }
+							  ,error : function(jqXHR, textStatus, errorThrown){
+									alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+								}
+						  });
+						 //
+						 
+					 }
+				 })
+			 }
+		 })
+		
+	};
+	
+	/* 
+	Kakao.Auth.createLoginButton({
+		container: '#kakao-login-btn',
+		success: function(authObj) {
+			console.log(authObj);
+			
+			Kakao.API.request({
+				url:'/v2/user/me',
+				success: function(res){
+					console.log(res);
+		
+					var id_kakao = res.id;
+					console.log(id_kakao);
+		
+				}
+			});
+		}
+	});
+	 */  
+</script>
+
 
 <script type="text/javascript">
+
+$("#btnLoginKakao").on("click", function(){
+	$.ajax({
+		  async: true
+		  ,cache: false
+		  ,type:"post"
+		  ,url: "/infra/member/loginProcKakao"
+		  ,data : { "ifmmId" : $("#ifmmId_kakao").val() }
+		  ,success: function(response){
+			  alert(response);
+			  alert(response.rt);
+			  if(response.rt == "successGoIndex") {
+				  location.href = "/infra/index/indexView";
+			  } else if (response.rt == "successGoMain") {
+				  location.href = "/infra/coupang/mainPage";
+			  } else {
+				  alert("로그인 실패");
+			  }
+		  }
+		  ,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+	  });
+});
 
 	
 $("#btnLogin").on("click", function(){
@@ -389,7 +489,6 @@ $("#btnLogin").on("click", function(){
 		,cache: false
 		,type: "post"
 		,url: "/infra/member/loginProc"
-		/* 
 		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
 		,success: function(response) {
 			
@@ -405,36 +504,10 @@ $("#btnLogin").on("click", function(){
 		,error : function(jqXHR, textStatus, errorThrown){
 			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
-		 */
 	});
 	
 });
 	
-$("#btnLoginKakao").on("click", function(){
-	
-	$.ajax({
-		async: false 
-		,cache: true
-		,type: "post"
-		,url: "/infra/member/loginProc2"
-		/* 
-		,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
-		,success: function(response) {
-			if(response.rt == "successGoIndex") {
-				location.href = "/infra/index/indexView";
-			} else if(response.rt == "successGoMain") {
-				location.href = "/infra/coupang/mainPage";
-			} else {
-				alert("로그인 실패");
-			}
-		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-		 */
-	});
-	
-});
 	
 	//엔터키 쳤을 때 로그인 하는 방법 (input id칸이랑 pwd칸에 [onkeyup="enterkey();"] 추가)
 	function enterkey() {
@@ -469,33 +542,6 @@ $("#btnLoginKakao").on("click", function(){
 
 </script>
 
-<!-- <script type="text/javascript">
-
-$("#btnLoginKakao").on("click", function(){
-	$.ajax({
-		  async: true
-		  ,cache: false
-		  ,type:"post"
-		  ,url: "/infra/member/loginProcKakao"
-		  ,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPwd" : $("#ifmmPwd").val()}
-		  ,success: function(response){
-			  alert(response);
-			  alert(response.rt);
-			  if(response.rt == "successGoIndex") {
-				  location.href = "/infra/index/indexView";
-			  } else if (response.rt == "successGoMain") {
-				  location.href = "/infra/coupang/mainPage";
-			  } else {
-				  alert("로그인 실패");
-			  }
-		  }
-		  ,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-	  });
-});
-
-</script> -->
 
 <script type="text/javascript">
 	function selectAll1(selectAll1) {
