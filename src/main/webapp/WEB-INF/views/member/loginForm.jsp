@@ -14,6 +14,9 @@
 <head>
 <meta charset="uTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="google-signin-client_id" content="241819721200-koc7q40oo73nhs45hi336ti421vfrs52.apps.googleusercontent.com">
+
 <title>로그인 화면</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -135,7 +138,7 @@
 			<div class="col-md-12 collapse show" id="socialLogin">
 				<div class="row justify-content-center">
 					<div class="col-md-1 text-center">
-						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_facebook_48.png" style="border-radius: 50%;"
+						<img id="btnLoginFacebook" src="${path}/resources/images/xdmin/sns_icon/icon_round_facebook_48.png" style="border-radius: 50%;"
 							class="btn-3d blue">
 					</div>
 					<div class="col-md-1 text-center">
@@ -149,7 +152,7 @@
 					</a>
 					</div>
 					<div class="col-md-1 text-center">
-						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_google_48.png" style="border-radius: 50%;"
+						<img id="GgCustomLogin" src="${path}/resources/images/xdmin/sns_icon/icon_round_google_48.png" style="border-radius: 50%;"
 							class="btn-3d white">
 					</div>
 				</div>
@@ -351,47 +354,138 @@
 
 </div>
 
-<input id="ifmmId_kakao" type="hidden" value="">
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
+<!-- 구글 start -->
+
+<script>
+
+//처음 실행하는 함수
+function init() {
+	gapi.load('auth2', function() {
+		gapi.auth2.init();
+		options = new gapi.auth2.SigninOptionsBuilder();
+		options.setPrompt('select_account');
+        // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
+		options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
+        // 인스턴스의 함수 호출 - element에 로그인 기능 추가
+        // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
+		gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
+	})
+}
+function onSignIn(googleUser) {
+	var access_token = googleUser.getAuthResponse().access_token
+	$.ajax({
+    	// people api를 이용하여 프로필 및 생년월일에 대한 선택동의후 가져온다.
+		url: 'https://people.googleapis.com/v1/people/me'
+        // key에 자신의 API 키를 넣습니다.
+		, data: {personFields:'birthdays', key:'AIzaSyBXxxCObMkLv3yW7XScdJn7CK3GODEjmvk', 'access_token': access_token}
+		, method:'GET'
+	})
+	.done(function(e){
+        //프로필을 가져온다.
+		var profile = googleUser.getBasicProfile();
+		console.log(profile);
+	})
+	.fail(function(e){
+		console.log(e);
+	})
+}
+function onSignInFailure(t){		
+	console.log(t);
+}
+</script>
+
+
+<!-- 구글 end -->
+
+
+<!-- 페이스북 start -->
+<script>
+    //페이스북 (로그인) 기본 설정
+    window.fbAsyncInit = function () {
+        //페이스북 로그인 기능 클라이언트 설정
+        FB.init({
+            appId: '536130211216168',
+            autoLogAppEvents: true,
+            xfbml: true,
+            version: 'v13.0'
+        });
+
+        //페이스북 로그인 여부 확인
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    };
+
+    //로그인 상태에 따라 로그인 / 로그아웃 구분
+    const statusChangeCallback = (res)=>{
+        if(res.status === 'connected')
+            document.querySelector('#btnLoginFacebook').value="로그아웃";
+        else document.querySelector('#btnLoginFacebook').value= "로그인";
+    }
+
+    //페이스북 (로그인)
+    const facebookLogin = ()=>{
+        //로그인 정보 GET
+        FB.login((res)=>{
+            //사용자 정보 GET
+            FB.api(
+                `/${res.authResponse.userID}/`, 
+                'GET',
+                {"fields":"id,name,email"},
+                (res2) => {
+                //res.authResponse.accessToken : 엑세스 토큰
+                //res.authResponse.graphDomain : 공급자 (페이스북)
+                //res.authResponse.userID : 유저 아이디 구분 (숫자)
+                //res2.name : 유저 이름
+                //res2.email : 유저 이메일 정보
+                document.querySelector('#btnLoginFacebook').value="로그아웃";
+                console.log(res,res2);
+            });
+        });
+
+    }
+
+    //페이스북 (로그아웃)
+    const facebookLogout = ()=>{
+        FB.logout((res)=>{
+            document.querySelector('#btnLoginFacebook').value= "로그인";
+        });
+    }
+</script>
+<!--UI 관련 스크립트-->
+<script>
+     //로그인 버튼 클릭시
+     document.querySelector('#btnLoginFacebook').addEventListener('click',e=>{
+        if(e.target.value === '로그인'){
+            facebookLogin();
+        } else {
+            facebookLogout();
+        }
+    });
+ </script>
+<!-- 페이스북 end -->
+
+<!-- 네이버 start -->
 <script type="text/javascript">
 	var naver_id_login = new naver_id_login("Yn6Xl_G7XXgjvBNNusVk", "http://localhost:8080/infra/member/loginNaver");
 	var state = naver_id_login.getUniqState();
 	naver_id_login.setButton("green", 1, 50);
 	naver_id_login.setDomain("http://localhost:8080/");
 	naver_id_login.setState(state);
-	/* naver_id_login.setPopup(); */
+	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
 </script>
+<!-- 네이버 end -->
 
-
+<!-- 카카오 start -->
 <script type="text/javascript">
 
 	Kakao.init('5ed5d21a3ed5c47a1675f773a28a15f9');
@@ -414,7 +508,6 @@
 					 success: function(res){
 						 console.log(res);
 						 
-						 $("#ifmmId_kakao").val(res.id);
 						 
 						 // ajax
 						 $.ajax({
@@ -466,6 +559,7 @@
 	});
 	 */  
 </script>
+<!-- 카카오 end -->
 
 
 <script type="text/javascript">
