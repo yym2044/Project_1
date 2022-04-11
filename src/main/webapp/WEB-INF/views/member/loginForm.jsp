@@ -499,7 +499,7 @@ function onSignInFailure(t){
 		});
 		 */
 		 
-		 Kakao.Auth.login({
+		 Kakao.Auth.loginForm({
 			 success : function(authObj) {
 				 console.log(authObj);
 				 
