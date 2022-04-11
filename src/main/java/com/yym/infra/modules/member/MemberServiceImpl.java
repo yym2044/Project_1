@@ -111,6 +111,7 @@ public class MemberServiceImpl implements MemberService{
 		
 		//추가 start
 		
+		//이미지
 		int j = 0;
 		for(MultipartFile multipartFile : dto.getFile0() ) {
 			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
@@ -129,6 +130,7 @@ public class MemberServiceImpl implements MemberService{
 			j++;
 		}
 		
+		//파일
 		j = 0;
 		for(MultipartFile multipartFile : dto.getFile1() ) {
 			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");

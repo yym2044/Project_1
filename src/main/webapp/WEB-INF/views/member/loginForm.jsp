@@ -147,7 +147,7 @@
 					</div>
 					<div class="col-md-1 text-center">
 					<a href="javascript:kakaoLogin();">
-						<img src="${path}/resources/images/xdmin/sns_icon/icon_round_kakaotalk_48.png" style="border-radius: 50%;"
+						<img src="/infra/resources/images/xdmin/sns_icon/icon_round_kakaotalk_48.png" style="border-radius: 50%;"
 							class="btn-3d yellow">
 					</a>
 					</div>
