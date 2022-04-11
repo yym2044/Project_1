@@ -509,28 +509,6 @@ function onSignInFailure(t){
 						 console.log(res);
 						 
 						 
-						 // ajax
-						 $.ajax({
-							  async: true
-							  ,cache: false
-							  ,type:"post"
-							  ,url: "/infra/member/loginProcSns"
-							  /* ,data : { "ifmmId" : res.id } */
-							  ,data : { "ifmeEmailFull" : res.kakao_account.email }
-							  ,success: function(response){
-								  if(response.rt == "successGoIndex") {
-									  location.href = "/infra/index/indexView";
-								  } else if (response.rt == "successGoMain") {
-									  location.href = "/infra/coupang/mainPage";
-								  } else {
-									  alert("로그인 실패");
-								  }
-							  }
-							  ,error : function(jqXHR, textStatus, errorThrown){
-									alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-								}
-						  });
-						 //
 						 
 					 }
 				 })
