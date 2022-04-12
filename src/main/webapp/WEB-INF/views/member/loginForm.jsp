@@ -354,8 +354,11 @@
 		</div>
 		
 
-		<div id="status">
-		</div>
+		<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
 		
 
 
@@ -370,7 +373,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=3024049691241358" nonce="SiOBIhLG"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v13.0&appId=3024049691241358" nonce="SiOBIhLG"></script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
 <!-- 구글 start -->
@@ -433,30 +436,11 @@ function onSignInFailure(t){
   }
 
 
-//  function checkLoginState() {               // Called when a person is finished with the Login Button.
-//    FB.getLoginStatus(function(response) {   // See the onlogin handler
-//      statusChangeCallback(response);
-//    });
-//  }
-  
-  function fnFbCustomLogin(){
-		FB.login(function(response) {
-			if (response.status === 'connected') {
-				FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
-					console.log(r);
-				})
-			} else if (response.status === 'not_authorized') {
-				// 사람은 Facebook에 로그인했지만 앱에는 로그인하지 않았습니다.
-				alert('앱에 로그인해야 이용가능한 기능입니다.');
-			} else {
-				// 그 사람은 Facebook에 로그인하지 않았으므로이 앱에 로그인했는지 여부는 확실하지 않습니다.
-				alert('페이스북에 로그인해야 이용가능한 기능입니다.');
-			}
-		}, {scope: 'public_profile,email'});
-		FB.getLoginStatus(function(response) {   // See the onlogin handler
-	      statusChangeCallback(response);
-	    });
-	}
+  function checkLoginState() {               // Called when a person is finished with the Login Button.
+    FB.getLoginStatus(function(response) {   // See the onlogin handler
+      statusChangeCallback(response);
+    });
+  }
 
 
   window.fbAsyncInit = function() {
@@ -483,8 +467,6 @@ function onSignInFailure(t){
   }
 
 </script>
-
-
 <!-- 페이스북 end -->
 
 <!-- 네이버 start -->
