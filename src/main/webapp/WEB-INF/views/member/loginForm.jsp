@@ -36,7 +36,7 @@
 <body>
 
 
-</body>
+
 
 
 <div class="container-fluid">
@@ -138,8 +138,14 @@
 			<div class="col-md-12 collapse show" id="socialLogin">
 				<div class="row justify-content-center">
 					<div class="col-md-1 text-center">
-						<img id="btnLoginFacebook" src="${path}/resources/images/xdmin/sns_icon/icon_round_facebook_48.png" style="border-radius: 50%;"
+						
+						<!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" auto_logout_link="true">
+						</fb:login-button> -->
+						<a href="javascript:fnFbCustomLogin();">
+							<img id="btnLoginFacebook" src="${path}/resources/images/xdmin/sns_icon/icon_round_facebook_48.png" style="border-radius: 50%;"
 							class="btn-3d blue">
+						</a>
+						
 					</div>
 					<div class="col-md-1 text-center">
 						<%-- <img src="${path}/resources/images/xdmin/sns_icon/icon_round_naver_48.png" style="border-radius: 50%;" class="btn-3d green"> --%>
@@ -346,6 +352,11 @@
 
 			</div>
 		</div>
+		
+
+		<div id="status">
+		</div>
+		
 
 
 	</div>
@@ -359,11 +370,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=3024049691241358" nonce="SiOBIhLG"></script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 
 <!-- 구글 start -->
-
+<!-- 
 <script>
 
 //처음 실행하는 함수
@@ -402,75 +413,78 @@ function onSignInFailure(t){
 }
 </script>
 
-
+ -->
 <!-- 구글 end -->
 
 
 <!-- 페이스북 start -->
+
 <script>
-    //페이스북 (로그인) 기본 설정
-    window.fbAsyncInit = function () {
-        //페이스북 로그인 기능 클라이언트 설정
-        FB.init({
-            appId: '536130211216168',
-            autoLogAppEvents: true,
-            xfbml: true,
-            version: 'v13.0'
-        });
 
-        //페이스북 로그인 여부 확인
-        FB.getLoginStatus(function (response) {
-            statusChangeCallback(response);
-        });
-    };
-
-    //로그인 상태에 따라 로그인 / 로그아웃 구분
-    const statusChangeCallback = (res)=>{
-        if(res.status === 'connected')
-            document.querySelector('#btnLoginFacebook').value="로그아웃";
-        else document.querySelector('#btnLoginFacebook').value= "로그인";
+  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    console.log('statusChangeCallback');
+    console.log(response);                   // The current login status of the person.
+    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      testAPI();  
+    } else {                                 // Not logged into your webpage or we are unable to tell.
+      document.getElementById('status').innerHTML = 'Please log ' +
+        'into this webpage.';
     }
+  }
 
-    //페이스북 (로그인)
-    const facebookLogin = ()=>{
-        //로그인 정보 GET
-        FB.login((res)=>{
-            //사용자 정보 GET
-            FB.api(
-                `/${res.authResponse.userID}/`, 
-                'GET',
-                {"fields":"id,name,email"},
-                (res2) => {
-                //res.authResponse.accessToken : 엑세스 토큰
-                //res.authResponse.graphDomain : 공급자 (페이스북)
-                //res.authResponse.userID : 유저 아이디 구분 (숫자)
-                //res2.name : 유저 이름
-                //res2.email : 유저 이메일 정보
-                document.querySelector('#btnLoginFacebook').value="로그아웃";
-                console.log(res,res2);
-            });
-        });
 
-    }
+//  function checkLoginState() {               // Called when a person is finished with the Login Button.
+//    FB.getLoginStatus(function(response) {   // See the onlogin handler
+//      statusChangeCallback(response);
+//    });
+//  }
+  
+  function fnFbCustomLogin(){
+		FB.login(function(response) {
+			if (response.status === 'connected') {
+				FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
+					console.log(r);
+				})
+			} else if (response.status === 'not_authorized') {
+				// 사람은 Facebook에 로그인했지만 앱에는 로그인하지 않았습니다.
+				alert('앱에 로그인해야 이용가능한 기능입니다.');
+			} else {
+				// 그 사람은 Facebook에 로그인하지 않았으므로이 앱에 로그인했는지 여부는 확실하지 않습니다.
+				alert('페이스북에 로그인해야 이용가능한 기능입니다.');
+			}
+		}, {scope: 'public_profile,email'});
+		FB.getLoginStatus(function(response) {   // See the onlogin handler
+	      statusChangeCallback(response);
+	    });
+	}
 
-    //페이스북 (로그아웃)
-    const facebookLogout = ()=>{
-        FB.logout((res)=>{
-            document.querySelector('#btnLoginFacebook').value= "로그인";
-        });
-    }
-</script>
-<!--UI 관련 스크립트-->
-<script>
-     //로그인 버튼 클릭시
-     document.querySelector('#btnLoginFacebook').addEventListener('click',e=>{
-        if(e.target.value === '로그인'){
-            facebookLogin();
-        } else {
-            facebookLogout();
-        }
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '3024049691241358',
+      cookie     : true,                     // Enable cookies to allow the server to access the session.
+      xfbml      : true,                     // Parse social plugins on this webpage.
+      version    : 'v13.0'           // Use this Graph API version for this call.
     });
- </script>
+
+
+    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+      statusChangeCallback(response);        // Returns the login status.
+    });
+  };
+ 
+  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      document.getElementById('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!';
+    });
+  }
+
+</script>
+
+
 <!-- 페이스북 end -->
 
 <!-- 네이버 start -->
@@ -635,5 +649,6 @@ $("#btnLogin").on("click", function(){
 		})
 	}
 </script>
+</body>
 </html>
 
