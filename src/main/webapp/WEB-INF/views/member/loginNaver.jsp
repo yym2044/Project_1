@@ -28,12 +28,11 @@
 //    alert(naver_id_login.getProfileData('age'));
      
     //
-    $.ajax({
+   $.ajax({
   	  async: true
   	  ,cache: false
   	  ,type:"post"
   	  ,url: "/infra/member/loginProcSns"
-  	  /* ,data : { "ifmmId" : res.id } */
   	  ,data : { "ifmeEmailFull" : naver_id_login.getProfileData('email') }
   	  ,success: function(response){
   		  if(response.rt == "successGoIndex") {

@@ -20,7 +20,7 @@ import com.yym.infra.modules.code.CodeServiceImpl;
 
 @Controller
 public class MemberController {
-
+	
 	@Autowired
 	MemberServiceImpl service;
 	
