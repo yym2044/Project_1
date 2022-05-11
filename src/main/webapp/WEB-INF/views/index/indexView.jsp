@@ -58,9 +58,9 @@ a {
 	</div>
 </div>
 
-<c:if test="${sessAdminNy eq 1}">
+<%-- <c:if test="${sessAdminNy eq 1}"> --%>
 	<a class="btn btn-outline-success" href="/infra/member/memberList">회원관리</a>
-</c:if>
+<%-- </c:if> --%>
 
 
 

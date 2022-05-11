@@ -363,9 +363,6 @@
 
 
 	</div>
-
-
-
 </div>
 
 
@@ -515,6 +512,7 @@ function onSignInFailure(t){
 							  ,success: function(response){
 								  if(response.rt == "successGoIndex") {
 									  location.href = "/infra/index/indexView";
+									  location.href = "/infra/index/indexView";
 								  } else if (response.rt == "successGoMain") {
 									  location.href = "/infra/coupang/mainPage";
 								  } else {
@@ -562,6 +560,8 @@ function onSignInFailure(t){
 
 $("#btnLogin").on("click", function(){
 	
+	/* alert("로그인 버튼 클릭"); */
+	
 	$.ajax({
 		async: true 
 		,cache: false
@@ -573,7 +573,8 @@ $("#btnLogin").on("click", function(){
 			if(response.rt == "successGoIndex") {
 				location.href = "/infra/index/indexView";
 			} else if(response.rt == "successGoMain") {
-				location.href = "/infra/coupang/mainPage";
+				location.href = "/infra/index/indexView";
+				  /* location.href = "/infra/coupang/mainPage"; */
 			} else {
 				alert("로그인 실패");
 			}
@@ -601,7 +602,8 @@ $("#btnLogin").on("click", function(){
     				if(response.rt == "successGoIndex") {
     					location.href = "/infra/index/indexView";
     				} else if(response.rt == "successGoMain") {
-    					location.href = "/infra/coupang/mainPage";
+    					location.href = "/infra/index/indexView";
+						  /* location.href = "/infra/coupang/mainPage"; */
     				} else {
     					alert("로그인 실패");
     				}

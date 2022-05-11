@@ -65,91 +65,68 @@ public class MemberServiceImpl implements MemberService{
 		
 		
 		dao.insertMember(dto);
-		dao.insertMemberAddress(dto);
-		dao.insertMemberEmail(dto);
-//		dao.insertMemberPhoneHome(dto);
-//		dao.insertMemberPhoneMobile(dto);
-		
-		
-		// infrMemberPhone
-		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
-			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
-			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
-			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
-			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
-			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
-			
-			dao.insertPhone(dto);
-		}
-		
-//		//홈페이지
-//		for(int i=0; i<dto.getIfaoUrlArray1().length; i++) {
-//			dto.setIfaoDefaultNy(dto.getIfaoDefaultNyArray1()[i]);
-//			dto.setIfaoTypeCd(dto.getIfaoTypeCdArray1()[i]);
-//			dto.setIfaoSnsTypeCd(dto.getIfaoSnsTypeCdArray1()[i]);
-//			dto.setIfaoTitle(dto.getIfaoTitleArray1()[i]);
-//			dto.setIfaoUrl(dto.getIfaoUrlArray1()[i]);
+//		dao.insertMemberAddress(dto);
+//		dao.insertMemberEmail(dto);
+//		
+//		
+//		// infrMemberPhone
+//		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
+//			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
+//			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
+//			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
+//			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
+//			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
 //			
-//			dao.insertAddressOnline(dto);
+//			dao.insertPhone(dto);
 //		}
-//		//SNS
-//		for(int i=0; i<dto.getIfaoUrlArray2().length; i++) {
-//			dto.setIfaoDefaultNy(dto.getIfaoDefaultNyArray2()[i]);
-//			dto.setIfaoTypeCd(dto.getIfaoTypeCdArray2()[i]);
-//			dto.setIfaoSnsTypeCd(dto.getIfaoSnsTypeCdArray2()[i]);
-//			dto.setIfaoTitle(dto.getIfaoTitleArray2()[i]);
-//			dto.setIfaoUrl(dto.getIfaoUrlArray2()[i]);
+//		
+//		System.out.println(dto.getIfaoUrlArray1().length);	//1
+//		System.out.println(dto.getIfaoUrlArray2().length);	//1 들어오는데 뭐지
+//		
+//		dao.insertMemberNationality(dto);
+//		
+//		
+//		//추가 start
+//		
+//		//이미지
+//		int j = 0;
+//		for(MultipartFile multipartFile : dto.getFile0() ) {
+//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
 //			
-//			dao.insertAddressOnline(dto);
+//			UtilUpload.upload(multipartFile, pathModule, dto);
+//			
+//			dto.setTableName("infrMemberUploaded");
+//			dto.setType(0);
+//			dto.setDefaultNy(0);
+//			dto.setSort(j);
+//			dto.setPseq(dto.getIfmmSeq());
+//			
+//			
+//			
+//			dao.insertMemberUploaded(dto);
+//			j++;
 //		}
-		
-		System.out.println(dto.getIfaoUrlArray1().length);	//1
-		System.out.println(dto.getIfaoUrlArray2().length);	//1 들어오는데 뭐지
-		
-		dao.insertMemberNationality(dto);
-		
-		
-		//추가 start
-		
-		//이미지
-		int j = 0;
-		for(MultipartFile multipartFile : dto.getFile0() ) {
-			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-			
-			UtilUpload.upload(multipartFile, pathModule, dto);
-			
-			dto.setTableName("infrMemberUploaded");
-			dto.setType(0);
-			dto.setDefaultNy(0);
-			dto.setSort(j);
-			dto.setPseq(dto.getIfmmSeq());
-			
-			
-			
-			dao.insertMemberUploaded(dto);
-			j++;
-		}
-		
-		//파일
-		j = 0;
-		for(MultipartFile multipartFile : dto.getFile1() ) {
-			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-			
-			UtilUpload.upload(multipartFile, pathModule, dto);
-			
-			dto.setTableName("infrMemberUploaded");
-			dto.setType(1);
-			dto.setDefaultNy(0);
-			dto.setSort(j);
-			dto.setPseq(dto.getIfmmSeq());
-			
-			dao.insertMemberUploaded(dto);
-			j++;
-		}
-		
-		
-		
-		//추가 end
+//		
+//		//파일
+//		j = 0;
+//		for(MultipartFile multipartFile : dto.getFile1() ) {
+//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+//			
+//			UtilUpload.upload(multipartFile, pathModule, dto);
+//			
+//			dto.setTableName("infrMemberUploaded");
+//			dto.setType(1);
+//			dto.setDefaultNy(0);
+//			dto.setSort(j);
+//			dto.setPseq(dto.getIfmmSeq());
+//			
+//			dao.insertMemberUploaded(dto);
+//			j++;
+//		}
+//		
+//		
+//		
+//		//추가 end
 		
 		
 		return 1;
@@ -196,51 +173,28 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int updateMember(Member dto) throws Exception {
 		
-		dto.setRegDateTime(UtilDateTime.nowDate());
-		dto.setModDateTime(UtilDateTime.nowDate());
+//		dto.setRegDateTime(UtilDateTime.nowDate());
+//		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.updateMember(dto);
-		dao.updateMemberAddress(dto);
-		dao.updateMemberEmail(dto);
-//		dao.updateMemberPhoneHome(dto);
-//		dao.updateMemberPhoneMobile(dto);
-		dao.updateMemberNationality(dto);
-		
-		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
-			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
-			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
-			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
-			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
-			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
-			
-			dao.updateMemberPhone(dto);
-		}
+//		dao.updateMemberAddress(dto);
+//		dao.updateMemberEmail(dto);
+//		dao.updateMemberNationality(dto);
+//		
+//		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
+//			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
+//			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
+//			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
+//			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
+//			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
+//			
+//			dao.updateMemberPhone(dto);
+//		}
 		
 		
 		return 1;
 	}
 
-//	@Override
-//	public int updateMemberEmail(Member dto) throws Exception {
-//		return dao.updateMemberEmail(dto);
-//	}
-//
-//	@Override
-//	public int updateMemberAddress(Member dto) throws Exception {
-//		return dao.updateMemberAddress(dto);
-//	}
-//
-//	@Override
-//	public int updateMemberPhoneMobile(Member dto) throws Exception {
-//		return dao.updateMemberPhoneMobile(dto);
-//	}
-//
-//	@Override
-//	public int updateMemberPhoneHome(Member dto) throws Exception {
-//		return dao.updateMemberPhoneHome(dto);
-//	}
-
-	
 
 	@Override
 	public int deleteMember(MemberVo vo) throws Exception {
@@ -261,21 +215,6 @@ public class MemberServiceImpl implements MemberService{
 		
 		return 1;
 	}
-//
-//	@Override
-//	public int deleteMemberEmail(MemberVo vo) throws Exception {
-//		return dao.deleteMemberEmail(vo);
-//	}
-//
-//	@Override
-//	public int deleteMemberAddress(MemberVo vo) throws Exception {
-//		return dao.deleteMemberAddress(vo);
-//	}
-//
-//	@Override
-//	public int deleteMemberPhone(MemberVo vo) throws Exception {
-//		return dao.deleteMemberPhone(vo);
-//	}
 
 	@Override
 	public int updateMemberDelNy(MemberVo vo) throws Exception {

@@ -36,6 +36,7 @@
 			<exclude-mapping path="/member/loginProcSns" />
 			<exclude-mapping path="/member/findIdPwdForm" />
 			<exclude-mapping path="/coupang/mainPage" />
+			<exclude-mapping path="/rest/**" />
 			<beans:bean id="checkLoginSessionInterception" class="com.yym.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	
