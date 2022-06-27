@@ -37,9 +37,11 @@
 			<exclude-mapping path="/member/findIdPwdForm" />
 			<exclude-mapping path="/coupang/mainPage" />
 			<exclude-mapping path="/rest/**" />
+			<exclude-mapping path="/test/**" />
+			
 			<beans:bean id="checkLoginSessionInterception" class="com.yym.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
-	</interceptors>	
+	</interceptors>
 	<!-- session interceptor e 2022.03.31 for logincheck -->
 	
 	<!-- fileUpload s 2022.04.07 --> 

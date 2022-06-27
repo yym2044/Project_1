@@ -65,68 +65,68 @@ public class MemberServiceImpl implements MemberService{
 		
 		
 		dao.insertMember(dto);
-//		dao.insertMemberAddress(dto);
-//		dao.insertMemberEmail(dto);
-//		
-//		
-//		// infrMemberPhone
-//		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
-//			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
-//			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
-//			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
-//			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
-//			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
-//			
-//			dao.insertPhone(dto);
-//		}
-//		
-//		System.out.println(dto.getIfaoUrlArray1().length);	//1
-//		System.out.println(dto.getIfaoUrlArray2().length);	//1 들어오는데 뭐지
-//		
-//		dao.insertMemberNationality(dto);
-//		
-//		
-//		//추가 start
-//		
-//		//이미지
-//		int j = 0;
-//		for(MultipartFile multipartFile : dto.getFile0() ) {
-//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//			
-//			UtilUpload.upload(multipartFile, pathModule, dto);
-//			
-//			dto.setTableName("infrMemberUploaded");
-//			dto.setType(0);
-//			dto.setDefaultNy(0);
-//			dto.setSort(j);
-//			dto.setPseq(dto.getIfmmSeq());
-//			
-//			
-//			
-//			dao.insertMemberUploaded(dto);
-//			j++;
-//		}
-//		
-//		//파일
-//		j = 0;
-//		for(MultipartFile multipartFile : dto.getFile1() ) {
-//			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//			
-//			UtilUpload.upload(multipartFile, pathModule, dto);
-//			
-//			dto.setTableName("infrMemberUploaded");
-//			dto.setType(1);
-//			dto.setDefaultNy(0);
-//			dto.setSort(j);
-//			dto.setPseq(dto.getIfmmSeq());
-//			
-//			dao.insertMemberUploaded(dto);
-//			j++;
-//		}
-//		
-//		
-//		
-//		//추가 end
+		dao.insertMemberAddress(dto);
+		dao.insertMemberEmail(dto);
+		
+		
+		// infrMemberPhone
+		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
+			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
+			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
+			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
+			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
+			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
+			
+			dao.insertPhone(dto);
+		}
+		
+		System.out.println(dto.getIfaoUrlArray1().length);	//1
+		System.out.println(dto.getIfaoUrlArray2().length);	//1 들어오는데 뭐지
+		
+		dao.insertMemberNationality(dto);
+		
+		
+		//추가 start
+		
+		//이미지
+		int j = 0;
+		for(MultipartFile multipartFile : dto.getFile0() ) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			
+			UtilUpload.upload(multipartFile, pathModule, dto);
+			
+			dto.setTableName("infrMemberUploaded");
+			dto.setType(0);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setPseq(dto.getIfmmSeq());
+			
+			
+			
+			dao.insertMemberUploaded(dto);
+			j++;
+		}
+		
+		//파일
+		j = 0;
+		for(MultipartFile multipartFile : dto.getFile1() ) {
+			String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+			
+			UtilUpload.upload(multipartFile, pathModule, dto);
+			
+			dto.setTableName("infrMemberUploaded");
+			dto.setType(1);
+			dto.setDefaultNy(0);
+			dto.setSort(j);
+			dto.setPseq(dto.getIfmmSeq());
+			
+			dao.insertMemberUploaded(dto);
+			j++;
+		}
+		
+		
+		
+		//추가 end
 		
 		
 		return 1;
@@ -173,23 +173,23 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int updateMember(Member dto) throws Exception {
 		
-//		dto.setRegDateTime(UtilDateTime.nowDate());
-//		dto.setModDateTime(UtilDateTime.nowDate());
+		dto.setRegDateTime(UtilDateTime.nowDate());
+		dto.setModDateTime(UtilDateTime.nowDate());
 		
 		dao.updateMember(dto);
-//		dao.updateMemberAddress(dto);
-//		dao.updateMemberEmail(dto);
-//		dao.updateMemberNationality(dto);
-//		
-//		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
-//			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
-//			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
-//			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
-//			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
-//			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
-//			
-//			dao.updateMemberPhone(dto);
-//		}
+		dao.updateMemberAddress(dto);
+		dao.updateMemberEmail(dto);
+		dao.updateMemberNationality(dto);
+		
+		for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
+			dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
+			dto.setIfmpTypeCd(dto.getIfmpTypeCdArray()[i]);
+			dto.setIfmpDeviceCd(dto.getIfmpDeviceCdArray()[i]);
+			dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
+			dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
+			
+			dao.updateMemberPhone(dto);
+		}
 		
 		
 		return 1;

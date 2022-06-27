@@ -408,12 +408,6 @@ a {
 					<div class="col-md-3 text-end d-md-block d-none" style="margin: auto;">
 
 						<input type="submit" id="btnSubmit" class="btn btn-info btn-lg text-white" value="검색">
-						<a class="btn btn-warning btn-sm text-white">Load</a>
-						<!-- 
-						<button class="btn btn-info btn-lg">
-							<span class="text-white">검색</span>
-						</button>
-						 -->
 					</div>
 				</div>
 
@@ -986,10 +980,6 @@ a {
 	</div>
 
 
-
-
-
-
 	<script type="text/javascript">
 
 	/* function selectAll1(selectAll1) {
@@ -1126,12 +1116,6 @@ a {
 
 	<script type="text/javascript">
 	
-	loadCodeList = function(){
-	<%-- <%
-		CodeServiceImpl.selectListForCache();
-	%> --%>
-	
-	}
 	
 	$(document).ready(function(){
 		if($("#shOptionDate").val() == 0){

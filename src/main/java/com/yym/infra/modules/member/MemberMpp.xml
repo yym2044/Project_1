@@ -6,8 +6,7 @@
 
 <mapper namespace="com.yym.infra.modules.member.MemberMpp">
 
-	<resultMap id="resultMapObj"
-		type="com.yym.infra.modules.member.Member"></resultMap>
+	<resultMap id="resultMapObj" type="com.yym.infra.modules.member.Member"></resultMap>
 		
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT

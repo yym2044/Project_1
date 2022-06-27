@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yym.infra.common.constants.Constants;
 import com.yym.infra.common.util.UtilDateTime;
+import com.yym.infra.common.util.UtilRest;
 import com.yym.infra.modules.code.CodeServiceImpl;
 
 @Controller
@@ -23,6 +27,152 @@ public class MemberController {
 	
 	@Autowired
 	MemberServiceImpl service;
+	
+	@RequestMapping(value = "/test/publicCorona1JsonNodeList")
+	public String publicCorona1JsonNodeList(Model model) throws Exception {
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode node = objectMapper.readTree(UtilRest.makeJsonStringBuilder("http://apis.data.go.kr/1471000/CovidDagnsRgntProdExprtStusService/getCovidDagnsRgntProdExprtStusInq?serviceKey=LmEx2srRT0gx5KEnYWcolsev9PKtXw4eNB5KzqFqw1IPrYbOEsv%2FYXMimhZohuADm%2BOf4yXM3ghTbKtbTUtQnw%3D%3D&numOfRows=3&pageNo=1&type=json").toString());
+		
+		System.out.println(node.get("header").get("resultCode").asText());
+		System.out.println(node.get("header").get("resultMsg").asText());
+		System.out.println(node.get("body").get("items").get(0).get("KIT_PROD_QTY").asText());
+		System.out.println(node.get("header"));
+		System.out.println(node.get("body").get("items"));
+		
+		model.addAttribute("node", node);
+		
+		return "test/publicCorona1JsonNodeList";
+	}
+	
+	@RequestMapping(value = "/test/TsunamiShelter")
+	public String TsunamiShelter(Model model) throws Exception {
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		Map<String, Object> map = objectMapper.readValue(UtilRest.makeJsonStringBuilder("http://apis.data.go.kr/1741000/TsunamiShelter3/getTsunamiShelter1List?ServiceKey=tXv6zvGOEaCo4vYkPtHkY0MZvCHhUn%2BvMsQURfMYuemmYW1cdudh6o6q6Rg0%2FJFCStgW3TucKJ0jTrEVZj7Aqg%3D%3D&type=json&pageNo=1&numOfRows=10").toString(), Map.class);
+		
+		for(String key : map.keySet()) {
+			String value = String.valueOf(map.get(key));
+			
+			System.out.println("[key] : " + key + ", [value] : " + value);
+		}
+		
+		Map<String, Object> TsunamiShelter = new HashMap<String, Object>();
+		
+//		System.out.println("####### TsunamiShelter");
+//		for(String key : TsunamiShelter.keySet()) {
+//			
+//			String value = String.valueOf(TsunamiShelter.get(key));
+//			
+//			System.out.println("[key] : " + key + ", [value] : " + value);
+//		}
+		
+		
+		return "test/TsunamiShelter";
+	}
+	
+	@RequestMapping(value = "/test/publicCorona1List")
+	public String publicCoronaList(Model model) throws Exception {
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		Map<String, Object> map = objectMapper.readValue(UtilRest.makeJsonStringBuilder("http://apis.data.go.kr/1471000/CovidDagnsRgntProdExprtStusService/getCovidDagnsRgntProdExprtStusInq?serviceKey=LmEx2srRT0gx5KEnYWcolsev9PKtXw4eNB5KzqFqw1IPrYbOEsv%2FYXMimhZohuADm%2BOf4yXM3ghTbKtbTUtQnw%3D%3D&numOfRows=3&pageNo=1&type=json").toString(), Map.class);
+		
+		System.out.println("################################ map ################################");
+		for (String key : map.keySet()) {
+			
+//			String value = (String) map.get(key);	// error Casting
+//			String value = map.get(key).toString();	// error NPE
+			String value = String.valueOf(map.get(key));
+			
+			System.out.println("[key] : " + key + ", [value] : " + value);
+		}
+		
+		// 새로운 Map 생성
+		
+		Map<String, Object> header = new HashMap<String, Object>();
+		header = (Map<String, Object>) map.get("header");
+		
+		System.out.println("################################ header ################################");
+		for (String key : header.keySet()) {
+			
+			String value = String.valueOf(header.get(key));
+			
+			System.out.println("[key] : " + key + ", [value] : " + value);
+		}
+		
+		Map<String, Object> body = new HashMap<String, Object>();
+		body = (Map<String, Object>) map.get("body");
+		
+		System.out.println("################################ body ################################");
+		for(String key : body.keySet()) {
+			String value = String.valueOf(body.get(key));
+			
+			System.out.println("[key] : " + key + ", [value] : " + value);
+		}
+		
+		// 배열을 리스트로 뽑기
+//		List<Test> items = new ArrayList<Test>();
+//		items = (List<Test>) body.get("items");
+		
+		model.addAllAttributes(map);
+//		model.addAllAttributes(header);
+//		model.addAllAttributes(body);
+		
+		return "test/publicCorona1List";
+	}
+	
+	@RequestMapping(value = "/test/memberView")
+	public String testMemberView(Model model) throws Exception {
+		
+//		String apiUrl = "http://localhost:8080/infra/rest/member/2";
+//		
+//		URL url = new URL(apiUrl);
+//		HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+//		httpURLConnection.setRequestMethod("GET");
+//		
+//		BufferedReader bufferedReader;
+//		if(httpURLConnection.getResponseCode() >= 200 && httpURLConnection.getResponseCode() <= 300) {
+//			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+//		} else {
+//			bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
+//		}
+//		
+//		StringBuilder stringBuilder = new StringBuilder();
+//		String line;
+//		
+//		while((line = bufferedReader.readLine()) != null) {
+//			stringBuilder.append(line);
+//		}
+//		
+//		bufferedReader.close();
+//		httpURLConnection.disconnect();
+//		
+//		
+//		
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		Member member = objectMapper.readValue(stringBuilder.toString(), Member.class);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		Member member = objectMapper.readValue(UtilRest.makeJsonStringBuilder("http://localhost:8080/infra/rest/member/2").toString(), Member.class);
+		// model 객체를 이용하여 jsp로 데이터를 넘겨준다.
+		model.addAttribute("item", member);
+		
+		return "test/memberView";
+	}
+	
+	@RequestMapping(value = "/test/memberList")
+	public String testMemberList(Model model) throws Exception {
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<Member> list = objectMapper.readValue(UtilRest.makeJsonStringBuilder("http://localhost:8080/infra/rest/member").toString(), new TypeReference<List<Member>>() {});
+		
+		model.addAttribute("list", list);
+		
+		return "/test/memberList";
+	}
+	
+	
+	
 	
 	@RequestMapping(value = "member/loginForm")
 	public String loginForm() throws Exception {

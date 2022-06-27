@@ -43,4 +43,5 @@ public interface MemberService {
 //	Note
 	public int deleteMemberNote(MemberVo vo) throws Exception;
 	
+	
 }
